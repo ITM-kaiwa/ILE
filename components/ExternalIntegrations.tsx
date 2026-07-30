@@ -11,7 +11,7 @@ export const ExternalIntegrations: React.FC = () => {
       url: 'https://lingobot2.onrender.com/',
       icon: MessageCircle,
       badge: '会話練習',
-      color: 'from-blue-600 to-cyan-600',
+      color: 'from-orange-500 to-amber-600',
     },
     {
       name: 'CheckKaiwa QA練習アプリ',
@@ -19,7 +19,7 @@ export const ExternalIntegrations: React.FC = () => {
       url: 'https://itm-kaiwa.github.io/CheckKaiwa_/',
       icon: HelpCircle,
       badge: 'QA練習',
-      color: 'from-purple-600 to-indigo-600',
+      color: 'from-indigo-600 to-purple-600',
     },
     {
       name: 'ITM E-School Webアプリ',
@@ -46,7 +46,7 @@ export const ExternalIntegrations: React.FC = () => {
       url: 'https://jls.vnjpclub.com/index.php',
       icon: Globe,
       badge: 'VNJPClub',
-      color: 'from-rose-600 to-red-600',
+      color: 'from-rose-500 to-red-600',
     },
     {
       name: 'つながるひろがる にほんごでのくらし',
@@ -54,7 +54,7 @@ export const ExternalIntegrations: React.FC = () => {
       url: 'https://tsunagarujp.mext.go.jp/',
       icon: BookOpen,
       badge: '文部科学省 (MEXT)',
-      color: 'from-blue-600 to-indigo-600',
+      color: 'from-indigo-600 to-blue-600',
     },
     {
       name: 'NHK WORLD-JAPAN Learn Japanese',
@@ -62,19 +62,19 @@ export const ExternalIntegrations: React.FC = () => {
       url: 'https://www3.nhk.or.jp/nhkworld/en/learnjapanese/',
       icon: Tv,
       badge: 'NHK WORLD',
-      color: 'from-amber-500 to-yellow-600',
+      color: 'from-amber-500 to-orange-600',
     },
   ];
 
   return (
     <div className="space-y-8">
       {/* ITM Ecosystem Apps Section */}
-      <div className="glass-card p-6 border border-slate-800 rounded-2xl shadow-xl">
-        <div className="flex items-center justify-between pb-4 border-b border-slate-800">
-          <h2 className="text-xl font-bold text-white flex items-center space-x-2">
+      <div className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm">
+        <div className="flex items-center justify-between pb-4 border-b border-amber-100">
+          <h2 className="text-xl font-bold text-slate-800 flex items-center space-x-2">
             <span>ITM 統合連携エコシステム</span>
           </h2>
-          <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-indigo-950 text-indigo-300 border border-indigo-800">
+          <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-800 border border-orange-300">
             ワンクリック連携
           </span>
         </div>
@@ -88,22 +88,22 @@ export const ExternalIntegrations: React.FC = () => {
                 href={app.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition group flex items-start justify-between"
+                className="p-4 rounded-xl bg-[#FFFDF9] border border-amber-200/80 hover:border-orange-300 transition group flex items-start justify-between shadow-sm"
               >
                 <div className="flex items-start space-x-3">
-                  <div className={`p-2.5 rounded-lg bg-gradient-to-br ${app.color} text-white shadow-md`}>
+                  <div className={`p-2.5 rounded-lg bg-gradient-to-br ${app.color} text-white shadow-sm`}>
                     <Icon className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="flex items-center space-x-2">
-                      <h3 className="text-sm font-semibold text-white group-hover:text-indigo-400 transition">
+                      <h3 className="text-sm font-semibold text-slate-800 group-hover:text-orange-600 transition">
                         {app.name}
                       </h3>
                     </div>
-                    <p className="text-xs text-slate-400 mt-0.5">{app.desc}</p>
+                    <p className="text-xs text-slate-500 mt-0.5">{app.desc}</p>
                   </div>
                 </div>
-                <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-indigo-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition shrink-0 ml-2" />
+                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-orange-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition shrink-0 ml-2" />
               </a>
             );
           })}
@@ -111,17 +111,17 @@ export const ExternalIntegrations: React.FC = () => {
       </div>
 
       {/* External Learning Resources Section */}
-      <div className="glass-card p-6 border border-slate-800 rounded-2xl shadow-xl">
-        <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+      <div className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm">
+        <div className="flex items-center justify-between pb-4 border-b border-amber-100">
           <div>
-            <h2 className="text-xl font-bold text-white flex items-center space-x-2">
+            <h2 className="text-xl font-bold text-slate-800 flex items-center space-x-2">
               <span>おすすめ外部日本語学習リソース</span>
             </h2>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-slate-500 mt-0.5">
               ベトナム人学習者・公的機関が推薦する質の高い学習プラットフォーム
             </p>
           </div>
-          <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-800 text-slate-300 border border-slate-700">
+          <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-900 border border-amber-300">
             公式リソース
           </span>
         </div>
@@ -135,24 +135,24 @@ export const ExternalIntegrations: React.FC = () => {
                 href={res.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-xl bg-slate-900 border border-slate-800 hover:border-indigo-500/50 transition group flex flex-col justify-between"
+                className="p-4 rounded-xl bg-[#FFFDF9] border border-amber-200/80 hover:border-orange-300 transition group flex flex-col justify-between shadow-sm"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <div className={`p-2.5 rounded-lg bg-gradient-to-br ${res.color} text-white shadow-md`}>
+                    <div className={`p-2.5 rounded-lg bg-gradient-to-br ${res.color} text-white shadow-sm`}>
                       <Icon className="w-5 h-5" />
                     </div>
-                    <span className="px-2 py-0.5 text-[10px] font-medium rounded bg-slate-800 text-slate-300 border border-slate-700">
+                    <span className="px-2 py-0.5 text-[10px] font-medium rounded bg-amber-100 text-amber-900 border border-amber-200">
                       {res.badge}
                     </span>
                   </div>
-                  <h3 className="text-sm font-semibold text-white group-hover:text-indigo-400 transition leading-snug">
+                  <h3 className="text-sm font-semibold text-slate-800 group-hover:text-orange-600 transition leading-snug">
                     {res.name}
                   </h3>
-                  <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">{res.desc}</p>
+                  <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">{res.desc}</p>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-indigo-400 group-hover:text-indigo-300 transition">
+                <div className="mt-4 pt-3 border-t border-amber-100 flex items-center justify-between text-xs text-orange-600 font-semibold group-hover:text-orange-500 transition">
                   <span>サイトを開く</span>
                   <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
                 </div>

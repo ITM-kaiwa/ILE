@@ -3,7 +3,7 @@
 import React from 'react';
 import { VakType } from '@/data/vak-questions';
 import { WeaknessRecord } from '@/lib/types';
-import { AlertTriangle, Brain, Target, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { AlertTriangle, Brain } from 'lucide-react';
 
 interface WeaknessAnalyzerProps {
   vakType: VakType;
@@ -14,7 +14,6 @@ export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({
   vakType,
   weaknessRecords,
 }) => {
-  // Default mock weaknesses if records empty
   const defaultWeaknesses: WeaknessRecord[] = [
     {
       id: 'w1',
@@ -32,40 +31,24 @@ export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({
       },
       createdAt: new Date().toISOString(),
     },
-    {
-      id: 'w2',
-      userId: 'u1',
-      topic: 'かさを (もっていった) ほうが いいです。',
-      category: 'grammar_sentence',
-      categoryName: '文型（〜たほうがいい）',
-      incorrectAnswer: 'もっていく',
-      correctAnswer: 'もっていった',
-      errorType: 'grammar',
-      vakRecommendation: {
-        visual: '文末の条件分岐フローチャート（提案 ➔ 〜たほうがいい）を対比整理しましょう。',
-        auditory: '「〜たほうがいい！」のフレーズを抑揚をつけてシャドーイングしましょう。',
-        kinesthetic: '傘を開くジェスチャーをしながら文を表現しましょう。',
-      },
-      createdAt: new Date().toISOString(),
-    },
   ];
 
   const records = weaknessRecords.length > 0 ? weaknessRecords : defaultWeaknesses;
 
   return (
-    <div className="glass-card p-6 border border-slate-800 rounded-2xl shadow-xl">
-      <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+    <div className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm">
+      <div className="flex items-center justify-between pb-4 border-b border-amber-100">
         <div className="flex items-center space-x-2">
-          <AlertTriangle className="w-5 h-5 text-indigo-400" />
-          <h2 className="text-xl font-bold text-white">弱点傾向分析 & VAK別復習提案</h2>
+          <AlertTriangle className="w-5 h-5 text-orange-600" />
+          <h2 className="text-xl font-bold text-slate-800">弱点傾向分析 & VAK別復習提案</h2>
         </div>
-        <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-950 text-rose-300 border border-rose-800">
+        <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-100 text-rose-800 border border-rose-300">
           全自動分析
         </span>
       </div>
 
       <div className="mt-6 space-y-4">
-        <p className="text-xs text-slate-400 leading-relaxed">
+        <p className="text-xs text-slate-500 leading-relaxed">
           問題演習の誤答タグからGemini AIが苦手分野を判定し、お使いの<strong>{
             vakType === 'visual' ? '👁️ 視覚' : vakType === 'auditory' ? '👂 聴覚' : '✋ 身体感覚'
           }モデル</strong>に最適化された学習アドバイスを提案します。
@@ -77,23 +60,22 @@ export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({
             return (
               <div
                 key={record.id}
-                className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2 hover:border-indigo-500/50 transition"
+                className="p-4 rounded-xl bg-[#FFFDF9] border border-amber-200 space-y-2 hover:border-orange-300 transition shadow-sm"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                  <span className="text-xs font-bold text-indigo-400">
+                  <span className="text-xs font-bold text-orange-600">
                     🏷️ {record.categoryName} ({record.errorType.toUpperCase()})
                   </span>
                   <span className="text-[10px] text-slate-500">誤答: 「{record.incorrectAnswer}」 ➔ 正解: 「{record.correctAnswer}」</span>
                 </div>
 
-                <p className="text-sm font-medium text-white">{record.topic}</p>
+                <p className="text-sm font-medium text-slate-800">{record.topic}</p>
 
-                {/* VAK Personalized Recommendation Card */}
-                <div className="p-3 rounded-lg bg-indigo-950/40 border border-indigo-800/40 text-xs text-indigo-200 flex items-start space-x-2">
-                  <Brain className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" />
+                <div className="p-3 rounded-lg bg-orange-50 border border-orange-200 text-xs text-orange-950 flex items-start space-x-2">
+                  <Brain className="w-4 h-4 text-orange-600 shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-indigo-300">💡 {vakType.toUpperCase()}タイプ向け復習提案:</span>
-                    <p className="mt-0.5 text-slate-300">{advice}</p>
+                    <span className="font-bold text-orange-900">💡 {vakType.toUpperCase()}タイプ向け復習提案:</span>
+                    <p className="mt-0.5 text-slate-700">{advice}</p>
                   </div>
                 </div>
               </div>

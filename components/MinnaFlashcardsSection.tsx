@@ -11,7 +11,7 @@ import {
   getVocabByPartOfSpeech,
   getVocabBySemanticCategory,
 } from '@/data/minna-vocabulary';
-import { BookOpen, ExternalLink, Volume2, Eye, Hand, Filter, Layers, Tag, Grid, ArrowLeft, ArrowRight, RotateCw } from 'lucide-react';
+import { ExternalLink, Volume2, Eye, Hand, Filter, Layers, Tag, Grid, ArrowLeft, ArrowRight, RotateCw } from 'lucide-react';
 
 interface MinnaFlashcardsSectionProps {
   vakType: VakType;
@@ -26,7 +26,6 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
 
-  // Compute filtered list
   let list: MinnaVocabCard[] = MINNA_VOCABULARY_CARDS;
   if (filterMode === 'lesson') {
     list = getVocabByLesson(selectedLesson);
@@ -68,25 +67,24 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
   };
 
   return (
-    <div className="glass-card p-6 border border-slate-800 rounded-2xl shadow-xl space-y-6">
+    <div className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-amber-100 gap-3">
         <div>
           <div className="flex items-center space-x-2">
-            <Layers className="w-5 h-5 text-indigo-400" />
-            <h2 className="text-xl font-bold text-white">「みんなのにほんご」第1課〜第50課 フラッシュカード</h2>
+            <Layers className="w-5 h-5 text-indigo-600" />
+            <h2 className="text-xl font-bold text-slate-800">「みんなの日本語」第1課〜第50課 フラッシュカード</h2>
           </div>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-slate-500 mt-0.5">
             学習課別・意味別・品詞別に単語カードを切り替えてVAK学習特性で暗記できます
           </p>
         </div>
 
-        {/* External Link to VNJPClub Minna no Nihongo */}
         <a
           href={currentCard ? currentCard.vnjpclubUrl : 'https://www.vnjpclub.com/minna-no-nihongo/'}
           target="_blank"
           rel="noopener noreferrer"
-          className="px-3.5 py-1.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-indigo-500/50 text-indigo-300 text-xs font-semibold transition flex items-center space-x-1.5 shrink-0"
+          className="px-3.5 py-1.5 rounded-xl bg-amber-100/80 hover:bg-amber-200 text-amber-900 text-xs font-semibold border border-amber-300 transition flex items-center space-x-1.5 shrink-0"
         >
           <span>VNJPClub 単語リスト公式</span>
           <ExternalLink className="w-3.5 h-3.5" />
@@ -94,13 +92,13 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
       </div>
 
       {/* Filter Mode Buttons */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl bg-slate-900 border border-slate-800">
+      <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl bg-[#FFFDF9] border border-amber-200">
         <div className="flex items-center space-x-2">
-          <span className="text-xs font-semibold text-slate-400 hidden sm:inline">分類軸:</span>
+          <span className="text-xs font-semibold text-slate-500 hidden sm:inline">分類軸:</span>
           <button
             onClick={() => { setFilterMode('lesson'); setCurrentIndex(0); setIsFlipped(false); }}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1 ${
-              filterMode === 'lesson' ? 'bg-indigo-600 text-white shadow' : 'bg-slate-800 text-slate-400 hover:text-white'
+              filterMode === 'lesson' ? 'bg-indigo-600 text-white shadow-sm' : 'bg-amber-50 text-slate-600 hover:bg-amber-100'
             }`}
           >
             <Grid className="w-3.5 h-3.5" />
@@ -109,7 +107,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
           <button
             onClick={() => { setFilterMode('category'); setCurrentIndex(0); setIsFlipped(false); }}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1 ${
-              filterMode === 'category' ? 'bg-purple-600 text-white shadow' : 'bg-slate-800 text-slate-400 hover:text-white'
+              filterMode === 'category' ? 'bg-purple-600 text-white shadow-sm' : 'bg-amber-50 text-slate-600 hover:bg-amber-100'
             }`}
           >
             <Tag className="w-3.5 h-3.5" />
@@ -118,7 +116,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
           <button
             onClick={() => { setFilterMode('pos'); setCurrentIndex(0); setIsFlipped(false); }}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1 ${
-              filterMode === 'pos' ? 'bg-emerald-600 text-white shadow' : 'bg-slate-800 text-slate-400 hover:text-white'
+              filterMode === 'pos' ? 'bg-emerald-600 text-white shadow-sm' : 'bg-amber-50 text-slate-600 hover:bg-amber-100'
             }`}
           >
             <Filter className="w-3.5 h-3.5" />
@@ -126,13 +124,13 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
           </button>
         </div>
 
-        {/* Secondary Sub-Filter Controls */}
+        {/* Sub Filters */}
         <div className="flex items-center space-x-2">
           {filterMode === 'lesson' && (
             <select
               value={selectedLesson}
               onChange={(e) => { setSelectedLesson(Number(e.target.value)); setCurrentIndex(0); setIsFlipped(false); }}
-              className="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs font-semibold text-indigo-300"
+              className="px-3 py-1.5 rounded-lg bg-[#FAF7F2] border border-amber-300 text-xs font-semibold text-indigo-900"
             >
               {Array.from({ length: 50 }, (_, i) => i + 1).map((num) => (
                 <option key={num} value={num}>第 {num} 課 ({num <= 25 ? 'N5レベル' : 'N4レベル'})</option>
@@ -144,7 +142,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
             <select
               value={selectedCategory}
               onChange={(e) => { setSelectedCategory(e.target.value as SemanticCategory); setCurrentIndex(0); setIsFlipped(false); }}
-              className="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs font-semibold text-purple-300"
+              className="px-3 py-1.5 rounded-lg bg-[#FAF7F2] border border-amber-300 text-xs font-semibold text-purple-900"
             >
               <option value="people">人・職業 (Con người/Nghề nghiệp)</option>
               <option value="greeting">挨拶・コミュニケーション (Chào hỏi)</option>
@@ -161,7 +159,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
             <select
               value={selectedPos}
               onChange={(e) => { setSelectedPos(e.target.value as PartOfSpeech); setCurrentIndex(0); setIsFlipped(false); }}
-              className="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs font-semibold text-emerald-300"
+              className="px-3 py-1.5 rounded-lg bg-[#FAF7F2] border border-amber-300 text-xs font-semibold text-emerald-900"
             >
               <option value="noun">名詞 (Danh từ)</option>
               <option value="verb">動詞 (Động từ)</option>
@@ -173,23 +171,22 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
         </div>
       </div>
 
-      {/* Interactive Flashcard Card */}
+      {/* Interactive Card */}
       {list.length > 0 && currentCard ? (
         <div className="space-y-6">
-          <div className="flex items-center justify-between text-xs text-slate-400">
+          <div className="flex items-center justify-between text-xs text-slate-500">
             <span>カード {currentIndex + 1} / {list.length}</span>
-            <span className="px-2.5 py-0.5 rounded bg-slate-800 text-indigo-300 font-mono">
+            <span className="px-2.5 py-0.5 rounded bg-amber-100 text-amber-900 font-mono font-semibold border border-amber-300">
               第{currentCard.lesson}課 | {currentCard.partOfSpeechName}
             </span>
           </div>
 
-          {/* Flip Container */}
           <div
             onClick={() => setIsFlipped(!isFlipped)}
-            className="relative min-h-[260px] p-8 rounded-2xl bg-gradient-to-br from-slate-900 to-indigo-950/80 border border-slate-700 hover:border-indigo-500/50 shadow-2xl cursor-pointer transition flex flex-col justify-between group"
+            className="relative min-h-[260px] p-8 rounded-3xl bg-gradient-to-br from-[#FFFDF9] via-[#FFF8F0] to-[#FAF3E0] border-2 border-amber-200/80 hover:border-orange-400 shadow-lg cursor-pointer transition flex flex-col justify-between group"
           >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider">
+              <span className="text-xs font-bold text-orange-600 uppercase tracking-wider">
                 {isFlipped ? '🇻🇳 ベトナム語の意味 (Trống)' : '🇯🇵 日本語単語 (Mặt trước)'}
               </span>
               <button
@@ -197,61 +194,57 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
                   e.stopPropagation();
                   handlePlayTTS(currentCard.reading);
                 }}
-                className="p-2 rounded-xl bg-indigo-600/30 hover:bg-indigo-600 text-indigo-200 hover:text-white transition flex items-center space-x-1"
-                title="発音を聞く"
+                className="p-2 rounded-xl bg-orange-100 hover:bg-orange-200 text-orange-800 transition flex items-center space-x-1"
               >
                 <Volume2 className="w-4 h-4" />
-                <span className="text-xs">TTS発音</span>
+                <span className="text-xs font-bold">TTS発音</span>
               </button>
             </div>
 
-            {/* Center Main Content */}
             <div className="text-center py-6">
               {!isFlipped ? (
                 <div>
-                  <h3 className="text-4xl font-extrabold text-white tracking-wide mb-2">
+                  <h3 className="text-4xl font-extrabold text-slate-800 tracking-wide mb-2">
                     {currentCard.word}
                   </h3>
-                  <p className="text-lg text-indigo-300 font-medium">({currentCard.reading})</p>
+                  <p className="text-lg text-indigo-700 font-medium">({currentCard.reading})</p>
                   <p className="text-xs text-slate-400 font-mono mt-1">[{currentCard.romaji}]</p>
                 </div>
               ) : (
                 <div>
-                  <h3 className="text-3xl font-extrabold text-emerald-400 tracking-wide mb-2">
+                  <h3 className="text-3xl font-extrabold text-emerald-700 tracking-wide mb-2">
                     {currentCard.meaningVn}
                   </h3>
-                  <p className="text-sm text-slate-300">English: {currentCard.meaningEn}</p>
+                  <p className="text-sm text-slate-600">English: {currentCard.meaningEn}</p>
                 </div>
               )}
             </div>
 
-            <div className="flex items-center justify-between text-xs text-slate-400">
-              <span className="flex items-center space-x-1">
-                <RotateCw className="w-3.5 h-3.5 group-hover:rotate-180 transition duration-500" />
+            <div className="flex items-center justify-between text-xs text-slate-500">
+              <span className="flex items-center space-x-1 font-medium">
+                <RotateCw className="w-3.5 h-3.5 group-hover:rotate-180 transition duration-500 text-orange-600" />
                 <span>クリックしてカードをめくる</span>
               </span>
-              <span className="font-semibold text-slate-300">{currentCard.semanticCategoryName}</span>
+              <span className="font-semibold text-slate-700">{currentCard.semanticCategoryName}</span>
             </div>
           </div>
 
-          {/* VAK Personalized Guidance Box for Active Card */}
-          <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
-            <div className="flex items-center space-x-2 text-xs font-bold text-white">
-              {vakType === 'visual' && <Eye className="w-4 h-4 text-blue-400" />}
-              {vakType === 'auditory' && <Volume2 className="w-4 h-4 text-emerald-400" />}
-              {vakType === 'kinesthetic' && <Hand className="w-4 h-4 text-amber-400" />}
+          <div className="p-4 rounded-xl bg-orange-50 border border-orange-200 space-y-2">
+            <div className="flex items-center space-x-2 text-xs font-bold text-orange-900">
+              {vakType === 'visual' && <Eye className="w-4 h-4 text-indigo-600" />}
+              {vakType === 'auditory' && <Volume2 className="w-4 h-4 text-emerald-600" />}
+              {vakType === 'kinesthetic' && <Hand className="w-4 h-4 text-orange-600" />}
               <span>{vakType.toUpperCase()}タイプ向け 暗記サポートガイド</span>
             </div>
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-xs text-slate-700 leading-relaxed">
               {currentCard.vakHelp[vakType]}
             </p>
           </div>
 
-          {/* Prev / Next Controls */}
           <div className="flex items-center justify-between pt-2">
             <button
               onClick={handlePrev}
-              className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm transition flex items-center space-x-1.5"
+              className="px-5 py-2.5 rounded-xl bg-amber-100/80 hover:bg-amber-200 text-slate-800 font-medium text-sm transition flex items-center space-x-1.5 border border-amber-300"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>前の単語</span>
@@ -259,23 +252,21 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
 
             <button
               onClick={() => setIsFlipped(!isFlipped)}
-              className="px-4 py-2.5 rounded-xl bg-indigo-950 border border-indigo-700 hover:bg-indigo-900 text-indigo-200 text-sm font-semibold transition"
+              className="px-4 py-2.5 rounded-xl bg-orange-100 hover:bg-orange-200 text-orange-900 text-sm font-bold border border-orange-300 transition"
             >
               カードをめくる 🔄
             </button>
 
             <button
               onClick={handleNext}
-              className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition flex items-center space-x-1.5 shadow"
+              className="px-5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-medium text-sm transition flex items-center space-x-1.5 shadow-sm"
             >
               <span>次の単語</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </div>
-      ) : (
-        <div className="text-center py-8 text-slate-400">単語カードが見つかりません。</div>
-      )}
+      ) : null}
     </div>
   );
 };

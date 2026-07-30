@@ -52,26 +52,26 @@ export default function Home() {
 
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
-        {/* Hero Header */}
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-900 via-purple-900 to-slate-900 p-8 border border-indigo-800/50 shadow-2xl">
+        {/* Warm Hero Header */}
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#FFF9F2] via-[#FFF3E4] to-[#F7EFE5] p-8 border border-amber-200/80 shadow-md">
           <div className="relative z-10 max-w-3xl space-y-4">
-            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-800 border border-orange-300">
               VAK-Adaptive Language Learning Coach
             </span>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-800 tracking-tight leading-tight">
               あなたの認知特性 (VAK) に完全パーソナライズされた<br />
-              <span className="bg-gradient-to-r from-indigo-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-emerald-600 bg-clip-text text-transparent">
                 統合AI日本語学習プラットフォーム
               </span>
             </h1>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
               ベトナム人日本語学習者の自己学習を支援。視覚・聴覚・身体感覚の認知タイプ判定と、エビングハウスの忘却曲線アルゴリズムで、最適な復習タイミングを全自動プロデュースします。
             </p>
 
             <div className="pt-2 flex flex-wrap gap-3">
               <button
                 onClick={() => setDiagnosticModal({ isOpen: true, mode: 'quick' })}
-                className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium transition shadow-lg flex items-center space-x-2"
+                className="px-5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-sm font-medium transition shadow-md flex items-center space-x-2"
               >
                 <span>⚡ 1分でわかる VAK 簡易診断 (5問)</span>
                 <ArrowRight className="w-4 h-4" />
@@ -79,24 +79,24 @@ export default function Home() {
 
               <button
                 onClick={() => setDiagnosticModal({ isOpen: true, mode: 'detailed' })}
-                className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-medium border border-slate-700 transition flex items-center space-x-2"
+                className="px-5 py-2.5 rounded-xl bg-[#FFFDF9] hover:bg-amber-50 text-amber-900 text-sm font-medium border border-amber-300 transition flex items-center space-x-2 shadow-sm"
               >
-                <Sparkles className="w-4 h-4 text-indigo-400" />
+                <Sparkles className="w-4 h-4 text-orange-600" />
                 <span>高精度 詳細診断 (20問)</span>
               </button>
             </div>
           </div>
         </div>
 
-        {/* Main Navigation Tabs */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-2xl bg-slate-900/80 border border-slate-800 gap-3">
+        {/* Main Navigation Tabs with Warm Palette */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-2xl bg-[#FFFDF9] border border-amber-200/80 shadow-sm gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => setActiveTab('learn')}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
                 activeTab === 'learn'
-                  ? 'bg-indigo-600 text-white shadow'
-                  : 'bg-slate-800 text-slate-400 hover:text-white'
+                  ? 'bg-orange-600 text-white shadow'
+                  : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
               }`}
             >
               <Sparkles className="w-3.5 h-3.5" />
@@ -106,30 +106,30 @@ export default function Home() {
               onClick={() => setActiveTab('vocab')}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
                 activeTab === 'vocab'
-                  ? 'bg-cyan-600 text-white shadow'
-                  : 'bg-slate-800 text-slate-400 hover:text-white'
+                  ? 'bg-indigo-600 text-white shadow'
+                  : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
               }`}
             >
               <Layers className="w-3.5 h-3.5" />
-              <span>「みんなの日本語」第1〜50課 単語カード</span>
+              <span>「みんなの日本語」単語カード</span>
             </button>
             <button
               onClick={() => setActiveTab('grammar')}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
                 activeTab === 'grammar'
-                  ? 'bg-purple-600 text-white shadow'
-                  : 'bg-slate-800 text-slate-400 hover:text-white'
+                  ? 'bg-emerald-600 text-white shadow'
+                  : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
-              <span>VNJPClub N5/N4 文法カード</span>
+              <span>VNJPClub 文法カード</span>
             </button>
             <button
               onClick={() => setActiveTab('review')}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
                 activeTab === 'review'
-                  ? 'bg-emerald-600 text-white shadow'
-                  : 'bg-slate-800 text-slate-400 hover:text-white'
+                  ? 'bg-amber-600 text-white shadow'
+                  : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
               }`}
             >
               <RefreshCw className="w-3.5 h-3.5" />
@@ -146,11 +146,11 @@ export default function Home() {
                 className={`py-1.5 px-3 rounded-xl text-xs font-bold transition ${
                   currentVak === type
                     ? type === 'visual'
-                      ? 'bg-blue-600 text-white shadow'
+                      ? 'bg-indigo-600 text-white shadow'
                       : type === 'auditory'
                       ? 'bg-emerald-600 text-white shadow'
-                      : 'bg-amber-600 text-white shadow'
-                    : 'bg-slate-800 text-slate-400 hover:text-white'
+                      : 'bg-orange-600 text-white shadow'
+                    : 'bg-amber-50 text-slate-500 hover:text-slate-800 border border-amber-200/50'
                 }`}
               >
                 {type === 'visual' ? '👁️ 視覚' : type === 'auditory' ? '👂 聴覚' : '✋ 身体感覚'}
