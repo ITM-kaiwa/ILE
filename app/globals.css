@@ -4,15 +4,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Kaiti+SC&display=swap');
 
-:root {
-  --font-[#UDDigiKyokasho]': "UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Kaiti SC", "Hiragino Kaku Gothic ProN", sans-serif;
-}
-
 body {
   background: linear-gradient(135deg, #FAF7F2 0%, #F5EFE6 50%, #EFEAD8 100%);
   color: #2D3748;
   min-height: 100vh;
-  font-family: "UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Kaiti SC", var(--font-inter), sans-serif;
+  font-family: "UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Kaiti SC", sans-serif;
 }
 
 /* Learning Card Font Utility */
