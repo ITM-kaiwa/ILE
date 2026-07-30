@@ -119,3 +119,49 @@ export const DETAILED_VAK_QUESTIONS: VakQuestion[] = [
     ]
   }
 ];
+
+export function calculateVakResult(answers: { questionId: string; selectedType: VakType }[]): VakResult {
+  const scores = { visual: 0, auditory: 0, kinesthetic: 0 };
+  answers.forEach((ans) => {
+    scores[ans.selectedType] += 1;
+  });
+
+  const maxVal = Math.max(scores.visual, scores.auditory, scores.kinesthetic);
+  const primaryVak: VakType =
+    scores.visual === maxVal
+      ? 'visual'
+      : scores.auditory === maxVal
+      ? 'auditory'
+      : 'kinesthetic';
+
+  // Check for tie / hybrid (if two or more share the maximum value)
+  const equalToMax = Object.keys(scores).filter((key) => scores[key as VakType] === maxVal);
+  const isHybrid = equalToMax.length > 1;
+
+  let hybridLabel: string | undefined = undefined;
+  if (isHybrid) {
+    const labels = equalToMax.map((v) => {
+      if (v === 'visual') return '視覚 (V)';
+      if (v === 'auditory') return '聴覚 (A)';
+      return '身体感覚 (K)';
+    });
+    hybridLabel = `複合タイプ: ${labels.join(' + ')}`;
+  }
+
+  return {
+    primaryVak,
+    scores,
+    isHybrid,
+    hybridLabel,
+  };
+}
+
+export function getRandomizedQuestions(questions: VakQuestion[]): VakQuestion[] {
+  return questions.map((q) => {
+    const shuffledOptions = [...q.options].sort(() => Math.random() - 0.5);
+    return {
+      ...q,
+      options: shuffledOptions,
+    };
+  });
+}
