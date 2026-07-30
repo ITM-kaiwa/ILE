@@ -2,15 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Kaiti+SC&display=swap');
+
 :root {
-  --font-inter: 'Inter', sans-serif;
+  --font-[#UDDigiKyokasho]': "UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Kaiti SC", "Hiragino Kaku Gothic ProN", sans-serif;
 }
 
 body {
   background: linear-gradient(135deg, #FAF7F2 0%, #F5EFE6 50%, #EFEAD8 100%);
   color: #2D3748;
   min-height: 100vh;
-  font-family: var(--font-inter);
+  font-family: "UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Kaiti SC", var(--font-inter), sans-serif;
+}
+
+/* Learning Card Font Utility */
+.font-learning-card {
+  font-family: "UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Kaiti SC", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
 }
 
 /* Warm, gentle glassmorphism cards */
@@ -44,7 +51,6 @@ body {
   background: linear-gradient(135deg, #EA580C 0%, #F97316 100%);
 }
 
-/* Soft warm scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

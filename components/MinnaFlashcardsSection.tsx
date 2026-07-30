@@ -204,7 +204,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
             <div className="text-center py-6">
               {!isFlipped ? (
                 <div>
-                  <h3 className="text-4xl font-extrabold text-slate-800 tracking-wide mb-2">
+                  <h3 className="text-4xl font-extrabold text-slate-800 tracking-wide mb-2 font-learning-card" style={{ fontFamily: '"UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Kaiti SC", sans-serif' }}>
                     {currentCard.word}
                   </h3>
                   <p className="text-lg text-indigo-700 font-medium">({currentCard.reading})</p>

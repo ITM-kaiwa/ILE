@@ -2,21 +2,21 @@
 
 import React, { useState } from 'react';
 import { VakType } from '@/data/vak-questions';
-import { JlptLevel } from '@/lib/types';
-import { KANJI_CARDS, getKanjiByLevel, KanjiCard } from '@/data/kanji-cards';
-import { BookOpen, ExternalLink, Volume2, Eye, Hand, Layers, RotateCw, ArrowLeft, ArrowRight } from 'lucide-react';
+import { KanaCard, KanaType, HIRAGANA_CARDS, KATAKANA_CARDS } from '@/data/kana-cards';
+import { Volume2, Eye, Hand, Layers, RotateCw, ArrowLeft, ArrowRight, Sparkles } from 'lucide-react';
 
-interface KanjiCardsSectionProps {
+interface KanaCardsSectionProps {
   vakType: VakType;
 }
 
-export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType }) => {
-  const [level, setLevel] = useState<JlptLevel>('N5');
-  const cards = getKanjiByLevel(level);
+export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType }) => {
+  const [kanaType, setKanaType] = useState<KanaType>('hiragana');
+  const cards = kanaType === 'hiragana' ? HIRAGANA_CARDS : KATAKANA_CARDS;
+
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
 
-  const currentCard: KanjiCard = cards[currentIndex] || cards[0];
+  const currentCard: KanaCard = cards[currentIndex] || cards[0];
 
   const handleNext = () => {
     setIsFlipped(false);
@@ -53,92 +53,70 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType })
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-amber-100 gap-3">
         <div>
           <div className="flex items-center space-x-2">
-            <Layers className="w-5 h-5 text-orange-600" />
-            <h2 className="text-xl font-bold text-slate-800">JLPT N5 / N4 漢字フラッシュカード</h2>
+            <Sparkles className="w-5 h-5 text-orange-600" />
+            <h2 className="text-xl font-bold text-slate-800">ひらがな・カタカナ基礎フラッシュカード</h2>
           </div>
           <p className="text-xs text-slate-500 mt-0.5">
-            音読み・訓読み・ベトナム語の意味をカード化し、VAK認知特性で覚えられます
+            UD Digi Kyokasho体フォントで正しい書き順とVAK認知記憶ガイドで50音をマスター
           </p>
         </div>
 
-        {/* Langoal Official Reference Link Buttons */}
+        {/* Kana Selector Buttons */}
         <div className="flex items-center space-x-2">
           <button
             onClick={() => {
-              setLevel('N5');
+              setKanaType('hiragana');
               setCurrentIndex(0);
               setIsFlipped(false);
             }}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${
-              level === 'N5'
+            className={`px-4 py-1.5 rounded-xl text-xs font-bold transition ${
+              kanaType === 'hiragana'
                 ? 'bg-orange-600 text-white shadow-sm'
                 : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'
             }`}
           >
-            N5 漢字カード
+            あ あいうえお (ひらがな)
           </button>
           <button
             onClick={() => {
-              setLevel('N4');
+              setKanaType('katakana');
               setCurrentIndex(0);
               setIsFlipped(false);
             }}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${
-              level === 'N4'
-                ? 'bg-purple-600 text-white shadow-sm'
+            className={`px-4 py-1.5 rounded-xl text-xs font-bold transition ${
+              kanaType === 'katakana'
+                ? 'bg-indigo-600 text-white shadow-sm'
                 : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'
             }`}
           >
-            N4 漢字カード
+            ア アイウエオ (カタカナ)
           </button>
-
-          {/* Langoal Reference Button */}
-          <a
-            href={level === 'N5' ? 'https://langoal.com/teaching-materials/kanji/n5-overview.html' : 'https://langoal.com/teaching-materials/kanji/n4-overview.html'}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-3.5 py-1.5 rounded-xl bg-orange-100 hover:bg-orange-200 text-orange-900 border border-orange-300 text-xs font-bold transition flex items-center space-x-1.5 shrink-0 shadow-sm"
-          >
-            <span>Langoal {level} 漢字一覧</span>
-            <ExternalLink className="w-3.5 h-3.5 text-orange-600" />
-          </a>
         </div>
       </div>
 
-      {/* Main Flashcard Container */}
+      {/* Main Card UI */}
       {cards.length > 0 && currentCard ? (
         <div className="space-y-6">
-          <div className="flex items-center justify-between text-xs text-slate-500">
-            <span>漢字カード {currentIndex + 1} / {cards.length} ({currentCard.level})</span>
-            <div className="flex items-center space-x-2">
-              <span className="px-2.5 py-0.5 rounded bg-amber-100 text-amber-900 font-mono font-bold border border-amber-300">
-                画数: {currentCard.strokeCount}画
-              </span>
-              <a
-                href={currentCard.nihongokyoshiUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-indigo-700 hover:underline flex items-center space-x-1 font-semibold"
-              >
-                <span>日本語教師ネット N5漢字</span>
-                <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
+          <div className="flex items-center justify-between text-xs text-slate-500 font-semibold">
+            <span>仮名カード {currentIndex + 1} / {cards.length} ({currentCard.group})</span>
+            <span className="px-2.5 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-300">
+              {kanaType === 'hiragana' ? 'ひらがな (Hiragana)' : 'カタカナ (Katakana)'}
+            </span>
           </div>
 
-          {/* Flip Card */}
+          {/* Flip Container with UD Digi Kyokasho NK-R Font */}
           <div
             onClick={() => setIsFlipped(!isFlipped)}
             className="relative min-h-[280px] p-8 rounded-3xl bg-gradient-to-br from-[#FFFDF9] via-[#FFF9F2] to-[#FAF3E0] border-2 border-amber-200/80 hover:border-orange-400 shadow-md cursor-pointer transition flex flex-col justify-between group"
           >
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-orange-700 uppercase tracking-wider">
-                {isFlipped ? '🇻🇳 ベトナム語の意味 & 例文 (Mặt sau)' : '🇯🇵 漢字・読み方 (Mặt trước)'}
+                {isFlipped ? '🇻🇳 ベトナム語の覚え方 (Ghi nhớ)' : '🇯🇵 かな文字 (Mặt trước)'}
               </span>
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  handlePlayTTS(currentCard.kanji);
+                  handlePlayTTS(currentCard.kana);
                 }}
                 className="p-2 rounded-xl bg-orange-100 hover:bg-orange-200 text-orange-900 transition flex items-center space-x-1"
               >
@@ -147,40 +125,25 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType })
               </button>
             </div>
 
-            {/* Front & Back Content */}
+            {/* Main Kana character rendering in UD Digi Kyokasho font */}
             <div className="text-center py-6">
               {!isFlipped ? (
                 <div>
-                  <h3 className="text-6xl font-extrabold text-slate-900 tracking-wide mb-3 font-learning-card" style={{ fontFamily: '"UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Kaiti SC", sans-serif' }}>
-                    {currentCard.kanji}
+                  <h3
+                    className="text-7xl font-extrabold text-slate-900 tracking-wide mb-3 font-learning-card"
+                    style={{ fontFamily: '"UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Kaiti SC", sans-serif' }}
+                  >
+                    {currentCard.kana}
                   </h3>
-                  <div className="flex justify-center items-center space-x-4 text-sm font-semibold">
-                    <span className="px-3 py-1 rounded-lg bg-indigo-100 text-indigo-900 border border-indigo-200">
-                      音読み: {currentCard.onyomi}
-                    </span>
-                    <span className="px-3 py-1 rounded-lg bg-emerald-100 text-emerald-900 border border-emerald-200">
-                      訓読み: {currentCard.kunyomi}
-                    </span>
-                  </div>
+                  <p className="text-xl font-bold text-indigo-700">[{currentCard.romaji}]</p>
                 </div>
               ) : (
-                <div>
-                  <h3 className="text-3xl font-extrabold text-emerald-800 tracking-wide mb-2">
-                    {currentCard.meaningVn}
+                <div className="space-y-3">
+                  <span className="text-xs font-bold text-slate-500 block">🇻🇳 Mẹo ghi nhớ bằng hình ảnh:</span>
+                  <h3 className="text-2xl font-bold text-emerald-800 leading-snug">
+                    {currentCard.mnemonicVn}
                   </h3>
-                  <p className="text-sm font-medium text-slate-600 mb-3">
-                    (English: {currentCard.meaningEn})
-                  </p>
-
-                  {/* Examples */}
-                  <div className="inline-block text-left bg-[#FAF7F2] p-3 rounded-xl border border-amber-200 text-xs text-slate-800 space-y-1">
-                    <span className="font-bold text-orange-700 block">💡 例文:</span>
-                    {currentCard.examples.map((ex, idx) => (
-                      <span key={idx} className="inline-block mr-3 bg-white px-2 py-0.5 rounded border border-amber-200 font-medium">
-                        {ex}
-                      </span>
-                    ))}
-                  </div>
+                  <p className="text-sm font-semibold text-slate-600">Romaji: /{currentCard.romaji}/</p>
                 </div>
               )}
             </div>
@@ -190,17 +153,17 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType })
                 <RotateCw className="w-3.5 h-3.5 group-hover:rotate-180 transition duration-500 text-orange-600" />
                 <span>クリックしてカードをめくる</span>
               </span>
-              <span className="font-bold text-slate-700">JLPT {currentCard.level} 漢字</span>
+              <span className="font-bold text-slate-700">{currentCard.group}</span>
             </div>
           </div>
 
-          {/* VAK Help Box */}
+          {/* VAK Guidance Box */}
           <div className="p-4 rounded-xl bg-orange-50 border border-orange-200 space-y-2">
             <div className="flex items-center space-x-2 text-xs font-bold text-orange-950">
               {vakType === 'visual' && <Eye className="w-4 h-4 text-indigo-600" />}
               {vakType === 'auditory' && <Volume2 className="w-4 h-4 text-emerald-600" />}
               {vakType === 'kinesthetic' && <Hand className="w-4 h-4 text-orange-600" />}
-              <span>{vakType.toUpperCase()}タイプ向け 漢字記憶ガイド</span>
+              <span>{vakType.toUpperCase()}タイプ向け 仮名記憶ガイド</span>
             </div>
             <p className="text-xs text-slate-700 leading-relaxed font-medium">
               {currentCard.vakHelp[vakType]}
@@ -214,7 +177,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType })
               className="px-5 py-2.5 rounded-xl bg-amber-100/80 hover:bg-amber-200 text-slate-800 font-bold text-sm transition flex items-center space-x-1.5 border border-amber-300"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span>前の漢字</span>
+              <span>前のかな</span>
             </button>
 
             <button
@@ -228,7 +191,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType })
               onClick={handleNext}
               className="px-5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-sm transition flex items-center space-x-1.5 shadow-sm"
             >
-              <span>次の漢字</span>
+              <span>次のかな</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

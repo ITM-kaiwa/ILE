@@ -9,6 +9,7 @@ import { VakContentRenderer } from '@/components/VakContentRenderer';
 import { GrammarCardsSection } from '@/components/GrammarCardsSection';
 import { MinnaFlashcardsSection } from '@/components/MinnaFlashcardsSection';
 import { KanjiCardsSection } from '@/components/KanjiCardsSection';
+import { KanaCardsSection } from '@/components/KanaCardsSection';
 import { ReviewDashboard } from '@/components/ReviewDashboard';
 import { CalendarScheduler } from '@/components/CalendarScheduler';
 import { ReviewManager } from '@/components/ReviewManager';
@@ -22,7 +23,7 @@ export default function Home() {
   const [vakResult, setVakResult] = useState<VakResult | null>(null);
   const [weaknessRecords, setWeaknessRecords] = useState<WeaknessRecord[]>([]);
 
-  const [activeTab, setActiveTab] = useState<'learn' | 'vocab' | 'grammar' | 'kanji' | 'review'>('learn');
+  const [activeTab, setActiveTab] = useState<'learn' | 'kana' | 'vocab' | 'grammar' | 'kanji' | 'review'>('learn');
 
   const [diagnosticModal, setDiagnosticModal] = useState<{
     isOpen: boolean;
@@ -61,7 +62,7 @@ export default function Home() {
                 VAK-Adaptive Language Learning Coach
               </span>
               <span className="px-2.5 py-0.5 text-xs font-bold rounded-full bg-orange-600 text-white shadow-sm">
-                v1.1α
+                v1.2β
               </span>
             </div>
 
@@ -100,7 +101,7 @@ export default function Home() {
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => setActiveTab('learn')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
+              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
                 activeTab === 'learn'
                   ? 'bg-orange-600 text-white shadow'
                   : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
@@ -110,48 +111,59 @@ export default function Home() {
               <span>AI学習 & 問題演習</span>
             </button>
             <button
+              onClick={() => setActiveTab('kana')}
+              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
+                activeTab === 'kana'
+                  ? 'bg-amber-600 text-white shadow'
+                  : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>ひらがな・カタカナ</span>
+            </button>
+            <button
               onClick={() => setActiveTab('vocab')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
+              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
                 activeTab === 'vocab'
                   ? 'bg-indigo-600 text-white shadow'
                   : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
               }`}
             >
               <Layers className="w-3.5 h-3.5" />
-              <span>「みんなの日本語」単語カード</span>
+              <span>「みんなの日本語」単語</span>
             </button>
             <button
               onClick={() => setActiveTab('grammar')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
+              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
                 activeTab === 'grammar'
                   ? 'bg-emerald-600 text-white shadow'
                   : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
-              <span>VNJPClub 文法カード</span>
+              <span>VNJPClub 文法</span>
             </button>
             <button
               onClick={() => setActiveTab('kanji')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
+              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
                 activeTab === 'kanji'
                   ? 'bg-rose-600 text-white shadow'
                   : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
               }`}
             >
               <Layers className="w-3.5 h-3.5" />
-              <span>漢字カード (Langoal/教師ネット)</span>
+              <span>漢字 (Langoal)</span>
             </button>
             <button
               onClick={() => setActiveTab('review')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
+              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
                 activeTab === 'review'
-                  ? 'bg-amber-600 text-white shadow'
+                  ? 'bg-teal-600 text-white shadow'
                   : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
               }`}
             >
               <RefreshCw className="w-3.5 h-3.5" />
-              <span>復習専用ダッシュボード</span>
+              <span>復習ダッシュボード</span>
             </button>
           </div>
 
@@ -186,6 +198,10 @@ export default function Home() {
               <WeaknessAnalyzer vakType={currentVak} weaknessRecords={weaknessRecords} />
             </div>
           </>
+        )}
+
+        {activeTab === 'kana' && (
+          <KanaCardsSection vakType={currentVak} />
         )}
 
         {activeTab === 'vocab' && (
