@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { VakType, VakResult } from '@/data/vak-questions';
 import { WeaknessRecord } from '@/lib/types';
+import { Language, getTranslation } from '@/lib/i18n';
 import { Navbar } from '@/components/Navbar';
 import { VakDiagnosticModal } from '@/components/VakDiagnosticModal';
 import { VakContentRenderer } from '@/components/VakContentRenderer';
@@ -19,6 +20,9 @@ import { ExternalIntegrations } from '@/components/ExternalIntegrations';
 import { Sparkles, ArrowRight, BookOpen, RefreshCw, Layers } from 'lucide-react';
 
 export default function Home() {
+  const [lang, setLang] = useState<Language>('ja');
+  const t = getTranslation(lang);
+
   const [currentVak, setCurrentVak] = useState<VakType>('visual');
   const [vakResult, setVakResult] = useState<VakResult | null>(null);
   const [weaknessRecords, setWeaknessRecords] = useState<WeaknessRecord[]>([]);
@@ -44,11 +48,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen pb-16">
-      {/* Top Navbar */}
+      {/* Top Navbar with Flag Language Switcher */}
       <Navbar
         currentVak={currentVak}
         isHybrid={vakResult?.isHybrid}
         hybridLabel={vakResult?.hybridLabel}
+        lang={lang}
+        onLanguageChange={(newLang) => setLang(newLang)}
         onOpenDiagnostic={(mode) => setDiagnosticModal({ isOpen: true, mode })}
       />
 
@@ -62,18 +68,18 @@ export default function Home() {
                 VAK-Adaptive Language Learning Coach
               </span>
               <span className="px-2.5 py-0.5 text-xs font-bold rounded-full bg-orange-600 text-white shadow-sm">
-                v1.5β
+                v1.6β
               </span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-800 tracking-tight leading-tight">
-              あなたの認知特性 (VAK) に完全パーソナライズされた<br />
+              {t.heroTitle1}<br />
               <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-emerald-600 bg-clip-text text-transparent">
-                統合AI日本語学習プラットフォーム
+                {t.heroTitle2}
               </span>
             </h1>
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-              ベトナム人日本語学習者の自己学習を支援。視覚・聴覚・身体感覚の認知タイプ判定と、エビングハウスの忘却曲線アルゴリズムで、最適な復習タイミングを全自動プロデュースします。
+              {t.heroDesc}
             </p>
 
             <div className="pt-2 flex flex-wrap gap-3">
@@ -81,7 +87,7 @@ export default function Home() {
                 onClick={() => setDiagnosticModal({ isOpen: true, mode: 'quick' })}
                 className="px-5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-sm font-medium transition shadow-md flex items-center space-x-2"
               >
-                <span>⚡ 1分でわかる VAK 簡易診断 (5問)</span>
+                <span>{t.quickDiagnostic}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
@@ -90,7 +96,7 @@ export default function Home() {
                 className="px-5 py-2.5 rounded-xl bg-[#FFFDF9] hover:bg-amber-50 text-amber-900 text-sm font-medium border border-amber-300 transition flex items-center space-x-2 shadow-sm"
               >
                 <Sparkles className="w-4 h-4 text-orange-600" />
-                <span>高精度 詳細診断 (20問)</span>
+                <span>{t.detailedDiagnostic}</span>
               </button>
             </div>
           </div>
@@ -108,7 +114,7 @@ export default function Home() {
               }`}
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>AI学習 & 問題演習</span>
+              <span>{t.tabLearn}</span>
             </button>
             <button
               onClick={() => setActiveTab('kana')}
@@ -119,7 +125,7 @@ export default function Home() {
               }`}
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>ひらがな・カタカナ</span>
+              <span>{t.tabKana}</span>
             </button>
             <button
               onClick={() => setActiveTab('vocab')}
@@ -130,7 +136,7 @@ export default function Home() {
               }`}
             >
               <Layers className="w-3.5 h-3.5" />
-              <span>「みんなの日本語」単語</span>
+              <span>{t.tabVocab}</span>
             </button>
             <button
               onClick={() => setActiveTab('grammar')}
@@ -141,7 +147,7 @@ export default function Home() {
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
-              <span>VNJPClub 文法</span>
+              <span>{t.tabGrammar}</span>
             </button>
             <button
               onClick={() => setActiveTab('kanji')}
@@ -152,7 +158,7 @@ export default function Home() {
               }`}
             >
               <Layers className="w-3.5 h-3.5" />
-              <span>漢字 (Langoal)</span>
+              <span>{t.tabKanji}</span>
             </button>
             <button
               onClick={() => setActiveTab('review')}
@@ -163,7 +169,7 @@ export default function Home() {
               }`}
             >
               <RefreshCw className="w-3.5 h-3.5" />
-              <span>復習ダッシュボード</span>
+              <span>{t.tabReview}</span>
             </button>
           </div>
 
@@ -183,7 +189,7 @@ export default function Home() {
                     : 'bg-amber-50 text-slate-500 hover:text-slate-800 border border-amber-200/50'
                 }`}
               >
-                {type === 'visual' ? '👁️ 視覚' : type === 'auditory' ? '👂 聴覚' : '✋ 身体感覚'}
+                {type === 'visual' ? t.vakVisual : type === 'auditory' ? t.vakAuditory : t.vakKinesthetic}
               </button>
             ))}
           </div>

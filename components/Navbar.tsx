@@ -2,12 +2,15 @@
 
 import React from 'react';
 import { VakType } from '@/data/vak-questions';
-import { Sparkles, Brain } from 'lucide-react';
+import { Language, getTranslation } from '@/lib/i18n';
+import { Sparkles, Brain, Globe } from 'lucide-react';
 
 interface NavbarProps {
   currentVak: VakType;
   isHybrid?: boolean;
   hybridLabel?: string;
+  lang: Language;
+  onLanguageChange: (lang: Language) => void;
   onOpenDiagnostic: (mode: 'quick' | 'detailed') => void;
 }
 
@@ -15,8 +18,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   currentVak,
   isHybrid,
   hybridLabel,
+  lang,
+  onLanguageChange,
   onOpenDiagnostic,
 }) => {
+  const t = getTranslation(lang);
+
   const getVakBadge = () => {
     if (isHybrid && hybridLabel) {
       return (
@@ -27,18 +34,18 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
     switch (currentVak) {
       case 'visual':
-        return <span className="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-600 text-white shadow-sm">👁️ 視覚優位 (Visual)</span>;
+        return <span className="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-600 text-white shadow-sm">{t.visualLabel}</span>;
       case 'auditory':
-        return <span className="px-3 py-1 text-xs font-semibold rounded-full bg-emerald-600 text-white shadow-sm">👂 聴覚優位 (Auditory)</span>;
+        return <span className="px-3 py-1 text-xs font-semibold rounded-full bg-emerald-600 text-white shadow-sm">{t.auditoryLabel}</span>;
       case 'kinesthetic':
-        return <span className="px-3 py-1 text-xs font-semibold rounded-full bg-orange-600 text-white shadow-sm font-sans">✋ 身体感覚優位 (Kinesthetic)</span>;
+        return <span className="px-3 py-1 text-xs font-semibold rounded-full bg-orange-600 text-white shadow-sm font-sans">{t.kinestheticLabel}</span>;
     }
   };
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-amber-200/60 bg-[#FFFDF9]/90 backdrop-blur-md shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Logo & Version v1.5β */}
+        {/* Logo & Version v1.6β */}
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 via-amber-500 to-emerald-600 flex items-center justify-center text-white shadow-md">
             <Brain className="w-6 h-6" />
@@ -46,32 +53,46 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div>
             <div className="flex items-center space-x-2">
               <h1 className="font-bold text-lg text-slate-800 leading-none tracking-tight">
-                ILE <span className="text-orange-600 font-normal">VAK Coach</span>
+                {t.appName}
               </h1>
               <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-orange-100 text-orange-800 border border-orange-300">
-                v1.5β
+                v1.6β
               </span>
             </div>
-            <p className="text-xs text-slate-500 mt-0.5">ITM Language Empowerment</p>
+            <p className="text-xs text-slate-500 mt-0.5">{t.subTitle}</p>
           </div>
         </div>
 
-        {/* Status Badge & Diagnostic triggers */}
+        {/* Right side controls: Language Selector Dropdown with Flag icons */}
         <div className="flex items-center space-x-3">
+          {/* Flag Language Switcher Dropdown */}
+          <div className="relative flex items-center space-x-1.5 bg-[#FAF7F2] p-1.5 rounded-xl border border-amber-300 shadow-inner">
+            <Globe className="w-4 h-4 text-orange-600 ml-1" />
+            <select
+              value={lang}
+              onChange={(e) => onLanguageChange(e.target.value as Language)}
+              className="bg-transparent text-xs font-bold text-slate-800 focus:outline-none cursor-pointer pr-1"
+            >
+              <option value="ja">🇯🇵 日本語 (JP)</option>
+              <option value="vi">🇻🇳 Tiếng Việt (VN)</option>
+            </select>
+          </div>
+
           {getVakBadge()}
+
           <div className="hidden md:flex items-center space-x-2">
             <button
               onClick={() => onOpenDiagnostic('quick')}
               className="px-3 py-1.5 text-xs font-medium text-slate-700 bg-amber-100/70 hover:bg-amber-200/70 rounded-lg border border-amber-200 transition"
             >
-              ⚡ 簡易診断 (5問)
+              {t.quickDiagnostic}
             </button>
             <button
               onClick={() => onOpenDiagnostic('detailed')}
               className="px-3 py-1.5 text-xs font-medium text-orange-700 bg-orange-100/80 hover:bg-orange-200/80 rounded-lg border border-orange-300 transition flex items-center space-x-1"
             >
               <Sparkles className="w-3.5 h-3.5 text-orange-600" />
-              <span>詳細診断 (20問)</span>
+              <span>{t.detailedDiagnostic}</span>
             </button>
           </div>
         </div>
