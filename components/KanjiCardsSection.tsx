@@ -3,9 +3,9 @@
 import React, { useState } from 'react';
 import { VakType } from '@/data/vak-questions';
 import { JlptLevel } from '@/lib/types';
-import { Language } from '@/lib/i18n';
+import { Language, getTranslation } from '@/lib/i18n';
 import { KANJI_CARDS, getKanjiByLevel, KanjiCard } from '@/data/kanji-cards';
-import { ExternalLink, Volume2, Eye, Hand, Layers, RotateCw, ArrowLeft, ArrowRight , ChevronDown, ChevronUp } from 'lucide-react';
+import { ExternalLink, Volume2, Eye, Hand, Layers, RotateCw, ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface KanjiCardsSectionProps {
   vakType: VakType;
@@ -13,6 +13,9 @@ interface KanjiCardsSectionProps {
 }
 
 export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, lang = 'ja' }) => {
+  const t = getTranslation(lang);
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const [level, setLevel] = useState<JlptLevel>('N5');
   const cards = getKanjiByLevel(level);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -109,9 +112,18 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
             <span>{isVi ? `Danh sách Kanji ${level}` : `Langoal ${level} 漢字一覧`}</span>
             <ExternalLink className="w-3.5 h-3.5 text-orange-600" />
           </a>
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center space-x-1 border border-slate-300/50"
+          >
+            <span>{isExpanded ? t.collapseModule : t.viewModule}</span>
+            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </button>
+
         </div>
       </div>
-
+      {isExpanded && (
+      <>
       {/* Main Flashcard Container */}
       {cards.length > 0 && currentCard ? (
         <div className="space-y-6">

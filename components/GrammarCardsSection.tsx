@@ -3,9 +3,9 @@
 import React, { useState } from 'react';
 import { VakType } from '@/data/vak-questions';
 import { GrammarCard, JlptLevel } from '@/lib/types';
-import { Language } from '@/lib/i18n';
+import { Language, getTranslation } from '@/lib/i18n';
 import { getGrammarCardsByLevel } from '@/data/grammar-cards';
-import { BookOpen, ExternalLink, Eye, Volume2, Hand , ChevronDown, ChevronUp } from 'lucide-react';
+import { BookOpen, ExternalLink, Eye, Volume2, Hand } from 'lucide-react';
 
 interface GrammarCardsSectionProps {
   vakType: VakType;
@@ -13,6 +13,9 @@ interface GrammarCardsSectionProps {
 }
 
 export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakType, lang = 'ja' }) => {
+  const t = getTranslation(lang);
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const [level, setLevel] = useState<JlptLevel>('N5');
   const cards = getGrammarCardsByLevel(level);
   const [selectedCardId, setSelectedCardId] = useState<string>(cards[0]?.id || 'card_n5_1');
@@ -76,9 +79,18 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
           >
             {isVi ? 'Ngữ pháp N4' : 'N4 文法カード'}
           </button>
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center space-x-1 border border-slate-300/50"
+          >
+            <span>{isExpanded ? t.collapseModule : t.viewModule}</span>
+            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </button>
+
         </div>
       </div>
-
+      {isExpanded && (
+      <>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="space-y-2">
           <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">

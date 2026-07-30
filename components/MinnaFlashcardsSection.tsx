@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { VakType } from '@/data/vak-questions';
-import { Language } from '@/lib/i18n';
+import { Language, getTranslation } from '@/lib/i18n';
 import {
   MINNA_VOCABULARY_CARDS,
   MinnaVocabCard,
@@ -12,7 +12,7 @@ import {
   getVocabByPartOfSpeech,
   getVocabBySemanticCategory,
 } from '@/data/minna-vocabulary';
-import { ExternalLink, Volume2, Eye, Hand, Filter, Layers, Tag, Grid, ArrowLeft, ArrowRight, RotateCw , ChevronDown, ChevronUp } from 'lucide-react';
+import { ExternalLink, Volume2, Eye, Hand, Filter, Layers, Tag, Grid, ArrowLeft, ArrowRight, RotateCw } from 'lucide-react';
 
 interface MinnaFlashcardsSectionProps {
   vakType: VakType;
@@ -20,6 +20,9 @@ interface MinnaFlashcardsSectionProps {
 }
 
 export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ vakType, lang = 'ja' }) => {
+  const t = getTranslation(lang);
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const [filterMode, setFilterMode] = useState<'lesson' | 'category' | 'pos'>('lesson');
   const [selectedLesson, setSelectedLesson] = useState<number>(1);
   const [selectedCategory, setSelectedCategory] = useState<SemanticCategory>('people');
@@ -178,9 +181,18 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
               <option value="expression">Chào hỏi / Thành ngữ (あいさつ)</option>
             </select>
           )}
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center space-x-1 border border-slate-300/50"
+          >
+            <span>{isExpanded ? t.collapseModule : t.viewModule}</span>
+            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </button>
+
         </div>
       </div>
-
+      {isExpanded && (
+      <>
       {/* Interactive Card */}
       {list.length > 0 && currentCard ? (
         <div className="space-y-6">

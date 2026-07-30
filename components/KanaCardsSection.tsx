@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import { VakType } from '@/data/vak-questions';
-import { Language } from '@/lib/i18n';
+import { Language, getTranslation } from '@/lib/i18n';
 import { KanaCard, KanaType, HIRAGANA_CARDS, KATAKANA_CARDS } from '@/data/kana-cards';
-import { Volume2, Eye, Hand, RotateCw, ArrowLeft, ArrowRight, Sparkles , ChevronDown, ChevronUp } from 'lucide-react';
+import { Volume2, Eye, Hand, RotateCw, ArrowLeft, ArrowRight, Sparkles } from 'lucide-react';
 
 interface KanaCardsSectionProps {
   vakType: VakType;
@@ -12,6 +12,9 @@ interface KanaCardsSectionProps {
 }
 
 export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lang = 'ja' }) => {
+  const t = getTranslation(lang);
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const [kanaType, setKanaType] = useState<KanaType>('hiragana');
   const cards = kanaType === 'hiragana' ? HIRAGANA_CARDS : KATAKANA_CARDS;
 
@@ -98,9 +101,18 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
           >
             ア アイウエオ (Katakana)
           </button>
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition flex items-center space-x-1 border border-slate-300/50"
+          >
+            <span>{isExpanded ? t.collapseModule : t.viewModule}</span>
+            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </button>
+
         </div>
       </div>
-
+      {isExpanded && (
+      <>
       {/* Main Card UI */}
       {cards.length > 0 && currentCard ? (
         <div className="space-y-6">
