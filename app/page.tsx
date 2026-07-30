@@ -62,7 +62,7 @@ export default function Home() {
                 VAK-Adaptive Language Learning Coach
               </span>
               <span className="px-2.5 py-0.5 text-xs font-bold rounded-full bg-orange-600 text-white shadow-sm">
-                v1.2β
+                v1.3β
               </span>
             </div>
 
