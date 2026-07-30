@@ -74,6 +74,13 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
 
         <div className="flex items-center space-x-2">
           <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="px-3 py-1.5 rounded-lg bg-orange-50 hover:bg-orange-100 text-orange-900 text-xs font-bold transition flex items-center space-x-1 border border-orange-300/50"
+          >
+            <span>{isExpanded ? t.collapseModule : t.viewModule}</span>
+            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </button>
+          <button
             onClick={() => { setSelectedLevel('N5'); setCurrentIdx(0); setSelectedIndex(null); setIsSubmitted(false); }}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${
               selectedLevel === 'N5' ? 'bg-orange-600 text-white shadow-sm' : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'
@@ -91,6 +98,8 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
           </button>
         </div>
       </div>
+      {isExpanded && (
+      <>
 
       <div className="space-y-4">
         <div className="flex items-center justify-between text-xs">

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { VakType } from '@/data/vak-questions';
 import { WeaknessRecord } from '@/lib/types';
 import { Language, getTranslation } from '@/lib/i18n';
@@ -26,10 +26,21 @@ export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({ vakType, wea
             {t.weaknessTitle}
           </h2>
         </div>
-        <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-900 border border-rose-300">
-          {t.autoAnalysis}
-        </span>
+        <div className="flex items-center space-x-3">
+          <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-900 border border-rose-300">
+            {t.autoAnalysis}
+          </span>
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="px-3 py-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-900 text-xs font-bold transition flex items-center space-x-1 border border-rose-300/50"
+          >
+            <span>{isExpanded ? t.collapseModule : t.viewModule}</span>
+            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </button>
+        </div>
       </div>
+      {isExpanded && (
+      <>
 
       <p className="text-xs text-slate-600 leading-relaxed">
         {t.weaknessDesc}
