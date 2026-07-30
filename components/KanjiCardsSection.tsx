@@ -3,14 +3,16 @@
 import React, { useState } from 'react';
 import { VakType } from '@/data/vak-questions';
 import { JlptLevel } from '@/lib/types';
+import { Language } from '@/lib/i18n';
 import { KANJI_CARDS, getKanjiByLevel, KanjiCard } from '@/data/kanji-cards';
-import { BookOpen, ExternalLink, Volume2, Eye, Hand, Layers, RotateCw, ArrowLeft, ArrowRight } from 'lucide-react';
+import { ExternalLink, Volume2, Eye, Hand, Layers, RotateCw, ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface KanjiCardsSectionProps {
   vakType: VakType;
+  lang?: Language;
 }
 
-export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType }) => {
+export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, lang = 'ja' }) => {
   const [level, setLevel] = useState<JlptLevel>('N5');
   const cards = getKanjiByLevel(level);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -47,6 +49,8 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType })
     }
   };
 
+  const isVi = lang === 'vi';
+
   return (
     <div className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm space-y-6">
       {/* Header */}
@@ -54,10 +58,14 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType })
         <div>
           <div className="flex items-center space-x-2">
             <Layers className="w-5 h-5 text-orange-600" />
-            <h2 className="text-xl font-bold text-slate-800">JLPT N5 / N4 漢字フラッシュカード</h2>
+            <h2 className="text-xl font-bold text-slate-800">
+              {isVi ? 'Thẻ học chữ Hán Kanji JLPT N5 / N4' : 'JLPT N5 / N4 漢字フラッシュカード'}
+            </h2>
           </div>
           <p className="text-xs text-slate-500 mt-0.5">
-            音読み・訓読み・ベトナム語の意味をカード化し、VAK認知特性で覚えられます
+            {isVi
+              ? 'Học Onyomi, Kunyomi và ý nghĩa tiếng Việt bằng nhận thức VAK'
+              : '音読み・訓読み・ベトナム語の意味をカード化し、VAK認知特性で覚えられます'}
           </p>
         </div>
 
@@ -75,7 +83,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType })
                 : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'
             }`}
           >
-            N5 漢字カード
+            {isVi ? 'Thẻ N5' : 'N5 漢字カード'}
           </button>
           <button
             onClick={() => {
@@ -89,17 +97,16 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType })
                 : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'
             }`}
           >
-            N4 漢字カード
+            {isVi ? 'Thẻ N4' : 'N4 漢字カード'}
           </button>
 
-          {/* Langoal Reference Button */}
           <a
             href={level === 'N5' ? 'https://langoal.com/teaching-materials/kanji/n5-overview.html' : 'https://langoal.com/teaching-materials/kanji/n4-overview.html'}
             target="_blank"
             rel="noopener noreferrer"
             className="px-3.5 py-1.5 rounded-xl bg-orange-100 hover:bg-orange-200 text-orange-900 border border-orange-300 text-xs font-bold transition flex items-center space-x-1.5 shrink-0 shadow-sm"
           >
-            <span>Langoal {level} 漢字一覧</span>
+            <span>{isVi ? `Danh sách Kanji ${level}` : `Langoal ${level} 漢字一覧`}</span>
             <ExternalLink className="w-3.5 h-3.5 text-orange-600" />
           </a>
         </div>
@@ -109,20 +116,11 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType })
       {cards.length > 0 && currentCard ? (
         <div className="space-y-6">
           <div className="flex items-center justify-between text-xs text-slate-500">
-            <span>漢字カード {currentIndex + 1} / {cards.length} ({currentCard.level})</span>
+            <span>{isVi ? `Thẻ Kanji ${currentIndex + 1} / ${cards.length} (${currentCard.level})` : `漢字カード ${currentIndex + 1} / ${cards.length} (${currentCard.level})`}</span>
             <div className="flex items-center space-x-2">
               <span className="px-2.5 py-0.5 rounded bg-amber-100 text-amber-900 font-mono font-bold border border-amber-300">
-                画数: {currentCard.strokeCount}画
+                {isVi ? `Nét: ${currentCard.strokeCount}` : `画数: ${currentCard.strokeCount}画`}
               </span>
-              <a
-                href={currentCard.nihongokyoshiUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-indigo-700 hover:underline flex items-center space-x-1 font-semibold"
-              >
-                <span>日本語教師ネット N5漢字</span>
-                <ExternalLink className="w-3 h-3" />
-              </a>
             </div>
           </div>
 
@@ -133,7 +131,9 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType })
           >
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-orange-700 uppercase tracking-wider">
-                {isFlipped ? '🇻🇳 ベトナム語の意味 & 例文 (Mặt sau)' : '🇯🇵 漢字・読み方 (Mặt trước)'}
+                {isFlipped
+                  ? (isVi ? '🇻🇳 Ý nghĩa Tiếng Việt (Mặt sau)' : '🇻🇳 ベトナム語の意味 & 例文 (Mặt sau)')
+                  : (isVi ? '🇯🇵 Tiếng Nhật & Cách đọc (Mặt trước)' : '🇯🇵 漢字・読み方 (Mặt trước)')}
               </span>
               <button
                 onClick={(e) => {
@@ -143,7 +143,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType })
                 className="p-2 rounded-xl bg-orange-100 hover:bg-orange-200 text-orange-900 transition flex items-center space-x-1"
               >
                 <Volume2 className="w-4 h-4 text-orange-600" />
-                <span className="text-xs font-bold">TTS発音</span>
+                <span className="text-xs font-bold">{isVi ? 'Phát âm' : 'TTS発音'}</span>
               </button>
             </div>
 
@@ -151,15 +151,18 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType })
             <div className="text-center py-6">
               {!isFlipped ? (
                 <div>
-                  <h3 className="text-6xl font-extrabold text-slate-900 tracking-wide mb-3 font-learning-card" style={{ fontFamily: '"UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Kaiti SC", sans-serif' }}>
+                  <h3
+                    className="text-6xl font-extrabold text-slate-900 tracking-wide mb-3 font-learning-card"
+                    style={{ fontFamily: '"UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Klee One", sans-serif' }}
+                  >
                     {currentCard.kanji}
                   </h3>
                   <div className="flex justify-center items-center space-x-4 text-sm font-semibold">
                     <span className="px-3 py-1 rounded-lg bg-indigo-100 text-indigo-900 border border-indigo-200">
-                      音読み: {currentCard.onyomi}
+                      {isVi ? `Âm Onyomi: ${currentCard.onyomi}` : `音読み: ${currentCard.onyomi}`}
                     </span>
                     <span className="px-3 py-1 rounded-lg bg-emerald-100 text-emerald-900 border border-emerald-200">
-                      訓読み: {currentCard.kunyomi}
+                      {isVi ? `Âm Kunyomi: ${currentCard.kunyomi}` : `訓読み: ${currentCard.kunyomi}`}
                     </span>
                   </div>
                 </div>
@@ -169,12 +172,11 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType })
                     {currentCard.meaningVn}
                   </h3>
                   <p className="text-sm font-medium text-slate-600 mb-3">
-                    (English: {currentCard.meaningEn})
+                    (Tiếng Anh: {currentCard.meaningEn})
                   </p>
 
-                  {/* Examples */}
                   <div className="inline-block text-left bg-[#FAF7F2] p-3 rounded-xl border border-amber-200 text-xs text-slate-800 space-y-1">
-                    <span className="font-bold text-orange-700 block">💡 例文:</span>
+                    <span className="font-bold text-orange-700 block">{isVi ? '💡 Ví dụ:' : '💡 例文:'}</span>
                     {currentCard.examples.map((ex, idx) => (
                       <span key={idx} className="inline-block mr-3 bg-white px-2 py-0.5 rounded border border-amber-200 font-medium">
                         {ex}
@@ -188,9 +190,9 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType })
             <div className="flex items-center justify-between text-xs text-slate-500">
               <span className="flex items-center space-x-1 font-semibold">
                 <RotateCw className="w-3.5 h-3.5 group-hover:rotate-180 transition duration-500 text-orange-600" />
-                <span>クリックしてカードをめくる</span>
+                <span>{isVi ? 'Nhấp để lật thẻ' : 'クリックしてカードをめくる'}</span>
               </span>
-              <span className="font-bold text-slate-700">JLPT {currentCard.level} 漢字</span>
+              <span className="font-bold text-slate-700">JLPT {currentCard.level} Kanji</span>
             </div>
           </div>
 
@@ -200,7 +202,11 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType })
               {vakType === 'visual' && <Eye className="w-4 h-4 text-indigo-600" />}
               {vakType === 'auditory' && <Volume2 className="w-4 h-4 text-emerald-600" />}
               {vakType === 'kinesthetic' && <Hand className="w-4 h-4 text-orange-600" />}
-              <span>{vakType.toUpperCase()}タイプ向け 漢字記憶ガイド</span>
+              <span>
+                {isVi
+                  ? `Hướng dẫn ghi nhớ Kanji (${vakType.toUpperCase()})`
+                  : `${vakType.toUpperCase()}タイプ向け 漢字記憶ガイド`}
+              </span>
             </div>
             <p className="text-xs text-slate-700 leading-relaxed font-medium">
               {currentCard.vakHelp[vakType]}
@@ -214,21 +220,21 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType })
               className="px-5 py-2.5 rounded-xl bg-amber-100/80 hover:bg-amber-200 text-slate-800 font-bold text-sm transition flex items-center space-x-1.5 border border-amber-300"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span>前の漢字</span>
+              <span>{isVi ? 'Thẻ trước' : '前の漢字'}</span>
             </button>
 
             <button
               onClick={() => setIsFlipped(!isFlipped)}
               className="px-4 py-2.5 rounded-xl bg-orange-100 hover:bg-orange-200 text-orange-950 text-sm font-bold border border-orange-300 transition"
             >
-              カードをめくる 🔄
+              {isVi ? 'Lật thẻ 🔄' : 'カードをめくる 🔄'}
             </button>
 
             <button
               onClick={handleNext}
               className="px-5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-sm transition flex items-center space-x-1.5 shadow-sm"
             >
-              <span>次の漢字</span>
+              <span>{isVi ? 'Thẻ tiếp theo' : '次の漢字'}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

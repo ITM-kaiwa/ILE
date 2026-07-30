@@ -68,7 +68,7 @@ export default function Home() {
                 VAK-Adaptive Language Learning Coach
               </span>
               <span className="px-2.5 py-0.5 text-xs font-bold rounded-full bg-orange-600 text-white shadow-sm">
-                v1.6β
+                v1.7β
               </span>
             </div>
 
@@ -207,19 +207,19 @@ export default function Home() {
         )}
 
         {activeTab === 'kana' && (
-          <KanaCardsSection vakType={currentVak} />
+          <KanaCardsSection vakType={currentVak} lang={lang} />
         )}
 
         {activeTab === 'vocab' && (
-          <MinnaFlashcardsSection vakType={currentVak} />
+          <MinnaFlashcardsSection vakType={currentVak} lang={lang} />
         )}
 
         {activeTab === 'grammar' && (
-          <GrammarCardsSection vakType={currentVak} />
+          <GrammarCardsSection vakType={currentVak} lang={lang} />
         )}
 
         {activeTab === 'kanji' && (
-          <KanjiCardsSection vakType={currentVak} />
+          <KanjiCardsSection vakType={currentVak} lang={lang} />
         )}
 
         {activeTab === 'review' && (
