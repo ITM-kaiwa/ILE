@@ -4,401 +4,481 @@ export const VNJPCLUB_N4_GRAMMAR_CARDS: GrammarCard[] = [
   {
     "id": "card_n4_1",
     "level": "N4",
-    "title": "〜た ほうが いいです (Khuyên nên làm gì)",
-    "structure": "V-た ほうが いいです",
-    "meaning": "Nên / Không nên làm V (Lời khuyên)",
-    "vietnameseExplanation": "Dùng để đưa ra lời khuyên hoặc gợi ý cho người nghe nên làm điều gì.",
+    "title": "第26課：〜んです / 〜んですか (Giải thích lý do, xác nhận)",
+    "structure": "普通形 (ナ形/N な) ＋ んです / んですか",
+    "meaning": "Dùng để nhấn mạnh lý do, giải thích tình huống (Thực ra là/Bởi vì...)",
+    "vietnameseExplanation": "Dùng trong giao tiếp khi muốn cung cấp thông tin giải thích hoàn cảnh, hoặc hỏi đối phương về lý do.",
     "category": "grammar_sentence",
-    "categoryName": "文型（助言・提案）",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "categoryName": "N4文法 第26課",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-26.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (〜た ほうが いいです (Khuyên nên làm gì))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-た ほうが いいです** | ハイライト | Nên / Không nên làm V (Lời khuyên) |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (〜た ほうが いいです (Khuyên nên làm gì))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (〜た ほうが いいです (Khuyên nên làm gì))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第26課 〜んです)\n- 頭が痛いんです (Thực ra là tôi bị đau đầu)",
+      "auditory": "### 👂 聴覚朗読 (第26課)\n- 「どうしたんですか。頭が痛いんです。」を音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第26課)\n- 頭を押さえて「〜なんです」と説明。"
     }
   },
   {
     "id": "card_n4_2",
     "level": "N4",
-    "title": "〜ては いけません (Cấm đoán)",
-    "structure": "V-て は いけません",
-    "meaning": "Không được làm V (Cấm đoán)",
-    "vietnameseExplanation": "Dùng để thể hiện sự cấm đoán, không cho phép thực hiện hành động.",
-    "category": "grammar_sentence",
-    "categoryName": "文型（禁止）",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "title": "第27課：可能形 (Động từ khả năng: Có thể làm...)",
+    "structure": "グループ1: i➔eます | グループ2: 〜られます | グループ3: できます",
+    "meaning": "Thể khả năng: Có thể làm V",
+    "vietnameseExplanation": "Dùng để biểu thị khả năng của bản thân hoặc khả năng xảy ra của một việc.",
+    "category": "grammar_conjugation",
+    "categoryName": "N4文法 第27課",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-27.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (〜ては いけません (Cấm đoán))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-て は いけません** | ハイライト | Không được làm V (Cấm đoán) |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (〜ては いけません (Cấm đoán))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (〜ては いけません (Cấm đoán))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第27課 可能形)\n- 日本語が話せます (Tôi có thể nói tiếng Nhật)",
+      "auditory": "### 👂 聴覚朗読 (第27課)\n- 「話せる・読める・食べられる」と唱える。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第27課)\n- できるポーズをしながら「〜ができます！」"
     }
   },
   {
     "id": "card_n4_3",
     "level": "N4",
-    "title": "〜て しまいました (Hoàn thành / Rất tiếc)",
-    "structure": "V-て しまいました",
-    "meaning": "Đã làm xong V / Lỡ làm V (Hối tiếc)",
-    "vietnameseExplanation": "Thể hiện hành động đã hoàn thành trọn vẹn, hoặc sự tiếc nuối khi lỡ làm sai.",
+    "title": "第28課：〜ながら V2 (Vừa làm V1 vừa làm V2)",
+    "structure": "V1(ます形) ＋ ながら、V2",
+    "meaning": "Vừa làm V1 vừa làm V2",
+    "vietnameseExplanation": "Diễn tả hai hành động diễn ra song song cùng một lúc.",
     "category": "grammar_sentence",
-    "categoryName": "文型（完了・後悔）",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "categoryName": "N4文法 第28課",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-28.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (〜て しまいました (Hoàn thành / Rất tiếc))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-て しまいました** | ハイライト | Đã làm xong V / Lỡ làm V (Hối tiếc) |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (〜て しまいました (Hoàn thành / Rất tiếc))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (〜て しまいました (Hoàn thành / Rất tiếc))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第28課 〜ながら)\n- 音楽を聞きながら勉強します",
+      "auditory": "### 👂 聴覚朗読 (第28課)\n- 「〜ながら〜します」を音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第28課)\n- 歩きながら話すジェスチャー。"
     }
   },
   {
     "id": "card_n4_4",
     "level": "N4",
-    "title": "〜ように なります (Thay đổi khả năng)",
-    "structure": "V-可能形 ＋ ように なります",
-    "meaning": "Trở nên có thể làm V / Bắt đầu làm V",
-    "vietnameseExplanation": "Diễn tả sự thay đổi về trạng thái, khả năng hoặc thói quen từ không thể sang có thể.",
+    "title": "第29課：自動詞 ＋ ています (Trạng thái kết quả)",
+    "structure": "N が V(自動詞)-ています",
+    "meaning": "N đang ở trạng thái V",
+    "vietnameseExplanation": "Diễn tả trạng thái của đồ vật hiện hữu.",
     "category": "grammar_sentence",
-    "categoryName": "文型（変化）",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "categoryName": "N4文法 第29課",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-29.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (〜ように なります (Thay đổi khả năng))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-可能形 ＋ ように なります** | ハイライト | Trở nên có thể làm V / Bắt đầu làm V |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (〜ように なります (Thay đổi khả năng))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (〜ように なります (Thay đổi khả năng))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第29課 自動詞ています)\n- 窓が開いています",
+      "auditory": "### 👂 聴覚朗読 (第29課)\n- 「あいています・ついています」",
+      "kinesthetic": "### ✋ 身体感覚タスク (第29課)\n- 開いている窓を指さす。"
     }
   },
   {
     "id": "card_n4_5",
     "level": "N4",
-    "title": "〜かも しれません (Có thể là, có lẽ)",
-    "structure": "普通形 ＋ かも しれません",
-    "meaning": "Có thể / Có lẽ là (Dự đoán ~50%)",
-    "vietnameseExplanation": "Phán đoán một khả năng có thể xảy ra nhưng không chắc chắn.",
+    "title": "第30課：他動詞 ＋ てあります (Chuẩn bị sẵn)",
+    "structure": "N が V(他動詞)-てあります",
+    "meaning": "N đã được V sẵn",
+    "vietnameseExplanation": "Diễn tả trạng thái đồ vật kết quả của hành động cố ý chuẩn bị trước.",
     "category": "grammar_sentence",
-    "categoryName": "文型（推測）",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "categoryName": "N4文法 第30課",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-30.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (〜かも しれません (Có thể là, có lẽ))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **普通形 ＋ かも しれません** | ハイライト | Có thể / Có lẽ là (Dự đoán ~50%) |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (〜かも しれません (Có thể là, có lẽ))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (〜かも しれません (Có thể là, có lẽ))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第30課 てあります)\n- 予定が書いてあります",
+      "auditory": "### 👂 聴覚朗読 (第30課)\n- 「書いてあります」",
+      "kinesthetic": "### ✋ 身体感覚タスク (第30課)\n- 壁にメモを貼る動作。"
     }
   },
   {
-    "id": "card_n4_6",
+    "id": "card_n4_26",
     "level": "N4",
-    "title": "N4 文法項目 第31課 (Cấu trúc bài 31)",
-    "structure": "V-普通形 / N ＋ 助詞_31",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 31",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 31 theo chương trình VNJPClub N4.",
+    "title": "第26課：〜んです / 〜んですか (Giải thích lý do, xác nhận)",
+    "structure": "普通形 (ナ形/N な) ＋ んです / んですか",
+    "meaning": "Dùng để nhấn mạnh lý do, giải thích tình huống hoặc hỏi để xác nhận nguyên do (Thực ra là/Bởi vì...)",
+    "vietnameseExplanation": "Dùng trong giao tiếp khi muốn cung cấp thông tin giải thích hoàn cảnh, hoặc hỏi đối phương về lý do của một sự việc đang quan sát được.",
+    "category": "grammar_sentence",
+    "categoryName": "N4文法 第26課",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-26.html",
+    "vakContent": {
+      "visual": "### 👁️ 視覚カード (第26課 〜んです)\n| 接続 | 例 | 意味 |\n|---|---|---|\n| V普通形 ＋ んです | 行くんです | Thực ra là tôi sẽ đi |\n| N/ナ形 ＋ なんです | 暇なんです | Bởi vì tôi đang rảnh |",
+      "auditory": "### 👂 聴覚朗読 (第26課)\n- 例文: 「どうしたんですか。頭が痛いんです。」を感情を込めて5回音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第26課)\n- 頭を押さえるポーズをしながら「頭が痛いんです」と理由を説明するロールプレイ。"
+    }
+  },
+  {
+    "id": "card_n4_27",
+    "level": "N4",
+    "title": "第27課：可能形 (Động từ khả năng: Có thể làm...)",
+    "structure": "グループ1: i➔eます | グループ2: 〜られます | グループ3: きます➔こられます / します➔できます",
+    "meaning": "Thể khả năng: Có thể làm V / Biểu thị khả năng hoặc điều kiện cho phép",
+    "vietnameseExplanation": "Dùng để biểu thị khả năng của bản thân hoặc khả năng xảy ra của một việc trong hoàn cảnh nhất định. Trợ từ を chuyển thành が.",
+    "category": "grammar_conjugation",
+    "categoryName": "N4文法 第27課",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-27.html",
+    "vakContent": {
+      "visual": "### 👁️ 視覚カード (第27課 可能形)\n- 漢字が読めます (Tôi có thể đọc chữ Hán)\n- 日本語が話せます (Tôi có thể nói tiếng Nhật)",
+      "auditory": "### 👂 聴覚朗読 (第27課)\n- 歌うように「書ける・話せる・食べられる・こられる・できる」と動詞活用を合唱。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第27課)\n- 自分が「できること」をジェスチャーで表現しながら「〜ができます！」と叫ぶ。"
+    }
+  },
+  {
+    "id": "card_n4_28",
+    "level": "N4",
+    "title": "第28課：〜ながら V2 (Vừa làm V1 vừa làm V2)",
+    "structure": "V1(ます形) ＋ ながら、V2",
+    "meaning": "Vừa làm V1 vừa làm V2 (Hành động V2 là hành động chính)",
+    "vietnameseExplanation": "Diễn tả hai hành động diễn ra song song cùng một lúc bởi cùng một chủ thể. Hành động V2 đứng sau là hành động chính.",
+    "category": "grammar_sentence",
+    "categoryName": "N4文法 第28課",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-28.html",
+    "vakContent": {
+      "visual": "### 👁️ 視覚カード (第28課 〜ながら)\n- 音楽を聞きながら 勉強します (Vừa nghe nhạc vừa học bài)",
+      "auditory": "### 👂 聴覚朗読 (第28課)\n- リズムに乗せて「〜ながら〜します」をリズミカルに音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第28課)\n- 実際に歩きながら話し、2つの動作を同時に行う体感練習。"
+    }
+  },
+  {
+    "id": "card_n4_29",
+    "level": "N4",
+    "title": "第29課：自動詞 ＋ ています (Trạng thái kết quả của tự động từ)",
+    "structure": "N が V(自動詞)-ています",
+    "meaning": "N đang ở trạng thái V (Trạng thái là kết quả của hành động đã phát sinh)",
+    "vietnameseExplanation": "Diễn tả trạng thái của đồ vật hiện hữu do một tự động từ gây ra (ví dụ: cửa đang mở, đèn đang bật, đĩa bị vỡ).",
+    "category": "grammar_sentence",
+    "categoryName": "N4文法 第29課",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-29.html",
+    "vakContent": {
+      "visual": "### 👁️ 視覚カード (第29課 自動詞ています)\n- 窓が開いています (Cửa sổ đang mở)\n- 電気がついています (Đèn đang bật)",
+      "auditory": "### 👂 聴覚朗読 (第29課)\n- 「あいています・ついています・こわれています」の音読リピート。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第29課)\n- 部屋の中の物の状態（開いている、消えている）を指さしながら説明。"
+    }
+  },
+  {
+    "id": "card_n4_30",
+    "level": "N4",
+    "title": "第30課：他動詞 ＋ てあります (Hành động có chuẩn bị sẵn/chuẩn bị trước)",
+    "structure": "N が V(他動詞)-てあります",
+    "meaning": "N đã được V sẵn (Do ai đó làm có mục đích chuẩn bị trước)",
+    "vietnameseExplanation": "Diễn tả trạng thái đồ vật kết quả của một hành động cố ý do con người thực hiện nhằm mục đích chuẩn bị trước.",
+    "category": "grammar_sentence",
+    "categoryName": "N4文法 第30課",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-30.html",
+    "vakContent": {
+      "visual": "### 👁️ 視覚カード (第30課 てあります)\n- カレンダーに予定が書いてあります (Lịch đã được ghi sẵn kế hoạch)",
+      "auditory": "### 👂 聴覚朗読 (第30課)\n- 「書いてあります・はってあります・かざってあります」を音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第30課)\n- メモを壁に貼る動作をしながら「はってあります」と言う。"
+    }
+  },
+  {
+    "id": "card_n4_31",
+    "level": "N4",
+    "title": "第31課：意向形 / 〜ようと思っています (Thể ý định / Ý định làm gì)",
+    "structure": "グループ1: o行＋う | グループ2: 〜よう | グループ3: こよう/しよう ＋ と思っています",
+    "meaning": "Dự định làm V (Thể ý định dùng trong giao tiếp thân mật hoặc diễn tả dự định cá nhân)",
+    "vietnameseExplanation": "意向形 (Thể ý định) là dạng thân mật của 〜ましょう. Cấu trúc 〜と思っています diễn tả dự định đã có từ trước và vẫn đang tiếp diễn.",
     "category": "grammar_sentence",
     "categoryName": "N4文法 第31課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-31.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第31課 (Cấu trúc bài 31))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_31** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 31 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第31課 (Cấu trúc bài 31))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第31課 (Cấu trúc bài 31))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第31課 意向形)\n| 辞書形 | 意向形 | 〜と思っています |\n|---|---|---|\n| 行く | 行こう | 行こうと思っています |\n| 食べる | 食べよう | 食べようと思っています |",
+      "auditory": "### 👂 聴覚朗読 (第31課)\n- 「行こう！食べよう！勉強しよう！」と元気に意向形を唱える。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第31課)\n- 来年の目標を思い浮かべ、「〜しようと思っています」とガッツポーズ。"
     }
   },
   {
-    "id": "card_n4_7",
+    "id": "card_n4_32",
     "level": "N4",
-    "title": "N4 文法項目 第32課 (Cấu trúc bài 32)",
-    "structure": "V-普通形 / N ＋ 助詞_32",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 32",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 32 theo chương trình VNJPClub N4.",
+    "title": "第32課：〜ほうが いいです / 〜でしょう / 〜かもしれません (Lời khuyên & Dự đoán)",
+    "structure": "Vた/Vない ＋ ほうがいいです | 普通形 ＋ でしょう / かもしれません",
+    "meaning": "Nên/Không nên làm V | Có lẽ là... | Có thể là... (~50%)",
+    "vietnameseExplanation": "Dùng để đưa ra lời khuyên nên/không nên làm gì, hoặc đưa ra dự đoán về thời tiết/tình huống dựa trên quan sát.",
     "category": "grammar_sentence",
     "categoryName": "N4文法 第32課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-32.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第32課 (Cấu trúc bài 32))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_32** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 32 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第32課 (Cấu trúc bài 32))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第32課 (Cấu trúc bài 32))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第32課 Lời khuyên & Dự đoán)\n- 毎日運動したほうがいいです (Nên vận động mỗi ngày)\n- 明日は雨が降るでしょう (Có lẽ mai trời sẽ mưa)",
+      "auditory": "### 👂 聴覚朗読 (第32課)\n- 天気予報のキャスターになりきって「〜でしょう」をアナウンス音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第32課)\n- 薬を渡すフリをしながら「薬を飲んだほうがいいです」とアドバイス。"
     }
   },
   {
-    "id": "card_n4_8",
+    "id": "card_n4_33",
     "level": "N4",
-    "title": "N4 文法項目 第33課 (Cấu trúc bài 33)",
-    "structure": "V-普通形 / N ＋ 助詞_33",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 33",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 33 theo chương trình VNJPClub N4.",
+    "title": "第33課：命令形 / 禁止形 / 〜と書いてあります (Thể mệnh lệnh & Thể cấm đoán)",
+    "structure": "命令形: e段 / 〜ろ | 禁止形: V辞書形 ＋ な | 〜という意味です / 〜と書いてあります",
+    "meaning": "Hãy làm! / Khốn làm! (Mệnh lệnh/Cấm đoán) | Có nghĩa là... | Có ghi là...",
+    "vietnameseExplanation": "Dùng trong trường hợp khẩn cấp, khẩu hiệu, biển báo giao thông hoặc khi giải thích ý nghĩa câu chữ.",
     "category": "grammar_sentence",
     "categoryName": "N4文法 第33課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-33.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第33課 (Cấu trúc bài 33))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_33** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 33 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第33課 (Cấu trúc bài 33))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第33課 (Cấu trúc bài 33))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第33課 命令・禁止)\n- 走れ！ (Chạy đi!) / 入るな！ (Cấm vào!)\n- 「立入禁止」は入るなという意味です",
+      "auditory": "### 👂 聴覚朗読 (第33課)\n- 警備員や監督になりきって「止まれ！触るな！」と叫ぶ発唱。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第33課)\n- 止まれの標識ポーズをとって「止まれ！」と体を静止させる。"
     }
   },
   {
-    "id": "card_n4_9",
+    "id": "card_n4_34",
     "level": "N4",
-    "title": "N4 文法項目 第34課 (Cấu trúc bài 34)",
-    "structure": "V-普通形 / N ＋ 助詞_34",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 34",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 34 theo chương trình VNJPClub N4.",
+    "title": "第34課：〜とおりに / 〜あとで / 〜て / 〜ないで (Làm theo / Sau khi / Không làm...)",
+    "structure": "V1-た/Nの ＋ とおりに | V1-た/Nの ＋ あとで | V1-ないで ＋ V2",
+    "meaning": "Làm theo như... | Sau khi làm... | Làm V2 mà không làm V1",
+    "vietnameseExplanation": "Hướng dẫn thực hiện hành động theo đúng chỉ dẫn, thứ tự thời gian hoặc trạng thái đi kèm khi làm việc.",
     "category": "grammar_sentence",
     "categoryName": "N4文法 第34課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-34.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第34課 (Cấu trúc bài 34))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_34** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 34 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第34課 (Cấu trúc bài 34))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第34課 (Cấu trúc bài 34))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第34課 とおりに・あとで)\n- 私が言うとおりに書いてください (Hãy viết theo đúng lời tôi nói)\n- 仕事のあとで飲みに行きます (Sau khi làm xong đi uống nước)",
+      "auditory": "### 👂 聴覚朗読 (第34課)\n- レシピを読むように「〜とおりに作ります」を音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第34課)\n- 折り紙を折りながら「指示のとおりに折る」動作タスク。"
     }
   },
   {
-    "id": "card_n4_10",
+    "id": "card_n4_35",
     "level": "N4",
-    "title": "N4 文法項目 第35課 (Cấu trúc bài 35)",
-    "structure": "V-普通形 / N ＋ 助詞_35",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 35",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 35 theo chương trình VNJPClub N4.",
-    "category": "grammar_sentence",
+    "title": "第35課：条件形 〜えば / 〜なら (Thể điều kiện: Nếu... thì...)",
+    "structure": "グループ1: e段＋ば | グループ2: 〜れば | ナ形/N: なら",
+    "meaning": "Nếu... thì... (Thể điều kiện giả định hoặc điều kiện phát sinh kết quả)",
+    "vietnameseExplanation": "Diễn tả điều kiện cần thiết để một sự việc xảy ra, hoặc đưa ra gợi ý/ý kiến khi đối phương nêu chủ đề.",
+    "category": "grammar_conjugation",
     "categoryName": "N4文法 第35課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-35.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第35課 (Cấu trúc bài 35))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_35** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 35 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第35課 (Cấu trúc bài 35))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第35課 (Cấu trúc bài 35))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第35課 条件形)\n- 春になれば桜が咲きます (Nếu mùa xuân đến hoa anh đào sẽ nở)\n- パソコンなら秋葉原がいいです (Nếu là máy tính thì Akihabara là tốt nhất)",
+      "auditory": "### 👂 聴覚朗読 (第35課)\n- 「行けば・安ければ・簡単なら」と条件形活用を唱える。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第35課)\n- ボタンを押す動作をして「これを押せば切符が出ます」と解説。"
     }
   },
   {
-    "id": "card_n4_11",
+    "id": "card_n4_36",
     "level": "N4",
-    "title": "N4 文法項目 第36課 (Cấu trúc bài 36)",
-    "structure": "V-普通形 / N ＋ 助詞_36",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 36",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 36 theo chương trình VNJPClub N4.",
+    "title": "第36課：〜ように します / 〜ように なります (Mục đích & Sự thay đổi thói quen)",
+    "structure": "V辞書形/Vない ＋ ようにします | V辞書形/可能形 ＋ ようになります",
+    "meaning": "Cố gắng làm V / Trở nên có thể làm V (Thói quen, mục đích)",
+    "vietnameseExplanation": "Diễn tả sự nỗ lực duy trì một thói quen (ようにします) hoặc sự biến đổi trạng thái khả năng theo thời gian (ようになります).",
     "category": "grammar_sentence",
     "categoryName": "N4文法 第36課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-36.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第36課 (Cấu trúc bài 36))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_36** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 36 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第36課 (Cấu trúc bài 36))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第36課 (Cấu trúc bài 36))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第36課 ようにします)\n- 毎日野菜を食べるようにしています (Tôi cố gắng ăn rau mỗi ngày)\n- 日本語が話せるようになりました (Tôi đã trở nên nói được tiếng Nhật)",
+      "auditory": "### 👂 聴覚朗読 (第36課)\n- 誓いを立てるように「〜するようにします！」と宣言音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第36課)\n- 毎日の健康習慣（ジョギング等）のポーズをしながら宣言。"
     }
   },
   {
-    "id": "card_n4_12",
+    "id": "card_n4_37",
     "level": "N4",
-    "title": "N4 文法項目 第37課 (Cấu trúc bài 37)",
-    "structure": "V-普通形 / N ＋ 助詞_37",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 37",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 37 theo chương trình VNJPClub N4.",
-    "category": "grammar_sentence",
+    "title": "第37課：受動形 (Thể bị động: Bị / Được...)",
+    "structure": "グループ1: a段＋れる | グループ2: 〜られる | グループ3: こられる / される",
+    "meaning": "Bị / Được ai đó làm gì (Biểu thị góc nhìn của người tiếp nhận hành động)",
+    "vietnameseExplanation": "Dùng khi người nói bị ai đó tác động (thường gây phiền phức) hoặc được khen ngợi, hay khi mô tả sự kiện lịch sử/hội chợ.",
+    "category": "grammar_conjugation",
     "categoryName": "N4文法 第37課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-37.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第37課 (Cấu trúc bài 37))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_37** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 37 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第37課 (Cấu trúc bài 37))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第37課 (Cấu trúc bài 37))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第37課 受動形)\n- 先生にほめられました (Tôi được thầy giáo khen)\n- 足を踏まれました (Tôi bị người ta giẫm vào chân)",
+      "auditory": "### 👂 聴覚朗読 (第37課)\n- 「ほめられた・叱られた・頼まれた」と被動の感情を込めて唱える。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第37課)\n- 足を踏まれたリアクションをして「痛い！踏まれた！」と体感。"
     }
   },
   {
-    "id": "card_n4_13",
+    "id": "card_n4_38",
     "level": "N4",
-    "title": "N4 文法項目 第38課 (Cấu trúc bài 38)",
-    "structure": "V-普通形 / N ＋ 助詞_38",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 38",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 38 theo chương trình VNJPClub N4.",
+    "title": "第38課：〜の（名詞化） (Danh từ hóa động từ: Việc làm V...)",
+    "structure": "V普通形 ＋ のは Adj です / のが 好きです / のを 忘れました",
+    "meaning": "Việc làm V thì... / Thích việc làm V / Quên mất việc làm V",
+    "vietnameseExplanation": "Dùng の để biến một động từ/mệnh đề thành một danh từ để làm chủ ngữ, tân ngữ trong câu.",
     "category": "grammar_sentence",
     "categoryName": "N4文法 第38課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-38.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第38課 (Cấu trúc bài 38))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_38** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 38 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第38課 (Cấu trúc bài 38))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第38課 (Cấu trúc bài 38))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第38課 の名詞化)\n- テニスをするのが好きです (Tôi thích việc chơi tennis)\n- 鍵をかけるのを忘れました (Tôi quên mất việc khóa cửa)",
+      "auditory": "### 👂 聴覚朗読 (第38課)\n- 自分の趣味を「〜するのが好きです」と発表音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第38課)\n- 額を押さえて「鍵を閉めるのを忘れた！」とあわてる演技。"
     }
   },
   {
-    "id": "card_n4_14",
+    "id": "card_n4_39",
     "level": "N4",
-    "title": "N4 文法項目 第39課 (Cấu trúc bài 39)",
-    "structure": "V-普通形 / N ＋ 助詞_39",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 39",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 39 theo chương trình VNJPClub N4.",
+    "title": "第39課：〜て / 〜ので (Nguyên nhân - Lý do: Vì... nên...)",
+    "structure": "V-て / 形-くて / Nで ＋ ... | 普通形 (ナ形/N な) ＋ ので",
+    "meaning": "Vì... nên... (Diễn tả nguyên nhân kết quả tự nhiên, khách quan)",
+    "vietnameseExplanation": "ので là từ chỉ lý do nhẹ nhàng, khách quan, lịch sự hơn から, rất hay dùng khi xin phép hoặc giải thích hoàn cảnh.",
     "category": "grammar_sentence",
     "categoryName": "N4文法 第39課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-39.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第39課 (Cấu trúc bài 39))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_39** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 39 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第39課 (Cấu trúc bài 39))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第39課 (Cấu trúc bài 39))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第39課 〜ので)\n- 事故があって電車が遅れました (Vì có tai nạn nên tàu bị trễ)\n- 用事があるのでお先に失礼します (Vì có việc bận nên tôi xin phép về trước)",
+      "auditory": "### 👂 聴覚朗読 (第39課)\n- 丁寧にお詫びするように「〜ので、すみません」を音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第39課)\n- 申し訳なさそうにおじぎをしながら lý do giải thích bằng ので."
     }
   },
   {
-    "id": "card_n4_15",
+    "id": "card_n4_40",
     "level": "N4",
-    "title": "N4 文法項目 第40課 (Cấu trúc bài 40)",
-    "structure": "V-普通形 / N ＋ 助詞_40",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 40",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 40 theo chương trình VNJPClub N4.",
+    "title": "第40課：疑心節 〜か / 〜かどうか (Câu hỏi nghi vấn lồng trong câu)",
+    "structure": "疑問詞 ＋ 普通形 ＋ か | 普通形 ＋ かどうか (調べる/確かめる/みる)",
+    "meaning": "Có... hay không / Liệu rằng... (Kiểm tra, xác nhận, thử làm)",
+    "vietnameseExplanation": "Dùng để lồng một câu hỏi vào trong câu lớn, ví dụ: Hãy kiểm tra xem có đúng không, tôi sẽ thử xem sao.",
     "category": "grammar_sentence",
     "categoryName": "N4文法 第40課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-40.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第40課 (Cấu trúc bài 40))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_40** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 40 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第40課 (Cấu trúc bài 40))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第40課 (Cấu trúc bài 40))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第40課 かどうか)\n- 間違いがないかどうか確かめます (Kiểm tra xem có lỗi hay không)\n- 履いてみます (Tôi sẽ mặc thử/đi thử xem sao)",
+      "auditory": "### 👂 聴覚朗読 (第40課)\n- 「〜かどうか、調べます」を首をひねりながら音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第40課)\n- 服を体に当てて「サイズが合うかどうか着てみる」動作。"
     }
   },
   {
-    "id": "card_n4_16",
+    "id": "card_n4_41",
     "level": "N4",
-    "title": "N4 文法項目 第41課 (Cấu trúc bài 41)",
-    "structure": "V-普通形 / N ＋ 助詞_41",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 41",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 41 theo chương trình VNJPClub N4.",
+    "title": "第41課：授受表現 ( Cho và Nhận: やります/くださいました/いただきました )",
+    "structure": "N に N を やります / くださいます / いただきます",
+    "meaning": "Cho (cấp dưới/động vật) / Người trên cho mình / Mình nhận từ người trên",
+    "vietnameseExplanation": "Kính ngữ của hành động cho và nhận. Biểu thị sự kính trọng với người ban cho mình hoặc sự khiêm tốn của bản thân.",
     "category": "grammar_sentence",
     "categoryName": "N4文法 第41課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-41.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第41課 (Cấu trúc bài 41))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_41** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 41 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第41課 (Cấu trúc bài 41))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第41課 (Cấu trúc bài 41))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第41課 授受表現)\n- 社長にお土産をいただきました (Tôi đã nhận quà từ giám đốc)\n- 先生がお菓子をくださいました (Thầy giáo đã cho tôi bánh)",
+      "auditory": "### 👂 聴覚朗読 (第41課)\n- 感謝を込めて「いただきました・くださいました」を音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第41課)\n- 両手で丁寧にい品物を受け取る動作をしてお礼を言う。"
     }
   },
   {
-    "id": "card_n4_17",
+    "id": "card_n4_42",
     "level": "N4",
-    "title": "N4 文法項目 第42課 (Cấu trúc bài 42)",
-    "structure": "V-普通形 / N ＋ 助詞_42",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 42",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 42 theo chương trình VNJPClub N4.",
+    "title": "第42課：〜ために / 〜に (Mục đích: Để làm gì / Cho việc gì)",
+    "structure": "V辞書形/Nの ＋ ために | V辞書形/N ＋ に (使います/便利です)",
+    "meaning": "Để... / Phục vụ cho... (Mục đích rõ ràng, quyết tâm)",
+    "vietnameseExplanation": "Biểu thị mục đích của hành động. ために dùng cho mục đích cá nhân quyết tâm. に dùng cho công dụng của vật dụng.",
     "category": "grammar_sentence",
     "categoryName": "N4文法 第42課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-42.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第42課 (Cấu trúc bài 42))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_42** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 42 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第42課 (Cấu trúc bài 42))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第42課 (Cấu trúc bài 42))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第42課 ために)\n- 自分の店を持つために貯金しています (Tôi tiết kiệm tiền để mở cửa hàng riêng)\n- このハサミは紙を切るのに使います (Kéo này dùng để cắt giấy)",
+      "auditory": "### 👂 聴覚朗読 (第42課)\n- 「将来のために勉強する！」と力強く目標唱え。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第42課)\n- 貯金箱にお金を入れるポーズをしながら「〜のために」と言い切る。"
     }
   },
   {
-    "id": "card_n4_18",
+    "id": "card_n4_43",
     "level": "N4",
-    "title": "N4 文法項目 第43課 (Cấu trúc bài 43)",
-    "structure": "V-普通形 / N ＋ 助詞_43",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 43",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 43 theo chương trình VNJPClub N4.",
+    "title": "第43課：〜そうです (Có vẻ như... / Trông có vẻ...)",
+    "structure": "Vます形/形 ＋ そうです",
+    "meaning": "Trông có vẻ... / Sắp... (Dự đoán qua thị giác)",
+    "vietnameseExplanation": "Diễn tả phán đoán trực quan dựa trên diện mạo bên ngoài của sự vật (vd: trông ngon, trời sắp mưa, túi sắp đứt).",
     "category": "grammar_sentence",
     "categoryName": "N4文法 第43課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-43.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第43課 (Cấu trúc bài 43))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_43** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 43 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第43課 (Cấu trúc bài 43))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第43課 (Cấu trúc bài 43))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第43課 そうです)\n- 今にも雨が降りそうです (Trời trông có vẻ sắp mưa đến nơi)\n- このケーキはおいしそうです (Bánh cake này trông có vẻ ngon)",
+      "auditory": "### 👂 聴覚朗読 (第43課)\n- 「おいしそう！痛そう！降りそう！」と感嘆を込めて音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第43課)\n- 荷物を重そうに持ち上げて「重そうです」と表情で表現。"
     }
   },
   {
-    "id": "card_n4_19",
+    "id": "card_n4_44",
     "level": "N4",
-    "title": "N4 文法項目 第44課 (Cấu trúc bài 44)",
-    "structure": "V-普通形 / N ＋ 助詞_44",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 44",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 44 theo chương trình VNJPClub N4.",
+    "title": "第44課：〜すぎます / 〜やすく・にくくします (Quá mức / Dễ - Khó làm...)",
+    "structure": "Vます形/形 ＋ すぎます | Vます形 ＋ やすいです / にくいです",
+    "meaning": "Quá... (Vượt mức) / Dễ làm V / Khó làm V",
+    "vietnameseExplanation": "すぎます diễn tả sự vượt quá giới hạn gây phiền phức. やすい/にくい diễn tả độ dễ/khó của thao tác.",
     "category": "grammar_sentence",
     "categoryName": "N4文法 第44課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-44.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第44課 (Cấu trúc bài 44))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_44** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 44 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第44課 (Cấu trúc bài 44))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第44課 (Cấu trúc bài 44))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第44課 すぎます・やすい)\n- ゆうべはお酒を飲みすぎました (Tối qua tôi đã uống quá nhiều rượu)\n- このペンは書きやすいです (Cây bút này rất dễ viết)",
+      "auditory": "### 👂 聴覚朗読 (第44課)\n- 「飲みすぎた〜」「使いにくい！」と気持ちを込めて音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第44課)\n- お腹を抱えて「食べすぎました」と苦しむリアクション。"
     }
   },
   {
-    "id": "card_n4_20",
+    "id": "card_n4_45",
     "level": "N4",
-    "title": "N4 文法項目 第45課 (Cấu trúc bài 45)",
-    "structure": "V-普通形 / N ＋ 助詞_45",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 45",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 45 theo chương trình VNJPClub N4.",
+    "title": "第45課：〜ばあいは / 〜のに (Trường hợp... / Thế mà, mặc dù...)",
+    "structure": "普通形 (ナ形/N な) ＋ 場合は | 普通形 (ナ形/N な) ＋ のに",
+    "meaning": "Trong trường hợp... / Mặc dù... thế mà... (Bất ngờ, bất mãn)",
+    "vietnameseExplanation": "場合は dùng cho giả định tình huống sự cố khẩn cấp. のに thể hiện sự bất ngờ, thất vọng trái với mong đợi.",
     "category": "grammar_sentence",
     "categoryName": "N4文法 第45課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-45.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第45課 (Cấu trúc bài 45))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_45** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 45 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第45課 (Cấu trúc bài 45))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第45課 (Cấu trúc bài 45))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第45課 場合は・のに)\n- 火事の場合はエレベーターを使わないでください (Trong trường hợp hỏa hoạn đừng dùng thang máy)\n- 約束したのに来ませんでした (Mặc dù đã hứa thế mà không đến)",
+      "auditory": "### 👂 聴覚朗読 (第45課)\n- 不満げに「〜のに、どうして？」と首をかしげて音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第45課)\n- 時計を見てがっかりするポーズで「約束したのに…」とつぶやく。"
     }
   },
   {
-    "id": "card_n4_21",
+    "id": "card_n4_46",
     "level": "N4",
-    "title": "N4 文法項目 第46課 (Cấu trúc bài 46)",
-    "structure": "V-普通形 / N ＋ 助詞_46",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 46",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 46 theo chương trình VNJPClub N4.",
+    "title": "第46課：〜ところです / 〜はずです (Vừa mới / Chắc chắn là...)",
+    "structure": "V辞書形/て形/た形 ＋ ところです | 普通形 ＋ はずです",
+    "meaning": "Sắp sửa... / Đang... / Vừa mới... | Chắc chắn là...",
+    "vietnameseExplanation": "ところです diễn tả giai đoạn của hành動 (sắp làm, đang làm, vừa xong). はずです là dự đoán căn cứ chắc chắn.",
     "category": "grammar_sentence",
     "categoryName": "N4文法 第46課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-46.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第46課 (Cấu trúc bài 46))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_46** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 46 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第46課 (Cấu trúc bài 46))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第46課 (Cấu trúc bài 46))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第46課 ところ・はず)\n- 今食べたところです (Tôi vừa mới ăn xong)\n- 田中さんは今日来るはずです (Chắc chắn anh Tanaka sẽ đến hôm nay)",
+      "auditory": "### 👂 聴覚朗読 (第46課)\n- 「たった今終わったところです！」と報告音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第46課)\n- お腹をさすりながら「今ご飯を食べたところです」と言う。"
     }
   },
   {
-    "id": "card_n4_22",
+    "id": "card_n4_47",
     "level": "N4",
-    "title": "N4 文法項目 第47課 (Cấu trúc bài 47)",
-    "structure": "V-普通形 / N ＋ 助詞_47",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 47",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 47 theo chương trình VNJPClub N4.",
+    "title": "第47課：〜そうです (Nghe nói là...) / 〜ようです (Hình như là...)",
+    "structure": "普通形 ＋ そうです (伝聞) | 普通形 (ナ形な/Nの) ＋ ようです (推測)",
+    "meaning": "Nghe nói là... (Truyền đạt lại) / Hình như là... (Cảm nhận bằng giác quan)",
+    "vietnameseExplanation": "そうです (truyền ngôn) dùng khi nghe thông tin từ báo đài, người khác. ようです dùng khi tự cảm nhận phán đoán.",
     "category": "grammar_sentence",
     "categoryName": "N4文法 第47課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-47.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第47課 (Cấu trúc bài 47))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_47** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 47 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第47課 (Cấu trúc bài 47))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第47課 (Cấu trúc bài 47))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第47課 伝聞そうです)\n- 天気予報によると明日は雨だそうです (Theo dự báo thời tiết nghe nói mai trời mưa)\n- 咳が出ている。風邪のようです (Đang bị ho. Hình như là cảm rồi)",
+      "auditory": "### 👂 聴覚朗読 (第47課)\n- 耳に手を当てて「〜だそうです！」と噂話のトーンで音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第47課)\n- 新聞を読むポーズをして「〜だそうです」と情報伝達。"
     }
   },
   {
-    "id": "card_n4_23",
+    "id": "card_n4_48",
     "level": "N4",
-    "title": "N4 文法項目 第48課 (Cấu trúc bài 48)",
-    "structure": "V-普通形 / N ＋ 助詞_48",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 48",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 48 theo chương trình VNJPClub N4.",
-    "category": "grammar_sentence",
+    "title": "第48課：使役形 (Thể sai khiến: Cho phép / Bắt làm...)",
+    "structure": "グループ1: a段＋せる | グループ2: 〜させる | グループ3: こさせる / される",
+    "meaning": "Cho phép làm V / Bắt ai đó làm V",
+    "vietnameseExplanation": "Dùng khi cấp trên/cha mẹ bắt hoặc cho phép cấp dưới/con cái thực hiện hành動.",
+    "category": "grammar_conjugation",
     "categoryName": "N4文法 第48課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-48.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第48課 (Cấu trúc bài 48))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_48** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 48 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第48課 (Cấu trúc bài 48))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第48課 (Cấu trúc bài 48))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第48課 使役形)\n- 息子に野菜を食べさせます (Tôi bắt con trai ăn rau)\n- 部下に報告させます (Tôi bảo cấp dưới báo cáo)",
+      "auditory": "### 👂 聴覚朗読 (第48課)\n- 「行かせる・書かせる・来させる」と指図するトーンで音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第48課)\n- 指で指図するジェスチャーをして「〜させます」と指令。"
     }
   },
   {
-    "id": "card_n4_24",
+    "id": "card_n4_49",
     "level": "N4",
-    "title": "N4 文法項目 第49課 (Cấu trúc bài 49)",
-    "structure": "V-普通形 / N ＋ 助詞_49",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 49",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 49 theo chương trình VNJPClub N4.",
+    "title": "第49課：尊敬語 (Kính ngữ: Tôn vinh hành動 của đối phương)",
+    "structure": "お Vます形 になります / 特殊尊敬語 (いらっしゃいます/おっしゃいます/ご覧になります)",
+    "meaning": "Kính ngữ (Tôn vinh hành動 của ngài/thầy/khách hàng)",
+    "vietnameseExplanation": "Dùng trong giao tiếp thương mại, công sở để thể hiện sự tôn kính tuyệt đối với khách hàng, cấp trên, người ngoài.",
     "category": "grammar_sentence",
     "categoryName": "N4文法 第49課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-49.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第49課 (Cấu trúc bài 49))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_49** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 49 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第49課 (Cấu trúc bài 49))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第49課 (Cấu trúc bài 49))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第49課 尊敬語)\n- 社長はもうお帰りになりました (Giám đốc đã về rồi ạ)\n- 何をご覧になりますか (Ngài xem gì ạ?)",
+      "auditory": "### 👂 聴覚朗読 (第49課)\n- ホテルマンになりきって「いらっしゃいませ。お申し付けください」を丁寧音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第49課)\n- 深々とおじぎ（30度）をしながら尊敬語でお話しする。"
     }
   },
   {
-    "id": "card_n4_25",
+    "id": "card_n4_50",
     "level": "N4",
-    "title": "N4 文法項目 第50課 (Cấu trúc bài 50)",
-    "structure": "V-普通形 / N ＋ 助詞_50",
-    "meaning": "Ý nghĩa cấu trúc ngữ pháp N4 bài 50",
-    "vietnameseExplanation": "Giải thích chi tiết cấu trúc ngữ pháp bài 50 theo chương trình VNJPClub N4.",
+    "title": "第50課：謙譲語 (Khiêm nhường ngữ: Hạ thấp hành動 của bản thân)",
+    "structure": "お Vます形 します / 特殊謙譲語 (参ります/申します/いたします/いただきます)",
+    "meaning": "Khiêm nhường ngữ (Hạ thấp bản thân để thể hiện sự khiêm tốn)",
+    "vietnameseExplanation": "Dùng khi nói về hành動 của chính mình hoặc người thuộc phe mình (công ty mình) đối với đối tác, khách hàng.",
     "category": "grammar_sentence",
     "categoryName": "N4文法 第50課",
-    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/",
+    "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-50.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (N4 文法項目 第50課 (Cấu trúc bài 50))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V-普通形 / N ＋ 助詞_50** | ハイライト | Ý nghĩa cấu trúc ngữ pháp N4 bài 50 |\n\n> 💡 VNJPClub公式図解カード",
-      "auditory": "### 👂 聴覚音読スクリプト (N4 文法項目 第50課 (Cấu trúc bài 50))\n- 例文を大きな声で5回音読して、正しいアクセントとリズムを身につけましょう。\n\n> 🗣️ **TTS音声再生**: 音声を聞いてリピートしてください。",
-      "kinesthetic": "### ✋ 身体感覚タスク (N4 文法項目 第50課 (Cấu trúc bài 50))\n1. 動作を付けながら例文を口に出す。\n2. 感情を込めてロールプレイを行い体全体で暗記する。"
+      "visual": "### 👁️ 視覚カード (第50課 謙譲語)\n- 私が荷物をお持ちします (Để tôi xin phép được mang hành lý giúp ạ)\n- IMCのナムと申します (Tôi tên là Nam đến từ công ty IMC ạ)",
+      "auditory": "### 👂 聴覚朗読 (第50課)\n- 「〜と申します。よろしくお願いいたします」と自己紹介音読。",
+      "kinesthetic": "### ✋ 身体感覚タスク (第50課)\n- 両手を前に揃え、腰を低くして「お持ちいたします」と手を差し出す。"
     }
   }
 ];
