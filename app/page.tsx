@@ -7,20 +7,21 @@ import { Navbar } from '@/components/Navbar';
 import { VakDiagnosticModal } from '@/components/VakDiagnosticModal';
 import { VakContentRenderer } from '@/components/VakContentRenderer';
 import { GrammarCardsSection } from '@/components/GrammarCardsSection';
+import { MinnaFlashcardsSection } from '@/components/MinnaFlashcardsSection';
 import { ReviewDashboard } from '@/components/ReviewDashboard';
 import { CalendarScheduler } from '@/components/CalendarScheduler';
 import { ReviewManager } from '@/components/ReviewManager';
 import { WeaknessAnalyzer } from '@/components/WeaknessAnalyzer';
 import { JlptPractice } from '@/components/JlptPractice';
 import { ExternalIntegrations } from '@/components/ExternalIntegrations';
-import { Sparkles, ArrowRight, BookOpen, RefreshCw } from 'lucide-react';
+import { Sparkles, ArrowRight, BookOpen, RefreshCw, Layers } from 'lucide-react';
 
 export default function Home() {
   const [currentVak, setCurrentVak] = useState<VakType>('visual');
   const [vakResult, setVakResult] = useState<VakResult | null>(null);
   const [weaknessRecords, setWeaknessRecords] = useState<WeaknessRecord[]>([]);
 
-  const [activeTab, setActiveTab] = useState<'learn' | 'review' | 'grammar'>('learn');
+  const [activeTab, setActiveTab] = useState<'learn' | 'vocab' | 'grammar' | 'review'>('learn');
 
   const [diagnosticModal, setDiagnosticModal] = useState<{
     isOpen: boolean;
@@ -87,10 +88,9 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Dynamic VAK Selector & Main Navigation Tabs */}
+        {/* Main Navigation Tabs */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-2xl bg-slate-900/80 border border-slate-800 gap-3">
-          {/* Main Navigation Tabs */}
-          <div className="flex items-center space-x-2">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => setActiveTab('learn')}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
@@ -101,6 +101,17 @@ export default function Home() {
             >
               <Sparkles className="w-3.5 h-3.5" />
               <span>AI学習 & 問題演習</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('vocab')}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
+                activeTab === 'vocab'
+                  ? 'bg-cyan-600 text-white shadow'
+                  : 'bg-slate-800 text-slate-400 hover:text-white'
+              }`}
+            >
+              <Layers className="w-3.5 h-3.5" />
+              <span>「みんなの日本語」第1〜50課 単語カード</span>
             </button>
             <button
               onClick={() => setActiveTab('grammar')}
@@ -126,7 +137,7 @@ export default function Home() {
             </button>
           </div>
 
-          {/* VAK Type Selector */}
+          {/* VAK Selector */}
           <div className="grid grid-cols-3 gap-2">
             {(['visual', 'auditory', 'kinesthetic'] as VakType[]).map((type) => (
               <button
@@ -148,7 +159,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Tab 1: AI Learning & JLPT Exercises */}
+        {/* Tab Content */}
         {activeTab === 'learn' && (
           <>
             <VakContentRenderer vakType={currentVak} />
@@ -159,12 +170,14 @@ export default function Home() {
           </>
         )}
 
-        {/* Tab 2: VNJPClub N5/N4 Grammar Cards Section */}
+        {activeTab === 'vocab' && (
+          <MinnaFlashcardsSection vakType={currentVak} />
+        )}
+
         {activeTab === 'grammar' && (
           <GrammarCardsSection vakType={currentVak} />
         )}
 
-        {/* Tab 3: Dedicated Review Dashboard (Tag Filter) */}
         {activeTab === 'review' && (
           <ReviewDashboard vakType={currentVak} />
         )}
