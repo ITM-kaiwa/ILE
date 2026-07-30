@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ExternalLink, MessageCircle, HelpCircle, School, Smartphone, Globe, BookOpen, TV } from 'lucide-react';
+import { ExternalLink, MessageCircle, HelpCircle, School, Smartphone, Globe, BookOpen, Tv } from 'lucide-react';
 
 export const ExternalIntegrations: React.FC = () => {
   const itmApps = [
@@ -60,7 +60,7 @@ export const ExternalIntegrations: React.FC = () => {
       name: 'NHK WORLD-JAPAN Learn Japanese',
       desc: 'NHK公式 多言語対応日本語学習講座コンテンツ',
       url: 'https://www3.nhk.or.jp/nhkworld/en/learnjapanese/',
-      icon: TV,
+      icon: Tv,
       badge: 'NHK WORLD',
       color: 'from-amber-500 to-yellow-600',
     },
