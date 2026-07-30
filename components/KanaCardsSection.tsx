@@ -2,14 +2,16 @@
 
 import React, { useState } from 'react';
 import { VakType } from '@/data/vak-questions';
+import { Language } from '@/lib/i18n';
 import { KanaCard, KanaType, HIRAGANA_CARDS, KATAKANA_CARDS } from '@/data/kana-cards';
-import { Volume2, Eye, Hand, Layers, RotateCw, ArrowLeft, ArrowRight, Sparkles } from 'lucide-react';
+import { Volume2, Eye, Hand, RotateCw, ArrowLeft, ArrowRight, Sparkles } from 'lucide-react';
 
 interface KanaCardsSectionProps {
   vakType: VakType;
+  lang?: Language;
 }
 
-export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType }) => {
+export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lang = 'ja' }) => {
   const [kanaType, setKanaType] = useState<KanaType>('hiragana');
   const cards = kanaType === 'hiragana' ? HIRAGANA_CARDS : KATAKANA_CARDS;
 
@@ -17,6 +19,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType }) =
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
 
   const currentCard: KanaCard = cards[currentIndex] || cards[0];
+  const isVi = lang === 'vi';
 
   const handleNext = () => {
     setIsFlipped(false);
@@ -54,10 +57,14 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType }) =
         <div>
           <div className="flex items-center space-x-2">
             <Sparkles className="w-5 h-5 text-orange-600" />
-            <h2 className="text-xl font-bold text-slate-800">ひらがな・カタカナ基礎フラッシュカード</h2>
+            <h2 className="text-xl font-bold text-slate-800">
+              {isVi ? 'Thẻ học 50 âm Hiragana & Katakana căn bản' : 'ひらがな・カタカナ基礎フラッシュカード'}
+            </h2>
           </div>
           <p className="text-xs text-slate-500 mt-0.5">
-            UD Digi Kyokasho体フォントで正しい書き順とVAK認知記憶ガイドで50音をマスター
+            {isVi
+              ? 'Học chuẩn phông chữ Kyokasho và quy tắc ghi nhớ VAK cho 50 âm bảng chữ cái'
+              : 'UD Digi Kyokasho体フォントで正しい書き順とVAK認知記憶ガイドで50音をマスター'}
           </p>
         </div>
 
@@ -75,7 +82,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType }) =
                 : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'
             }`}
           >
-            あ あいうえお (ひらがな)
+            あ あいうえお (Hiragana)
           </button>
           <button
             onClick={() => {
@@ -89,7 +96,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType }) =
                 : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'
             }`}
           >
-            ア アイウエオ (カタカナ)
+            ア アイウエオ (Katakana)
           </button>
         </div>
       </div>
@@ -98,20 +105,22 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType }) =
       {cards.length > 0 && currentCard ? (
         <div className="space-y-6">
           <div className="flex items-center justify-between text-xs text-slate-500 font-semibold">
-            <span>仮名カード {currentIndex + 1} / {cards.length} ({currentCard.group})</span>
+            <span>{isVi ? `Thẻ Kana ${currentIndex + 1} / ${cards.length} (${currentCard.group})` : `仮名カード ${currentIndex + 1} / ${cards.length} (${currentCard.group})`}</span>
             <span className="px-2.5 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-300">
-              {kanaType === 'hiragana' ? 'ひらがな (Hiragana)' : 'カタカナ (Katakana)'}
+              {kanaType === 'hiragana' ? 'Hiragana (ひらがな)' : 'Katakana (カタカナ)'}
             </span>
           </div>
 
-          {/* Flip Container with UD Digi Kyokasho NK-R Font */}
+          {/* Flip Container with UD Digi Kyokasho / Klee One Font */}
           <div
             onClick={() => setIsFlipped(!isFlipped)}
             className="relative min-h-[280px] p-8 rounded-3xl bg-gradient-to-br from-[#FFFDF9] via-[#FFF9F2] to-[#FAF3E0] border-2 border-amber-200/80 hover:border-orange-400 shadow-md cursor-pointer transition flex flex-col justify-between group"
           >
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-orange-700 uppercase tracking-wider">
-                {isFlipped ? '🇻🇳 ベトナム語の覚え方 (Ghi nhớ)' : '🇯🇵 かな文字 (Mặt trước)'}
+                {isFlipped
+                  ? (isVi ? '🇻🇳 Mẹo ghi nhớ bằng hình ảnh (Mặt sau)' : '🇻🇳 ベトナム語の覚え方 (Ghi nhớ)')
+                  : (isVi ? '🇯🇵 Chữ Kana (Mặt trước)' : '🇯🇵 かな文字 (Mặt trước)')}
               </span>
               <button
                 onClick={(e) => {
@@ -121,17 +130,17 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType }) =
                 className="p-2 rounded-xl bg-orange-100 hover:bg-orange-200 text-orange-900 transition flex items-center space-x-1"
               >
                 <Volume2 className="w-4 h-4 text-orange-600" />
-                <span className="text-xs font-bold">TTS発音</span>
+                <span className="text-xs font-bold">{isVi ? 'Phát âm' : 'TTS発音'}</span>
               </button>
             </div>
 
-            {/* Main Kana character rendering in UD Digi Kyokasho font */}
+            {/* Main Kana character rendering */}
             <div className="text-center py-6">
               {!isFlipped ? (
                 <div>
                   <h3
                     className="text-7xl font-extrabold text-slate-900 tracking-wide mb-3 font-learning-card"
-                    style={{ fontFamily: '"UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Kaiti SC", sans-serif' }}
+                    style={{ fontFamily: '"UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Klee One", sans-serif' }}
                   >
                     {currentCard.kana}
                   </h3>
@@ -151,7 +160,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType }) =
             <div className="flex items-center justify-between text-xs text-slate-500">
               <span className="flex items-center space-x-1 font-semibold">
                 <RotateCw className="w-3.5 h-3.5 group-hover:rotate-180 transition duration-500 text-orange-600" />
-                <span>クリックしてカードをめくる</span>
+                <span>{isVi ? 'Nhấp để lật thẻ' : 'クリックしてカードをめくる'}</span>
               </span>
               <span className="font-bold text-slate-700">{currentCard.group}</span>
             </div>
@@ -163,7 +172,11 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType }) =
               {vakType === 'visual' && <Eye className="w-4 h-4 text-indigo-600" />}
               {vakType === 'auditory' && <Volume2 className="w-4 h-4 text-emerald-600" />}
               {vakType === 'kinesthetic' && <Hand className="w-4 h-4 text-orange-600" />}
-              <span>{vakType.toUpperCase()}タイプ向け 仮名記憶ガイド</span>
+              <span>
+                {isVi
+                  ? `Hướng dẫn ghi nhớ Kana (${vakType.toUpperCase()})`
+                  : `${vakType.toUpperCase()}タイプ向け 仮名記憶ガイド`}
+              </span>
             </div>
             <p className="text-xs text-slate-700 leading-relaxed font-medium">
               {currentCard.vakHelp[vakType]}
@@ -177,21 +190,21 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType }) =
               className="px-5 py-2.5 rounded-xl bg-amber-100/80 hover:bg-amber-200 text-slate-800 font-bold text-sm transition flex items-center space-x-1.5 border border-amber-300"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span>前のかな</span>
+              <span>{isVi ? 'Thẻ trước' : '前のかな'}</span>
             </button>
 
             <button
               onClick={() => setIsFlipped(!isFlipped)}
               className="px-4 py-2.5 rounded-xl bg-orange-100 hover:bg-orange-200 text-orange-950 text-sm font-bold border border-orange-300 transition"
             >
-              カードをめくる 🔄
+              {isVi ? 'Lật thẻ 🔄' : 'カードをめくる 🔄'}
             </button>
 
             <button
               onClick={handleNext}
               className="px-5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-sm transition flex items-center space-x-1.5 shadow-sm"
             >
-              <span>次のかな</span>
+              <span>{isVi ? 'Thẻ tiếp theo' : '次のかな'}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
