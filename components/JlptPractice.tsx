@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { QuestionCategory, WeaknessRecord, JlptLevel } from '@/lib/types';
 import { Language, getTranslation } from '@/lib/i18n';
-import { N5_QUESTIONS } from '@/data/jlpt-n5-questions';
-import { N4_QUESTIONS } from '@/data/jlpt-n4-questions';
+import { JLPT_N5_QUESTIONS } from '@/data/jlpt-n5-questions';
+import { JLPT_N4_QUESTIONS } from '@/data/jlpt-n4-questions';
 import { BookOpen, CheckCircle, XCircle, RefreshCw } from 'lucide-react';
 
 interface JlptPracticeProps {
@@ -21,7 +21,7 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
   const t = getTranslation(lang);
   const isVi = lang === 'vi';
 
-  const questions = selectedLevel === 'N5' ? N5_QUESTIONS : N4_QUESTIONS;
+  const questions = selectedLevel === 'N5' ? JLPT_N5_QUESTIONS : JLPT_N4_QUESTIONS;
   const currentQ = questions[currentIdx] || questions[0];
 
   const handleSelect = (index: number) => {
