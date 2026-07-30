@@ -72,7 +72,7 @@ export default function Home() {
                 VAK-Adaptive Language Learning Coach
               </span>
               <span className="px-2.5 py-0.5 text-xs font-bold rounded-full bg-orange-600 text-white shadow-sm">
-                v2.4β
+                v2.5β
               </span>
             </div>
 
@@ -237,7 +237,7 @@ export default function Home() {
         </div>
 
         {/* Section 4: ITM External App Integrations */}
-        <ExternalIntegrations />
+        <ExternalIntegrations lang={lang} />
       </main>
 
       {/* Diagnostic Modal */}
