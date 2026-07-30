@@ -8,6 +8,7 @@ import { VakDiagnosticModal } from '@/components/VakDiagnosticModal';
 import { VakContentRenderer } from '@/components/VakContentRenderer';
 import { GrammarCardsSection } from '@/components/GrammarCardsSection';
 import { MinnaFlashcardsSection } from '@/components/MinnaFlashcardsSection';
+import { KanjiCardsSection } from '@/components/KanjiCardsSection';
 import { ReviewDashboard } from '@/components/ReviewDashboard';
 import { CalendarScheduler } from '@/components/CalendarScheduler';
 import { ReviewManager } from '@/components/ReviewManager';
@@ -21,7 +22,7 @@ export default function Home() {
   const [vakResult, setVakResult] = useState<VakResult | null>(null);
   const [weaknessRecords, setWeaknessRecords] = useState<WeaknessRecord[]>([]);
 
-  const [activeTab, setActiveTab] = useState<'learn' | 'vocab' | 'grammar' | 'review'>('learn');
+  const [activeTab, setActiveTab] = useState<'learn' | 'vocab' | 'grammar' | 'kanji' | 'review'>('learn');
 
   const [diagnosticModal, setDiagnosticModal] = useState<{
     isOpen: boolean;
@@ -52,7 +53,7 @@ export default function Home() {
 
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
-        {/* Warm Hero Header */}
+        {/* Hero Header */}
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#FFF9F2] via-[#FFF3E4] to-[#F7EFE5] p-8 border border-amber-200/80 shadow-md">
           <div className="relative z-10 max-w-3xl space-y-4">
             <div className="flex items-center space-x-2">
@@ -63,6 +64,7 @@ export default function Home() {
                 v1.1α
               </span>
             </div>
+
             <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-800 tracking-tight leading-tight">
               あなたの認知特性 (VAK) に完全パーソナライズされた<br />
               <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-emerald-600 bg-clip-text text-transparent">
@@ -93,7 +95,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Main Navigation Tabs with Warm Palette */}
+        {/* Main Navigation Tabs */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-2xl bg-[#FFFDF9] border border-amber-200/80 shadow-sm gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <button
@@ -128,6 +130,17 @@ export default function Home() {
             >
               <BookOpen className="w-3.5 h-3.5" />
               <span>VNJPClub 文法カード</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('kanji')}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
+                activeTab === 'kanji'
+                  ? 'bg-rose-600 text-white shadow'
+                  : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
+              }`}
+            >
+              <Layers className="w-3.5 h-3.5" />
+              <span>漢字カード (Langoal/教師ネット)</span>
             </button>
             <button
               onClick={() => setActiveTab('review')}
@@ -181,6 +194,10 @@ export default function Home() {
 
         {activeTab === 'grammar' && (
           <GrammarCardsSection vakType={currentVak} />
+        )}
+
+        {activeTab === 'kanji' && (
+          <KanjiCardsSection vakType={currentVak} />
         )}
 
         {activeTab === 'review' && (

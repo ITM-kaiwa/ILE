@@ -28,7 +28,6 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType })
   };
 
   const handleExportGoogleCalendar = () => {
-    // Generate Google Calendar Event URL for demonstration
     const title = encodeURIComponent(`[ILE VAK Study] ${goal}`);
     const details = encodeURIComponent(`VAK認知タイプ (${vakType}) に基づく毎日の自動学習タスク`);
     const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}`;
@@ -37,20 +36,20 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType })
   };
 
   return (
-    <div className="glass-card p-6 border border-slate-800 rounded-2xl shadow-xl">
-      <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+    <div className="glass-card p-6 border border-amber-200/80 bg-[#FFFDF9] rounded-2xl shadow-sm">
+      <div className="flex items-center justify-between pb-4 border-b border-amber-200/60">
         <div className="flex items-center space-x-2">
-          <Calendar className="w-5 h-5 text-indigo-400" />
-          <h2 className="text-xl font-bold text-white">Googleカレンダー AI自動学習計画連携</h2>
+          <Calendar className="w-5 h-5 text-indigo-600" />
+          <h2 className="text-xl font-bold text-slate-800">Googleカレンダー AI自動学習計画連携</h2>
         </div>
-        <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-indigo-950 text-indigo-300 border border-indigo-800">
+        <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-900 border border-indigo-300">
           F-03 自動連携
         </span>
       </div>
 
       <div className="mt-6 space-y-4">
         <div>
-          <label className="block text-xs font-medium text-slate-400 mb-1">
+          <label className="block text-xs font-bold text-slate-700 mb-1">
             あなたの目標を設定してください
           </label>
           <div className="flex gap-2">
@@ -58,13 +57,13 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType })
               type="text"
               value={goal}
               onChange={(e) => setGoal(e.target.value)}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-indigo-500 transition"
+              className="flex-1 px-4 py-2.5 rounded-xl bg-[#FAF7F2] border border-amber-300 text-slate-900 text-sm font-semibold focus:outline-none focus:border-orange-500 transition shadow-inner"
               placeholder="例: 1ヶ月後のJLPT N5合格"
             />
             <button
               onClick={handleGenerateSchedule}
               disabled={isGenerating}
-              className="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium transition flex items-center space-x-1.5"
+              className="px-4 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-sm font-bold transition flex items-center space-x-1.5 shadow-sm"
             >
               <Sparkles className="w-4 h-4" />
               <span>{isGenerating ? '生成中...' : '計画を作成'}</span>
@@ -73,8 +72,8 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType })
         </div>
 
         {/* Schedule Preview */}
-        <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 space-y-3">
-          <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+        <div className="p-4 rounded-xl bg-[#FAF7F2] border border-amber-200 space-y-3">
+          <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider">
             📅 生成されたAIパーソナライズ・スケジュール
           </h4>
 
@@ -82,14 +81,14 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType })
             {mockSchedule.map((item, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between p-3 rounded-lg bg-slate-950 border border-slate-800/80 hover:border-indigo-950 transition"
+                className="flex items-center justify-between p-3 rounded-lg bg-[#FFFDF9] border border-amber-200 hover:border-orange-300 transition shadow-sm"
               >
                 <div>
-                  <span className="text-xs text-indigo-400 font-semibold mr-2">{item.day}:</span>
-                  <span className="text-sm text-slate-200">{item.title}</span>
+                  <span className="text-xs font-bold text-orange-700 mr-2">{item.day}:</span>
+                  <span className="text-sm font-medium text-slate-800">{item.title}</span>
                 </div>
-                <div className="flex items-center space-x-2 text-xs text-slate-400">
-                  <Clock className="w-3.5 h-3.5" />
+                <div className="flex items-center space-x-2 text-xs font-bold text-slate-600">
+                  <Clock className="w-3.5 h-3.5 text-slate-500" />
                   <span>{item.time}</span>
                 </div>
               </div>
@@ -100,15 +99,15 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType })
         {/* Export Button */}
         <button
           onClick={handleExportGoogleCalendar}
-          className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-medium text-sm transition shadow-lg flex items-center justify-center space-x-2"
+          className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm transition shadow-sm flex items-center justify-center space-x-2"
         >
           <ExternalLink className="w-4 h-4" />
           <span>Googleカレンダーに一括書き込み・連携</span>
         </button>
 
         {isExported && (
-          <p className="text-center text-xs text-emerald-400 flex items-center justify-center space-x-1">
-            <CheckCircle2 className="w-3.5 h-3.5" />
+          <p className="text-center text-xs font-bold text-emerald-700 flex items-center justify-center space-x-1">
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
             <span>Googleカレンダー登録画面を開きました</span>
           </p>
         )}
