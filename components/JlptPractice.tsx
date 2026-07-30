@@ -5,7 +5,7 @@ import { QuestionCategory, WeaknessRecord, JlptLevel } from '@/lib/types';
 import { Language, getTranslation } from '@/lib/i18n';
 import { JLPT_N5_QUESTIONS } from '@/data/jlpt-n5-questions';
 import { JLPT_N4_QUESTIONS } from '@/data/jlpt-n4-questions';
-import { BookOpen, CheckCircle, XCircle, RefreshCw } from 'lucide-react';
+import { BookOpen, CheckCircle, XCircle, RefreshCw , ChevronDown, ChevronUp } from 'lucide-react';
 
 interface JlptPracticeProps {
   onRecordWeakness: (record: WeaknessRecord) => void;
@@ -19,6 +19,7 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const t = getTranslation(lang);
+  const [isExpanded, setIsExpanded] = useState(false);
   const isVi = lang === 'vi';
 
   const questions = selectedLevel === 'N5' ? JLPT_N5_QUESTIONS : JLPT_N4_QUESTIONS;
@@ -167,6 +168,7 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
           </div>
         )}
       </div>
+      )}
     </div>
   );
 };

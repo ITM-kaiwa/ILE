@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Language, getTranslation } from '@/lib/i18n';
-import { RefreshCw, Bell, Clock } from 'lucide-react';
+import { RefreshCw, Bell, Clock , ChevronDown, ChevronUp } from 'lucide-react';
 
 interface ReviewManagerProps {
   lang?: Language;
@@ -10,6 +10,7 @@ interface ReviewManagerProps {
 
 export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => {
   const t = getTranslation(lang);
+  const [isExpanded, setIsExpanded] = useState(false);
   const isVi = lang === 'vi';
 
   const reviewQueue = [
@@ -25,9 +26,18 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
           <RefreshCw className="w-5 h-5 text-emerald-600" />
           <h2 className="text-xl font-bold text-slate-800">{t.srsTitle}</h2>
         </div>
-        <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-900 border border-emerald-300">
-          F-04 SRS
-        </span>
+        <div className="flex items-center space-x-3">
+          <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-900 border border-emerald-300">
+            F-04 SRS
+          </span>
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="px-3 py-1.5 rounded-lg bg-emerald-100 hover:bg-emerald-200 text-emerald-900 text-xs font-bold transition flex items-center space-x-1 border border-emerald-300/50"
+          >
+            <span>{isExpanded ? t.collapseModule : t.viewModule}</span>
+            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </button>
+        </div>
       </div>
 
       <div className="mt-6 space-y-4">
@@ -42,6 +52,8 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
           </div>
         </div>
 
+        {isExpanded && (
+        <>
         {/* Review Items */}
         <div className="space-y-3">
           {reviewQueue.map((item, index) => (
@@ -82,6 +94,8 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
             </div>
           ))}
         </div>
+      </>
+        )}
       </div>
     </div>
   );

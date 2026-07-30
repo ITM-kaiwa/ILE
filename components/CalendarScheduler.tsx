@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { VakType } from '@/data/vak-questions';
 import { Language, getTranslation } from '@/lib/i18n';
-import { Calendar, Clock, Sparkles, CheckCircle2, ExternalLink } from 'lucide-react';
+import { Calendar, Clock, Sparkles, CheckCircle2, ExternalLink , ChevronDown, ChevronUp } from 'lucide-react';
 
 interface CalendarSchedulerProps {
   vakType: VakType;
@@ -12,6 +12,7 @@ interface CalendarSchedulerProps {
 
 export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, lang = 'ja' }) => {
   const t = getTranslation(lang);
+  const [isExpanded, setIsExpanded] = useState(false);
   const isVi = lang === 'vi';
 
   const [goal, setGoal] = useState(isVi ? 'Thi đỗ JLPT N5 sau 1 tháng' : '1ヶ月後のJLPT N5合格');
@@ -47,9 +48,18 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
           <Calendar className="w-5 h-5 text-indigo-600" />
           <h2 className="text-xl font-bold text-slate-800">{t.calendarTitle}</h2>
         </div>
-        <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-900 border border-indigo-300">
-          F-03 Auto Sync
-        </span>
+        <div className="flex items-center space-x-3">
+          <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-900 border border-indigo-300">
+            F-03 Auto Sync
+          </span>
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="px-3 py-1.5 rounded-lg bg-indigo-100 hover:bg-indigo-200 text-indigo-900 text-xs font-bold transition flex items-center space-x-1 border border-indigo-300/50"
+          >
+            <span>{isExpanded ? t.collapseModule : t.viewModule}</span>
+            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+          </button>
+        </div>
       </div>
 
       <div className="mt-6 space-y-4">
@@ -76,6 +86,8 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
           </div>
         </div>
 
+        {isExpanded && (
+        <>
         {/* Schedule Preview */}
         <div className="p-4 rounded-xl bg-[#FAF7F2] border border-amber-200 space-y-3">
           <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider">
@@ -115,6 +127,8 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
             <span>{isVi ? 'Đã mở màn hình đăng ký Google Calendar' : 'Googleカレンダー登録画面を開きました'}</span>
           </p>
+        )}
+      </>
         )}
       </div>
     </div>

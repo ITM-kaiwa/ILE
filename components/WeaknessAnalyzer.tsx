@@ -4,7 +4,7 @@ import React from 'react';
 import { VakType } from '@/data/vak-questions';
 import { WeaknessRecord } from '@/lib/types';
 import { Language, getTranslation } from '@/lib/i18n';
-import { AlertTriangle, Lightbulb, CheckCircle2 } from 'lucide-react';
+import { AlertTriangle, Lightbulb, CheckCircle2 , ChevronDown, ChevronUp } from 'lucide-react';
 
 interface WeaknessAnalyzerProps {
   vakType: VakType;
@@ -14,6 +14,7 @@ interface WeaknessAnalyzerProps {
 
 export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({ vakType, weaknessRecords, lang = 'ja' }) => {
   const t = getTranslation(lang);
+  const [isExpanded, setIsExpanded] = useState(false);
   const isVi = lang === 'vi';
 
   return (

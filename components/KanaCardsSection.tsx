@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { VakType } from '@/data/vak-questions';
 import { Language } from '@/lib/i18n';
 import { KanaCard, KanaType, HIRAGANA_CARDS, KATAKANA_CARDS } from '@/data/kana-cards';
-import { Volume2, Eye, Hand, RotateCw, ArrowLeft, ArrowRight, Sparkles } from 'lucide-react';
+import { Volume2, Eye, Hand, RotateCw, ArrowLeft, ArrowRight, Sparkles , ChevronDown, ChevronUp } from 'lucide-react';
 
 interface KanaCardsSectionProps {
   vakType: VakType;

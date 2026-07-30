@@ -72,7 +72,7 @@ export default function Home() {
                 VAK-Adaptive Language Learning Coach
               </span>
               <span className="px-2.5 py-0.5 text-xs font-bold rounded-full bg-orange-600 text-white shadow-sm">
-                v2.7β
+                v2.8β
               </span>
             </div>
 
@@ -200,7 +200,9 @@ export default function Home() {
         </div>
 
         {/* Tab Content */}
-        {activeTab === 'learn' && (
+        {activeTab !== null && (
+          <div className="space-y-8 mb-8">
+            {activeTab === 'learn' && (
           <>
             <VakContentRenderer vakType={currentVak} />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -228,6 +230,8 @@ export default function Home() {
 
         {activeTab === 'review' && (
           <ReviewDashboard vakType={currentVak} />
+        )}
+          </div>
         )}
 
         {/* Section 3: Google Calendar & SRS Review Manager */}
