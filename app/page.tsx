@@ -55,9 +55,14 @@ export default function Home() {
         {/* Warm Hero Header */}
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#FFF9F2] via-[#FFF3E4] to-[#F7EFE5] p-8 border border-amber-200/80 shadow-md">
           <div className="relative z-10 max-w-3xl space-y-4">
-            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-800 border border-orange-300">
-              VAK-Adaptive Language Learning Coach
-            </span>
+            <div className="flex items-center space-x-2">
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-800 border border-orange-300">
+                VAK-Adaptive Language Learning Coach
+              </span>
+              <span className="px-2.5 py-0.5 text-xs font-bold rounded-full bg-orange-600 text-white shadow-sm">
+                v1.1α
+              </span>
+            </div>
             <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-800 tracking-tight leading-tight">
               あなたの認知特性 (VAK) に完全パーソナライズされた<br />
               <span className="bg-gradient-to-r from-orange-600 via-amber-600 to-emerald-600 bg-clip-text text-transparent">
