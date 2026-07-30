@@ -47,7 +47,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-40 w-full border-b border-amber-200/60 bg-[#FFFDF9]/90 backdrop-blur-md shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Logo & Version v2.3β with Interactive Brain Icon for Telemetry Log */}
+        {/* Logo & Version v2.4β with Interactive Brain Icon for Telemetry Log */}
         <div className="flex items-center space-x-3">
           <button
             onClick={onOpenLog}
@@ -62,7 +62,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {t.appName}
               </h1>
               <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-orange-100 text-orange-800 border border-orange-300">
-                v2.3β
+                v2.4β
               </span>
             </div>
             <p className="text-xs text-slate-500 mt-0.5">{t.subTitle}</p>

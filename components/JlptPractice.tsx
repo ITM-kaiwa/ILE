@@ -35,11 +35,16 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
 
     if (selectedIndex !== currentQ.correctIndex) {
       onRecordWeakness({
+        id: 'weak_' + Date.now(),
+        userId: 'user_default',
+        topic: currentQ.question,
         category: currentQ.category,
         categoryName: currentQ.categoryName,
-        questionSnippet: currentQ.question,
-        userAnswer: currentQ.options[selectedIndex],
+        incorrectAnswer: currentQ.options[selectedIndex],
         correctAnswer: currentQ.options[currentQ.correctIndex],
+        errorType: currentQ.errorType || 'grammar',
+        vakRecommendation: currentQ.vakRecommendation,
+        createdAt: new Date().toISOString(),
       });
     }
   };

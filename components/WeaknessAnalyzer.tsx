@@ -53,12 +53,12 @@ export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({ vakType, wea
                   🏷️ {record.categoryName}
                 </span>
                 <span className="text-xs text-slate-500 font-mono">
-                  {t.wrong}: 「{record.userAnswer}」 ➔ {t.correct}: 「{record.correctAnswer}」
+                  {t.wrong}: 「{record.incorrectAnswer}」 ➔ {t.correct}: 「{record.correctAnswer}」
                 </span>
               </div>
 
               <p className="text-xs font-semibold text-slate-800 leading-snug">
-                {record.questionSnippet}
+                {record.topic}
               </p>
 
               <div className="p-3 rounded-lg bg-orange-50 border border-orange-200 text-xs text-orange-950 space-y-1">
@@ -66,10 +66,8 @@ export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({ vakType, wea
                   <Lightbulb className="w-4 h-4 text-orange-600" />
                   <span>💡 {vakType.toUpperCase()} {t.recommendTitle}:</span>
                 </div>
-                <p className="text-slate-700 leading-relaxed">
-                  {record.category === 'grammar_particle' && '方向を表す矢印図解（主語 ➔ 助詞「へ」➔ 目的地）とカラーカードで確認しましょう。'}
-                  {record.category === 'grammar_conjugation' && '動詞の語尾変化をリズムに乗せて声に出し、リピート発唱しましょう。'}
-                  {record.category === 'vocabulary_daily' && '単語を動作や身振りと結びつけて、体全体で記憶に定着させましょう。'}
+                <p className="text-slate-700 leading-relaxed font-medium">
+                  {record.vakRecommendation[vakType]}
                 </p>
               </div>
             </div>
