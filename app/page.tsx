@@ -6,17 +6,21 @@ import { WeaknessRecord } from '@/lib/types';
 import { Navbar } from '@/components/Navbar';
 import { VakDiagnosticModal } from '@/components/VakDiagnosticModal';
 import { VakContentRenderer } from '@/components/VakContentRenderer';
+import { GrammarCardsSection } from '@/components/GrammarCardsSection';
+import { ReviewDashboard } from '@/components/ReviewDashboard';
 import { CalendarScheduler } from '@/components/CalendarScheduler';
 import { ReviewManager } from '@/components/ReviewManager';
 import { WeaknessAnalyzer } from '@/components/WeaknessAnalyzer';
 import { JlptPractice } from '@/components/JlptPractice';
 import { ExternalIntegrations } from '@/components/ExternalIntegrations';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import { Sparkles, ArrowRight, BookOpen, RefreshCw } from 'lucide-react';
 
 export default function Home() {
   const [currentVak, setCurrentVak] = useState<VakType>('visual');
   const [vakResult, setVakResult] = useState<VakResult | null>(null);
   const [weaknessRecords, setWeaknessRecords] = useState<WeaknessRecord[]>([]);
+
+  const [activeTab, setActiveTab] = useState<'learn' | 'review' | 'grammar'>('learn');
 
   const [diagnosticModal, setDiagnosticModal] = useState<{
     isOpen: boolean;
@@ -45,8 +49,9 @@ export default function Home() {
         onOpenDiagnostic={(mode) => setDiagnosticModal({ isOpen: true, mode })}
       />
 
-      {/* Hero Header */}
+      {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
+        {/* Hero Header */}
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-900 via-purple-900 to-slate-900 p-8 border border-indigo-800/50 shadow-2xl">
           <div className="relative z-10 max-w-3xl space-y-4">
             <span className="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
@@ -82,17 +87,52 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Dynamic VAK Selector Tabs */}
-        <div className="flex items-center justify-between p-2 rounded-2xl bg-slate-900/80 border border-slate-800">
-          <span className="text-xs font-semibold text-slate-400 px-3 hidden sm:inline">
-            表示切り替えテスト:
-          </span>
-          <div className="grid grid-cols-3 gap-2 w-full sm:w-auto">
+        {/* Dynamic VAK Selector & Main Navigation Tabs */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-2xl bg-slate-900/80 border border-slate-800 gap-3">
+          {/* Main Navigation Tabs */}
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={() => setActiveTab('learn')}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
+                activeTab === 'learn'
+                  ? 'bg-indigo-600 text-white shadow'
+                  : 'bg-slate-800 text-slate-400 hover:text-white'
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>AI学習 & 問題演習</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('grammar')}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
+                activeTab === 'grammar'
+                  ? 'bg-purple-600 text-white shadow'
+                  : 'bg-slate-800 text-slate-400 hover:text-white'
+              }`}
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>VNJPClub N5/N4 文法カード</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('review')}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
+                activeTab === 'review'
+                  ? 'bg-emerald-600 text-white shadow'
+                  : 'bg-slate-800 text-slate-400 hover:text-white'
+              }`}
+            >
+              <RefreshCw className="w-3.5 h-3.5" />
+              <span>復習専用ダッシュボード</span>
+            </button>
+          </div>
+
+          {/* VAK Type Selector */}
+          <div className="grid grid-cols-3 gap-2">
             {(['visual', 'auditory', 'kinesthetic'] as VakType[]).map((type) => (
               <button
                 key={type}
                 onClick={() => setCurrentVak(type)}
-                className={`py-2 px-4 rounded-xl text-xs font-bold transition ${
+                className={`py-1.5 px-3 rounded-xl text-xs font-bold transition ${
                   currentVak === type
                     ? type === 'visual'
                       ? 'bg-blue-600 text-white shadow'
@@ -102,20 +142,32 @@ export default function Home() {
                     : 'bg-slate-800 text-slate-400 hover:text-white'
                 }`}
               >
-                {type === 'visual' ? '👁️ 視覚 (Visual)' : type === 'auditory' ? '👂 聴覚 (Auditory)' : '✋ 身体感覚 (Kinesthetic)'}
+                {type === 'visual' ? '👁️ 視覚' : type === 'auditory' ? '👂 聴覚' : '✋ 身体感覚'}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Section 1: Dynamic AI Learning Content Generator */}
-        <VakContentRenderer vakType={currentVak} />
+        {/* Tab 1: AI Learning & JLPT Exercises */}
+        {activeTab === 'learn' && (
+          <>
+            <VakContentRenderer vakType={currentVak} />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <JlptPractice onRecordWeakness={handleRecordWeakness} />
+              <WeaknessAnalyzer vakType={currentVak} weaknessRecords={weaknessRecords} />
+            </div>
+          </>
+        )}
 
-        {/* Section 2: JLPT Practice (200 Questions) & Weakness Analyzer */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <JlptPractice onRecordWeakness={handleRecordWeakness} />
-          <WeaknessAnalyzer vakType={currentVak} weaknessRecords={weaknessRecords} />
-        </div>
+        {/* Tab 2: VNJPClub N5/N4 Grammar Cards Section */}
+        {activeTab === 'grammar' && (
+          <GrammarCardsSection vakType={currentVak} />
+        )}
+
+        {/* Tab 3: Dedicated Review Dashboard (Tag Filter) */}
+        {activeTab === 'review' && (
+          <ReviewDashboard vakType={currentVak} />
+        )}
 
         {/* Section 3: Google Calendar & SRS Review Manager */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

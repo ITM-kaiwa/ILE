@@ -20,6 +20,23 @@ export interface UserProfile {
   updatedAt: string;
 }
 
+export interface GrammarCard {
+  id: string;
+  level: JlptLevel;
+  title: string;
+  structure: string;
+  meaning: string;
+  vietnameseExplanation: string;
+  category: QuestionCategory;
+  categoryName: string;
+  vnjpclubUrl: string;
+  vakContent: {
+    visual: string;
+    auditory: string;
+    kinesthetic: string;
+  };
+}
+
 export interface LearningLog {
   id: string;
   userId: string;
