@@ -17,6 +17,7 @@ import { ReviewManager } from '@/components/ReviewManager';
 import { WeaknessAnalyzer } from '@/components/WeaknessAnalyzer';
 import { JlptPractice } from '@/components/JlptPractice';
 import { ExternalIntegrations } from '@/components/ExternalIntegrations';
+import { LogFloatingModal } from '@/components/LogFloatingModal';
 import { Sparkles, ArrowRight, BookOpen, RefreshCw, Layers } from 'lucide-react';
 
 export default function Home() {
@@ -37,6 +38,8 @@ export default function Home() {
     mode: 'quick',
   });
 
+  const [isLogModalOpen, setIsLogModalOpen] = useState<boolean>(false);
+
   const handleCompleteDiagnostic = (result: VakResult) => {
     setCurrentVak(result.primaryVak);
     setVakResult(result);
@@ -48,7 +51,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen pb-16">
-      {/* Top Navbar with Flag Language Switcher */}
+      {/* Top Navbar with Flag Language Switcher & Interactive Brain Log Trigger */}
       <Navbar
         currentVak={currentVak}
         isHybrid={vakResult?.isHybrid}
@@ -56,6 +59,7 @@ export default function Home() {
         lang={lang}
         onLanguageChange={(newLang) => setLang(newLang)}
         onOpenDiagnostic={(mode) => setDiagnosticModal({ isOpen: true, mode })}
+        onOpenLog={() => setIsLogModalOpen(true)}
       />
 
       {/* Main Container */}
@@ -68,7 +72,7 @@ export default function Home() {
                 VAK-Adaptive Language Learning Coach
               </span>
               <span className="px-2.5 py-0.5 text-xs font-bold rounded-full bg-orange-600 text-white shadow-sm">
-                v1.7β
+                v1.8β
               </span>
             </div>
 
@@ -200,8 +204,8 @@ export default function Home() {
           <>
             <VakContentRenderer vakType={currentVak} />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <JlptPractice onRecordWeakness={handleRecordWeakness} />
-              <WeaknessAnalyzer vakType={currentVak} weaknessRecords={weaknessRecords} />
+              <JlptPractice onRecordWeakness={handleRecordWeakness} lang={lang} />
+              <WeaknessAnalyzer vakType={currentVak} weaknessRecords={weaknessRecords} lang={lang} />
             </div>
           </>
         )}
@@ -228,8 +232,8 @@ export default function Home() {
 
         {/* Section 3: Google Calendar & SRS Review Manager */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <CalendarScheduler vakType={currentVak} />
-          <ReviewManager />
+          <CalendarScheduler vakType={currentVak} lang={lang} />
+          <ReviewManager lang={lang} />
         </div>
 
         {/* Section 4: ITM External App Integrations */}
@@ -242,6 +246,13 @@ export default function Home() {
         mode={diagnosticModal.mode}
         onClose={() => setDiagnosticModal({ ...diagnosticModal, isOpen: false })}
         onComplete={handleCompleteDiagnostic}
+      />
+
+      {/* System Telemetry & Communication Log Floating Modal */}
+      <LogFloatingModal
+        isOpen={isLogModalOpen}
+        lang={lang}
+        onClose={() => setIsLogModalOpen(false)}
       />
     </div>
   );

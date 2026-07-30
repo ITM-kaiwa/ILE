@@ -2,22 +2,27 @@
 
 import React, { useState } from 'react';
 import { VakType } from '@/data/vak-questions';
+import { Language, getTranslation } from '@/lib/i18n';
 import { Calendar, Clock, Sparkles, CheckCircle2, ExternalLink } from 'lucide-react';
 
 interface CalendarSchedulerProps {
   vakType: VakType;
+  lang?: Language;
 }
 
-export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType }) => {
-  const [goal, setGoal] = useState('1ヶ月後のJLPT N5合格');
+export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, lang = 'ja' }) => {
+  const t = getTranslation(lang);
+  const isVi = lang === 'vi';
+
+  const [goal, setGoal] = useState(isVi ? 'Thi đỗ JLPT N5 sau 1 tháng' : '1ヶ月後のJLPT N5合格');
   const [isGenerating, setIsGenerating] = useState(false);
   const [isExported, setIsExported] = useState(false);
 
   const mockSchedule = [
-    { day: 'Day 1 (明日)', title: 'JLPT N5 語彙 1-20 (VAK単語カード)', time: '08:00 - 08:30' },
+    { day: 'Day 1 (Ngày mai)', title: 'JLPT N5 語彙 1-20 (VAK単語カード)', time: '08:00 - 08:30' },
     { day: 'Day 2', title: 'JLPT N5 文法：〜です / 〜ます (シャドーイング)', time: '08:00 - 08:30' },
-    { day: 'Day 3 (エビングハウス復習)', title: 'Day 1 語彙の復習 + 弱点ドリル', time: '08:00 - 08:30' },
-    { day: 'Day 7 (エビングハウス復習)', title: '第1週 総合模擬テスト (20問)', time: '09:00 - 09:45' },
+    { day: 'Day 3 (Ôn tập Ebbinghaus)', title: 'Day 1 語彙の復習 + 弱点ドリル', time: '08:00 - 08:30' },
+    { day: 'Day 7 (Ôn tập Ebbinghaus)', title: '第1週 総合模擬テスト (20問)', time: '09:00 - 09:45' },
   ];
 
   const handleGenerateSchedule = () => {
@@ -40,17 +45,17 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType })
       <div className="flex items-center justify-between pb-4 border-b border-amber-200/60">
         <div className="flex items-center space-x-2">
           <Calendar className="w-5 h-5 text-indigo-600" />
-          <h2 className="text-xl font-bold text-slate-800">Googleカレンダー AI自動学習計画連携</h2>
+          <h2 className="text-xl font-bold text-slate-800">{t.calendarTitle}</h2>
         </div>
         <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-900 border border-indigo-300">
-          F-03 自動連携
+          F-03 Auto Sync
         </span>
       </div>
 
       <div className="mt-6 space-y-4">
         <div>
           <label className="block text-xs font-bold text-slate-700 mb-1">
-            あなたの目標を設定してください
+            {t.goalLabel}
           </label>
           <div className="flex gap-2">
             <input
@@ -58,7 +63,7 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType })
               value={goal}
               onChange={(e) => setGoal(e.target.value)}
               className="flex-1 px-4 py-2.5 rounded-xl bg-[#FAF7F2] border border-amber-300 text-slate-900 text-sm font-semibold focus:outline-none focus:border-orange-500 transition shadow-inner"
-              placeholder="例: 1ヶ月後のJLPT N5合格"
+              placeholder={t.goalPlaceholder}
             />
             <button
               onClick={handleGenerateSchedule}
@@ -66,7 +71,7 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType })
               className="px-4 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-sm font-bold transition flex items-center space-x-1.5 shadow-sm"
             >
               <Sparkles className="w-4 h-4" />
-              <span>{isGenerating ? '生成中...' : '計画を作成'}</span>
+              <span>{isGenerating ? '...' : t.createPlan}</span>
             </button>
           </div>
         </div>
@@ -74,7 +79,7 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType })
         {/* Schedule Preview */}
         <div className="p-4 rounded-xl bg-[#FAF7F2] border border-amber-200 space-y-3">
           <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider">
-            📅 生成されたAIパーソナライズ・スケジュール
+            {t.scheduleHeader}
           </h4>
 
           <div className="space-y-2">
@@ -102,13 +107,13 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType })
           className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm transition shadow-sm flex items-center justify-center space-x-2"
         >
           <ExternalLink className="w-4 h-4" />
-          <span>Googleカレンダーに一括書き込み・連携</span>
+          <span>{t.exportGoogle}</span>
         </button>
 
         {isExported && (
           <p className="text-center text-xs font-bold text-emerald-700 flex items-center justify-center space-x-1">
             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Googleカレンダー登録画面を開きました</span>
+            <span>{isVi ? 'Đã mở màn hình đăng ký Google Calendar' : 'Googleカレンダー登録画面を開きました'}</span>
           </p>
         )}
       </div>

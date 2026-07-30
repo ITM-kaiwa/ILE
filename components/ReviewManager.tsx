@@ -1,9 +1,17 @@
 'use client';
 
 import React from 'react';
+import { Language, getTranslation } from '@/lib/i18n';
 import { RefreshCw, Bell, Clock } from 'lucide-react';
 
-export const ReviewManager: React.FC = () => {
+interface ReviewManagerProps {
+  lang?: Language;
+}
+
+export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => {
+  const t = getTranslation(lang);
+  const isVi = lang === 'vi';
+
   const reviewQueue = [
     { topic: 'JLPT N5 語彙: あいさつ・自己紹介', last: '1日前', next: '本日 (Day 1復習)', stage: 1, status: 'due' },
     { topic: 'JLPT N5 文法: 〜は〜です', last: '3日前', next: '本日 (Day 3復習)', stage: 2, status: 'due' },
@@ -15,10 +23,10 @@ export const ReviewManager: React.FC = () => {
       <div className="flex items-center justify-between pb-4 border-b border-amber-200/60">
         <div className="flex items-center space-x-2">
           <RefreshCw className="w-5 h-5 text-emerald-600" />
-          <h2 className="text-xl font-bold text-slate-800">エビングハウス忘却曲線 自動復習通知 (SRS)</h2>
+          <h2 className="text-xl font-bold text-slate-800">{t.srsTitle}</h2>
         </div>
         <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-900 border border-emerald-300">
-          F-04 自動通知
+          F-04 SRS
         </span>
       </div>
 
@@ -27,9 +35,9 @@ export const ReviewManager: React.FC = () => {
         <div className="p-4 rounded-xl bg-amber-100/80 border border-amber-300 flex items-start space-x-3 shadow-sm">
           <Bell className="w-5 h-5 text-amber-800 shrink-0 mt-0.5" />
           <div>
-            <h4 className="text-sm font-bold text-amber-950">本日復習すべきタスクが 2 件あります！</h4>
+            <h4 className="text-sm font-bold text-amber-950">{t.srsAlert}</h4>
             <p className="text-xs font-medium text-amber-900 mt-0.5">
-              記憶定着率が最も下がるタイミング（1日後・3日後・7日後・21日後）でVercel Cronバッチ通知が届きます。
+              {t.srsAlertSub}
             </p>
           </div>
         </div>
@@ -53,22 +61,22 @@ export const ReviewManager: React.FC = () => {
                       item.status === 'due' ? 'bg-rose-600 text-white' : 'bg-slate-200 text-slate-700'
                     }`}
                   >
-                    {item.status === 'due' ? '要復習' : '待機中'}
+                    {item.status === 'due' ? t.statusDue : t.statusReady}
                   </span>
                 </div>
                 <span className="text-xs font-medium text-slate-600 mt-1 block">
-                  最終学習: {item.last} | 次回予定: {item.next}
+                  {isVi ? `Lần trước: ${item.last} | Tiếp theo: ${item.next}` : `最終学習: ${item.last} | 次回予定: ${item.next}`}
                 </span>
               </div>
 
               {item.status === 'due' ? (
                 <button className="px-3.5 py-1.5 rounded-lg bg-orange-600 hover:bg-orange-500 text-white text-xs font-bold transition shadow-sm">
-                  復習を開始
+                  {t.startReview}
                 </button>
               ) : (
                 <span className="text-xs font-medium text-slate-500 flex items-center space-x-1">
                   <Clock className="w-3.5 h-3.5 text-slate-400" />
-                  <span>準備完了</span>
+                  <span>{t.statusReady}</span>
                 </span>
               )}
             </div>

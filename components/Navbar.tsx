@@ -12,6 +12,7 @@ interface NavbarProps {
   lang: Language;
   onLanguageChange: (lang: Language) => void;
   onOpenDiagnostic: (mode: 'quick' | 'detailed') => void;
+  onOpenLog?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -21,6 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   lang,
   onLanguageChange,
   onOpenDiagnostic,
+  onOpenLog,
 }) => {
   const t = getTranslation(lang);
 
@@ -45,18 +47,22 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-40 w-full border-b border-amber-200/60 bg-[#FFFDF9]/90 backdrop-blur-md shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Logo & Version v1.7β */}
+        {/* Logo & Version v1.8β with Interactive Brain Icon for Telemetry Log */}
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 via-amber-500 to-emerald-600 flex items-center justify-center text-white shadow-md">
-            <Brain className="w-6 h-6" />
-          </div>
+          <button
+            onClick={onOpenLog}
+            title="クリックしてシステム通信ログを表示 (Mở nhật ký hệ thống)"
+            className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 via-amber-500 to-emerald-600 flex items-center justify-center text-white shadow-md hover:scale-105 transition duration-200 cursor-pointer group"
+          >
+            <Brain className="w-6 h-6 group-hover:rotate-12 transition duration-300" />
+          </button>
           <div>
             <div className="flex items-center space-x-2">
               <h1 className="font-bold text-lg text-slate-800 leading-none tracking-tight">
                 {t.appName}
               </h1>
               <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-orange-100 text-orange-800 border border-orange-300">
-                v1.7β
+                v1.8β
               </span>
             </div>
             <p className="text-xs text-slate-500 mt-0.5">{t.subTitle}</p>
