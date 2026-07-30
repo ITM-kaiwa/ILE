@@ -54,7 +54,7 @@ export const TRANSLATIONS = {
     "extResourcesTitle": "おすすめ外部日本語学習リソース",
     "openSite": "サイトを開く",
     "selectLang": "言語切替 / Ngôn ngữ",
-    "viewModule": "モジュールを見る",
+    "viewModule": "展開する",
     "collapseModule": "折りたたむ"
   },
   "vi": {
@@ -110,7 +110,7 @@ export const TRANSLATIONS = {
     "extResourcesTitle": "Tài nguyên Học tiếng Nhật Khuyên dùng",
     "openSite": "Mở trang web",
     "selectLang": "Ngôn ngữ / 言語切替",
-    "viewModule": "Xem mô-đun",
+    "viewModule": "Mở rộng",
     "collapseModule": "Thu gọn"
   }
 };

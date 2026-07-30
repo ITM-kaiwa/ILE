@@ -75,7 +75,7 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
         <div className="flex items-center space-x-2">
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="px-3 py-1.5 rounded-lg bg-orange-50 hover:bg-orange-100 text-orange-900 text-xs font-bold transition flex items-center space-x-1 border border-orange-300/50"
+            className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
           >
             <span>{isExpanded ? t.collapseModule : t.viewModule}</span>
             {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}

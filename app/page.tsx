@@ -28,7 +28,7 @@ export default function Home() {
   const [vakResult, setVakResult] = useState<VakResult | null>(null);
   const [weaknessRecords, setWeaknessRecords] = useState<WeaknessRecord[]>([]);
 
-  const [activeTab, setActiveTab] = useState<'learn' | 'kana' | 'vocab' | 'grammar' | 'kanji' | 'review'>('learn');
+  const [activeTab, setActiveTab] = useState<'learn' | 'kana' | 'vocab' | 'grammar' | 'kanji' | 'review' | null>(null);
 
   const [diagnosticModal, setDiagnosticModal] = useState<{
     isOpen: boolean;
