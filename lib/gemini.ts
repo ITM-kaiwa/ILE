@@ -1,4 +1,5 @@
 import { VakType } from '@/data/vak-questions';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export const VAK_SYSTEM_PROMPTS: Record<VakType, string> = {
   visual: "Markdownの表や図解、箇条書きを多用し、重要語句を太字や色分け表記で目立たせて視覚的に整理して解説してください。またイメージが湧くイラスト表現プロンプトも提示してください。",
@@ -22,17 +23,7 @@ export function getMockVakLesson(topic: string, vakType: VakType): GeneratedVakL
     return {
       topic,
       vakType: 'visual',
-      contentMarkdown: `### 視覚学習モデル: ${topic}
-
-| 項目 | 日本語 | ベトナム語意味 | 視覚イメージ |
-|---|---|---|---|
-| 1 | **${topic}の基礎** | Cơ bản | 🟦 青いノートの図形 |
-| 2 | **ポイント文法** | Cấu trúc ngữ pháp | ➔ 矢印フローチャート |
-
-#### 📊 タイムライン解説
-1. **ステップ1**: 文頭の助詞に注目（**は**・**が**の違い）
-2. **ステップ2**: 述語の形を確認（**〜です** / **〜ます**）
-3. **ステップ3**: 色分けされた文法カードで丸暗記！`,
+      contentMarkdown: `### 視覚学習モデル: ${topic}\n\n| 項目 | 日本語 | ベトナム語意味 | 視覚イメージ |\n|---|---|---|---|\n| 1 | **${topic}の基礎** | Cơ bản | 🟦 青いノートの図形 |\n| 2 | **ポイント文法** | Cấu trúc ngữ pháp | ➔ 矢印フローチャート |\n\n#### 📊 タイムライン解説\n1. **ステップ1**: 文頭の助詞に注目（**は**・**が**の違い）\n2. **ステップ2**: 述語の形を確認（**〜です** / **〜ます**）\n3. **ステップ3**: 色分けされた文法カードで丸暗記！`,
       keyVocabulary: [
         { word: '学習', reading: 'がくしゅう', meaning: 'Học tập' },
         { word: '視覚', reading: 'しかく', meaning: 'Thị giác' },
@@ -51,15 +42,7 @@ export function getMockVakLesson(topic: string, vakType: VakType): GeneratedVakL
     return {
       topic,
       vakType: 'auditory',
-      contentMarkdown: `### 聴覚学習モデル: ${topic}
-
-「こんにちは！声に出して一緒に練習しましょう。リズムとアクセントが命です！」
-
-#### 🗣️ 対話型シャドーイング練習
-- **Aさん**: ${topic}について教えてください！
-- **Bさん**: はい！まず耳で音を聞いて、そのままリピートしてみましょう。
-
-> 💡 **発音のコツ**: リエゾン（音の連結）に注意。「${topic}」は平坦なアクセントでリズム良く発音します。`,
+      contentMarkdown: `### 聴覚学習モデル: ${topic}\n\n「こんにちは！声に出して一緒に練習しましょう。リズムとアクセントが命です！」\n\n#### 🗣️ 対話型シャドーイング練習\n- **Aさん**: ${topic}について教えてください！\n- **Bさん**: はい！まず耳で音を聞いて、そのままリピートしてみましょう。\n\n> 💡 **発音のコツ**: リエゾン（音の連結）に注意。「${topic}」は平坦なアクセントでリズム良く発音します。`,
       keyVocabulary: [
         { word: '発音', reading: 'はつおん', meaning: 'Phát âm' },
         { word: '聴覚', reading: 'ちょうかく', meaning: 'Thính giác' },
@@ -81,13 +64,7 @@ export function getMockVakLesson(topic: string, vakType: VakType): GeneratedVakL
     return {
       topic,
       vakType: 'kinesthetic',
-      contentMarkdown: `### 身体感覚学習モデル: ${topic}
-
-✋ **立ち上がってジェスチャー付きで練習しましょう！**
-
-1. **アクション1**: 右手を大きく挙げて「${topic}！」と叫ぶ
-2. **アクション2**: 実際に部屋の中を1往復歩きながら文を音読する
-3. **ロールプレイ**: 自分が主人公になった気分で感情を込めて表現してみよう！`,
+      contentMarkdown: `### 身体感覚学習モデル: ${topic}\n\n✋ **立ち上がってジェスチャー付きで練習しましょう！**\n\n1. **アクション1**: 右手を大きく挙げて「${topic}！」と叫ぶ\n2. **アクション2**: 実際に部屋の中を1往復歩きながら文を音読する\n3. **ロールプレイ**: 自分が主人公になった気分で感情を込めて表現してみよう！`,
       keyVocabulary: [
         { word: '体験', reading: 'たいけん', meaning: 'Trải nghiệm' },
         { word: '身体感覚', reading: 'しんたいかんかく', meaning: 'Xúc giác / Vận動' },
@@ -102,5 +79,31 @@ export function getMockVakLesson(topic: string, vakType: VakType): GeneratedVakL
         },
       ],
     };
+  }
+}
+
+export async function generateGeminiVakLesson(topic: string, vakType: VakType): Promise<GeneratedVakLesson> {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    return getMockVakLesson(topic, vakType);
+  }
+
+  try {
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+    const systemPrompt = VAK_SYSTEM_PROMPTS[vakType];
+    const prompt = `${systemPrompt}\n\nトピック: "${topic}" についての日本語学習レッスンを生成してください。`;
+
+    const result = await model.generateContent(prompt);
+    const responseText = result.response.text();
+
+    const mock = getMockVakLesson(topic, vakType);
+    return {
+      ...mock,
+      contentMarkdown: responseText || mock.contentMarkdown,
+    };
+  } catch (error) {
+    console.error('Gemini API Error:', error);
+    return getMockVakLesson(topic, vakType);
   }
 }
