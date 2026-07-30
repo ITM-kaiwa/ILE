@@ -156,6 +156,7 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
             </div>
           </div>
         </div>
+      </div>
       </>
       )}
     </div>
