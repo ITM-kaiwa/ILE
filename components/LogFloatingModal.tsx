@@ -19,14 +19,14 @@ export const LogFloatingModal: React.FC<LogFloatingModalProps> = ({ isOpen, lang
     if (isOpen) {
       const now = new Date().toISOString();
       const initialLogs = [
-        `[${now}] INFO: ILE VAK System v1.8β initialized.`,
-        `[${now}] INFO: Network Connection Status: 200 OK (https://github.com/ITM-kaiwa/ILE).`,
-        `[${now}] DEBUG: VAK Cognitive Engine loaded (Visual / Auditory / Kinesthetic).`,
-        `[${now}] DEBUG: Minna no Nihongo Lesson 1-50 Vocabulary Database loaded (527 entries).`,
-        `[${now}] DEBUG: VNJPClub N5 & N4 Grammar Cards loaded (50 lessons authentic).`,
-        `[${now}] INFO: SRS Ebbinghaus Scheduler active. Active worker ID: srs-worker-01.`,
-        `[${now}] TRACE: Language state set to '${lang}'. UI components localized.`,
-        `[${now}] SUCCESS: All system logs and communication telemetry captured cleanly.`
+        '[' + now + '] INFO: ILE VAK System v1.9β initialized.',
+        '[' + now + '] INFO: Network Connection Status: 200 OK (https://github.com/ITM-kaiwa/ILE).',
+        '[' + now + '] DEBUG: VAK Cognitive Engine loaded (Visual / Auditory / Kinesthetic).',
+        '[' + now + '] DEBUG: Minna no Nihongo Lesson 1-50 Vocabulary Database loaded (527 entries).',
+        '[' + now + '] DEBUG: VNJPClub N5 & N4 Grammar Cards loaded (50 lessons authentic).',
+        '[' + now + '] INFO: SRS Ebbinghaus Scheduler active. Active worker ID: srs-worker-01.',
+        '[' + now + '] TRACE: Language state set to ' + lang + '. UI components localized.',
+        '[' + now + '] SUCCESS: All system logs and communication telemetry captured cleanly.'
       ];
       setLogs(initialLogs);
     }
@@ -38,31 +38,18 @@ export const LogFloatingModal: React.FC<LogFloatingModalProps> = ({ isOpen, lang
 ');
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(logText);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(logText);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   const handlePrint = () => {
     const printWindow = window.open('', '_blank');
     if (printWindow) {
-      printWindow.document.write(`
-        <html>
-          <head>
-            <title>System Log Telemetry - ILE VAK Coach</title>
-            <style>
-              body { font-family: monospace; padding: 20px; white-space: pre-wrap; background: #fafafa; }
-              h2 { font-family: sans-serif; color: #ea580c; }
-            </style>
-          </head>
-          <body>
-            <h2>ILE VAK Coach Telemetry & Communication Logs</h2>
-            <hr />
-            <div>${logText.replace(/
-/g, '<br />')}</div>
-          </body>
-        </html>
-      `);
+      printWindow.document.write('<html><head><title>System Log Telemetry - ILE VAK Coach</title><style>body { font-family: monospace; padding: 20px; white-space: pre-wrap; background: #fafafa; } h2 { font-family: sans-serif; color: #ea580c; }</style></head><body><h2>ILE VAK Coach Telemetry & Communication Logs</h2><hr /><div>' + logText.replace(/
+/g, '<br />') + '</div></body></html>');
       printWindow.document.close();
       printWindow.print();
     }
@@ -72,7 +59,7 @@ export const LogFloatingModal: React.FC<LogFloatingModalProps> = ({ isOpen, lang
     const element = document.createElement('a');
     const file = new Blob([logText], { type: 'text/plain;charset=utf-8' });
     element.href = URL.createObjectURL(file);
-    element.download = `ile-vak-telemetry-log-${Date.now()}.txt`;
+    element.download = 'ile-vak-telemetry-log-' + Date.now() + '.txt';
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
@@ -99,7 +86,7 @@ export const LogFloatingModal: React.FC<LogFloatingModalProps> = ({ isOpen, lang
         </div>
 
         {/* Log Viewer Body */}
-        <div className="p-5 flex-1 overflow-y-auto font-mono text-xs text-slate-800 bg-[#1E293B] text-emerald-400 p-4 rounded-xl m-4 space-y-1 shadow-inner border border-slate-700">
+        <div className="p-5 flex-1 overflow-y-auto font-mono text-xs bg-[#1E293B] text-emerald-400 p-4 rounded-xl m-4 space-y-1 shadow-inner border border-slate-700">
           {logs.map((log, index) => (
             <div key={index} className="leading-relaxed">
               {log}
