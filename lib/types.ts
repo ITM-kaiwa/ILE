@@ -1,5 +1,15 @@
 import { VakType, VakResult } from '@/data/vak-questions';
 
+export type JlptLevel = 'N5' | 'N4';
+export type QuestionCategory =
+  | 'grammar_particle'
+  | 'grammar_conjugation'
+  | 'grammar_sentence'
+  | 'vocabulary_daily'
+  | 'vocabulary_time'
+  | 'kanji_reading'
+  | 'kanji_meaning';
+
 export interface UserProfile {
   id: string;
   name: string;
@@ -14,7 +24,7 @@ export interface LearningLog {
   id: string;
   userId: string;
   topic: string;
-  jlptLevel: 'N5' | 'N4';
+  jlptLevel: JlptLevel;
   score: number;
   vakTypeUsed: VakType;
   createdAt: string;
@@ -35,21 +45,34 @@ export interface WeaknessRecord {
   id: string;
   userId: string;
   topic: string;
+  category: QuestionCategory;
+  categoryName: string;
   incorrectAnswer: string;
   correctAnswer: string;
   errorType: 'grammar' | 'spelling' | 'vocabulary' | 'kanji';
-  vakRecommendation: string;
+  vakRecommendation: {
+    visual: string;
+    auditory: string;
+    kinesthetic: string;
+  };
   createdAt: string;
 }
 
 export interface JlptQuestion {
   id: string;
-  level: 'N5' | 'N4';
+  level: JlptLevel;
   question: string;
   options: string[];
   correctIndex: number;
   explanation: string;
   errorType: 'grammar' | 'spelling' | 'vocabulary' | 'kanji';
+  category: QuestionCategory;
+  categoryName: string;
+  vakRecommendation: {
+    visual: string;
+    auditory: string;
+    kinesthetic: string;
+  };
 }
 
 export interface CalendarEventSchedule {

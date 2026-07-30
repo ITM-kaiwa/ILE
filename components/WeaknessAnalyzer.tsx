@@ -2,57 +2,103 @@
 
 import React from 'react';
 import { VakType } from '@/data/vak-questions';
-import { AlertTriangle, Brain, Target, ArrowRight } from 'lucide-react';
+import { WeaknessRecord } from '@/lib/types';
+import { AlertTriangle, Brain, Target, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 interface WeaknessAnalyzerProps {
   vakType: VakType;
+  weaknessRecords: WeaknessRecord[];
 }
 
-export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({ vakType }) => {
-  const weaknesses = [
-    { topic: '助詞「に」と「で」の使い分け', errorType: '文法ミス', count: 4 },
-    { topic: '漢字「日」「月」の読み分け（音訓）', errorType: '漢字ミス', count: 3 },
-    { topic: '時間表現の語彙 (昨日/一昨日)', errorType: '語彙ミス', count: 2 },
+export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({
+  vakType,
+  weaknessRecords,
+}) => {
+  // Default mock weaknesses if records empty
+  const defaultWeaknesses: WeaknessRecord[] = [
+    {
+      id: 'w1',
+      userId: 'u1',
+      topic: 'わたしは まいにち がっこう (へ) いきます。',
+      category: 'grammar_particle',
+      categoryName: '助詞（移動の方向）',
+      incorrectAnswer: 'が',
+      correctAnswer: 'へ',
+      errorType: 'grammar',
+      vakRecommendation: {
+        visual: '方向を表す矢印図解（主語 ➔ 助詞「へ」 ➔ 目的地）とカラーカードで確認しましょう。',
+        auditory: '「〜へいきます」「〜でおきます」と文全体を音読して耳で覚えましょう。',
+        kinesthetic: '目的地を指さしながら実際に体を動かして文を唱えましょう。',
+      },
+      createdAt: new Date().toISOString(),
+    },
+    {
+      id: 'w2',
+      userId: 'u1',
+      topic: 'かさを (もっていった) ほうが いいです。',
+      category: 'grammar_sentence',
+      categoryName: '文型（〜たほうがいい）',
+      incorrectAnswer: 'もっていく',
+      correctAnswer: 'もっていった',
+      errorType: 'grammar',
+      vakRecommendation: {
+        visual: '文末の条件分岐フローチャート（提案 ➔ 〜たほうがいい）を対比整理しましょう。',
+        auditory: '「〜たほうがいい！」のフレーズを抑揚をつけてシャドーイングしましょう。',
+        kinesthetic: '傘を開くジェスチャーをしながら文を表現しましょう。',
+      },
+      createdAt: new Date().toISOString(),
+    },
   ];
+
+  const records = weaknessRecords.length > 0 ? weaknessRecords : defaultWeaknesses;
 
   return (
     <div className="glass-card p-6 border border-slate-800 rounded-2xl shadow-xl">
       <div className="flex items-center justify-between pb-4 border-b border-slate-800">
         <div className="flex items-center space-x-2">
           <AlertTriangle className="w-5 h-5 text-indigo-400" />
-          <h2 className="text-xl font-bold text-white">弱点分析 & AI問題再生成</h2>
+          <h2 className="text-xl font-bold text-white">弱点傾向分析 & VAK別復習提案</h2>
         </div>
-        <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-rose-950 text-rose-300 border border-rose-800">
-          F-05 弱点克服
+        <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-950 text-rose-300 border border-rose-800">
+          全自動分析
         </span>
       </div>
 
       <div className="mt-6 space-y-4">
-        <p className="text-xs text-slate-400">
-          誤答履歴からGemini APIが苦手傾向を分析し、{vakType === 'visual' ? '視覚図解' : vakType === 'auditory' ? '聴覚音声' : '身体感覚アクション'}形式で再トレーニング問題を提案します。
+        <p className="text-xs text-slate-400 leading-relaxed">
+          問題演習の誤答タグからGemini AIが苦手分野を判定し、お使いの<strong>{
+            vakType === 'visual' ? '👁️ 視覚' : vakType === 'auditory' ? '👂 聴覚' : '✋ 身体感覚'
+          }モデル</strong>に最適化された学習アドバイスを提案します。
         </p>
 
         <div className="space-y-3">
-          {weaknesses.map((w, idx) => (
-            <div key={idx} className="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
-              <div>
-                <div className="flex items-center space-x-2">
-                  <span className="text-sm font-semibold text-white">{w.topic}</span>
-                  <span className="px-2 py-0.5 text-[10px] rounded bg-slate-800 text-rose-400 font-mono">
-                    {w.errorType} ({w.count}回誤答)
+          {records.map((record) => {
+            const advice = record.vakRecommendation[vakType];
+            return (
+              <div
+                key={record.id}
+                className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2 hover:border-indigo-500/50 transition"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                  <span className="text-xs font-bold text-indigo-400">
+                    🏷️ {record.categoryName} ({record.errorType.toUpperCase()})
                   </span>
+                  <span className="text-[10px] text-slate-500">誤答: 「{record.incorrectAnswer}」 ➔ 正解: 「{record.correctAnswer}」</span>
                 </div>
-                <p className="text-xs text-indigo-300 mt-1">
-                  💡 AI提案 ({vakType}特性): {vakType === 'visual' ? '助詞の対比フローチャートを参照' : vakType === 'auditory' ? '「〜で行く / 〜にいく」の音読フレーズ練習' : '実際に動作を付けて助詞を表現'}
-                </p>
-              </div>
 
-              <button className="px-3 py-1.5 text-xs font-medium text-indigo-300 bg-indigo-950 hover:bg-indigo-900 rounded-lg border border-indigo-800 transition flex items-center space-x-1 shrink-0">
-                <span>克服ドリル</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          ))}
+                <p className="text-sm font-medium text-white">{record.topic}</p>
+
+                {/* VAK Personalized Recommendation Card */}
+                <div className="p-3 rounded-lg bg-indigo-950/40 border border-indigo-800/40 text-xs text-indigo-200 flex items-start space-x-2">
+                  <Brain className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold text-indigo-300">💡 {vakType.toUpperCase()}タイプ向け復習提案:</span>
+                    <p className="mt-0.5 text-slate-300">{advice}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

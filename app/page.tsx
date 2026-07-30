@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { VakType, VakResult } from '@/data/vak-questions';
+import { WeaknessRecord } from '@/lib/types';
 import { Navbar } from '@/components/Navbar';
 import { VakDiagnosticModal } from '@/components/VakDiagnosticModal';
 import { VakContentRenderer } from '@/components/VakContentRenderer';
@@ -10,11 +11,12 @@ import { ReviewManager } from '@/components/ReviewManager';
 import { WeaknessAnalyzer } from '@/components/WeaknessAnalyzer';
 import { JlptPractice } from '@/components/JlptPractice';
 import { ExternalIntegrations } from '@/components/ExternalIntegrations';
-import { Sparkles, Brain, Award, ArrowRight } from 'lucide-react';
+import { Sparkles, ArrowRight } from 'lucide-react';
 
 export default function Home() {
   const [currentVak, setCurrentVak] = useState<VakType>('visual');
   const [vakResult, setVakResult] = useState<VakResult | null>(null);
+  const [weaknessRecords, setWeaknessRecords] = useState<WeaknessRecord[]>([]);
 
   const [diagnosticModal, setDiagnosticModal] = useState<{
     isOpen: boolean;
@@ -27,6 +29,10 @@ export default function Home() {
   const handleCompleteDiagnostic = (result: VakResult) => {
     setCurrentVak(result.primaryVak);
     setVakResult(result);
+  };
+
+  const handleRecordWeakness = (newRecord: WeaknessRecord) => {
+    setWeaknessRecords((prev) => [newRecord, ...prev]);
   };
 
   return (
@@ -105,10 +111,10 @@ export default function Home() {
         {/* Section 1: Dynamic AI Learning Content Generator */}
         <VakContentRenderer vakType={currentVak} />
 
-        {/* Section 2: JLPT Practice & Weakness Analyzer */}
+        {/* Section 2: JLPT Practice (200 Questions) & Weakness Analyzer */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <JlptPractice />
-          <WeaknessAnalyzer vakType={currentVak} />
+          <JlptPractice onRecordWeakness={handleRecordWeakness} />
+          <WeaknessAnalyzer vakType={currentVak} weaknessRecords={weaknessRecords} />
         </div>
 
         {/* Section 3: Google Calendar & SRS Review Manager */}
