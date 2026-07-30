@@ -12,7 +12,7 @@ import {
   getVocabByPartOfSpeech,
   getVocabBySemanticCategory,
 } from '@/data/minna-vocabulary';
-import { ExternalLink, Volume2, Eye, Hand, Filter, Layers, Tag, Grid, ArrowLeft, ArrowRight, RotateCw } from 'lucide-react';
+import { ExternalLink, Volume2, Eye, Hand, Filter, Layers, Tag, Grid, ArrowLeft, ArrowRight, RotateCw , ChevronDown, ChevronUp } from 'lucide-react';
 
 interface MinnaFlashcardsSectionProps {
   vakType: VakType;
@@ -298,6 +298,8 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
           </div>
         </div>
       ) : null}
+      </>
+      )}
     </div>
   );
 };

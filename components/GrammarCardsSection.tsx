@@ -5,7 +5,7 @@ import { VakType } from '@/data/vak-questions';
 import { GrammarCard, JlptLevel } from '@/lib/types';
 import { Language, getTranslation } from '@/lib/i18n';
 import { getGrammarCardsByLevel } from '@/data/grammar-cards';
-import { BookOpen, ExternalLink, Eye, Volume2, Hand } from 'lucide-react';
+import { BookOpen, ExternalLink, Eye, Volume2, Hand , ChevronDown, ChevronUp } from 'lucide-react';
 
 interface GrammarCardsSectionProps {
   vakType: VakType;

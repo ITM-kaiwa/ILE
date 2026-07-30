@@ -5,7 +5,7 @@ import { VakType } from '@/data/vak-questions';
 import { JlptLevel } from '@/lib/types';
 import { Language, getTranslation } from '@/lib/i18n';
 import { KANJI_CARDS, getKanjiByLevel, KanjiCard } from '@/data/kanji-cards';
-import { ExternalLink, Volume2, Eye, Hand, Layers, RotateCw, ArrowLeft, ArrowRight } from 'lucide-react';
+import { ExternalLink, Volume2, Eye, Hand, Layers, RotateCw, ArrowLeft, ArrowRight , ChevronDown, ChevronUp } from 'lucide-react';
 
 interface KanjiCardsSectionProps {
   vakType: VakType;
@@ -252,6 +252,8 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
           </div>
         </div>
       ) : null}
+      </>
+      )}
     </div>
   );
 };
