@@ -19,14 +19,14 @@ export const LogFloatingModal: React.FC<LogFloatingModalProps> = ({ isOpen, lang
     if (isOpen) {
       const now = new Date().toISOString();
       const initialLogs = [
-        '[' + now + '] INFO: ILE VAK System v2.0β initialized.',
-        '[' + now + '] INFO: Network Connection Status: 200 OK (https://github.com/ITM-kaiwa/ILE).',
-        '[' + now + '] DEBUG: VAK Cognitive Engine loaded (Visual / Auditory / Kinesthetic).',
-        '[' + now + '] DEBUG: Minna no Nihongo Lesson 1-50 Vocabulary Database loaded (527 entries).',
-        '[' + now + '] DEBUG: VNJPClub N5 & N4 Grammar Cards loaded (50 lessons authentic).',
-        '[' + now + '] INFO: SRS Ebbinghaus Scheduler active. Active worker ID: srs-worker-01.',
-        '[' + now + '] TRACE: Language state set to ' + lang + '. UI components localized.',
-        '[' + now + '] SUCCESS: All system logs and communication telemetry captured cleanly.'
+        "[" + now + "] INFO: ILE VAK System v2.1β initialized.",
+        "[" + now + "] INFO: Network Connection Status: 200 OK (https://github.com/ITM-kaiwa/ILE).",
+        "[" + now + "] DEBUG: VAK Cognitive Engine loaded (Visual / Auditory / Kinesthetic).",
+        "[" + now + "] DEBUG: Minna no Nihongo Lesson 1-50 Vocabulary Database loaded (527 entries).",
+        "[" + now + "] DEBUG: VNJPClub N5 & N4 Grammar Cards loaded (50 lessons authentic).",
+        "[" + now + "] INFO: SRS Ebbinghaus Scheduler active. Active worker ID: srs-worker-01.",
+        "[" + now + "] TRACE: Language state set to '" + lang + "'. UI components localized.",
+        "[" + now + "] SUCCESS: All system logs and communication telemetry captured cleanly."
       ];
       setLogs(initialLogs);
     }
@@ -37,8 +37,8 @@ export const LogFloatingModal: React.FC<LogFloatingModalProps> = ({ isOpen, lang
   const logText = logs.join('\n');
 
   const handleCopy = () => {
-    if (typeof window !== 'undefined' && navigator && navigator.clipboard) {
-      navigator.clipboard.writeText(logText);
+    if (typeof window !== 'undefined' && window.navigator && window.navigator.clipboard) {
+      window.navigator.clipboard.writeText(logText);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
@@ -48,7 +48,8 @@ export const LogFloatingModal: React.FC<LogFloatingModalProps> = ({ isOpen, lang
     if (typeof window !== 'undefined') {
       const printWindow = window.open('', '_blank');
       if (printWindow) {
-        printWindow.document.write('<html><head><title>System Log Telemetry - ILE VAK Coach</title><style>body { font-family: monospace; padding: 20px; white-space: pre-wrap; background: #fafafa; } h2 { font-family: sans-serif; color: #ea580c; }</style></head><body><h2>ILE VAK Coach Telemetry & Communication Logs</h2><hr /><div>' + logText.replace(/\n/g, '<br />') + '</div></body></html>');
+        const html = '<html><head><title>System Log Telemetry - ILE VAK Coach</title><style>body { font-family: monospace; padding: 20px; white-space: pre-wrap; background: #fafafa; } h2 { font-family: sans-serif; color: #ea580c; }</style></head><body><h2>ILE VAK Coach Telemetry & Communication Logs</h2><hr /><div>' + logText.replace(/\n/g, '<br />') + '</div></body></html>';
+        printWindow.document.write(html);
         printWindow.document.close();
         printWindow.print();
       }
