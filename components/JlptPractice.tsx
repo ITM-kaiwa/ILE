@@ -168,6 +168,7 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
           </div>
         )}
       </div>
+      </>
       )}
     </div>
   );

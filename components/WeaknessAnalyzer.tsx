@@ -75,6 +75,8 @@ export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({ vakType, wea
           ))}
         </div>
       )}
+      </>
+      )}
     </div>
   );
 };
