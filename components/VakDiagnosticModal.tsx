@@ -52,7 +52,11 @@ export const VakDiagnosticModal: React.FC<VakDiagnosticModalProps> = ({
     if (currentIndex + 1 < total) {
       setCurrentIndex((prev) => prev + 1);
     } else {
-      const res = calculateVakResult(updated);
+      const formattedAnswers = Object.entries(updated).map(([questionId, selectedType]) => ({
+        questionId,
+        selectedType,
+      }));
+      const res = calculateVakResult(formattedAnswers);
       setResult(res);
     }
   };
@@ -163,19 +167,19 @@ export const VakDiagnosticModal: React.FC<VakDiagnosticModalProps> = ({
                   <div className="p-3 rounded-xl bg-indigo-50 border border-indigo-200">
                     <span className="text-xs text-indigo-700 block font-semibold">視覚 (V)</span>
                     <span className="text-lg font-bold text-indigo-900">
-                      {result.percentages.visual}%
+                      {Math.round((result.scores.visual / total) * 100)}%
                     </span>
                   </div>
                   <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200">
                     <span className="text-xs text-emerald-700 block font-semibold">聴覚 (A)</span>
                     <span className="text-lg font-bold text-emerald-900">
-                      {result.percentages.auditory}%
+                      {Math.round((result.scores.auditory / total) * 100)}%
                     </span>
                   </div>
                   <div className="p-3 rounded-xl bg-orange-50 border border-orange-200">
                     <span className="text-xs text-orange-700 block font-semibold">身体感覚 (K)</span>
                     <span className="text-lg font-bold text-orange-900">
-                      {result.percentages.kinesthetic}%
+                      {Math.round((result.scores.kinesthetic / total) * 100)}%
                     </span>
                   </div>
                 </div>
