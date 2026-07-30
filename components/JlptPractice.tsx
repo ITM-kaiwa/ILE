@@ -37,7 +37,6 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
       onRecordWeakness({
         category: currentQ.category,
         categoryName: currentQ.categoryName,
-        wrongCount: 1,
         questionSnippet: currentQ.question,
         userAnswer: currentQ.options[selectedIndex],
         correctAnswer: currentQ.options[currentQ.correctIndex],
