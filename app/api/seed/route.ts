@@ -12,7 +12,7 @@ export async function GET() {
     if (KANA_CARDS && KANA_CARDS.length > 0) {
       const kanaData = KANA_CARDS.map(k => ({
         type: k.type,
-        character: k.character,
+        character: k.kana,
         romaji: k.romaji
       }));
       
