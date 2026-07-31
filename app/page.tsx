@@ -259,7 +259,7 @@ export default function Home() {
             {activeTab === 'learn' && (
           <>
             <VakContentRenderer vakType={currentVak} />
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div id="jlpt-practice-section" className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <JlptPractice onRecordWeakness={handleRecordWeakness} lang={lang} />
               <WeaknessAnalyzer vakType={currentVak} weaknessRecords={weaknessRecords} lang={lang} />
             </div>
@@ -290,7 +290,7 @@ export default function Home() {
 
         {/* Section 3: Google Calendar & SRS Review Manager */}
         {user && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div id="jlpt-practice-section" className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <CalendarScheduler vakType={currentVak} lang={lang} />
           <ReviewManager lang={lang} />
         </div>

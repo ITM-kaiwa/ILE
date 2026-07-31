@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
-import { QuestionCategory, WeaknessRecord, JlptLevel } from '@/lib/types';
+import React, { useState, useEffect } from 'react';
+import { QuestionCategory, WeaknessRecord, JlptLevel, JlptQuestion } from '@/lib/types';
 import { Language, getTranslation } from '@/lib/i18n';
-import { JLPT_N5_QUESTIONS } from '@/data/jlpt-n5-questions';
-import { JLPT_N4_QUESTIONS } from '@/data/jlpt-n4-questions';
+import { supabase } from '@/lib/supabase';
 import { BookOpen, CheckCircle, XCircle, RefreshCw , ChevronDown, ChevronUp } from 'lucide-react';
 
 interface JlptPracticeProps {
@@ -13,7 +12,6 @@ interface JlptPracticeProps {
 }
 
 export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, lang = 'ja' }) => {
-  const [selectedLevel, setSelectedLevel] = useState<JlptLevel>('N5');
   const [currentIdx, setCurrentIdx] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -22,7 +20,22 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
   const [isExpanded, setIsExpanded] = useState(false);
   const isVi = lang === 'vi';
 
-  const questions = selectedLevel === 'N5' ? JLPT_N5_QUESTIONS : JLPT_N4_QUESTIONS;
+  const [allQuestions, setAllQuestions] = useState<JlptQuestion[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      const { data, error } = await supabase.from('jlpt_questions').select('*');
+      if (!error && data) {
+        setAllQuestions(data as JlptQuestion[]);
+      }
+      setIsLoading(false);
+    };
+    fetchQuestions();
+  }, []);
+
+  const [selectedLevel, setSelectedLevel] = useState<JlptLevel>('N5');
+  const questions = allQuestions.filter(q => q.level === selectedLevel);
   const currentQ = questions[currentIdx] || questions[0];
 
   const handleSelect = (index: number) => {
@@ -100,7 +113,11 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
       </div>
       {isExpanded && (
       <>
-
+      {isLoading ? (
+        <div className="py-12 flex justify-center"><div className="w-8 h-8 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div></div>
+      ) : questions.length === 0 ? (
+        <div className="py-12 text-center text-slate-500">No questions found</div>
+      ) : (
       <div className="space-y-4">
         <div className="flex items-center justify-between text-xs">
           <span className="font-mono font-bold text-orange-700">
@@ -177,6 +194,7 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
           </div>
         )}
       </div>
+      )}
       </>
       )}
     </div>

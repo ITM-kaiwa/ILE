@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { VakType } from '@/data/vak-questions';
 import { GrammarCard, JlptLevel } from '@/lib/types';
 import { Language, getTranslation } from '@/lib/i18n';
-import { getGrammarCardsByLevel } from '@/data/grammar-cards';
-import { BookOpen, ExternalLink, Eye, Volume2, Hand , ChevronDown, ChevronUp } from 'lucide-react';
+import { supabase } from '@/lib/supabase';
+import { processReview } from '@/lib/srs';
+import { BookOpen, ExternalLink, Eye, Volume2, Hand , ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
 
 interface GrammarCardsSectionProps {
   vakType: VakType;
@@ -16,8 +17,27 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
   const t = getTranslation(lang);
   const [isExpanded, setIsExpanded] = useState(false);
 
+  const [allCards, setAllCards] = useState<GrammarCard[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    const fetchCards = async () => {
+      const { data, error } = await supabase.from('grammar_cards').select('*');
+      if (!error && data) {
+        setAllCards(data as GrammarCard[]);
+      }
+      setIsLoading(false);
+    };
+    fetchCards();
+  }, []);
+
   const [level, setLevel] = useState<JlptLevel>('N5');
-  const cards = getGrammarCardsByLevel(level);
+  const cards = allCards.filter(c => c.level === level);
   const [selectedCardId, setSelectedCardId] = useState<string>(cards[0]?.id || 'card_n5_1');
 
   const activeCard = cards.find((c) => c.id === selectedCardId) || cards[0];
@@ -91,6 +111,9 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
       </div>
       {isExpanded && (
       <>
+      {isLoading ? (
+        <div className="py-12 flex justify-center"><div className="w-8 h-8 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div></div>
+      ) : (
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="space-y-2">
           <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
@@ -157,6 +180,7 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
           </div>
         </div>
       </div>
+      )}
       </>
       )}
     </div>
