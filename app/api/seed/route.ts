@@ -23,11 +23,11 @@ export async function GET() {
     // 2. Seed Kanji Cards
     if (KANJI_CARDS && KANJI_CARDS.length > 0) {
       const kanjiData = KANJI_CARDS.map(k => ({
-        jlpt_level: k.jlptLevel || 'N5',
+        jlpt_level: k.level || 'N5',
         kanji: k.kanji,
         onyomi: k.onyomi,
         kunyomi: k.kunyomi,
-        meaning_vi: k.meaning_vi,
+        meaning_vi: k.meaningVn,
         examples: k.examples
       }));
 
@@ -43,11 +43,11 @@ export async function GET() {
     if (MINNA_VOCABULARY_CARDS && MINNA_VOCABULARY_CARDS.length > 0) {
       const vocabData = MINNA_VOCABULARY_CARDS.map(v => ({
         jlpt_level: 'N5', // Minna is roughly N5/N4, setting default
-        lesson: v.lesson || 'unknown',
+        lesson: v.lesson ? v.lesson.toString() : 'unknown',
         word: v.word,
         reading: v.reading,
-        meaning_vi: v.meaning_vi,
-        category: v.category || 'unknown'
+        meaning_vi: v.meaningVn,
+        category: v.partOfSpeech || 'unknown'
       }));
 
       for (let i = 0; i < vocabData.length; i += 100) {
