@@ -70,7 +70,7 @@ export const VakDiagnosticModal: React.FC<VakDiagnosticModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md">
-      <div className="relative w-full max-w-2xl bg-[#FFFDF9] border border-amber-200 rounded-3xl shadow-2xl overflow-hidden">
+      <div className="relative w-full max-w-2xl max-h-[90vh] flex flex-col bg-[#FFFDF9] border border-amber-200 rounded-3xl shadow-2xl overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-amber-100 bg-amber-50/50">
           <div className="flex items-center space-x-2">
@@ -88,7 +88,7 @@ export const VakDiagnosticModal: React.FC<VakDiagnosticModalProps> = ({
         </div>
 
         {/* Content */}
-        <div className="p-6">
+        <div className="p-6 overflow-y-auto">
           {!result ? (
             <div>
               {/* Progress bar */}
