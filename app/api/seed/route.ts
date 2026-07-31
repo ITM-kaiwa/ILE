@@ -13,7 +13,10 @@ export async function GET() {
       const kanaData = KANA_CARDS.map(k => ({
         type: k.type,
         character: k.kana,
-        romaji: k.romaji
+        romaji: k.romaji,
+        group_name: k.group || null,
+        mnemonic_vi: k.mnemonicVn || null,
+        vak_help: k.vakHelp || null
       }));
       
       const { error } = await supabase.from('kana_cards').insert(kanaData);
@@ -28,7 +31,12 @@ export async function GET() {
         onyomi: k.onyomi,
         kunyomi: k.kunyomi,
         meaning_vi: k.meaningVn,
-        examples: k.examples
+        meaning_en: k.meaningEn || null,
+        stroke_count: k.strokeCount || null,
+        langoal_url: k.langoalUrl || null,
+        nihongokyoshi_url: k.nihongokyoshiUrl || null,
+        examples: k.examples || null,
+        vak_help: k.vakHelp || null
       }));
 
       // Split into chunks of 100 to avoid request size limits
@@ -46,8 +54,15 @@ export async function GET() {
         lesson: v.lesson ? v.lesson.toString() : 'unknown',
         word: v.word,
         reading: v.reading,
+        romaji: v.romaji || null,
         meaning_vi: v.meaningVn,
-        category: v.partOfSpeech || 'unknown'
+        meaning_en: v.meaningEn || null,
+        category: v.partOfSpeech || 'unknown',
+        category_name: v.partOfSpeechName || null,
+        semantic_category: v.semanticCategory || null,
+        semantic_category_name: v.semanticCategoryName || null,
+        vnjpclub_url: v.vnjpclubUrl || null,
+        vak_help: v.vakHelp || null
       }));
 
       for (let i = 0; i < vocabData.length; i += 100) {
