@@ -1,11 +1,13 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
-import { MINNA_VOCAB } from '@/data/minna-vocab';
-import { KANJI_CARDS } from '@/data/kanjiCards';
-import { KANA_CARDS } from '@/data/kanaCards';
+import { MINNA_VOCABULARY_CARDS } from '@/data/minna-vocabulary';
+import { KANJI_CARDS } from '@/data/kanji-cards';
+import { HIRAGANA_CARDS, KATAKANA_CARDS } from '@/data/kana-cards';
 
 export async function GET() {
   try {
+    const KANA_CARDS = [...HIRAGANA_CARDS, ...KATAKANA_CARDS];
+
     // 1. Seed Kana Cards
     if (KANA_CARDS && KANA_CARDS.length > 0) {
       const kanaData = KANA_CARDS.map(k => ({
@@ -21,7 +23,7 @@ export async function GET() {
     // 2. Seed Kanji Cards
     if (KANJI_CARDS && KANJI_CARDS.length > 0) {
       const kanjiData = KANJI_CARDS.map(k => ({
-        jlpt_level: k.jlptLevel,
+        jlpt_level: k.jlptLevel || 'N5',
         kanji: k.kanji,
         onyomi: k.onyomi,
         kunyomi: k.kunyomi,
@@ -38,14 +40,14 @@ export async function GET() {
     }
 
     // 3. Seed Vocab Cards (Minna)
-    if (MINNA_VOCAB && MINNA_VOCAB.length > 0) {
-      const vocabData = MINNA_VOCAB.map(v => ({
+    if (MINNA_VOCABULARY_CARDS && MINNA_VOCABULARY_CARDS.length > 0) {
+      const vocabData = MINNA_VOCABULARY_CARDS.map(v => ({
         jlpt_level: 'N5', // Minna is roughly N5/N4, setting default
-        lesson: v.lesson,
+        lesson: v.lesson || 'unknown',
         word: v.word,
         reading: v.reading,
         meaning_vi: v.meaning_vi,
-        category: v.category
+        category: v.category || 'unknown'
       }));
 
       for (let i = 0; i < vocabData.length; i += 100) {
