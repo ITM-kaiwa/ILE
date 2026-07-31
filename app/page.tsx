@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { supabase } from '@/lib/supabase';
 import { VakType, VakResult } from '@/data/vak-questions';
 import { WeaknessRecord } from '@/lib/types';
 import { Language, getTranslation } from '@/lib/i18n';
@@ -31,6 +32,34 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<'learn' | 'kana' | 'vocab' | 'grammar' | 'kanji' | 'review' | null>(null);
   const [isHeroVisible, setIsHeroVisible] = useState(true);
 
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchUserProfile = async (userId: string) => {
+      const { data } = await supabase.from('users').select('vak_type').eq('id', userId).single();
+      if (data?.vak_type && data.vak_type !== 'untested') {
+        setCurrentVak(data.vak_type as VakType);
+      }
+    };
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        setUser(session.user);
+        fetchUserProfile(session.user.id);
+      }
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        setUser(session.user);
+        fetchUserProfile(session.user.id);
+      } else {
+        setUser(null);
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, []);
+
   const [diagnosticModal, setDiagnosticModal] = useState<{
     isOpen: boolean;
     mode: 'quick' | 'detailed';
@@ -41,9 +70,12 @@ export default function Home() {
 
   const [isLogModalOpen, setIsLogModalOpen] = useState<boolean>(false);
 
-  const handleCompleteDiagnostic = (result: VakResult) => {
+  const handleCompleteDiagnostic = async (result: VakResult) => {
     setCurrentVak(result.primaryVak);
     setVakResult(result);
+    if (user) {
+      await supabase.from('users').update({ vak_type: result.primaryVak }).eq('id', user.id);
+    }
   };
 
   const handleRecordWeakness = (newRecord: WeaknessRecord) => {
@@ -70,7 +102,7 @@ export default function Home() {
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#FFF9F2] via-[#FFF3E4] to-[#F7EFE5] p-8 border border-amber-200/80 shadow-md">
           <button
             onClick={() => setIsHeroVisible(false)}
-            className="absolute top-4 right-4 z-20 p-2 rounded-full bg-[#FFFDF9]/60 hover:bg-[#FFFDF9] text-amber-900/60 hover:text-amber-900 transition backdrop-blur-sm"
+            className="absolute top-4 right-4 z-20 p-2 rounded-full bg-stone-200/80 hover:bg-stone-300 text-stone-700 hover:text-stone-900 transition backdrop-blur-sm shadow-sm border border-stone-300/50"
           >
             <X className="w-5 h-5" />
           </button>
