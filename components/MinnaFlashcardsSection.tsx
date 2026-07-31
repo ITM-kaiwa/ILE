@@ -1,17 +1,27 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { supabase } from '@/lib/supabase';
 import { VakType } from '@/data/vak-questions';
 import { Language, getTranslation } from '@/lib/i18n';
-import {
-  MINNA_VOCABULARY_CARDS,
-  MinnaVocabCard,
-  PartOfSpeech,
-  SemanticCategory,
-  getVocabByLesson,
-  getVocabByPartOfSpeech,
-  getVocabBySemanticCategory,
-} from '@/data/minna-vocabulary';
+
+export type PartOfSpeech = 'noun' | 'verb' | 'adjective-i' | 'adjective-na' | 'adverb' | 'expression' | 'particle';
+export type SemanticCategory = 'people' | 'greeting' | 'school' | 'food' | 'time' | 'place' | 'action' | 'nature' | 'object' | 'adjective';
+export interface MinnaVocabCard {
+  id: string;
+  lesson: number;
+  word: string;
+  reading: string;
+  romaji: string;
+  meaningVn: string;
+  meaningEn: string;
+  partOfSpeech: PartOfSpeech;
+  partOfSpeechName: string;
+  semanticCategory: SemanticCategory;
+  semanticCategoryName: string;
+  vnjpclubUrl: string;
+  vakHelp: { visual: string; auditory: string; kinesthetic: string; };
+}
 import { ExternalLink, Volume2, Eye, Hand, Filter, Layers, Tag, Grid, ArrowLeft, ArrowRight, RotateCw , ChevronDown, ChevronUp } from 'lucide-react';
 
 interface MinnaFlashcardsSectionProps {
@@ -27,6 +37,38 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
   const [selectedLesson, setSelectedLesson] = useState<number>(1);
   const [selectedCategory, setSelectedCategory] = useState<SemanticCategory>('people');
   const [selectedPos, setSelectedPos] = useState<PartOfSpeech>('noun');
+
+  const [dbData, setDbData] = useState<MinnaVocabCard[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (isExpanded && dbData.length === 0 && !isLoading) {
+      const fetchData = async () => {
+        setIsLoading(true);
+        const { data, error } = await supabase.from('vocab_cards').select('*');
+        if (data && !error) {
+          const mapped: MinnaVocabCard[] = data.map(item => ({
+            id: item.id,
+            lesson: parseInt(item.lesson) || 1,
+            word: item.word || '',
+            reading: item.reading || '',
+            romaji: item.romaji || '',
+            meaningVn: item.meaning_vi || '',
+            meaningEn: item.meaning_en || '',
+            partOfSpeech: (item.category as PartOfSpeech) || 'noun',
+            partOfSpeechName: item.category_name || '',
+            semanticCategory: (item.semantic_category as SemanticCategory) || 'object',
+            semanticCategoryName: item.semantic_category_name || '',
+            vnjpclubUrl: item.vnjpclub_url || '',
+            vakHelp: item.vak_help || { visual: '', auditory: '', kinesthetic: '' }
+          }));
+          setDbData(mapped);
+        }
+        setIsLoading(false);
+      };
+      fetchData();
+    }
+  }, [isExpanded, dbData.length, isLoading]);
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
@@ -193,8 +235,14 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
       </div>
       {isExpanded && (
       <>
+      {isLoading && (
+        <div className="flex justify-center items-center py-12">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
+          <span className="ml-3 text-sm font-bold text-indigo-600">Loading Vocabulary from DB...</span>
+        </div>
+      )}
       {/* Interactive Card */}
-      {list.length > 0 && currentCard ? (
+      {!isLoading && list.length > 0 && currentCard ? (
         <div className="space-y-6">
           <div className="flex items-center justify-between text-xs text-slate-500">
             <span>{isVi ? `Thẻ từ ${currentIndex + 1} / ${list.length}` : `カード ${currentIndex + 1} / ${list.length}`}</span>

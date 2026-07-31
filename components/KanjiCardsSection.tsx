@@ -1,10 +1,25 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { supabase } from '@/lib/supabase';
 import { VakType } from '@/data/vak-questions';
 import { JlptLevel } from '@/lib/types';
 import { Language, getTranslation } from '@/lib/i18n';
-import { KANJI_CARDS, getKanjiByLevel, KanjiCard } from '@/data/kanji-cards';
+
+export interface KanjiCard {
+  id: string;
+  level: JlptLevel;
+  kanji: string;
+  onyomi: string;
+  kunyomi: string;
+  meaningVn: string;
+  meaningEn: string;
+  strokeCount: number;
+  examples: string[];
+  langoalUrl: string;
+  nihongokyoshiUrl: string;
+  vakHelp: { visual: string; auditory: string; kinesthetic: string; };
+}
 import { ExternalLink, Volume2, Eye, Hand, Layers, RotateCw, ArrowLeft, ArrowRight , ChevronDown, ChevronUp } from 'lucide-react';
 
 interface KanjiCardsSectionProps {
@@ -17,7 +32,38 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
   const [isExpanded, setIsExpanded] = useState(false);
 
   const [level, setLevel] = useState<JlptLevel>('N5');
-  const cards = getKanjiByLevel(level);
+  const [dbData, setDbData] = useState<KanjiCard[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (isExpanded && dbData.length === 0 && !isLoading) {
+      const fetchData = async () => {
+        setIsLoading(true);
+        const { data, error } = await supabase.from('kanji_cards').select('*');
+        if (data && !error) {
+          const mapped: KanjiCard[] = data.map(item => ({
+            id: item.id,
+            level: item.jlpt_level as JlptLevel,
+            kanji: item.kanji || '',
+            onyomi: item.onyomi || '',
+            kunyomi: item.kunyomi || '',
+            meaningVn: item.meaning_vi || '',
+            meaningEn: item.meaning_en || '',
+            strokeCount: item.stroke_count || 0,
+            examples: item.examples || [],
+            langoalUrl: item.langoal_url || '',
+            nihongokyoshiUrl: item.nihongokyoshi_url || '',
+            vakHelp: item.vak_help || { visual: '', auditory: '', kinesthetic: '' }
+          }));
+          setDbData(mapped);
+        }
+        setIsLoading(false);
+      };
+      fetchData();
+    }
+  }, [isExpanded, dbData.length, isLoading]);
+
+  const cards = dbData.filter(c => c.level === level);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
 
@@ -124,8 +170,14 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
       </div>
       {isExpanded && (
       <>
+      {isLoading && (
+        <div className="flex justify-center items-center py-12">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600"></div>
+          <span className="ml-3 text-sm font-bold text-emerald-600">Loading Kanji from DB...</span>
+        </div>
+      )}
       {/* Main Flashcard Container */}
-      {cards.length > 0 && currentCard ? (
+      {!isLoading && cards.length > 0 && currentCard ? (
         <div className="space-y-6">
           <div className="flex items-center justify-between text-xs text-slate-500">
             <span>{isVi ? `Thẻ Kanji ${currentIndex + 1} / ${cards.length} (${currentCard.level})` : `漢字カード ${currentIndex + 1} / ${cards.length} (${currentCard.level})`}</span>

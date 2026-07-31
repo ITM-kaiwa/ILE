@@ -1,10 +1,21 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { supabase } from '@/lib/supabase';
 import { VakType } from '@/data/vak-questions';
 import { Language, getTranslation } from '@/lib/i18n';
-import { KanaCard, KanaType, HIRAGANA_CARDS, KATAKANA_CARDS } from '@/data/kana-cards';
 import { Volume2, Eye, Hand, RotateCw, ArrowLeft, ArrowRight, Sparkles , ChevronDown, ChevronUp } from 'lucide-react';
+
+export type KanaType = 'hiragana' | 'katakana';
+export interface KanaCard {
+  id: string;
+  type: KanaType;
+  kana: string;
+  romaji: string;
+  group: string;
+  mnemonicVn: string;
+  vakHelp: { visual: string; auditory: string; kinesthetic: string; };
+}
 
 interface KanaCardsSectionProps {
   vakType: VakType;
@@ -16,7 +27,33 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
   const [isExpanded, setIsExpanded] = useState(false);
 
   const [kanaType, setKanaType] = useState<KanaType>('hiragana');
-  const cards = kanaType === 'hiragana' ? HIRAGANA_CARDS : KATAKANA_CARDS;
+  const [dbData, setDbData] = useState<KanaCard[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (isExpanded && dbData.length === 0 && !isLoading) {
+      const fetchData = async () => {
+        setIsLoading(true);
+        const { data, error } = await supabase.from('kana_cards').select('*');
+        if (data && !error) {
+          const mapped: KanaCard[] = data.map(item => ({
+            id: item.id,
+            type: item.type as KanaType,
+            kana: item.character || '',
+            romaji: item.romaji || '',
+            group: item.group_name || '',
+            mnemonicVn: item.mnemonic_vi || '',
+            vakHelp: item.vak_help || { visual: '', auditory: '', kinesthetic: '' }
+          }));
+          setDbData(mapped);
+        }
+        setIsLoading(false);
+      };
+      fetchData();
+    }
+  }, [isExpanded, dbData.length, isLoading]);
+
+  const cards = dbData.filter(c => c.type === kanaType);
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
@@ -113,8 +150,14 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
       </div>
       {isExpanded && (
       <>
+      {isLoading && (
+        <div className="flex justify-center items-center py-12">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-orange-600"></div>
+          <span className="ml-3 text-sm font-bold text-orange-600">Loading Kana from DB...</span>
+        </div>
+      )}
       {/* Main Card UI */}
-      {cards.length > 0 && currentCard ? (
+      {!isLoading && cards.length > 0 && currentCard ? (
         <div className="space-y-6">
           <div className="flex items-center justify-between text-xs text-slate-500 font-semibold">
             <span>{isVi ? `Thẻ Kana ${currentIndex + 1} / ${cards.length} (${currentCard.group})` : `仮名カード ${currentIndex + 1} / ${cards.length} (${currentCard.group})`}</span>
