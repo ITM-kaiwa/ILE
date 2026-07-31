@@ -55,7 +55,7 @@ export const TRANSLATIONS = {
     "openSite": "サイトを開く",
     "selectLang": "言語切替 / Ngôn ngữ",
     "viewModule": "展開する",
-    "collapseModule": "折りたたむ"
+    "collapseModule": "たたむ"
   },
   "vi": {
     "appName": "HLV ILE VAK",
