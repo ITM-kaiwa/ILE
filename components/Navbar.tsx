@@ -52,19 +52,19 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
     switch (currentVak) {
       case 'visual':
-        return <span className="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-600 text-white shadow-sm">{t.visualLabel}</span>;
+        return <span className="px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-semibold rounded-full bg-indigo-600 text-white shadow-sm truncate max-w-[90px] sm:max-w-none">{t.visualLabel}</span>;
       case 'auditory':
-        return <span className="px-3 py-1 text-xs font-semibold rounded-full bg-emerald-600 text-white shadow-sm">{t.auditoryLabel}</span>;
+        return <span className="px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-semibold rounded-full bg-emerald-600 text-white shadow-sm truncate max-w-[90px] sm:max-w-none">{t.auditoryLabel}</span>;
       case 'kinesthetic':
-        return <span className="px-3 py-1 text-xs font-semibold rounded-full bg-orange-600 text-white shadow-sm font-sans">{t.kinestheticLabel}</span>;
+        return <span className="px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-semibold rounded-full bg-orange-600 text-white shadow-sm font-sans truncate max-w-[90px] sm:max-w-none">{t.kinestheticLabel}</span>;
     }
   };
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-amber-200/60 bg-[#FFFDF9]/90 backdrop-blur-md shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 min-h-16 flex items-center justify-between gap-2">
         {/* Logo & Version v2.8β with Interactive Brain Icon for Telemetry Log */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center gap-2 sm:space-x-3">
           <button
             onClick={onOpenLog}
             title="クリックしてシステム通信ログを表示 (Mở nhật ký hệ thống)"
@@ -74,19 +74,19 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
           <div>
             <div className="flex items-center space-x-2">
-              <h1 className="font-bold text-lg text-slate-800 leading-none tracking-tight">
+              <h1 className="font-bold text-base sm:text-lg text-slate-800 leading-none tracking-tight">
                 {t.appName}
               </h1>
               <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-orange-100 text-orange-800 border border-orange-300">
                 v2.8β
               </span>
             </div>
-            <p className="text-xs text-slate-500 mt-0.5">{t.subTitle}</p>
+            <p className="hidden sm:block text-xs text-slate-500 mt-0.5">{t.subTitle}</p>
           </div>
         </div>
 
         {/* Right side controls: Language Selector Dropdown with Flag icons */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center gap-2 sm:space-x-3">
           {/* Auth Button */}
           {user ? (
             <button

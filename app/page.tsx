@@ -99,16 +99,16 @@ export default function Home() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
         {/* Hero Header */}
         {isHeroVisible && (
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#FFF9F2] via-[#FFF3E4] to-[#F7EFE5] p-8 border border-amber-200/80 shadow-md">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#FFF9F2] via-[#FFF3E4] to-[#F7EFE5] p-5 sm:p-8 border border-amber-200/80 shadow-md">
           <button
             onClick={() => setIsHeroVisible(false)}
             className="absolute top-4 right-4 z-20 p-2 rounded-full bg-stone-200/80 hover:bg-stone-300 text-stone-700 hover:text-stone-900 transition backdrop-blur-sm shadow-sm border border-stone-300/50"
           >
             <X className="w-5 h-5" />
           </button>
-          <div className="relative z-10 max-w-3xl space-y-4">
-            <div className="flex items-center space-x-2">
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-800 border border-orange-300">
+          <div className="relative z-10 max-w-3xl space-y-4 pr-8 sm:pr-0">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-800 border border-orange-300 inline-block">
                 VAK-Adaptive Language Learning Coach
               </span>
               <span className="px-2.5 py-0.5 text-xs font-bold rounded-full bg-orange-600 text-white shadow-sm">
