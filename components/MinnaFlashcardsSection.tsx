@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
+import { processReview } from '@/lib/srs';
 import { VakType } from '@/data/vak-questions';
 import { Language, getTranslation } from '@/lib/i18n';
 
@@ -40,6 +41,12 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
 
   const [dbData, setDbData] = useState<MinnaVocabCard[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState<any>(null);
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+  }, []);
 
   useEffect(() => {
     if (isExpanded && dbData.length === 0 && !isLoading) {
@@ -83,6 +90,13 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
   }
 
   const currentCard = list[currentIndex] || list[0];
+
+  const handleReview = async (isCorrect: boolean) => {
+    if (user && currentCard) {
+      processReview(user.id, 'vocab', currentCard.id, isCorrect).catch(console.error);
+    }
+    handleNext();
+  };
 
   const handleNext = () => {
     setIsFlipped(false);
@@ -320,30 +334,32 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
             </p>
           </div>
 
-          <div className="flex items-center justify-between pt-2">
-            <button
-              onClick={handlePrev}
-              className="px-5 py-2.5 rounded-xl bg-amber-100/80 hover:bg-amber-200 text-slate-800 font-medium text-sm transition flex items-center space-x-1.5 border border-amber-300"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>{isVi ? 'Từ trước' : '前の単語'}</span>
-            </button>
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-4 border-t border-amber-100 mt-2">
+              <button
+                onClick={() => handleReview(false)}
+                className="flex-1 px-4 py-3 rounded-xl bg-rose-100 hover:bg-rose-200 text-rose-800 font-bold text-sm transition flex items-center justify-center space-x-1.5 border border-rose-300"
+              >
+                <span>{isVi ? '❌ Chưa thuộc' : '❌ 覚えてない'}</span>
+              </button>
 
-            <button
-              onClick={() => setIsFlipped(!isFlipped)}
-              className="px-4 py-2.5 rounded-xl bg-orange-100 hover:bg-orange-200 text-orange-900 text-sm font-bold border border-orange-300 transition"
-            >
-              {isVi ? 'Lật thẻ 🔄' : 'カードをめくる 🔄'}
-            </button>
+              <button
+                onClick={() => setIsFlipped(!isFlipped)}
+                className="flex-none px-6 py-3 rounded-xl bg-orange-100 hover:bg-orange-200 text-orange-950 text-sm font-bold border border-orange-300 transition"
+              >
+                {isVi ? '🔄 Lật thẻ' : '🔄 めくる'}
+              </button>
 
-            <button
-              onClick={handleNext}
-              className="px-5 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-medium text-sm transition flex items-center space-x-1.5 shadow-sm"
-            >
-              <span>{isVi ? 'Từ tiếp theo' : '次の単語'}</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
+              <button
+                onClick={() => handleReview(true)}
+                className="flex-1 px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition flex items-center justify-center space-x-1.5 shadow-sm"
+              >
+                <span>{isVi ? '✅ Đã thuộc' : '✅ 覚えた'}</span>
+              </button>
+            </div>
+            <div className="flex justify-between mt-4 text-xs text-slate-400">
+              <button onClick={handlePrev} className="hover:text-slate-600 underline">{isVi ? 'Thẻ trước' : '前のカード'}</button>
+              <button onClick={handleNext} className="hover:text-slate-600 underline">{isVi ? 'Thẻ tiếp theo' : '次のカード'}</button>
+            </div>
         </div>
       ) : null}
       </>
