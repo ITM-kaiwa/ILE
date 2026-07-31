@@ -73,13 +73,13 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
 
-  let list: MinnaVocabCard[] = MINNA_VOCABULARY_CARDS;
+  let list: MinnaVocabCard[] = dbData;
   if (filterMode === 'lesson') {
-    list = getVocabByLesson(selectedLesson);
+    list = dbData.filter(v => v.lesson === selectedLesson);
   } else if (filterMode === 'category') {
-    list = getVocabBySemanticCategory(selectedCategory);
+    list = dbData.filter(v => v.semanticCategory === selectedCategory);
   } else if (filterMode === 'pos') {
-    list = getVocabByPartOfSpeech(selectedPos);
+    list = dbData.filter(v => v.partOfSpeech === selectedPos);
   }
 
   const currentCard = list[currentIndex] || list[0];
