@@ -36,6 +36,14 @@ export default function Home() {
 
   useEffect(() => {
     const fetchUserProfile = async (userId: string) => {
+      const pendingVak = localStorage.getItem('pending_vak_type');
+      if (pendingVak) {
+        await supabase.from('users').update({ vak_type: pendingVak }).eq('id', userId);
+        localStorage.removeItem('pending_vak_type');
+        setCurrentVak(pendingVak as VakType);
+        return;
+      }
+      
       const { data } = await supabase.from('users').select('vak_type').eq('id', userId).single();
       if (data?.vak_type && data.vak_type !== 'untested') {
         setCurrentVak(data.vak_type as VakType);
@@ -75,6 +83,9 @@ export default function Home() {
     setVakResult(result);
     if (user) {
       await supabase.from('users').update({ vak_type: result.primaryVak }).eq('id', user.id);
+    } else {
+      localStorage.setItem('pending_vak_type', result.primaryVak);
+      window.location.href = '/login';
     }
   };
 
@@ -297,6 +308,7 @@ export default function Home() {
         mode={diagnosticModal.mode}
         onClose={() => setDiagnosticModal({ ...diagnosticModal, isOpen: false })}
         onComplete={handleCompleteDiagnostic}
+        isLoggedIn={!!user}
       />
 
       {/* System Telemetry & Communication Log Floating Modal */}

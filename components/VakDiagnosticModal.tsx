@@ -17,6 +17,7 @@ interface VakDiagnosticModalProps {
   mode: 'quick' | 'detailed';
   onClose: () => void;
   onComplete: (result: VakResult) => void;
+  isLoggedIn?: boolean;
 }
 
 export const VakDiagnosticModal: React.FC<VakDiagnosticModalProps> = ({
@@ -24,6 +25,7 @@ export const VakDiagnosticModal: React.FC<VakDiagnosticModalProps> = ({
   mode,
   onClose,
   onComplete,
+  isLoggedIn = false,
 }) => {
   const [questions, setQuestions] = useState<VakQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -189,7 +191,7 @@ export const VakDiagnosticModal: React.FC<VakDiagnosticModalProps> = ({
                 onClick={handleFinish}
                 className="w-full py-3.5 px-6 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-medium transition shadow-md"
               >
-                このタイプでAI学習を開始する
+                {isLoggedIn ? 'このタイプでAI学習を開始する' : '診断結果を保存して今すぐ登録する'}
               </button>
             </div>
           )}
