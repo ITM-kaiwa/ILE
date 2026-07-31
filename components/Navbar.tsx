@@ -1,6 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { supabase } from '@/lib/supabase';
+import type { User } from '@supabase/supabase-js';
 import { VakType } from '@/data/vak-questions';
 import { Language, getTranslation } from '@/lib/i18n';
 import { Sparkles, Brain, Globe } from 'lucide-react';
@@ -25,6 +28,19 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenLog,
 }) => {
   const t = getTranslation(lang);
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   const getVakBadge = () => {
     if (isHybrid && hybridLabel) {
@@ -71,6 +87,23 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Right side controls: Language Selector Dropdown with Flag icons */}
         <div className="flex items-center space-x-3">
+          {/* Auth Button */}
+          {user ? (
+            <button
+              onClick={() => supabase.auth.signOut()}
+              className="px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg border border-slate-200 transition"
+            >
+              Sign out
+            </button>
+          ) : (
+            <Link
+              href="/login"
+              className="px-3 py-1.5 text-xs font-bold text-orange-700 bg-orange-100 hover:bg-orange-200 rounded-lg border border-orange-300 transition"
+            >
+              Sign in
+            </Link>
+          )}
+
           {/* Flag Language Switcher Dropdown */}
           <div className="relative flex items-center space-x-1.5 bg-[#FAF7F2] p-1.5 rounded-xl border border-amber-300 shadow-inner">
             <Globe className="w-4 h-4 text-orange-600 ml-1" />
