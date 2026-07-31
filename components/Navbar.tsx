@@ -79,8 +79,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               onChange={(e) => onLanguageChange(e.target.value as Language)}
               className="bg-transparent text-xs font-bold text-slate-800 focus:outline-none cursor-pointer pr-1"
             >
-              <option value="ja">🇯🇵 日本語 (JP)</option>
-              <option value="vi">🇻🇳 Tiếng Việt (VN)</option>
+              <option value="ja">JP</option>
+              <option value="vi">VN</option>
             </select>
           </div>
 

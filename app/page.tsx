@@ -18,10 +18,10 @@ import { WeaknessAnalyzer } from '@/components/WeaknessAnalyzer';
 import { JlptPractice } from '@/components/JlptPractice';
 import { ExternalIntegrations } from '@/components/ExternalIntegrations';
 import { LogFloatingModal } from '@/components/LogFloatingModal';
-import { Sparkles, ArrowRight, BookOpen, RefreshCw, Layers } from 'lucide-react';
+import { Sparkles, ArrowRight, BookOpen, RefreshCw, Layers, X } from 'lucide-react';
 
 export default function Home() {
-  const [lang, setLang] = useState<Language>('ja');
+  const [lang, setLang] = useState<Language>('vi');
   const t = getTranslation(lang);
 
   const [currentVak, setCurrentVak] = useState<VakType>('visual');
@@ -29,6 +29,7 @@ export default function Home() {
   const [weaknessRecords, setWeaknessRecords] = useState<WeaknessRecord[]>([]);
 
   const [activeTab, setActiveTab] = useState<'learn' | 'kana' | 'vocab' | 'grammar' | 'kanji' | 'review' | null>(null);
+  const [isHeroVisible, setIsHeroVisible] = useState(true);
 
   const [diagnosticModal, setDiagnosticModal] = useState<{
     isOpen: boolean;
@@ -65,7 +66,14 @@ export default function Home() {
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
         {/* Hero Header */}
+        {isHeroVisible && (
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#FFF9F2] via-[#FFF3E4] to-[#F7EFE5] p-8 border border-amber-200/80 shadow-md">
+          <button
+            onClick={() => setIsHeroVisible(false)}
+            className="absolute top-4 right-4 z-20 p-2 rounded-full bg-[#FFFDF9]/60 hover:bg-[#FFFDF9] text-amber-900/60 hover:text-amber-900 transition backdrop-blur-sm"
+          >
+            <X className="w-5 h-5" />
+          </button>
           <div className="relative z-10 max-w-3xl space-y-4">
             <div className="flex items-center space-x-2">
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-800 border border-orange-300">
@@ -105,6 +113,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        )}
 
         {/* Main Navigation Tabs */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-2xl bg-[#FFFDF9] border border-amber-200/80 shadow-sm gap-3">
