@@ -18,9 +18,9 @@ export const TRANSLATIONS = {
     "vakVisual": "👁️ 視覚",
     "vakAuditory": "👂 聴覚",
     "vakKinesthetic": "✋ 身体感覚",
-    "visualLabel": "👁️ 視覚優位 (Visual)",
-    "auditoryLabel": "👂 聴覚優位 (Auditory)",
-    "kinestheticLabel": "✋ 身体感覚優位 (Kinesthetic)",
+    "visualLabel": "👁️ 視覚優位 (V)",
+    "auditoryLabel": "👂 聴覚優位 (A)",
+    "kinestheticLabel": "✋ 身体感覚優位 (K)",
     "jlptTitle": "JLPT N5 / N4 語彙・文法200問題集",
     "jlptSub": "問題 1 / 10",
     "checkAnswer": "回答を確認する",
@@ -54,7 +54,7 @@ export const TRANSLATIONS = {
     "extResourcesTitle": "おすすめ外部日本語学習リソース",
     "openSite": "サイトを開く",
     "selectLang": "言語切替 / Ngôn ngữ",
-    "viewModule": "展開する",
+    "viewModule": "展開",
     "collapseModule": "たたむ"
   },
   "vi": {
@@ -74,9 +74,9 @@ export const TRANSLATIONS = {
     "vakVisual": "👁️ Thị giác",
     "vakAuditory": "👂 Thính giác",
     "vakKinesthetic": "✋ Vận động",
-    "visualLabel": "👁️ Ưu thế Thị giác (Visual)",
-    "auditoryLabel": "👂 Ưu thế Thính giác (Auditory)",
-    "kinestheticLabel": "✋ Ưu thế Vận động (Kinesthetic)",
+    "visualLabel": "👁️ Ưu thế Thị giác (V)",
+    "auditoryLabel": "👂 Ưu thế Thính giác (A)",
+    "kinestheticLabel": "✋ Ưu thế Vận động (K)",
     "jlptTitle": "Bộ 200 câu hỏi Ngữ pháp & Từ vựng JLPT N5 / N4",
     "jlptSub": "Câu hỏi 1 / 10",
     "checkAnswer": "Xác nhận câu trả lời",
@@ -110,8 +110,8 @@ export const TRANSLATIONS = {
     "extResourcesTitle": "Tài nguyên Học tiếng Nhật Khuyên dùng",
     "openSite": "Mở trang web",
     "selectLang": "Ngôn ngữ / 言語切替",
-    "viewModule": "Mở rộng",
-    "collapseModule": "Thu gọn"
+    "viewModule": "mở",
+    "collapseModule": "đóng"
   }
 };
 

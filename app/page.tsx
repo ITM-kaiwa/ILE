@@ -109,7 +109,7 @@ export default function Home() {
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
         {/* Hero Header */}
-        {isHeroVisible && (
+        {!user && isHeroVisible && (
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#FFF9F2] via-[#FFF3E4] to-[#F7EFE5] p-5 sm:p-8 border border-amber-200/80 shadow-md">
           <button
             onClick={() => setIsHeroVisible(false)}
