@@ -148,6 +148,7 @@ export default function Home() {
         )}
 
         {/* Main Navigation Tabs */}
+        {user && (
         <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-2xl bg-[#FFFDF9] border border-amber-200/80 shadow-sm gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <button
@@ -239,9 +240,10 @@ export default function Home() {
             ))}
           </div>
         </div>
+        )}
 
         {/* Tab Content */}
-        {activeTab !== null && (
+        {user && activeTab !== null && (
           <div className="space-y-8 mb-8">
             {activeTab === 'learn' && (
           <>
@@ -276,13 +278,17 @@ export default function Home() {
         )}
 
         {/* Section 3: Google Calendar & SRS Review Manager */}
+        {user && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <CalendarScheduler vakType={currentVak} lang={lang} />
           <ReviewManager lang={lang} />
         </div>
+        )}
 
         {/* Section 4: ITM External App Integrations */}
-        <ExternalIntegrations lang={lang} />
+        {user && (
+          <ExternalIntegrations lang={lang} />
+        )}
       </main>
 
       {/* Diagnostic Modal */}
