@@ -48,7 +48,7 @@ Markdownのバッククォート \`\`\`json \`\`\` は使用せず、純粋なJS
   "keyVocabulary": [
     { "word": "文字列", "reading": "文字列", "meaning": "文字列" }
   ],
-  "visualDiagram": "文字列 (visualタイプの場合。単なるテキストではなく、Markdownのリストや表・太字・絵文字を駆使して、視覚的にわかりやすい構造・マインドマップ風の解説を出力してください。改行する場合は必ず \\n を使用してエスケープしてください)",
+  "visualDiagram": "文字列 (visualタイプの場合。単なるテキストではなく、必ずMermaid構文 (graph TD など) を用いてフロー図やマインドマップを出力してください。Mermaidのコードブロック (\\mermaid ... \\) は含めず、純粋なMermaidの定義文字列のみを出力してください。改行する場合は必ず \\n を使用してエスケープしてください)",
   "auditoryDialogue": [
     { "speaker": "文字列", "text": "文字列", "audioNote": "文字列" }
   ],

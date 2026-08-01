@@ -136,7 +136,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
                 : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'
             }`}
           >
-            あ あいうえお (Hiragana)
+            あいうえお (Hiragana)
           </button>
           <button
             onClick={() => {
@@ -150,7 +150,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
                 : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'
             }`}
           >
-            ア アイウエオ (Katakana)
+            アイウエオ (Katakana)
           </button>
           <button
             onClick={() => setIsExpanded(!isExpanded)}
