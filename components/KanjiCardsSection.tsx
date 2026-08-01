@@ -46,7 +46,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
     if (isExpanded && dbData.length === 0 && !isLoading) {
       const fetchData = async () => {
         setIsLoading(true);
-        const { data, error } = await supabase.from('kanji_cards').select('*');
+        const { data, error } = await supabase.from('kanji_cards').select('*').like('langoal_url', '%langoal.com%');
         if (data && !error) {
           const mapped: KanjiCard[] = data.map(item => ({
             id: item.id,
@@ -216,8 +216,8 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-orange-700 uppercase tracking-wider">
                     {isFlipped
-                      ? (isVi ? '🇻🇳 Ý nghĩa (Mặt sau)' : '🇻🇳 ベトナム語の意味 (Mặt sau)')
-                      : (isVi ? '🇯🇵 Tiếng Nhật (Mặt trước)' : '🇯🇵 漢字・読み方 (Mặt trước)')}
+                      ? (isVi ? 'Ý nghĩa (Mặt sau)' : 'ベトナム語の意味 (Mặt sau)')
+                      : (isVi ? 'Tiếng Nhật (Mặt trước)' : '漢字・読み方 (Mặt trước)')}
                   </span>
                   <button
                     onClick={(e) => {

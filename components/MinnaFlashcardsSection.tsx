@@ -52,7 +52,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
     if (isExpanded && dbData.length === 0 && !isLoading) {
       const fetchData = async () => {
         setIsLoading(true);
-        const { data, error } = await supabase.from('vocab_cards').select('*');
+        const { data, error } = await supabase.from('vocab_cards').select('*').not('word', 'like', '単語_%').limit(3000);
         if (data && !error) {
           const mapped: MinnaVocabCard[] = data.map(item => ({
             id: item.id,
@@ -277,8 +277,8 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-orange-600 uppercase tracking-wider">
                 {isFlipped
-                  ? (isVi ? '🇻🇳 Ý nghĩa Tiếng Việt (Mặt sau)' : '🇻🇳 ベトナム語の意味 (Mặt sau)')
-                  : (isVi ? '🇯🇵 Từ vựng Tiếng Nhật (Mặt trước)' : '🇯🇵 日本語単語 (Mặt trước)')}
+                  ? (isVi ? 'Ý nghĩa Tiếng Việt (Mặt sau)' : 'ベトナム語の意味 (Mặt sau)')
+                  : (isVi ? 'Từ vựng Tiếng Nhật (Mặt trước)' : '日本語単語 (Mặt trước)')}
               </span>
               <button
                 onClick={(e) => {
