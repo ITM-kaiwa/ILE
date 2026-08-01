@@ -183,9 +183,20 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
         ) : (
           <div className="space-y-3">
             <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 space-y-2">
-              <h4 className="text-xs font-bold text-emerald-900">💡 {isVi ? 'Giải thích & Lời khuyên VAK:' : '解説 & VAK アドバイス:'}</h4>
-              <p className="text-xs text-emerald-950">{currentQ.explanation}</p>
-            </div>
+                <h4 className="text-xs font-bold text-emerald-900">💡 {isVi ? 'Giải thích & Lời khuyên VAK:' : '解説 & VAK アドバイス:'}</h4>
+                <p className="text-xs text-emerald-950">{currentQ.explanation}</p>
+                {isVi && selectedIndex !== currentQ.correctIndex && (
+                  <div className="mt-3 p-3 bg-white/60 rounded-lg border border-emerald-100">
+                    <h5 className="text-[11px] font-bold text-emerald-800 mb-1 flex items-center">
+                      <RefreshCw className={`w-3 h-3 mr-1 ${isAiLoading ? 'animate-spin' : ''}`} />
+                      AI Giải thích chi tiết
+                    </h5>
+                    <p className="text-xs text-emerald-900 leading-relaxed">
+                      {isAiLoading ? 'Đang tạo lời giải thích...' : (aiExplanationVi || `Bạn đã chọn sai. Đáp án đúng là "${currentQ.options[currentQ.correctIndex]}".`)}
+                    </p>
+                  </div>
+                )}
+              </div>
 
             <button
               onClick={handleNext}
