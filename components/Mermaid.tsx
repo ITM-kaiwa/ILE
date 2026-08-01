@@ -21,8 +21,14 @@ export const Mermaid = ({ chart }: { chart: string }) => {
   useEffect(() => {
     if (!id) return;
     
+    let cleanChart = chart;
+    const match = chart.match(/```(?:mermaid)?\n([\s\S]*?)```/);
+    if (match && match[1]) {
+      cleanChart = match[1];
+    }
+    
     // Clear previous if any, render new
-    mermaid.render(id, chart).then((result) => {
+    mermaid.render(id, cleanChart.trim()).then((result) => {
       setSvg(result.svg);
     }).catch(err => {
       console.error('Mermaid render error', err);
