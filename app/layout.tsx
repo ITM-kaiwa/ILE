@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { LogProvider } from '@/providers/LogProvider';
 
 export const metadata: Metadata = {
   title: 'VAK-Adaptive Language Learning Coach | ITM ILE',
@@ -19,12 +20,14 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="bg-[#FAF7F2] text-slate-800 min-h-screen selection:bg-orange-500 selection:text-white flex flex-col">
+      <LogProvider>
         <div className="flex-grow">
           {children}
         </div>
         <footer className="w-full text-center py-6 text-xs text-slate-400 font-medium mt-auto">
           2026 (C) ITM Group All Rights Reserved.
         </footer>
+      </LogProvider>
       </body>
     </html>
   );

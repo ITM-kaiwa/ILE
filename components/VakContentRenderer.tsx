@@ -7,6 +7,7 @@ import { Play, Volume2, Eye, Hand, Sparkles } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Mermaid } from './Mermaid';
+import { useLog } from '@/providers/LogProvider';
 
 interface VakContentRendererProps {
   vakType: VakType;
@@ -15,13 +16,19 @@ interface VakContentRendererProps {
 
 export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType, lang }) => {
   const [topic, setTopic] = useState('JLPT N5 文法：〜です / 〜ます');
+  const [customTopicInput, setCustomTopicInput] = useState('');
   const [lesson, setLesson] = useState<GeneratedVakLesson>(getMockVakLesson('JLPT N5 文法：〜です / 〜ます', vakType));
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  const { addLog } = useLog();
 
   const handleGenerate = async (selectedTopic: string) => {
+    if (!selectedTopic.trim()) return;
+    
     setTopic(selectedTopic);
     setIsGenerating(true);
+    addLog(`Initiating dynamic VAK content generation for topic: "${selectedTopic}" in ${vakType} mode.`, 'INFO');
+    
     try {
       const res = await fetch('/api/gemini/learn', {
         method: 'POST',
@@ -29,14 +36,18 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
         body: JSON.stringify({ topic: selectedTopic, vakType, lang })
       });
       const data = await res.json();
-      if (data.lesson) {
+      
+      if (data.success) {
         setLesson(data.lesson);
+        addLog(`Successfully generated custom VAK content for "${selectedTopic}".`, 'SUCCESS');
       } else {
-        setLesson(getMockVakLesson(selectedTopic, vakType));
+        setLesson(data.lesson || getMockVakLesson(selectedTopic, vakType));
+        addLog(`AI Generation Failed: ${data.error}. Falling back to high-quality mock data.`, 'ERROR');
       }
-    } catch (e) {
+    } catch (e: any) {
       console.error(e);
       setLesson(getMockVakLesson(selectedTopic, vakType));
+      addLog(`Network or fetch error: ${e.message}. Falling back to mock data.`, 'ERROR');
     } finally {
       setIsGenerating(false);
     }
@@ -77,21 +88,46 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
           </p>
         </div>
 
-        {/* Quick Topic Chips */}
-        <div className="flex flex-wrap gap-2">
-          {['JLPT N5 文法：〜です', 'JLPT N4 語彙：時間の表現', 'JLPT N5 漢字：日・月・木'].map((t) => (
+        {/* Dynamic Topic Input & Quick Chips */}
+        <div className="flex flex-col md:items-end gap-3 w-full md:w-auto">
+          {/* Custom Input */}
+          <div className="flex items-center w-full max-w-sm gap-2">
+            <input
+              type="text"
+              value={customTopicInput}
+              onChange={(e) => setCustomTopicInput(e.target.value)}
+              placeholder={lang === 'vi' ? 'Bạn muốn học gì? Viết tự do vào đây.' : 'どんなことを学習したいですか？ここに自由に書いてください。'}
+              className="flex-grow px-3 py-1.5 rounded-xl text-sm border border-slate-200 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 placeholder:text-slate-400 placeholder:text-xs"
+              onKeyDown={(e) => e.key === 'Enter' && handleGenerate(customTopicInput)}
+            />
             <button
-              key={t}
-              onClick={() => handleGenerate(t)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-medium border transition ${
-                topic === t
-                  ? 'bg-orange-600 text-white border-orange-500 shadow-sm'
-                  : 'bg-amber-50 text-slate-700 border-amber-200 hover:bg-amber-100'
-              }`}
+              onClick={() => handleGenerate(customTopicInput)}
+              disabled={isGenerating || !customTopicInput.trim()}
+              className="px-4 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium transition disabled:opacity-50 whitespace-nowrap"
             >
-              {t}
+              {lang === 'vi' ? 'Tạo' : '生成'}
             </button>
-          ))}
+          </div>
+
+          {/* Quick Topic Chips */}
+          <div className="flex flex-wrap gap-2 justify-end">
+            {['JLPT N5 文法：〜です', 'JLPT N4 語彙：時間の表現', 'JLPT N5 漢字：日・月・木'].map((t) => (
+              <button
+                key={t}
+                onClick={() => {
+                  setCustomTopicInput(t);
+                  handleGenerate(t);
+                }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-medium border transition ${
+                  topic === t
+                    ? 'bg-orange-600 text-white border-orange-500 shadow-sm'
+                    : 'bg-amber-50 text-slate-700 border-amber-200 hover:bg-amber-100'
+                }`}
+              >
+                {t}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 

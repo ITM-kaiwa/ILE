@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useLog } from '@/providers/LogProvider';
 import { Language, getTranslation } from '@/lib/i18n';
 import { X, Copy, Printer, Download, Check, Terminal } from 'lucide-react';
 
@@ -11,7 +12,7 @@ interface LogFloatingModalProps {
 }
 
 export const LogFloatingModal: React.FC<LogFloatingModalProps> = ({ isOpen, lang, onClose }) => {
-  const [logs, setLogs] = useState<string[]>([]);
+  const { logs } = useLog();
   const [copied, setCopied] = useState(false);
   const t = getTranslation(lang);
 
