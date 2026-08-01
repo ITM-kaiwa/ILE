@@ -45,7 +45,7 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
     setSelectedIndex(index);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (selectedIndex === null) return;
     setIsSubmitted(true);
 
@@ -62,6 +62,27 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
         vakRecommendation: currentQ.vakRecommendation,
         createdAt: new Date().toISOString(),
       });
+    }
+
+    if (isVi && currentQ.explanation) {
+      setIsAiLoading(true);
+      try {
+        const res = await fetch('/api/gemini/translate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: currentQ.explanation, targetLang: 'vi' })
+        });
+        const data = await res.json();
+        if (data.success) {
+          setAiExplanationVi(data.translation);
+        } else {
+          setAiExplanationVi('(Không tải được bản dịch)');
+        }
+      } catch (e) {
+        setAiExplanationVi('(Không tải được bản dịch)');
+      } finally {
+        setIsAiLoading(false);
+      }
     }
   };
 

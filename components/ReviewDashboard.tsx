@@ -17,6 +17,8 @@ export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType }) => 
   const [currentIdx, setCurrentIdx] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [aiExplanationVi, setAiExplanationVi] = useState<string | null>(null);
+  const [isAiLoading, setIsAiLoading] = useState(false);
 
   let filtered = ALL_JLPT_QUESTIONS;
   if (selectedLevel !== 'ALL') {
@@ -31,6 +33,32 @@ export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType }) => 
   const handleSelect = (idx: number) => {
     if (isSubmitted) return;
     setSelectedIndex(idx);
+  };
+
+  const handleSubmit = async () => {
+    if (selectedIndex === null) return;
+    setIsSubmitted(true);
+
+    if (currentQ.explanation) {
+      setIsAiLoading(true);
+      try {
+        const res = await fetch('/api/gemini/translate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: currentQ.explanation, targetLang: 'vi' })
+        });
+        const data = await res.json();
+        if (data.success) {
+          setAiExplanationVi(data.translation);
+        } else {
+          setAiExplanationVi('(Không tải được bản dịch)');
+        }
+      } catch (e) {
+        setAiExplanationVi('(Không tải được bản dịch)');
+      } finally {
+        setIsAiLoading(false);
+      }
+    }
   };
 
   const handleNext = () => {
@@ -146,8 +174,11 @@ export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType }) => 
 
           {!isSubmitted ? (
             <button
-              onClick={() => setSelectedIndex(selectedIndex !== null ? selectedIndex : 0)}
-              className="w-full py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-medium text-sm transition shadow-sm"
+              onClick={handleSubmit}
+              disabled={selectedIndex === null}
+              className={`w-full py-2.5 rounded-xl text-white font-medium text-sm transition shadow-sm ${
+                selectedIndex !== null ? 'bg-amber-600 hover:bg-amber-500' : 'bg-slate-300 cursor-not-allowed'
+              }`}
             >
               回答を確認する
             </button>
@@ -156,6 +187,15 @@ export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType }) => 
               <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 space-y-2">
                 <h4 className="text-xs font-bold text-emerald-800">💡 解説 & VAK ({vakType.toUpperCase()}) アドバイス:</h4>
                 <p className="text-xs text-emerald-950">{currentQ.explanation}</p>
+                <div className="mt-3 p-3 bg-white/60 rounded-lg border border-emerald-100">
+                  <h5 className="text-[11px] font-bold text-emerald-800 mb-1 flex items-center">
+                    <RefreshCw className={`w-3 h-3 mr-1 ${isAiLoading ? 'animate-spin' : ''}`} />
+                    AI Giải thích chi tiết (AI翻訳)
+                  </h5>
+                  <p className="text-xs text-emerald-900 leading-relaxed">
+                    {isAiLoading ? 'Đang tạo bản dịch...' : (aiExplanationVi || '(Không tải được bản dịch)')}
+                  </p>
+                </div>
                 <div className="p-3 rounded-lg bg-[#FFFDF9] border border-emerald-200 text-xs text-emerald-900 mt-2">
                   <strong>💡 {vakType.toUpperCase()}アドバイス:</strong> {currentQ.vakRecommendation[vakType]}
                 </div>

@@ -265,59 +265,58 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
               )}
             </div>
 
-            <div className="flex items-center justify-between text-xs text-slate-500">
+            <div className="flex items-center justify-between text-xs text-slate-500 mb-4">
               <span className="flex items-center space-x-1 font-semibold">
                 <RotateCw className="w-3.5 h-3.5 group-hover:rotate-180 transition duration-500 text-orange-600" />
                 <span>{isVi ? 'Nhấp để lật thẻ' : 'クリックしてカードをめくる'}</span>
               </span>
               <span className="font-bold text-slate-700">JLPT {currentCard.level} Kanji</span>
             </div>
-          </div>
-
-          {/* VAK Help Box */}
-          <div className="p-4 rounded-xl bg-orange-50 border border-orange-200 space-y-2">
-            <div className="flex items-center space-x-2 text-xs font-bold text-orange-950">
-              {vakType === 'visual' && <Eye className="w-4 h-4 text-indigo-600" />}
-              {vakType === 'auditory' && <Volume2 className="w-4 h-4 text-emerald-600" />}
-              {vakType === 'kinesthetic' && <Hand className="w-4 h-4 text-orange-600" />}
-              <span>
-                {isVi
-                  ? `Hướng dẫn ghi nhớ Kanji (${vakType.toUpperCase()})`
-                  : `${vakType.toUpperCase()}タイプ向け 漢字記憶ガイド`}
-              </span>
-            </div>
-            <p className="text-xs text-slate-700 leading-relaxed font-medium">
-              {currentCard.vakHelp[vakType]}
-            </p>
-          </div>
-
-          {/* Controls */}
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-4 border-t border-emerald-100 mt-2">
+            
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 pt-4 border-t border-emerald-200/60">
               <button
-                onClick={() => handleReview(false)}
-                className="flex-1 px-4 py-3 rounded-xl bg-rose-100 hover:bg-rose-200 text-rose-800 font-bold text-sm transition flex items-center justify-center space-x-1.5 border border-rose-300"
+                onClick={(e) => { e.stopPropagation(); handleReview(false); }}
+                className="flex-1 px-3 py-2 sm:px-4 sm:py-3 rounded-xl bg-rose-100 hover:bg-rose-200 text-rose-800 font-bold text-xs sm:text-sm transition flex items-center justify-center shadow-sm"
               >
                 <span>{isVi ? '❌ Chưa thuộc' : '❌ 覚えてない'}</span>
               </button>
-
               <button
-                onClick={() => setIsFlipped(!isFlipped)}
-                className="flex-none px-6 py-3 rounded-xl bg-emerald-100 hover:bg-emerald-200 text-emerald-950 text-sm font-bold border border-emerald-300 transition"
+                onClick={(e) => { e.stopPropagation(); setIsFlipped(!isFlipped); }}
+                className="flex-none px-4 py-2 sm:px-6 sm:py-3 rounded-xl bg-emerald-100 hover:bg-emerald-200 text-emerald-950 font-bold text-xs sm:text-sm border border-emerald-300 transition shadow-sm"
               >
                 {isVi ? '🔄 Lật thẻ' : '🔄 めくる'}
               </button>
-
               <button
-                onClick={() => handleReview(true)}
-                className="flex-1 px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition flex items-center justify-center space-x-1.5 shadow-sm"
+                onClick={(e) => { e.stopPropagation(); handleReview(true); }}
+                className="flex-1 px-3 py-2 sm:px-4 sm:py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm transition flex items-center justify-center shadow-sm"
               >
                 <span>{isVi ? '✅ Đã thuộc' : '✅ 覚えた'}</span>
               </button>
             </div>
-            <div className="flex justify-between mt-4 text-xs text-slate-400">
-              <button onClick={handlePrev} className="hover:text-slate-600 underline">{isVi ? 'Thẻ trước' : '前のカード'}</button>
-              <button onClick={handleNext} className="hover:text-slate-600 underline">{isVi ? 'Thẻ tiếp theo' : '次のカード'}</button>
-            </div>
+          </div>
+        </div>
+
+        <button onClick={handleNext} className="shrink-0 p-2 sm:p-3 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-900 shadow-sm transition">
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+        </button>
+      </div>
+
+      {/* VAK Help Box */}
+      <div className="p-4 rounded-xl bg-orange-50 border border-orange-200 space-y-2 mt-4">
+        <div className="flex items-center space-x-2 text-xs font-bold text-orange-950">
+          {vakType === 'visual' && <Eye className="w-4 h-4 text-indigo-600" />}
+          {vakType === 'auditory' && <Volume2 className="w-4 h-4 text-emerald-600" />}
+          {vakType === 'kinesthetic' && <Hand className="w-4 h-4 text-orange-600" />}
+          <span>
+            {isVi
+              ? `Hướng dẫn ghi nhớ Kanji (${vakType.toUpperCase()})`
+              : `${vakType.toUpperCase()}タイプ向け 漢字記憶ガイド`}
+          </span>
+        </div>
+        <p className="text-xs text-slate-700 leading-relaxed font-medium">
+          {currentCard.vakHelp[vakType]}
+        </p>
+      </div>
         </div>
       ) : null}
       </>
