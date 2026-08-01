@@ -19,63 +19,66 @@ export interface GeneratedVakLesson {
 }
 
 export function getMockVakLesson(topic: string, vakType: VakType): GeneratedVakLesson {
+  const t = topic || 'Danh từ + です';
+  
   if (vakType === 'visual') {
     return {
-      topic,
+      topic: t,
       vakType: 'visual',
-      contentMarkdown: `### 視覚学習モデル: ${topic}\n\n| 項目 | 日本語 | ベトナム語意味 | 視覚イメージ |\n|---|---|---|---|\n| 1 | **${topic}の基礎** | Cơ bản | 🟦 青いノートの図形 |\n| 2 | **ポイント文法** | Cấu trúc ngữ pháp | ➔ 矢印フローチャート |\n\n#### 📊 タイムライン解説\n1. **ステップ1**: 文頭の助詞に注目（**は**・**が**の違い）\n2. **ステップ2**: 述語の形を確認（**〜です** / **〜ます**）\n3. **ステップ3**: 色分けされた文法カードで丸暗記！`,
+      contentMarkdown: `### 📖 Ngữ pháp: Danh từ + です / じゃありません\n\n**[です]** được dùng để khẳng định một sự thật, mang ý nghĩa "Là...". Dùng trong câu lịch sự.\n\n| Thể loại | Tiếng Nhật | Tiếng Việt | Ghi chú hình ảnh |\n|---|---|---|---|\n| Khẳng định | N + **です** | Là N | 🟢 Dấu tích xanh |\n| Phủ định | N + **じゃありません** | Không phải là N | 🔴 Dấu X đỏ |\n| Câu hỏi | N + **ですか** | Là N phải không? | ❓ Dấu hỏi chấm |\n\n#### 🎯 Ví dụ minh họa\n1. わたしは がくせい **です**。 (Tôi là học sinh)\n2. わたしは せんせい **じゃありません**。 (Tôi không phải là giáo viên)\n3. あなたは がくせい **ですか**。 (Bạn có phải là học sinh không?)`,
       keyVocabulary: [
-        { word: '学習', reading: 'がくしゅう', meaning: 'Học tập' },
-        { word: '視覚', reading: 'しかく', meaning: 'Thị giác' },
+        { word: '学生 (がくせい)', reading: 'gakusei', meaning: 'Học sinh' },
+        { word: '先生 (せんせい)', reading: 'sensei', meaning: 'Giáo viên' },
       ],
-      visualDiagram: '### 🧩 構造マップ\n\n1. 🟢 **[文頭]** (主語)\n   ⬇️ *(助詞: は / が)*\n2. 🔴 **[述語]** (結論)\n\n> 💡 **ポイント**: 日本語は結論が最後にきます！',
+      visualDiagram: "```mermaid\ngraph LR\n  A(Chủ ngữ: わたし) --> B{Trợ từ: は}\n  B --> C[Danh từ: がくせい]\n  C --> D((Khẳng định: です))\n  C --> E((Phủ định: じゃありません))\n  style A fill:#dbeafe,stroke:#3b82f6\n  style B fill:#fef3c7,stroke:#f59e0b\n  style C fill:#dcfce3,stroke:#22c55e\n  style D fill:#fee2e2,stroke:#ef4444\n  style E fill:#f3e8ff,stroke:#a855f7\n```\n\n> 💡 **Chú ý**: Trong tiếng Nhật, động từ hoặc từ chỉ trạng thái (như です) luôn nằm ở cuối câu!",
       practiceQuestions: [
         {
-          question: '「視覚優位」の学習者に適した方法はどれですか？',
-          options: ['表や図解で確認する', '何度も耳で聞く', '部屋を歩き回る'],
-          answerIndex: 0,
-          hint: '文字や色の強調がポイントです。',
+          question: 'Phủ định của "です" là gì?',
+          options: ['ですか', 'じゃありません', 'でした'],
+          answerIndex: 1,
+          hint: 'Phủ định thường đi kèm với じゃありません.',
         },
       ],
     };
   } else if (vakType === 'auditory') {
     return {
-      topic,
+      topic: t,
       vakType: 'auditory',
-      contentMarkdown: `### 聴覚学習モデル: ${topic}\n\n「こんにちは！声に出して一緒に練習しましょう。リズムとアクセントが命です！」\n\n#### 🗣️ 対話型シャドーイング練習\n- **Aさん**: ${topic}について教えてください！\n- **Bさん**: はい！まず耳で音を聞いて、そのままリピートしてみましょう。\n\n> 💡 **発音のコツ**: リエゾン（音の連結）に注意。「${topic}」は平坦なアクセントでリズム良く発音します。`,
+      contentMarkdown: `### 🎧 Học qua Âm thanh: Danh từ + です\n\n"Xin chào! Hãy cùng lắng nghe và đọc to theo nhịp điệu nhé. Ngữ điệu rất quan trọng!"\n\n#### 🗣️ Luyện tập Shadowing (Nghe và lặp lại)\n- **Học viên**: Ngữ pháp "です" dùng như thế nào ạ?\n- **Giáo viên**: Rất đơn giản! Bạn hãy nghe cách cô phát âm và lặp lại nhé. Chú ý lên giọng ở cuối câu hỏi!\n\n> 💡 **Mẹo phát âm**: Với câu hỏi "ですか" (Desu ka?), chữ "ka" luôn được đọc cao giọng lên ở cuối câu!`,
       keyVocabulary: [
-        { word: '発音', reading: 'はつおん', meaning: 'Phát âm' },
-        { word: '聴覚', reading: 'ちょうかく', meaning: 'Thính giác' },
+        { word: '私 (わたし)', reading: 'watashi', meaning: 'Tôi' },
+        { word: 'はい / いいえ', reading: 'hai / iie', meaning: 'Vâng / Không' },
       ],
       auditoryDialogue: [
-        { speaker: '先生', text: `みなさん、${topic}の音読を始めます！`, audioNote: '明るいトーンで発音' },
-        { speaker: '生徒', text: 'はい！大きな声で繰り返します！', audioNote: 'シャドーイング' },
+        { speaker: 'Giáo viên', text: 'わたしは がくせい です。(Tôi là học sinh)', audioNote: 'Đọc đều giọng, dứt khoát ở chữ desu.' },
+        { speaker: 'Học sinh', text: 'わたしは がくせい です。', audioNote: 'Lặp lại tự tin' },
+        { speaker: 'Giáo viên', text: 'あなたは がくせい ですか？ ⤴️', audioNote: 'Lên giọng ở cuối câu.' },
       ],
       practiceQuestions: [
         {
-          question: '「聴覚優位」の学習者が一番覚えられる方法は？',
-          options: ['図を見る', '声に出して耳で聞く', '手で何度も書く'],
+          question: 'Khi đọc câu hỏi "ですか", bạn cần chú ý điều gì?',
+          options: ['Đọc nhỏ giọng lại', 'Lên giọng ở chữ "か"', 'Kéo dài chữ "す"'],
           answerIndex: 1,
-          hint: '音の響きを意識しましょう。',
+          hint: 'Câu hỏi trong tiếng Nhật thường lên giọng ở cuối.',
         },
       ],
     };
   } else {
     return {
-      topic,
+      topic: t,
       vakType: 'kinesthetic',
-      contentMarkdown: `### 身体感覚学習モデル: ${topic}\n\n✋ **立ち上がってジェスチャー付きで練習しましょう！**\n\n1. **アクション1**: 右手を大きく挙げて「${topic}！」と叫ぶ\n2. **アクション2**: 実際に部屋の中を1往復歩きながら文を音読する\n3. **ロールプレイ**: 自分が主人公になった気分で感情を込めて表現してみよう！`,
+      contentMarkdown: `### 🏃 Học qua Vận động: Danh từ + です\n\n✋ **Hãy đứng lên và sử dụng ngôn ngữ cơ thể nào!**\n\n1. **Khẳng định (です)**: Hai tay tạo thành hình chữ O (Đúng) trước ngực, gật đầu tự tin.\n2. **Phủ định (じゃありません)**: Hai tay bắt chéo tạo hình chữ X, lắc đầu.\n3. **Câu hỏi (ですか)**: Nghiêng đầu, một tay đỡ cằm như đang suy nghĩ.\n\n> 💡 Hãy thực hành vừa làm động tác vừa đọc to câu tiếng Nhật để cơ bắp của bạn ghi nhớ ngữ pháp này!`,
       keyVocabulary: [
-        { word: '体験', reading: 'たいけん', meaning: 'Trải nghiệm' },
-        { word: '身体感覚', reading: 'しんたいかんかく', meaning: 'Xúc giác / Vận動' },
+        { word: 'です', reading: 'desu', meaning: 'Là (Khẳng định)' },
+        { word: 'じゃありません', reading: 'ja arimasen', meaning: 'Không phải là (Phủ định)' },
       ],
-      kinestheticAction: '👉 右手で「○」、左手で「×」を作りながら体全体で文法を表現してください！',
+      kinestheticAction: '👉 Hãy đứng trước gương: Trỏ tay vào mình và nói "わたしは (Tên bạn) です", sau đó cười tươi!',
       practiceQuestions: [
         {
-          question: '「身体感覚優位」の学習に最適なアプローチは？',
-          options: ['黙読する', '講義を静かに聞く', '身振り手振りとロールプレイ'],
-          answerIndex: 2,
-          hint: '体全体の動きと感情がカギです。',
+          question: 'Hành động nào giúp nhớ thể phủ định "じゃありません" tốt nhất?',
+          options: ['Ngồi im suy nghĩ', 'Tạo hình chữ X bằng tay và lắc đầu', 'Viết ra giấy 10 lần'],
+          answerIndex: 1,
+          hint: 'Sử dụng cơ thể để tạo sự liên kết với ý nghĩa phủ định.',
         },
       ],
     };
@@ -90,7 +93,7 @@ export async function generateGeminiVakLesson(topic: string, vakType: VakType): 
 
   try {
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-3.6-flash' });
     const systemPrompt = VAK_SYSTEM_PROMPTS[vakType];
     const prompt = `${systemPrompt}\n\nトピック: "${topic}" についての日本語学習レッスンを生成してください。`;
 
