@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLog } from '@/providers/LogProvider';
 import { Language, getTranslation } from '@/lib/i18n';
 import { X, Copy, Printer, Download, Check, Terminal } from 'lucide-react';
+import { APP_VERSION } from '@/lib/config';
 
 interface LogFloatingModalProps {
   isOpen: boolean;
@@ -15,23 +16,6 @@ export const LogFloatingModal: React.FC<LogFloatingModalProps> = ({ isOpen, lang
   const { logs } = useLog();
   const [copied, setCopied] = useState(false);
   const t = getTranslation(lang);
-
-  useEffect(() => {
-    if (isOpen) {
-      const now = new Date().toISOString();
-      const initialLogs = [
-        "[" + now + "] INFO: ILE VAK System v4.2β initialized.",
-        "[" + now + "] INFO: Network Connection Status: 200 OK (https://github.com/ITM-kaiwa/ILE).",
-        "[" + now + "] DEBUG: VAK Cognitive Engine loaded (Visual / Auditory / Kinesthetic).",
-        "[" + now + "] DEBUG: Minna no Nihongo Lesson 1-50 Vocabulary Database loaded (527 entries).",
-        "[" + now + "] DEBUG: VNJPClub N5 & N4 Grammar Cards loaded (50 lessons authentic).",
-        "[" + now + "] INFO: SRS Ebbinghaus Scheduler active. Active worker ID: srs-worker-01.",
-        "[" + now + "] TRACE: Language state set to '" + lang + "'. UI components localized.",
-        "[" + now + "] SUCCESS: All system logs and communication telemetry captured cleanly.",\n        "[" + now + "] INFO: Ready to accept VAK diagnostic queries. System standing by."
-      ];
-      setLogs(initialLogs);
-    }
-  }, [isOpen, lang]);
 
   if (!isOpen) return null;
 
@@ -49,7 +33,7 @@ export const LogFloatingModal: React.FC<LogFloatingModalProps> = ({ isOpen, lang
     if (typeof window !== 'undefined') {
       const printWindow = window.open('', '_blank');
       if (printWindow) {
-        const html = '<html><head><title>System Log Telemetry - ILE VAK Coach</title><style>body { font-family: monospace; padding: 20px; white-space: pre-wrap; background: #fafafa; } h2 { font-family: sans-serif; color: #ea580c; }</style></head><body><h2>ILE VAK Coach Telemetry & Communication Logs</h2><hr /><div>' + logText.replace(/\n/g, '<br />') + '</div></body></html>';
+        const html = `<html><head><title>System Log Telemetry - ILE VAK Coach ${APP_VERSION}</title><style>body { font-family: monospace; padding: 20px; white-space: pre-wrap; background: #fafafa; } h2 { font-family: sans-serif; color: #ea580c; }</style></head><body><h2>ILE VAK Coach Telemetry & Communication Logs</h2><hr /><div>` + logText.replace(/\n/g, '<br />') + '</div></body></html>';
         printWindow.document.write(html);
         printWindow.document.close();
         printWindow.print();
@@ -78,7 +62,7 @@ export const LogFloatingModal: React.FC<LogFloatingModalProps> = ({ isOpen, lang
             <Terminal className="w-6 h-6 text-amber-100" />
             <div>
               <h3 className="font-bold text-base tracking-tight leading-none">{t.logTitle}</h3>
-              <p className="text-xs text-amber-100 mt-1 opacity-90">{t.logDesc}</p>
+              <p className="text-xs text-amber-100 mt-1 opacity-90">{t.logDesc} ({APP_VERSION})</p>
             </div>
           </div>
           <button
