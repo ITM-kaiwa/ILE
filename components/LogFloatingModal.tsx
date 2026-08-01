@@ -19,14 +19,14 @@ export const LogFloatingModal: React.FC<LogFloatingModalProps> = ({ isOpen, lang
     if (isOpen) {
       const now = new Date().toISOString();
       const initialLogs = [
-        "[" + now + "] INFO: ILE VAK System v3.0β initialized.",
+        "[" + now + "] INFO: ILE VAK System v4.2β initialized.",
         "[" + now + "] INFO: Network Connection Status: 200 OK (https://github.com/ITM-kaiwa/ILE).",
         "[" + now + "] DEBUG: VAK Cognitive Engine loaded (Visual / Auditory / Kinesthetic).",
         "[" + now + "] DEBUG: Minna no Nihongo Lesson 1-50 Vocabulary Database loaded (527 entries).",
         "[" + now + "] DEBUG: VNJPClub N5 & N4 Grammar Cards loaded (50 lessons authentic).",
         "[" + now + "] INFO: SRS Ebbinghaus Scheduler active. Active worker ID: srs-worker-01.",
         "[" + now + "] TRACE: Language state set to '" + lang + "'. UI components localized.",
-        "[" + now + "] SUCCESS: All system logs and communication telemetry captured cleanly."
+        "[" + now + "] SUCCESS: All system logs and communication telemetry captured cleanly.",\n        "[" + now + "] INFO: Ready to accept VAK diagnostic queries. System standing by."
       ];
       setLogs(initialLogs);
     }

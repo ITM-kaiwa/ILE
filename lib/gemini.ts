@@ -2,7 +2,7 @@ import { VakType } from '@/data/vak-questions';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export const VAK_SYSTEM_PROMPTS: Record<VakType, string> = {
-  visual: "Markdownの表や図解、箇条書きを多用し、重要語句を太字や色分け表記で目立たせて視覚的に整理して解説してください。またイメージが湧くイラスト表現プロンプトも提示してください。",
+  visual: "Markdownの表や図解、箇条書きを多用し、重要語句を太字や色分け表記で目立たせて視覚的に整理して解説してください。",
   auditory: "対話調（話しかけるスタイル）で出力し、発音のコツや音の連結（リエゾン）・アクセント・ルビを解説し、声に出す音読やシャドーイングの指示を含めてください。",
   kinesthetic: "具体的な身振り手振りの指示や、室内を歩くなどのフィジカルタスク指示、感情・空気感と連動させたロールプレイ問題を含めて体験的に解説してください。",
 };
@@ -93,11 +93,27 @@ export async function generateGeminiVakLesson(topic: string, vakType: VakType): 
 
   try {
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-3.6-flash' });
+
+    const modelsToTry = ['gemini-1.5-flash-latest', 'gemini-1.5-pro-latest', 'gemini-1.5-flash', 'gemini-pro', 'gemini-3.6-flash'];
+    let result;
+    let lastError;
+
     const systemPrompt = VAK_SYSTEM_PROMPTS[vakType];
     const prompt = `${systemPrompt}\n\nトピック: "${topic}" についての日本語学習レッスンを生成してください。`;
 
-    const result = await model.generateContent(prompt);
+    for (const modelName of modelsToTry) {
+      try {
+        const model = genAI.getGenerativeModel({ model: modelName });
+        result = await model.generateContent(prompt);
+        break;
+      } catch (err: any) {
+        console.warn(`Model ${modelName} failed:`, err.message);
+        lastError = err;
+      }
+    }
+
+    if (!result) throw lastError;
+
     const responseText = result.response.text();
 
     const mock = getMockVakLesson(topic, vakType);
