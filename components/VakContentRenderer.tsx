@@ -203,6 +203,27 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
                   {lesson.contentMarkdown}
                 </ReactMarkdown>
               </div>
+
+              {lesson.auditoryDialogue && lesson.auditoryDialogue.length > 0 && (
+                <div className="p-5 rounded-xl bg-[#FFFDF9] border border-emerald-200 space-y-4 shadow-sm mt-6">
+                  <h4 className="text-xs font-semibold text-emerald-700 uppercase tracking-wider">
+                    🎧 {lang === 'vi' ? 'Hội thoại & Phát âm' : '音声ダイアログ'}
+                  </h4>
+                  <div className="space-y-3">
+                    {lesson.auditoryDialogue.map((dialogue, idx) => (
+                      <div key={idx} className="p-3 bg-emerald-50 rounded-lg border border-emerald-100 flex flex-col space-y-1">
+                        <span className="font-bold text-emerald-800 text-sm">{dialogue.speaker}</span>
+                        <span className="text-slate-700 text-sm">{dialogue.text}</span>
+                        {dialogue.audioNote && (
+                          <span className="text-xs text-emerald-600 mt-1 italic block">
+                            💡 {dialogue.audioNote}
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
           </div>
         )}
 
@@ -220,6 +241,19 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
                   {lesson.contentMarkdown}
                 </ReactMarkdown>
               </div>
+
+              {lesson.kinestheticAction && (
+                <div className="p-5 rounded-xl bg-[#FFFDF9] border border-orange-200 space-y-2 shadow-sm mt-6">
+                  <h4 className="text-xs font-semibold text-orange-700 uppercase tracking-wider">
+                    🏃 {lang === 'vi' ? 'Hành động trải nghiệm' : '身体感覚アクション'}
+                  </h4>
+                  <div className="p-4 rounded-lg bg-orange-50 markdown-body max-w-none text-slate-700 text-sm border border-orange-100">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      {lesson.kinestheticAction}
+                    </ReactMarkdown>
+                  </div>
+                </div>
+              )}
           </div>
         )}
       </div>
