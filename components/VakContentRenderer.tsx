@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { VakType } from '@/data/vak-questions';
 import { GeneratedVakLesson, getMockVakLesson } from '@/lib/gemini';
 import { Play, Volume2, Eye, Hand, Sparkles } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface VakContentRendererProps {
   vakType: VakType;

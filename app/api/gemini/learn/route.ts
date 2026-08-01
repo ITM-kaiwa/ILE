@@ -23,6 +23,8 @@ export async function POST(req: Request) {
     const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
     const prompt = `${systemPrompt}
+
+【重要】: 必ずトピックの文法や単語自体の意味、使い方、実践的な例文（日本語とベトナム語訳）を豊富に含めて、具体的に解説してください。単なる「学習の手順」や「空のステップ」ではなく、学習者がそのまま読んで理解できる実際の学習コンテンツ（ルールや例文）を提示してください。
 以下のトピックについて、TypeScriptのインターフェース GeneratedVakLesson に厳密に従ったJSONフォーマットでのみ出力してください。
 Markdownのバッククォート \`\`\`json \`\`\` は使用せず、純粋なJSON文字列だけを返してください。
 
