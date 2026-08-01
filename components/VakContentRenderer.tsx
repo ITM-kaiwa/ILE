@@ -28,6 +28,14 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
   const [isGenerating, setIsGenerating] = useState(false);
   const { addLog } = useLog();
 
+  // Automatically generate when VAK type changes, provided there's input
+  useEffect(() => {
+    if (customTopicInput.trim() && lesson.vakType !== vakType && !isGenerating) {
+      handleGenerate(customTopicInput);
+    }
+  }, [vakType]);
+
+
   const handleGenerate = async (selectedTopic: string) => {
     if (!selectedTopic.trim()) return;
     
@@ -117,25 +125,7 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
             </button>
           </div>
 
-          {/* Quick Topic Chips */}
-          <div className="flex flex-wrap gap-2 justify-end">
-            {['JLPT N5 文法：〜です', 'JLPT N4 語彙：時間の表現', 'JLPT N5 漢字：日・月・木'].map((t) => (
-              <button
-                key={t}
-                onClick={() => {
-                  setCustomTopicInput(t);
-                  handleGenerate(t);
-                }}
-                className={`px-3 py-1.5 rounded-xl text-xs font-medium border transition ${
-                  topic === t
-                    ? 'bg-orange-600 text-white border-orange-500 shadow-sm'
-                    : 'bg-amber-50 text-slate-700 border-amber-200 hover:bg-amber-100'
-                }`}
-              >
-                {t}
-              </button>
-            ))}
-          </div>
+
         </div>
       </div>
 
