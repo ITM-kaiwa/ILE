@@ -163,15 +163,26 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-2xl bg-[#FFFDF9] border border-amber-200/80 shadow-sm gap-3">
           <div className="flex flex-wrap items-center gap-2">
             <button
-              onClick={() => setActiveTab('learn')}
+              onClick={() => setActiveTab('vak')}
               className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
-                activeTab === 'learn'
+                activeTab === 'vak'
                   ? 'bg-orange-600 text-white shadow'
                   : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
               }`}
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>{t.tabLearn}</span>
+              <span>{t.tabVakAi}</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('jlpt')}
+              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
+                activeTab === 'jlpt'
+                  ? 'bg-orange-600 text-white shadow'
+                  : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
+              }`}
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>{t.tabJlpt}</span>
             </button>
             <button
               onClick={() => setActiveTab('kana')}
@@ -256,15 +267,15 @@ export default function Home() {
         {/* Tab Content */}
         {user && activeTab !== null && (
           <div className="space-y-8 mb-8">
-            {activeTab === 'learn' && (
-          <>
+            {activeTab === 'vak' && (
             <VakContentRenderer vakType={currentVak} />
+          )}
+          {activeTab === 'jlpt' && (
             <div id="jlpt-practice-section" className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <JlptPractice onRecordWeakness={handleRecordWeakness} lang={lang} />
               <WeaknessAnalyzer vakType={currentVak} weaknessRecords={weaknessRecords} lang={lang} />
             </div>
-          </>
-        )}
+          )}
 
         {activeTab === 'kana' && (
           <KanaCardsSection vakType={currentVak} lang={lang} />
