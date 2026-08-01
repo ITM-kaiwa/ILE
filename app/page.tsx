@@ -268,7 +268,7 @@ export default function Home() {
         {user && activeTab !== null && (
           <div className="space-y-8 mb-8">
             {activeTab === 'vak' && (
-            <VakContentRenderer vakType={currentVak} />
+            <VakContentRenderer vakType={currentVak} lang={lang} />
           )}
           {activeTab === 'jlpt' && (
             <div id="jlpt-practice-section" className="grid grid-cols-1 lg:grid-cols-2 gap-8">

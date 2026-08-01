@@ -5,7 +5,8 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export async function POST(req: Request) {
   try {
-    const { topic, vakType } = await req.json();
+    const { topic, vakType, lang } = await req.json();
+    const isVi = lang === "vi";
     const activeVak: VakType = vakType || 'visual';
     const systemPrompt = VAK_SYSTEM_PROMPTS[activeVak];
 
@@ -25,6 +26,7 @@ export async function POST(req: Request) {
     const prompt = `${systemPrompt}
 
 【重要】: 必ずトピックの文法や単語自体の意味、使い方、実践的な例文（日本語とベトナム語訳）を豊富に含めて、具体的に解説してください。単なる「学習の手順」や「空のステップ」ではなく、学習者がそのまま読んで理解できる実際の学習コンテンツ（ルールや例文）を提示してください。
+${isVi ? '【出力言語指定】: ユーザーのUI言語がベトナム語に設定されています。解説文(contentMarkdown)、構造図(visualDiagram)、音声ダイアログ(auditoryDialogue)、身体アクション(kinestheticAction)など、JSON内のすべての説明文はベトナム語で出力してください（日本語の例文自体は除く）。' : ''}
 以下のトピックについて、TypeScriptのインターフェース GeneratedVakLesson に厳密に従ったJSONフォーマットでのみ出力してください。
 Markdownのバッククォート \`\`\`json \`\`\` は使用せず、純粋なJSON文字列だけを返してください。
 
@@ -38,7 +40,7 @@ Markdownのバッククォート \`\`\`json \`\`\` は使用せず、純粋なJS
   "keyVocabulary": [
     { "word": "文字列", "reading": "文字列", "meaning": "文字列" }
   ],
-  "visualDiagram": "文字列 (visualタイプの場合)",
+  "visualDiagram": "文字列 (visualタイプの場合。単なるテキストではなく、Markdownのリストや表・太字・絵文字を駆使して、視覚的にわかりやすい構造・マインドマップ風の解説を出力してください)",
   "auditoryDialogue": [
     { "speaker": "文字列", "text": "文字列", "audioNote": "文字列" }
   ],

@@ -9,9 +9,10 @@ import remarkGfm from 'remark-gfm';
 
 interface VakContentRendererProps {
   vakType: VakType;
+  lang: string;
 }
 
-export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType }) => {
+export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType, lang }) => {
   const [topic, setTopic] = useState('JLPT N5 文法：〜です / 〜ます');
   const [lesson, setLesson] = useState<GeneratedVakLesson>(getMockVakLesson('JLPT N5 文法：〜です / 〜ます', vakType));
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
@@ -24,7 +25,7 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType 
       const res = await fetch('/api/gemini/learn', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ topic: selectedTopic, vakType })
+        body: JSON.stringify({ topic: selectedTopic, vakType, lang })
       });
       const data = await res.json();
       if (data.lesson) {
