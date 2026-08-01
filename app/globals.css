@@ -8,12 +8,12 @@ body {
   background: linear-gradient(135deg, #FAF7F2 0%, #F5EFE6 50%, #EFEAD8 100%);
   color: #2D3748;
   min-height: 100vh;
-  font-family: "UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "UDKyokasho-Regular", "Klee One", "Kaisei Decol", "YuKyokasho", "Kyokasho ICA Pro", "HG教科書体", "Kaiti SC", STKaiti, sans-serif;
+  font-family: "Times New Roman", "UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "UDKyokasho-Regular", "Klee One", "Kaisei Decol", "YuKyokasho", "Kyokasho ICA Pro", "HG教科書体", "Kaiti SC", STKaiti, serif;
 }
 
 /* Learning Card Font Utility with explicit Kyokasho Fallbacks */
 .font-learning-card {
-  font-family: "UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "UDKyokasho-Regular", "Klee One", "Kaisei Decol", "YuKyokasho", "Kyokasho ICA Pro", "HG教科書体", "Kaiti SC", STKaiti, sans-serif !important;
+  font-family: "Times New Roman", "UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "UDKyokasho-Regular", "Klee One", "Kaisei Decol", "YuKyokasho", "Kyokasho ICA Pro", "HG教科書体", "Kaiti SC", STKaiti, serif !important;
 }
 
 /* Warm, gentle glassmorphism cards */
