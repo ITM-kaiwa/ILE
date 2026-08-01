@@ -13,10 +13,29 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType 
   const [topic, setTopic] = useState('JLPT N5 文法：〜です / 〜ます');
   const [lesson, setLesson] = useState<GeneratedVakLesson>(getMockVakLesson('JLPT N5 文法：〜です / 〜ます', vakType));
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
 
-  const handleGenerate = (selectedTopic: string) => {
+  const handleGenerate = async (selectedTopic: string) => {
     setTopic(selectedTopic);
-    setLesson(getMockVakLesson(selectedTopic, vakType));
+    setIsGenerating(true);
+    try {
+      const res = await fetch('/api/gemini/learn', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic: selectedTopic, vakType })
+      });
+      const data = await res.json();
+      if (data.lesson) {
+        setLesson(data.lesson);
+      } else {
+        setLesson(getMockVakLesson(selectedTopic, vakType));
+      }
+    } catch (e) {
+      console.error(e);
+      setLesson(getMockVakLesson(selectedTopic, vakType));
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   const handlePlayTTS = (text: string) => {
@@ -33,7 +52,15 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType 
   };
 
   return (
-    <div className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm">
+    <div className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm relative">
+            {isGenerating && (
+        <div className="absolute inset-0 bg-white/60 backdrop-blur-sm z-10 rounded-2xl flex items-center justify-center">
+          <div className="flex items-center space-x-2 text-orange-600 font-bold">
+            <Sparkles className="w-5 h-5 animate-spin" />
+            <span>AIがコンテンツを生成中... / Đang tạo nội dung AI...</span>
+          </div>
+        </div>
+      )}
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-amber-100">
         <div>
