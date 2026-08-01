@@ -21,7 +21,6 @@ export async function POST(req: Request) {
     if (!apiKey) {
       // Fallback to mock data
       const mock = getMockVakLesson(topic, activeVak);
-      mock.contentMarkdown = `> ⚠️ **SYSTEM NOTICE**: API Key is missing. Showing offline mock data.\n\n` + mock.contentMarkdown;
       return NextResponse.json({
         success: true,
         systemPrompt,
@@ -72,7 +71,6 @@ Markdownのバッククォート \`\`\`json \`\`\` は使用せず、純粋なJS
   } catch (error: any) {
     console.error('Gemini API Error:', error);
     const mock = getMockVakLesson(topic, activeVak);
-    mock.contentMarkdown = `> ⚠️ **SYSTEM NOTICE**: AI Generation failed (${error.message || 'Unknown Error'}). Showing offline mock data.\n\n` + mock.contentMarkdown;
     // Return mock data fallback on error using variables captured outside the try block
     return NextResponse.json({ 
       success: true, 

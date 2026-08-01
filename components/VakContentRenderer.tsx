@@ -6,6 +6,7 @@ import { GeneratedVakLesson, getMockVakLesson } from '@/lib/gemini';
 import { Play, Volume2, Eye, Hand, Sparkles } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { Mermaid } from './Mermaid';
 
 interface VakContentRendererProps {
   vakType: VakType;
@@ -117,7 +118,18 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
                     🖼️ {lang === 'vi' ? 'Biểu đồ cấu trúc trực quan' : '視覚イメージ構造図'}
                   </h4>
                   <div className="p-4 rounded-lg bg-white markdown-body max-w-none text-slate-700 text-sm overflow-x-auto border border-indigo-100 shadow-inner">
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    <ReactMarkdown 
+                      remarkPlugins={[remarkGfm]}
+                      components={{
+                        code({ node, inline, className, children, ...props }: any) {
+                          const match = /language-(\w+)/.exec(className || '');
+                          if (!inline && match && match[1] === 'mermaid') {
+                            return <Mermaid chart={String(children).replace(/\n$/, '')} />;
+                          }
+                          return <code className={className} {...props}>{children}</code>;
+                        }
+                      }}
+                    >
                       {lesson.visualDiagram}
                     </ReactMarkdown>
                   </div>
