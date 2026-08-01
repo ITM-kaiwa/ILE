@@ -89,9 +89,9 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
         </div>
 
         {/* Dynamic Topic Input & Quick Chips */}
-        <div className="flex flex-col md:items-end gap-3 w-full md:w-auto">
+        <div className="flex flex-col md:items-end gap-3 w-full lg:w-3/5">
           {/* Custom Input */}
-          <div className="flex items-center w-full max-w-sm gap-2">
+          <div className="flex items-center w-full md:min-w-[500px] lg:min-w-[600px] gap-2">
             <input
               id="topic-input"
               name="topic"
