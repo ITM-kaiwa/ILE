@@ -192,7 +192,7 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
                       AI Giải thích chi tiết
                     </h5>
                     <p className="text-xs text-emerald-900 leading-relaxed">
-                      {isAiLoading ? 'Đang tạo lời giải thích...' : (aiExplanationVi || `Bạn đã chọn sai. Đáp án đúng là \"${currentQ.options[currentQ.correctIndex]}\". Lời giải: ${currentQ.explanation}`)}
+                      {isAiLoading ? 'Đang tạo bản dịch...' : (aiExplanationVi || '(Không tải được bản dịch)')}
                     </p>
                   </div>
                 )}

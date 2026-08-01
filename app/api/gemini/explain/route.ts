@@ -5,33 +5,26 @@ export async function POST(req: Request) {
   let requestData: any = {};
   try {
     requestData = await req.json();
-    const { question, incorrectAnswer, correctAnswer, explanation } = requestData;
+    const { explanation } = requestData;
 
     const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
     if (!apiKey) {
       return NextResponse.json({
         success: true,
-        explanationVi: `Bạn đã chọn sai. Đáp án đúng là "${correctAnswer}". Lời giải: ${explanation}`
+        explanationVi: '(Chưa cấu hình GEMINI_API_KEY)'
       });
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
-    const prompt = `あなたはベトナム人の日本語学習者をサポートする優秀なAI教師です。
-以下のJLPT問題において、生徒は間違った選択肢を選びました。
-なぜその選択肢が間違いなのか、そしてなぜ正解の選択肢が正しいのかを、親切なベトナム語で端的に説明してください。
+    const prompt = `以下の日本語の文法解説をベトナム語に翻訳してください。出力はベトナム語の翻訳文のみとし、挨拶や他のテキストは含めないでください。
 
-【問題】: ${question}
-【生徒が選んだ間違った答え】: ${incorrectAnswer}
-【正しい答え】: ${correctAnswer}
-【本来の解説】: ${explanation}
-
-出力はベトナム語のみで、2〜3文で簡潔にまとめてください。`;
+【解説】: ${explanation}`;
 
     const result = await model.generateContent(prompt);
     const response = await result.response;
-    const explanationVi = response.text();
+    const explanationVi = response.text().trim();
 
     return NextResponse.json({
       success: true,
@@ -41,7 +34,7 @@ export async function POST(req: Request) {
     console.error('Gemini API Error:', error);
     return NextResponse.json({ 
       success: true, 
-      explanationVi: `Bạn đã chọn sai. Đáp án đúng là "${requestData.correctAnswer || ''}". Lời giải: ${requestData.explanation || ''}` 
+      explanationVi: '(Lỗi kết nối AI để tạo bản dịch)' 
     });
   }
 }
