@@ -7,6 +7,7 @@ import type { User } from '@supabase/supabase-js';
 import { VakType } from '@/data/vak-questions';
 import { Language, getTranslation } from '@/lib/i18n';
 import { Sparkles, Brain, Globe } from 'lucide-react';
+import { APP_VERSION } from '@/lib/config';
 
 interface NavbarProps {
   currentVak: VakType;
@@ -78,7 +79,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {t.appName}
               </h1>
               <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-orange-100 text-orange-800 border border-orange-300">
-                v4.2β
+                {APP_VERSION}
               </span>
             </div>
             <p className="hidden sm:block text-xs text-slate-500 mt-0.5">{t.subTitle}</p>

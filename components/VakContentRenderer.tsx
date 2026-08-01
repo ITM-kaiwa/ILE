@@ -17,6 +17,12 @@ interface VakContentRendererProps {
 export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType, lang }) => {
   const [topic, setTopic] = useState('JLPT N5 文法：〜です / 〜ます');
   const [customTopicInput, setCustomTopicInput] = useState('');
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      addLog(`[${new Date().toISOString()}] INFO: Device UserAgent: ${window.navigator.userAgent}`);
+      addLog(`[${new Date().toISOString()}] INFO: Screen Resolution: ${window.screen.width}x${window.screen.height}`);
+    }
+  }, []);
   const [lesson, setLesson] = useState<GeneratedVakLesson>(getMockVakLesson('JLPT N5 文法：〜です / 〜ます', vakType));
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
