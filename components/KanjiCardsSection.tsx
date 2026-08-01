@@ -21,7 +21,7 @@ export interface KanjiCard {
   nihongokyoshiUrl: string;
   vakHelp: { visual: string; auditory: string; kinesthetic: string; };
 }
-import { ExternalLink, Volume2, Eye, Hand, Layers, RotateCw, ArrowLeft, ArrowRight , ChevronDown, ChevronUp } from 'lucide-react';
+import { ExternalLink, Volume2, Eye, Hand, Layers, RotateCw, ArrowLeft, ArrowRight , ChevronDown, ChevronUp, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface KanjiCardsSectionProps {
   vakType: VakType;
@@ -202,121 +202,129 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
             </div>
           </div>
 
-          {/* Flip Card */}
-          <div
-            onClick={() => setIsFlipped(!isFlipped)}
-            className="relative min-h-[280px] p-8 rounded-3xl bg-gradient-to-br from-[#FFFDF9] via-[#FFF9F2] to-[#FAF3E0] border-2 border-amber-200/80 hover:border-orange-400 shadow-md cursor-pointer transition flex flex-col justify-between group"
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-orange-700 uppercase tracking-wider">
-                {isFlipped
-                  ? (isVi ? '🇻🇳 Ý nghĩa Tiếng Việt (Mặt sau)' : '🇻🇳 ベトナム語の意味 & 例文 (Mặt sau)')
-                  : (isVi ? '🇯🇵 Tiếng Nhật & Cách đọc (Mặt trước)' : '🇯🇵 漢字・読み方 (Mặt trước)')}
-              </span>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handlePlayTTS(currentCard.kanji);
-                }}
-                className="p-2 rounded-xl bg-orange-100 hover:bg-orange-200 text-orange-900 transition flex items-center space-x-1"
-              >
-                <Volume2 className="w-4 h-4 text-orange-600" />
-                <span className="text-xs font-bold">{isVi ? 'Phát âm' : 'TTS発音'}</span>
-              </button>
-            </div>
-
-            {/* Front & Back Content */}
-            <div className="text-center py-6">
-              {!isFlipped ? (
-                <div>
-                  <h3
-                    className="text-6xl font-extrabold text-slate-900 tracking-wide mb-3 font-learning-card"
-                    style={{ fontFamily: '"UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Klee One", sans-serif' }}
-                  >
-                    {currentCard.kanji}
-                  </h3>
-                  <div className="flex justify-center items-center space-x-4 text-sm font-semibold">
-                    <span className="px-3 py-1 rounded-lg bg-indigo-100 text-indigo-900 border border-indigo-200">
-                      {isVi ? `Âm Onyomi: ${currentCard.onyomi}` : `音読み: ${currentCard.onyomi}`}
-                    </span>
-                    <span className="px-3 py-1 rounded-lg bg-emerald-100 text-emerald-900 border border-emerald-200">
-                      {isVi ? `Âm Kunyomi: ${currentCard.kunyomi}` : `訓読み: ${currentCard.kunyomi}`}
-                    </span>
-                  </div>
-                </div>
-              ) : (
-                <div>
-                  <h3 className="text-3xl font-extrabold text-emerald-800 tracking-wide mb-2">
-                    {currentCard.meaningVn}
-                  </h3>
-                  <p className="text-sm font-medium text-slate-600 mb-3">
-                    (Tiếng Anh: {currentCard.meaningEn})
-                  </p>
-
-                  <div className="inline-block text-left bg-[#FAF7F2] p-3 rounded-xl border border-amber-200 text-xs text-slate-800 space-y-1">
-                    <span className="font-bold text-orange-700 block">{isVi ? '💡 Ví dụ:' : '💡 例文:'}</span>
-                    {currentCard.examples.map((ex, idx) => (
-                      <span key={idx} className="inline-block mr-3 bg-white px-2 py-0.5 rounded border border-amber-200 font-medium">
-                        {ex}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <div className="flex items-center justify-between text-xs text-slate-500 mb-4">
-              <span className="flex items-center space-x-1 font-semibold">
-                <RotateCw className="w-3.5 h-3.5 group-hover:rotate-180 transition duration-500 text-orange-600" />
-                <span>{isVi ? 'Nhấp để lật thẻ' : 'クリックしてカードをめくる'}</span>
-              </span>
-              <span className="font-bold text-slate-700">JLPT {currentCard.level} Kanji</span>
-            </div>
+          <div className="flex items-center gap-2 sm:gap-4">
+            <button onClick={handlePrev} className="shrink-0 p-2 sm:p-3 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-900 shadow-sm transition">
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
             
-            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 pt-4 border-t border-emerald-200/60">
-              <button
-                onClick={(e) => { e.stopPropagation(); handleReview(false); }}
-                className="flex-1 px-3 py-2 sm:px-4 sm:py-3 rounded-xl bg-rose-100 hover:bg-rose-200 text-rose-800 font-bold text-xs sm:text-sm transition flex items-center justify-center shadow-sm"
+            <div className="flex-1">
+              {/* Flip Card */}
+              <div
+                onClick={() => setIsFlipped(!isFlipped)}
+                className="relative min-h-[280px] p-4 sm:p-8 rounded-3xl bg-gradient-to-br from-[#FFFDF9] via-[#FFF9F2] to-[#FAF3E0] border-2 border-amber-200/80 hover:border-orange-400 shadow-md cursor-pointer transition flex flex-col justify-between group"
               >
-                <span>{isVi ? '❌ Chưa thuộc' : '❌ 覚えてない'}</span>
-              </button>
-              <button
-                onClick={(e) => { e.stopPropagation(); setIsFlipped(!isFlipped); }}
-                className="flex-none px-4 py-2 sm:px-6 sm:py-3 rounded-xl bg-emerald-100 hover:bg-emerald-200 text-emerald-950 font-bold text-xs sm:text-sm border border-emerald-300 transition shadow-sm"
-              >
-                {isVi ? '🔄 Lật thẻ' : '🔄 めくる'}
-              </button>
-              <button
-                onClick={(e) => { e.stopPropagation(); handleReview(true); }}
-                className="flex-1 px-3 py-2 sm:px-4 sm:py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm transition flex items-center justify-center shadow-sm"
-              >
-                <span>{isVi ? '✅ Đã thuộc' : '✅ 覚えた'}</span>
-              </button>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-orange-700 uppercase tracking-wider">
+                    {isFlipped
+                      ? (isVi ? '🇻🇳 Ý nghĩa (Mặt sau)' : '🇻🇳 ベトナム語の意味 (Mặt sau)')
+                      : (isVi ? '🇯🇵 Tiếng Nhật (Mặt trước)' : '🇯🇵 漢字・読み方 (Mặt trước)')}
+                  </span>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handlePlayTTS(currentCard.kanji);
+                    }}
+                    className="p-2 rounded-xl bg-orange-100 hover:bg-orange-200 text-orange-900 transition flex items-center space-x-1"
+                  >
+                    <Volume2 className="w-4 h-4 text-orange-600" />
+                    <span className="text-xs font-bold hidden sm:inline">{isVi ? 'Phát âm' : 'TTS発音'}</span>
+                  </button>
+                </div>
+
+                {/* Front & Back Content */}
+                <div className="text-center py-6">
+                  {!isFlipped ? (
+                    <div>
+                      <h3
+                        className="text-5xl sm:text-6xl font-extrabold text-slate-900 tracking-wide mb-3 font-learning-card"
+                        style={{ fontFamily: '"UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Klee One", sans-serif' }}
+                      >
+                        {currentCard.kanji}
+                      </h3>
+                      <div className="flex flex-col sm:flex-row justify-center items-center gap-2 text-xs sm:text-sm font-semibold mt-4">
+                        <span className="px-3 py-1 rounded-lg bg-indigo-100 text-indigo-900 border border-indigo-200">
+                          {isVi ? `Âm Onyomi: ${currentCard.onyomi}` : `音読み: ${currentCard.onyomi}`}
+                        </span>
+                        <span className="px-3 py-1 rounded-lg bg-emerald-100 text-emerald-900 border border-emerald-200">
+                          {isVi ? `Âm Kunyomi: ${currentCard.kunyomi}` : `訓読み: ${currentCard.kunyomi}`}
+                        </span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <h3 className="text-2xl sm:text-3xl font-extrabold text-emerald-800 tracking-wide mb-2">
+                        {currentCard.meaningVn}
+                      </h3>
+                      <p className="text-xs sm:text-sm font-medium text-slate-600 mb-3">
+                        (Tiếng Anh: {currentCard.meaningEn})
+                      </p>
+
+                      <div className="inline-block text-left bg-[#FAF7F2] p-3 rounded-xl border border-amber-200 text-xs text-slate-800 space-y-1 mt-2">
+                        <span className="font-bold text-orange-700 block">{isVi ? '💡 Ví dụ:' : '💡 例文:'}</span>
+                        {currentCard.examples.map((ex, idx) => (
+                          <span key={idx} className="inline-block mr-2 mb-1 bg-white px-2 py-0.5 rounded border border-amber-200 font-medium">
+                            {ex}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex flex-col space-y-4">
+                  <div className="flex items-center justify-between text-xs text-slate-500">
+                    <span className="flex items-center space-x-1 font-semibold">
+                      <RotateCw className="w-3.5 h-3.5 group-hover:rotate-180 transition duration-500 text-orange-600" />
+                      <span>{isVi ? 'Nhấp để lật' : 'クリックしてめくる'}</span>
+                    </span>
+                    <span className="font-bold text-slate-700 hidden sm:block">JLPT {currentCard.level} Kanji</span>
+                  </div>
+                  
+                  <div className="flex flex-wrap items-center justify-center gap-2 pt-4 border-t border-emerald-200/60">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); handleReview(false); }}
+                      className="flex-1 px-2 py-2 sm:px-4 sm:py-3 rounded-xl bg-rose-100 hover:bg-rose-200 text-rose-800 font-bold text-[10px] sm:text-sm transition flex items-center justify-center shadow-sm"
+                    >
+                      <span>{isVi ? '❌ Chưa' : '❌ 覚えてない'}</span>
+                    </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setIsFlipped(!isFlipped); }}
+                      className="flex-none px-3 py-2 sm:px-6 sm:py-3 rounded-xl bg-emerald-100 hover:bg-emerald-200 text-emerald-950 font-bold text-[10px] sm:text-sm border border-emerald-300 transition shadow-sm"
+                    >
+                      {isVi ? '🔄 Lật thẻ' : '🔄 めくる'}
+                    </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); handleReview(true); }}
+                      className="flex-1 px-2 py-2 sm:px-4 sm:py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[10px] sm:text-sm transition flex items-center justify-center shadow-sm"
+                    >
+                      <span>{isVi ? '✅ Xong' : '✅ 覚えた'}</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <button onClick={handleNext} className="shrink-0 p-2 sm:p-3 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-900 shadow-sm transition">
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
           </div>
-        </div>
 
-        <button onClick={handleNext} className="shrink-0 p-2 sm:p-3 rounded-full bg-emerald-100 hover:bg-emerald-200 text-emerald-900 shadow-sm transition">
-          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
-        </button>
-      </div>
-
-      {/* VAK Help Box */}
-      <div className="p-4 rounded-xl bg-orange-50 border border-orange-200 space-y-2 mt-4">
-        <div className="flex items-center space-x-2 text-xs font-bold text-orange-950">
-          {vakType === 'visual' && <Eye className="w-4 h-4 text-indigo-600" />}
-          {vakType === 'auditory' && <Volume2 className="w-4 h-4 text-emerald-600" />}
-          {vakType === 'kinesthetic' && <Hand className="w-4 h-4 text-orange-600" />}
-          <span>
-            {isVi
-              ? `Hướng dẫn ghi nhớ Kanji (${vakType.toUpperCase()})`
-              : `${vakType.toUpperCase()}タイプ向け 漢字記憶ガイド`}
-          </span>
-        </div>
-        <p className="text-xs text-slate-700 leading-relaxed font-medium">
-          {currentCard.vakHelp[vakType]}
-        </p>
-      </div>
+          {/* VAK Help Box */}
+          <div className="p-4 rounded-xl bg-orange-50 border border-orange-200 space-y-2 mt-4">
+            <div className="flex items-center space-x-2 text-xs font-bold text-orange-950">
+              {vakType === 'visual' && <Eye className="w-4 h-4 text-indigo-600" />}
+              {vakType === 'auditory' && <Volume2 className="w-4 h-4 text-emerald-600" />}
+              {vakType === 'kinesthetic' && <Hand className="w-4 h-4 text-orange-600" />}
+              <span>
+                {isVi
+                  ? `Hướng dẫn ghi nhớ Kanji (${vakType.toUpperCase()})`
+                  : `${vakType.toUpperCase()}タイプ向け 漢字記憶ガイド`}
+              </span>
+            </div>
+            <p className="text-xs text-slate-700 leading-relaxed font-medium">
+              {currentCard.vakHelp[vakType]}
+            </p>
+          </div>
         </div>
       ) : null}
       </>
