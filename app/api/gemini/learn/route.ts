@@ -4,10 +4,17 @@ import { VakType } from '@/data/vak-questions';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export async function POST(req: Request) {
+  let topic = 'JLPT N5 文法';
+  let activeVak: VakType = 'visual';
+  let lang = 'vi';
+
   try {
-    const { topic, vakType, lang } = await req.json();
+    const body = await req.json();
+    if (body.topic) topic = body.topic;
+    if (body.vakType) activeVak = body.vakType;
+    if (body.lang) lang = body.lang;
+
     const isVi = lang === "vi";
-    const activeVak: VakType = vakType || 'visual';
     const systemPrompt = VAK_SYSTEM_PROMPTS[activeVak];
 
     const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
@@ -16,12 +23,12 @@ export async function POST(req: Request) {
       return NextResponse.json({
         success: true,
         systemPrompt,
-        lesson: getMockVakLesson(topic || 'JLPT N5 文法', activeVak),
+        lesson: getMockVakLesson(topic, activeVak),
       });
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash', generationConfig: { responseMimeType: 'application/json' } });
 
     const prompt = `${systemPrompt}
 
@@ -30,7 +37,7 @@ ${isVi ? '【出力言語指定】: ユーザーのUI言語がベトナム語に
 以下のトピックについて、TypeScriptのインターフェース GeneratedVakLesson に厳密に従ったJSONフォーマットでのみ出力してください。
 Markdownのバッククォート \`\`\`json \`\`\` は使用せず、純粋なJSON文字列だけを返してください。
 
-トピック: ${topic || 'JLPT N5 文法'}
+トピック: ${topic}
 
 期待するJSONスキーマ:
 {
@@ -40,7 +47,7 @@ Markdownのバッククォート \`\`\`json \`\`\` は使用せず、純粋なJS
   "keyVocabulary": [
     { "word": "文字列", "reading": "文字列", "meaning": "文字列" }
   ],
-  "visualDiagram": "文字列 (visualタイプの場合。単なるテキストではなく、Markdownのリストや表・太字・絵文字を駆使して、視覚的にわかりやすい構造・マインドマップ風の解説を出力してください)",
+  "visualDiagram": "文字列 (visualタイプの場合。単なるテキストではなく、Markdownのリストや表・太字・絵文字を駆使して、視覚的にわかりやすい構造・マインドマップ風の解説を出力してください。改行する場合は必ず \\n を使用してエスケープしてください)",
   "auditoryDialogue": [
     { "speaker": "文字列", "text": "文字列", "audioNote": "文字列" }
   ],
@@ -62,11 +69,10 @@ Markdownのバッククォート \`\`\`json \`\`\` は使用せず、純粋なJS
     });
   } catch (error) {
     console.error('Gemini API Error:', error);
-    // Return mock data fallback on error
-    const { topic, vakType } = await req.json().catch(()=>({}));
+    // Return mock data fallback on error using variables captured outside the try block
     return NextResponse.json({ 
       success: true, 
-      lesson: getMockVakLesson(topic || 'JLPT N5 文法', vakType || 'visual') 
+      lesson: getMockVakLesson(topic, activeVak) 
     });
   }
 }
