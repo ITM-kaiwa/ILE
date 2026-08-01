@@ -104,7 +104,7 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType 
               </span>
             </div>
 
-            <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed bg-[#FFFDF9] p-5 rounded-xl border border-amber-200/80 shadow-sm overflow-x-auto">
+            <div className="markdown-body max-w-none text-slate-700 text-sm leading-relaxed bg-[#FFFDF9] p-5 rounded-xl border border-amber-200/80 shadow-sm overflow-x-auto">
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {lesson.contentMarkdown}
                 </ReactMarkdown>
@@ -145,7 +145,7 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType 
               </button>
             </div>
 
-            <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed bg-[#FFFDF9] p-5 rounded-xl border border-amber-200/80 shadow-sm overflow-x-auto">
+            <div className="markdown-body max-w-none text-slate-700 text-sm leading-relaxed bg-[#FFFDF9] p-5 rounded-xl border border-amber-200/80 shadow-sm overflow-x-auto">
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {lesson.contentMarkdown}
                 </ReactMarkdown>
@@ -162,7 +162,7 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType 
               </span>
             </div>
 
-            <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed bg-[#FFFDF9] p-5 rounded-xl border border-amber-200/80 shadow-sm overflow-x-auto">
+            <div className="markdown-body max-w-none text-slate-700 text-sm leading-relaxed bg-[#FFFDF9] p-5 rounded-xl border border-amber-200/80 shadow-sm overflow-x-auto">
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {lesson.contentMarkdown}
                 </ReactMarkdown>

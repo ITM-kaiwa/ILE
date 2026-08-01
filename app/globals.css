@@ -61,3 +61,27 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #BCAAA4;
 }
+
+
+/* Custom Markdown Table Styles */
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid #d1d5db; /* Tailwind gray-300 */
+  padding: 0.5rem 1rem;
+  text-align: left;
+}
+
+.markdown-body th {
+  background-color: #f3f4f6; /* Tailwind gray-100 */
+  font-weight: 600;
+}
+
+.markdown-body tr:nth-child(even) {
+  background-color: #f9fafb; /* Tailwind gray-50 */
+}
