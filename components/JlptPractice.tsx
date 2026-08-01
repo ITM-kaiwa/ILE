@@ -15,6 +15,8 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
   const [currentIdx, setCurrentIdx] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [aiExplanationVi, setAiExplanationVi] = useState<string | null>(null);
+  const [isAiLoading, setIsAiLoading] = useState(false);
 
   const t = getTranslation(lang);
   const [isExpanded, setIsExpanded] = useState(false);
