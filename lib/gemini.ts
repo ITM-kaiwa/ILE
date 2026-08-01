@@ -28,7 +28,7 @@ export function getMockVakLesson(topic: string, vakType: VakType): GeneratedVakL
         { word: '学習', reading: 'がくしゅう', meaning: 'Học tập' },
         { word: '視覚', reading: 'しかく', meaning: 'Thị giác' },
       ],
-      visualDiagram: '[文頭 (主語)] --(助詞: は)--> [述語 (結論)]',
+      visualDiagram: '### 🧩 構造マップ\n\n1. 🟢 **[文頭]** (主語)\n   ⬇️ *(助詞: は / が)*\n2. 🔴 **[述語]** (結論)\n\n> 💡 **ポイント**: 日本語は結論が最後にきます！',
       practiceQuestions: [
         {
           question: '「視覚優位」の学習者に適した方法はどれですか？',

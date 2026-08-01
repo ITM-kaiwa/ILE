@@ -20,10 +20,12 @@ export async function POST(req: Request) {
     const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
     if (!apiKey) {
       // Fallback to mock data
+      const mock = getMockVakLesson(topic, activeVak);
+      mock.contentMarkdown = `> ⚠️ **SYSTEM NOTICE**: API Key is missing. Showing offline mock data.\n\n` + mock.contentMarkdown;
       return NextResponse.json({
         success: true,
         systemPrompt,
-        lesson: getMockVakLesson(topic, activeVak),
+        lesson: mock,
       });
     }
 
@@ -67,12 +69,14 @@ Markdownのバッククォート \`\`\`json \`\`\` は使用せず、純粋なJS
       systemPrompt,
       lesson,
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Gemini API Error:', error);
+    const mock = getMockVakLesson(topic, activeVak);
+    mock.contentMarkdown = `> ⚠️ **SYSTEM NOTICE**: AI Generation failed (${error.message || 'Unknown Error'}). Showing offline mock data.\n\n` + mock.contentMarkdown;
     // Return mock data fallback on error using variables captured outside the try block
     return NextResponse.json({ 
       success: true, 
-      lesson: getMockVakLesson(topic, activeVak) 
+      lesson: mock
     });
   }
 }
