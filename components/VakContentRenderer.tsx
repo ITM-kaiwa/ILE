@@ -93,6 +93,8 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
           {/* Custom Input */}
           <div className="flex items-center w-full max-w-sm gap-2">
             <input
+              id="topic-input"
+              name="topic"
               type="text"
               value={customTopicInput}
               onChange={(e) => setCustomTopicInput(e.target.value)}
