@@ -78,7 +78,7 @@ export const VakDiagnosticModal: React.FC<VakDiagnosticModalProps> = ({
           <div className="flex items-center space-x-2">
             <Brain className="w-5 h-5 text-orange-600" />
             <h3 className="font-bold text-lg text-slate-800">
-              VAK 認知特性診断 ({mode === 'quick' ? '簡易 5問' : '詳細 20問'})
+              VAK 認知特性診断 / Đánh giá đặc điểm VAK ({mode === 'quick' ? '簡易 5問 / Ngắn 5 câu' : '詳細 20問 / Chi tiết 20 câu'})
             </h3>
           </div>
           <button
@@ -104,7 +104,7 @@ export const VakDiagnosticModal: React.FC<VakDiagnosticModalProps> = ({
               {/* Question */}
               <div className="mb-6">
                 <span className="text-xs font-bold text-orange-600 tracking-wider uppercase">
-                  質問 {currentIndex + 1} / {total}
+                  質問 / Câu hỏi {currentIndex + 1} / {total}
                 </span>
                 <h4 className="text-lg font-medium text-slate-800 mt-1 leading-relaxed">
                   {currentQ?.question}
@@ -134,16 +134,16 @@ export const VakDiagnosticModal: React.FC<VakDiagnosticModalProps> = ({
                 <Award className="w-8 h-8" />
               </div>
 
-              <h4 className="text-2xl font-bold text-slate-800 mb-2">診断完了！</h4>
+              <h4 className="text-2xl font-bold text-slate-800 mb-2">診断完了！ / Hoàn thành đánh giá!</h4>
               <p className="text-slate-500 text-sm mb-6">
-                あなたの優位な学習認知タイプが判明しました
+                あなたの優位な学習認知タイプが判明しました <br/> (Đã xác định được kiểu nhận thức học tập ưu thế của bạn)
               </p>
 
               <div className="p-5 rounded-2xl bg-amber-50/80 border border-amber-200 mb-6">
                 {result.isHybrid ? (
                   <div>
                     <span className="text-xs text-amber-700 font-bold uppercase">
-                      マルチハイブリッド型
+                      マルチハイブリッド型 / Kiểu đa hỗn hợp
                     </span>
                     <h5 className="text-xl font-extrabold text-slate-800 mt-1">
                       {result.hybridLabel}
@@ -152,14 +152,14 @@ export const VakDiagnosticModal: React.FC<VakDiagnosticModalProps> = ({
                 ) : (
                   <div>
                     <span className="text-xs text-orange-600 font-bold uppercase">
-                      単一優位型
+                      単一優位型 / Kiểu ưu thế đơn
                     </span>
                     <h5 className="text-xl font-extrabold text-slate-800 mt-1 uppercase">
                       {result.primaryVak === 'visual'
-                        ? '👁️ 視覚優位 (Visual)'
+                        ? '👁️ 視覚優位 (Visual) / Ưu thế thị giác'
                         : result.primaryVak === 'auditory'
-                        ? '👂 聴覚優位 (Auditory)'
-                        : '✋ 身体感覚優位 (Kinesthetic)'}
+                        ? '👂 聴覚優位 (Auditory) / Ưu thế thính giác'
+                        : '✋ 身体感覚優位 (Kinesthetic) / Ưu thế vận động'}
                     </h5>
                   </div>
                 )}
@@ -167,19 +167,19 @@ export const VakDiagnosticModal: React.FC<VakDiagnosticModalProps> = ({
                 {/* Scores */}
                 <div className="mt-6 grid grid-cols-3 gap-3">
                   <div className="p-3 rounded-xl bg-indigo-50 border border-indigo-200">
-                    <span className="text-xs text-indigo-700 block font-semibold">視覚 (V)</span>
+                    <span className="text-xs text-indigo-700 block font-semibold">視覚 (V) <br/><span className="text-[10px]">Thị giác</span></span>
                     <span className="text-lg font-bold text-indigo-900">
                       {Math.round((result.scores.visual / total) * 100)}%
                     </span>
                   </div>
                   <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200">
-                    <span className="text-xs text-emerald-700 block font-semibold">聴覚 (A)</span>
+                    <span className="text-xs text-emerald-700 block font-semibold">聴覚 (A) <br/><span className="text-[10px]">Thính giác</span></span>
                     <span className="text-lg font-bold text-emerald-900">
                       {Math.round((result.scores.auditory / total) * 100)}%
                     </span>
                   </div>
                   <div className="p-3 rounded-xl bg-orange-50 border border-orange-200">
-                    <span className="text-xs text-orange-700 block font-semibold">身体感覚 (K)</span>
+                    <span className="text-xs text-orange-700 block font-semibold">身体感覚 (K) <br/><span className="text-[10px]">Vận động</span></span>
                     <span className="text-lg font-bold text-orange-900">
                       {Math.round((result.scores.kinesthetic / total) * 100)}%
                     </span>
@@ -191,7 +191,7 @@ export const VakDiagnosticModal: React.FC<VakDiagnosticModalProps> = ({
                 onClick={handleFinish}
                 className="w-full py-3.5 px-6 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-medium transition shadow-md"
               >
-                {isLoggedIn ? 'このタイプでAI学習を開始する' : '診断結果を保存して今すぐ登録する'}
+                {isLoggedIn ? 'このタイプでAI学習を開始する / Bắt đầu học AI với kiểu này' : '診断結果を保存して今すぐ登録する / Lưu kết quả và đăng ký ngay'}
               </button>
             </div>
           )}

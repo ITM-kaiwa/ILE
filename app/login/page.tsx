@@ -36,7 +36,7 @@ export default function Login() {
           }
         });
         if (error) throw error;
-        alert('Check your email for the confirmation link!');
+        alert('Check your email for the confirmation link! / Vui lòng kiểm tra email để xác nhận!');
       } else {
         const { error } = await supabase.auth.signInWithPassword({
           email,
@@ -66,7 +66,7 @@ export default function Login() {
         </div>
 
         <h2 className="text-2xl font-extrabold text-slate-800 mb-6 text-center">
-          {isSignUp ? 'Create an Account' : 'Welcome Back'}
+          {isSignUp ? 'Create an Account / Tạo tài khoản' : 'Welcome / Chào mừng'}
         </h2>
 
         {error && (
@@ -79,7 +79,7 @@ export default function Login() {
           {isSignUp && (
             <>
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Name</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Name / Tên</label>
                 <input
                   type="text"
                   value={name}
@@ -90,20 +90,20 @@ export default function Login() {
               </div>
               <div className="flex space-x-4">
                 <div className="flex-1">
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Gender</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Gender / Giới tính</label>
                   <select
                     value={gender}
                     onChange={(e) => setGender(e.target.value)}
                     className="w-full px-4 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 bg-white"
                   >
-                    <option value="unspecified">Prefer not to say</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
+                    <option value="unspecified">Prefer not to say / Không muốn tiết lộ</option>
+                    <option value="male">Male / Nam</option>
+                    <option value="female">Female / Nữ</option>
+                    <option value="other">Other / Khác</option>
                   </select>
                 </div>
                 <div className="flex-1">
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Age</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Age / Tuổi</label>
                   <input
                     type="number"
                     value={age}
@@ -117,7 +117,7 @@ export default function Login() {
           )}
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Email</label>
+            <label className="block text-xs font-bold text-slate-700 mb-1">Email / Email</label>
             <input
               type="email"
               value={email}
@@ -127,7 +127,7 @@ export default function Login() {
             />
           </div>
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1">Password</label>
+            <label className="block text-xs font-bold text-slate-700 mb-1">Password / Mật khẩu</label>
             <input
               type="password"
               value={password}
@@ -142,7 +142,7 @@ export default function Login() {
             disabled={loading}
             className="w-full py-3 mt-4 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-sm transition shadow-md disabled:opacity-50"
           >
-            {loading ? 'Processing...' : (isSignUp ? 'Sign Up' : 'Sign In')}
+            {loading ? 'Processing... / Đang xử lý...' : (isSignUp ? 'Sign Up / Đăng ký' : 'Sign In / Đăng nhập')}
           </button>
         </form>
 
@@ -151,7 +151,7 @@ export default function Login() {
             onClick={() => setIsSignUp(!isSignUp)}
             className="text-xs font-bold text-slate-500 hover:text-slate-800 transition"
           >
-            {isSignUp ? 'Already have an account? Sign in' : "Don't have an account? Sign up"}
+            {isSignUp ? 'Already have an account? Sign in / Đã có tài khoản? Đăng nhập' : "Don't have an account? Sign up / Chưa có tài khoản? Đăng ký"}
           </button>
         </div>
       </div>
