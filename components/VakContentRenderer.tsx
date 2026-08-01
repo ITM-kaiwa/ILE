@@ -104,9 +104,11 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType 
               </span>
             </div>
 
-            <div className="prose prose-slate max-w-none text-slate-700 text-sm whitespace-pre-line leading-relaxed bg-[#FFFDF9] p-5 rounded-xl border border-amber-200/80 shadow-sm">
-              {lesson.contentMarkdown}
-            </div>
+            <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed bg-[#FFFDF9] p-5 rounded-xl border border-amber-200/80 shadow-sm overflow-x-auto">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {lesson.contentMarkdown}
+                </ReactMarkdown>
+              </div>
 
             {lesson.visualDiagram && (
               <div className="p-5 rounded-xl bg-[#FFFDF9] border border-indigo-200 space-y-2 shadow-sm">
@@ -143,9 +145,11 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType 
               </button>
             </div>
 
-            <div className="prose prose-slate max-w-none text-slate-700 text-sm whitespace-pre-line leading-relaxed bg-[#FFFDF9] p-5 rounded-xl border border-amber-200/80 shadow-sm">
-              {lesson.contentMarkdown}
-            </div>
+            <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed bg-[#FFFDF9] p-5 rounded-xl border border-amber-200/80 shadow-sm overflow-x-auto">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {lesson.contentMarkdown}
+                </ReactMarkdown>
+              </div>
           </div>
         )}
 
@@ -158,9 +162,11 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType 
               </span>
             </div>
 
-            <div className="prose prose-slate max-w-none text-slate-700 text-sm whitespace-pre-line leading-relaxed bg-[#FFFDF9] p-5 rounded-xl border border-amber-200/80 shadow-sm">
-              {lesson.contentMarkdown}
-            </div>
+            <div className="prose prose-slate max-w-none text-slate-700 text-sm leading-relaxed bg-[#FFFDF9] p-5 rounded-xl border border-amber-200/80 shadow-sm overflow-x-auto">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {lesson.contentMarkdown}
+                </ReactMarkdown>
+              </div>
           </div>
         )}
       </div>
