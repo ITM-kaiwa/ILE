@@ -2,12 +2,13 @@ import { NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export async function POST(req: Request) {
+  let requestData: any = {};
   try {
-    const { question, incorrectAnswer, correctAnswer, explanation } = await req.json();
+    requestData = await req.json();
+    const { question, incorrectAnswer, correctAnswer, explanation } = requestData;
 
     const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
     if (!apiKey) {
-      // Fallback if no API key is present
       return NextResponse.json({
         success: true,
         explanationVi: `Bạn đã chọn sai. Đáp án đúng là "${correctAnswer}". Lời giải: ${explanation}`
@@ -38,6 +39,9 @@ export async function POST(req: Request) {
     });
   } catch (error) {
     console.error('Gemini API Error:', error);
-    return NextResponse.json({ error: 'Failed to generate explanation' }, { status: 500 });
+    return NextResponse.json({ 
+      success: true, 
+      explanationVi: `Bạn đã chọn sai. Đáp án đúng là "${requestData.correctAnswer || ''}". Lời giải: ${requestData.explanation || ''}` 
+    });
   }
 }
