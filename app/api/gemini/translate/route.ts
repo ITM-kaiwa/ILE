@@ -23,9 +23,7 @@ export async function POST(req: Request) {
     else if (targetLang === 'en') langName = 'English';
     else if (targetLang === 'ja') langName = 'Japanese';
 
-    const prompt = Translate the following Japanese explanation into . Provide ONLY the translation without any markdown code blocks, quotes, or conversational text:
-
-;
+    const prompt = `Translate the following Japanese explanation into ${langName}. Provide ONLY the translation without any markdown code blocks, quotes, or conversational text:\n\n${text}`;
 
     const result = await model.generateContent(prompt);
     const translation = result.response.text().trim();
