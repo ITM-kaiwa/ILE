@@ -61,8 +61,8 @@ export const TRANSLATIONS = {
   "vi": {
     "appName": "HLV ILE VAK",
     "subTitle": "Nâng cao ngôn ngữ ITM",
-    "quickDiagnostic": "⚡ Chẩn đoán nhanh (5 câu)",
-    "detailedDiagnostic": "✨ Chẩn đoán chi tiết (20 câu)",
+    "quickDiagnostic": "⚡ CĐ 5 câu",
+    "detailedDiagnostic": "✨ CĐ 20 câu",
     "heroTitle1": "Nền tảng học tiếng Nhật AI tích hợp hoàn toàn cá nhân hóa",
     "heroTitle2": "theo phong cách nhận thức (VAK) của bạn",
     "heroDesc": "Hỗ trợ tự học cho người Việt Nam. Đánh giá nhận thức Thị giác - Thính giác - Vận động và tự động sắp xếp lịch ôn tập theo đường cong quên Ebbinghaus.",
