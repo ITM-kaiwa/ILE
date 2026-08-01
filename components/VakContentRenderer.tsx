@@ -112,15 +112,17 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
               </div>
 
             {lesson.visualDiagram && (
-              <div className="p-5 rounded-xl bg-[#FFFDF9] border border-indigo-200 space-y-2 shadow-sm">
-                <h4 className="text-xs font-semibold text-indigo-700 uppercase tracking-wider">
-                  🖼️ 視覚イメージ構造図
-                </h4>
-                <div className="p-4 rounded-lg bg-indigo-950 font-mono text-xs text-indigo-200 overflow-x-auto">
-                  {lesson.visualDiagram}
+                <div className="p-5 rounded-xl bg-[#FFFDF9] border border-indigo-200 space-y-2 shadow-sm">
+                  <h4 className="text-xs font-semibold text-indigo-700 uppercase tracking-wider">
+                    🖼️ {lang === 'vi' ? 'Biểu đồ cấu trúc trực quan' : '視覚イメージ構造図'}
+                  </h4>
+                  <div className="p-4 rounded-lg bg-white markdown-body max-w-none text-slate-700 text-sm overflow-x-auto border border-indigo-100 shadow-inner">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      {lesson.visualDiagram}
+                    </ReactMarkdown>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
           </div>
         )}
 
