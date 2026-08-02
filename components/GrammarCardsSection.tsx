@@ -29,7 +29,20 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
     const fetchCards = async () => {
       const { data, error } = await supabase.from('grammar_cards').select('*');
       if (!error && data) {
-        setAllCards(data as GrammarCard[]);
+        const filtered = (data as GrammarCard[]).filter(c => 
+          !c.title.startsWith('N5 文法項目') && 
+          !c.id.match(/^card_n4_[1-5]$/)
+        );
+        // Sort items so they appear in correct lesson order
+        filtered.sort((a, b) => {
+          // Extracts numbers from id like card_n5_6_real
+          const matchA = a.id.match(/_(\d+)/);
+          const matchB = b.id.match(/_(\d+)/);
+          const numA = matchA ? parseInt(matchA[1], 10) : 0;
+          const numB = matchB ? parseInt(matchB[1], 10) : 0;
+          return numA - numB;
+        });
+        setAllCards(filtered);
       }
       setIsLoading(false);
     };
