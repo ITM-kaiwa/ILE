@@ -7,6 +7,8 @@ import { Language, getTranslation } from '@/lib/i18n';
 import { supabase } from '@/lib/supabase';
 import { processReview } from '@/lib/srs';
 import { BookOpen, ExternalLink, Eye, Volume2, Hand , ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface GrammarCardsSectionProps {
   vakType: VakType;
@@ -187,8 +189,10 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
               </div>
             </div>
 
-            <div className="prose prose-slate max-w-none text-xs text-slate-700 whitespace-pre-line leading-relaxed bg-[#FAF7F2] p-4 rounded-lg border border-amber-200">
-              {activeCard.vakContent[vakType]}
+            <div className="markdown-body prose prose-slate max-w-none text-sm text-slate-700 leading-relaxed bg-[#FAF7F2] p-4 rounded-lg border border-amber-200 overflow-x-auto">
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                {activeCard.vakContent[vakType] || ''}
+              </ReactMarkdown>
             </div>
           </div>
         </div>
