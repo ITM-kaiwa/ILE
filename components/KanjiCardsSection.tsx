@@ -223,7 +223,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
               <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
             
-            <div className="flex-1">
+            <div className="flex-1 font-learning-card">
               {/* Flip Card */}
               <div
                 onClick={() => setIsFlipped(!isFlipped)}

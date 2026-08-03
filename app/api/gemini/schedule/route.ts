@@ -42,6 +42,7 @@ Current Date: 2026-08-04.
 The user has selected the following schedule options:
 - Days: ${options.days === 'weekdays' ? 'Weekdays only (Mon-Fri)' : 'All days (Mon-Sun)'}
 - Duration: ${options.duration === 'day' ? '1 day' : options.duration === 'week' ? '1 week (7 days)' : '1 month (30 days)'}
+- Preferred Time Slots: ${options.timeSlots && options.timeSlots.length > 0 ? options.timeSlots.join(', ') : 'Any time'}
 
 Instructions:
 1. Provide a friendly conversational reply giving advice or feedback on their study plan.

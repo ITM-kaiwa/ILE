@@ -31,8 +31,10 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
   const [goal, setGoal] = useState(isVi ? 'Thi đỗ JLPT N5 sau 1 tháng' : '1ヶ月後のJLPT N5合格');
   const [options, setOptions] = useState({
     days: 'weekdays', // 'weekdays' | 'all'
-    duration: 'week' // 'day' | 'week' | 'month'
+    duration: 'week', // 'day' | 'week' | 'month'
+    timeSlots: [] as string[]
   });
+  const [timeDropdownOpen, setTimeDropdownOpen] = useState(false);
 
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
   const [schedule, setSchedule] = useState<ScheduleEvent[]>([]);
@@ -208,6 +210,65 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
                     <span>{isVi ? '1 Tháng' : '1ヶ月'}</span>
                   </label>
                 </div>
+              </div>
+
+              <div className="md:col-span-2 relative">
+                <label className="block text-xs font-semibold text-slate-600 mb-2">{isVi ? 'Khung giờ' : '時間帯 (複数選択可)'}</label>
+                <div 
+                  className="w-full px-3 py-2 rounded-lg bg-[#FAF7F2] border border-slate-200 text-sm cursor-pointer flex justify-between items-center"
+                  onClick={() => setTimeDropdownOpen(!timeDropdownOpen)}
+                >
+                  <span className="text-slate-700">
+                    {options.timeSlots.length === 0 
+                      ? (isVi ? 'Chọn khung giờ...' : '時間帯を選択...') 
+                      : options.timeSlots.map(s => {
+                          const opt = [
+                            { val: '06:00-08:00', label: '午前6時～8時' },
+                            { val: '08:00-10:00', label: '午前8時～10時' },
+                            { val: '10:00-12:00', label: '午前10時～12時' },
+                            { val: '12:00-14:00', label: '午後12時～14時' },
+                            { val: '14:00-16:00', label: '午後14時～16時' },
+                            { val: '16:00-18:00', label: '午後16時～18時' },
+                            { val: '18:00-20:00', label: '午後18時～20時' },
+                            { val: '20:00-22:00', label: '午後20時～22時' },
+                            { val: '22:00-24:00', label: '午後22時～24時' },
+                          ].find(x => x.val === s);
+                          return isVi ? s : (opt ? opt.label : s);
+                      }).join(', ')}
+                  </span>
+                  <ChevronDown className={`w-4 h-4 text-slate-500 transition ${timeDropdownOpen ? 'rotate-180' : ''}`} />
+                </div>
+                {timeDropdownOpen && (
+                  <div className="absolute top-full left-0 mt-1 w-full bg-white border border-slate-200 rounded-lg shadow-lg z-10 max-h-48 overflow-y-auto">
+                    {[
+                      { val: '06:00-08:00', label: '午前6時～8時' },
+                      { val: '08:00-10:00', label: '午前8時～10時' },
+                      { val: '10:00-12:00', label: '午前10時～12時' },
+                      { val: '12:00-14:00', label: '午後12時～14時' },
+                      { val: '14:00-16:00', label: '午後14時～16時' },
+                      { val: '16:00-18:00', label: '午後16時～18時' },
+                      { val: '18:00-20:00', label: '午後18時～20時' },
+                      { val: '20:00-22:00', label: '午後20時～22時' },
+                      { val: '22:00-24:00', label: '午後22時～24時' },
+                    ].map(slot => (
+                      <label key={slot.val} className="flex items-center space-x-2 px-3 py-2 hover:bg-orange-50 cursor-pointer text-sm text-slate-700">
+                        <input 
+                          type="checkbox" 
+                          className="accent-orange-600 rounded border-slate-300"
+                          checked={options.timeSlots.includes(slot.val)}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setOptions({...options, timeSlots: [...options.timeSlots, slot.val]});
+                            } else {
+                              setOptions({...options, timeSlots: options.timeSlots.filter(s => s !== slot.val)});
+                            }
+                          }}
+                        />
+                        <span>{isVi ? slot.val : slot.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
