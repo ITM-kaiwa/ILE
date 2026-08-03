@@ -1,13 +1,26 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { VakType } from '@/data/vak-questions';
 import { Language, getTranslation } from '@/lib/i18n';
-import { Calendar, Clock, Sparkles, CheckCircle2, ExternalLink , ChevronDown, ChevronUp } from 'lucide-react';
+import { Calendar, Clock, Sparkles, CheckCircle2, Download , ChevronDown, ChevronUp, Send, Bot, User, Settings2 } from 'lucide-react';
 
 interface CalendarSchedulerProps {
   vakType: VakType;
   lang?: Language;
+}
+
+interface ChatMessage {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+interface ScheduleEvent {
+  date: string;
+  startTime: string;
+  endTime: string;
+  title: string;
+  description?: string;
 }
 
 export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, lang = 'ja' }) => {
@@ -16,28 +29,109 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
   const isVi = lang === 'vi';
 
   const [goal, setGoal] = useState(isVi ? 'Thi đỗ JLPT N5 sau 1 tháng' : '1ヶ月後のJLPT N5合格');
+  const [options, setOptions] = useState({
+    days: 'weekdays', // 'weekdays' | 'all'
+    duration: 'week' // 'day' | 'week' | 'month'
+  });
+
+  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
+  const [schedule, setSchedule] = useState<ScheduleEvent[]>([]);
+  const [inputMessage, setInputMessage] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [isExported, setIsExported] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
 
-  const mockSchedule = [
-    { day: 'Day 1 (Ngày mai)', title: 'JLPT N5 語彙 1-20 (VAK単語カード)', time: '08:00 - 08:30' },
-    { day: 'Day 2', title: 'JLPT N5 文法：〜です / 〜ます (シャドーイング)', time: '08:00 - 08:30' },
-    { day: 'Day 3 (Ôn tập Ebbinghaus)', title: 'Day 1 語彙の復習 + 弱点ドリル', time: '08:00 - 08:30' },
-    { day: 'Day 7 (Ôn tập Ebbinghaus)', title: '第1週 総合模擬テスト (20問)', time: '09:00 - 09:45' },
-  ];
+  const chatEndRef = useRef<HTMLDivElement>(null);
 
-  const handleGenerateSchedule = () => {
+  useEffect(() => {
+    if (chatEndRef.current) {
+      chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [chatHistory]);
+
+  useEffect(() => {
+    // Auto-start the conversation when first expanded
+    if (isExpanded && !hasStarted && chatHistory.length === 0) {
+      setHasStarted(true);
+      generateSchedule();
+    }
+  }, [isExpanded, hasStarted]);
+
+  const generateSchedule = async (userMsg?: string) => {
     setIsGenerating(true);
-    setTimeout(() => {
+    
+    // Optimistically add user message to chat
+    let newHistory = [...chatHistory];
+    if (userMsg) {
+      newHistory.push({ role: 'user', content: userMsg });
+      setChatHistory(newHistory);
+      setInputMessage('');
+    }
+
+    try {
+      const response = await fetch('/api/gemini/schedule', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          goal,
+          vakType,
+          chatHistory: newHistory,
+          options,
+          lang,
+          userMessage: userMsg
+        })
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setChatHistory([...newHistory, { role: 'assistant', content: data.reply }]);
+        if (data.schedule && data.schedule.length > 0) {
+          setSchedule(data.schedule);
+        }
+      } else {
+        setChatHistory([...newHistory, { role: 'assistant', content: isVi ? 'Xin lỗi, đã xảy ra lỗi khi tạo lịch học.' : 'スケジュールの生成中にエラーが発生しました。' }]);
+      }
+    } catch (e) {
+      console.error(e);
+      setChatHistory([...newHistory, { role: 'assistant', content: isVi ? 'Xin lỗi, đã xảy ra lỗi kết nối.' : '通信エラーが発生しました。' }]);
+    } finally {
       setIsGenerating(false);
-    }, 800);
+    }
   };
 
-  const handleExportGoogleCalendar = () => {
-    const title = encodeURIComponent(`[ILE VAK Study] ${goal}`);
-    const details = encodeURIComponent(`VAK認知タイプ (${vakType}) に基づく毎日の自動学習タスク`);
-    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}`;
-    window.open(googleCalendarUrl, '_blank');
+  const handleExportICS = () => {
+    if (schedule.length === 0) return;
+
+    let icsContent = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//ILE VAK Study//NONSGML v1.0//EN\n";
+    
+    schedule.forEach(event => {
+      // Parse dates safely. Assuming YYYY-MM-DD and HH:mm
+      const [year, month, day] = event.date.split('-');
+      const [startH, startM] = event.startTime.split(':');
+      const [endH, endM] = event.endTime.split(':');
+      
+      const dtStart = `${year}${month}${day}T${startH}${startM}00Z`;
+      const dtEnd = `${year}${month}${day}T${endH}${endM}00Z`;
+      
+      icsContent += "BEGIN:VEVENT\n";
+      icsContent += `DTSTART:${dtStart}\n`;
+      icsContent += `DTEND:${dtEnd}\n`;
+      icsContent += `SUMMARY:[VAK] ${event.title}\n`;
+      if (event.description) {
+        icsContent += `DESCRIPTION:${event.description}\n`;
+      }
+      icsContent += "END:VEVENT\n";
+    });
+    
+    icsContent += "END:VCALENDAR";
+
+    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = 'ile_study_schedule.ics';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     setIsExported(true);
   };
 
@@ -50,7 +144,7 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
         </div>
         <div className="flex items-center space-x-3">
           <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-900 border border-indigo-300">
-            F-03 Auto Sync
+            AI Auto Sync
           </span>
           <button
             onClick={() => setIsExpanded(!isExpanded)}
@@ -75,60 +169,166 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
               className="flex-1 px-4 py-2.5 rounded-xl bg-[#FAF7F2] border border-amber-300 text-slate-900 text-sm font-semibold focus:outline-none focus:border-orange-500 transition shadow-inner"
               placeholder={t.goalPlaceholder}
             />
-            <button
-              onClick={handleGenerateSchedule}
-              disabled={isGenerating}
-              className="px-4 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-500 text-white text-sm font-bold transition flex items-center space-x-1.5 shadow-sm"
-            >
-              <Sparkles className="w-4 h-4" />
-              <span>{isGenerating ? '...' : t.createPlan}</span>
-            </button>
           </div>
         </div>
 
         {isExpanded && (
-        <>
-        {/* Schedule Preview */}
-        <div className="p-4 rounded-xl bg-[#FAF7F2] border border-amber-200 space-y-3">
-          <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider">
-            {t.scheduleHeader}
-          </h4>
-
-          <div className="space-y-2">
-            {mockSchedule.map((item, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between p-3 rounded-lg bg-[#FFFDF9] border border-amber-200 hover:border-orange-300 transition shadow-sm"
-              >
-                <div>
-                  <span className="text-xs font-bold text-orange-700 mr-2">{item.day}:</span>
-                  <span className="text-sm font-medium text-slate-800">{item.title}</span>
-                </div>
-                <div className="flex items-center space-x-2 text-xs font-bold text-slate-600">
-                  <Clock className="w-3.5 h-3.5 text-slate-500" />
-                  <span>{item.time}</span>
+        <div className="space-y-6 pt-2">
+          {/* Options */}
+          <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-sm space-y-4">
+            <div className="flex items-center space-x-2 mb-2 text-slate-800 font-bold text-sm">
+              <Settings2 className="w-4 h-4 text-orange-600" />
+              <span>{isVi ? 'Tùy chọn lịch học' : 'スケジュール設定'}</span>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-semibold text-slate-600 mb-2">{isVi ? 'Ngày học' : '学習日'}</label>
+                <div className="flex space-x-3">
+                  <label className="flex items-center space-x-2 text-sm cursor-pointer">
+                    <input type="radio" checked={options.days === 'weekdays'} onChange={() => setOptions({...options, days: 'weekdays'})} className="accent-orange-600" />
+                    <span>{isVi ? 'Chỉ ngày thường' : '平日のみ'}</span>
+                  </label>
+                  <label className="flex items-center space-x-2 text-sm cursor-pointer">
+                    <input type="radio" checked={options.days === 'all'} onChange={() => setOptions({...options, days: 'all'})} className="accent-orange-600" />
+                    <span>{isVi ? 'Bao gồm cuối tuần' : '土日含む'}</span>
+                  </label>
                 </div>
               </div>
-            ))}
+              <div>
+                <label className="block text-xs font-semibold text-slate-600 mb-2">{isVi ? 'Thời lượng' : '期間'}</label>
+                <div className="flex space-x-3">
+                  <label className="flex items-center space-x-2 text-sm cursor-pointer">
+                    <input type="radio" checked={options.duration === 'day'} onChange={() => setOptions({...options, duration: 'day'})} className="accent-orange-600" />
+                    <span>{isVi ? '1 Ngày' : '1日'}</span>
+                  </label>
+                  <label className="flex items-center space-x-2 text-sm cursor-pointer">
+                    <input type="radio" checked={options.duration === 'week'} onChange={() => setOptions({...options, duration: 'week'})} className="accent-orange-600" />
+                    <span>{isVi ? '1 Tuần' : '1週間'}</span>
+                  </label>
+                  <label className="flex items-center space-x-2 text-sm cursor-pointer">
+                    <input type="radio" checked={options.duration === 'month'} onChange={() => setOptions({...options, duration: 'month'})} className="accent-orange-600" />
+                    <span>{isVi ? '1 Tháng' : '1ヶ月'}</span>
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
+
+          {/* Chat Interface */}
+          <div className="flex flex-col h-[300px] border border-amber-200 rounded-xl bg-white overflow-hidden shadow-sm">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#FAF7F2]">
+              {chatHistory.length === 0 && isGenerating && (
+                <div className="flex items-center justify-center h-full text-slate-500 text-sm space-x-2">
+                  <Sparkles className="w-4 h-4 animate-spin text-orange-500" />
+                  <span>{isVi ? 'AI đang tạo lịch trình...' : 'AIがスケジュールを作成中...'}</span>
+                </div>
+              )}
+              {chatHistory.map((msg, idx) => (
+                <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                  <div className={`flex max-w-[85%] space-x-2 ${msg.role === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 bg-stone-100 border border-stone-200">
+                      {msg.role === 'user' ? <User className="w-4 h-4 text-stone-600" /> : <Bot className="w-4 h-4 text-indigo-600" />}
+                    </div>
+                    <div className={`p-3 rounded-2xl text-sm whitespace-pre-wrap ${
+                      msg.role === 'user' 
+                        ? 'bg-orange-600 text-white rounded-tr-none' 
+                        : 'bg-white border border-slate-200 text-slate-700 rounded-tl-none shadow-sm'
+                    }`}>
+                      {msg.content}
+                    </div>
+                  </div>
+                </div>
+              ))}
+              {chatHistory.length > 0 && isGenerating && (
+                <div className="flex justify-start">
+                  <div className="flex space-x-2">
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center bg-stone-100 border border-stone-200">
+                      <Bot className="w-4 h-4 text-indigo-600" />
+                    </div>
+                    <div className="p-3 rounded-2xl bg-white border border-slate-200 rounded-tl-none flex items-center space-x-2">
+                      <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" />
+                      <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                      <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                    </div>
+                  </div>
+                </div>
+              )}
+              <div ref={chatEndRef} />
+            </div>
+            
+            <div className="p-3 bg-white border-t border-slate-200 flex gap-2">
+              <input
+                type="text"
+                value={inputMessage}
+                onChange={(e) => setInputMessage(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && !isGenerating && inputMessage.trim() && generateSchedule(inputMessage)}
+                placeholder={isVi ? 'Ví dụ: Hãy dành 30 phút mỗi tối...' : '例：夜21時から30分で組んでください...'}
+                className="flex-1 px-4 py-2 rounded-xl bg-[#FAF7F2] border border-slate-200 text-sm focus:outline-none focus:border-orange-500 transition"
+                disabled={isGenerating}
+              />
+              <button
+                onClick={() => generateSchedule(inputMessage)}
+                disabled={isGenerating || !inputMessage.trim()}
+                className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white transition flex items-center justify-center"
+              >
+                <Send className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* Schedule Preview */}
+          {schedule.length > 0 && (
+            <div className="p-4 rounded-xl bg-[#FAF7F2] border border-amber-200 space-y-3 shadow-inner max-h-[400px] overflow-y-auto">
+              <div className="flex items-center justify-between pb-2 border-b border-amber-200">
+                <h4 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider">
+                  {isVi ? 'Lịch trình được tạo' : '生成されたスケジュール'}
+                </h4>
+                <span className="text-xs font-bold text-orange-600 bg-orange-100 px-2 py-0.5 rounded-md">
+                  {schedule.length} {isVi ? 'Mục' : '件'}
+                </span>
+              </div>
+
+              <div className="space-y-2">
+                {schedule.map((item, index) => (
+                  <div
+                    key={index}
+                    className="p-3 rounded-lg bg-[#FFFDF9] border border-amber-200 hover:border-orange-300 transition shadow-sm space-y-1"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <span className="text-xs font-bold text-indigo-700 bg-indigo-50 px-2 py-1 rounded">{item.date}</span>
+                        <span className="text-sm font-bold text-slate-800">{item.title}</span>
+                      </div>
+                      <div className="flex items-center space-x-1.5 text-xs font-bold text-slate-500 shrink-0">
+                        <Clock className="w-3.5 h-3.5" />
+                        <span>{item.startTime} - {item.endTime}</span>
+                      </div>
+                    </div>
+                    {item.description && (
+                      <p className="text-xs text-slate-600 pl-[4.5rem] mt-1">{item.description}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* Export Button */}
+              <button
+                onClick={handleExportICS}
+                className="w-full mt-4 py-3 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-sm transition shadow-sm flex items-center justify-center space-x-2"
+              >
+                <Download className="w-4 h-4" />
+                <span>{isVi ? 'Tải xuống Lịch (.ics)' : 'カレンダーにエクスポート (.ics)'}</span>
+              </button>
+
+              {isExported && (
+                <p className="text-center text-xs font-bold text-emerald-700 flex items-center justify-center space-x-1 mt-2">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>{isVi ? 'Đã tải xuống file .ics' : '.icsファイルをダウンロードしました'}</span>
+                </p>
+              )}
+            </div>
+          )}
         </div>
-
-        {/* Export Button */}
-        <button
-          onClick={handleExportGoogleCalendar}
-          className="w-full py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm transition shadow-sm flex items-center justify-center space-x-2"
-        >
-          <ExternalLink className="w-4 h-4" />
-          <span>{t.exportGoogle}</span>
-        </button>
-
-        {isExported && (
-          <p className="text-center text-xs font-bold text-emerald-700 flex items-center justify-center space-x-1">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-            <span>{isVi ? 'Đã mở màn hình đăng ký Google Calendar' : 'Googleカレンダー登録画面を開きました'}</span>
-          </p>
-        )}
-      </>
         )}
       </div>
     </div>
