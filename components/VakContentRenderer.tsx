@@ -152,7 +152,8 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
                     🖼️ {lang === 'vi' ? 'Biểu đồ cấu trúc trực quan' : '視覚イメージ構造図'}
                   </h4>
                   <div className="p-4 rounded-lg bg-white markdown-body max-w-none text-slate-700 text-sm overflow-x-auto border border-indigo-100 shadow-inner">
-                    <Mermaid chart={lesson.visualDiagram} />\n                  </div>
+                    <Mermaid chart={lesson.visualDiagram} />
+                  </div>
                 </div>
               )}
           </div>
