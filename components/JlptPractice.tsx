@@ -5,6 +5,8 @@ import { QuestionCategory, WeaknessRecord, JlptLevel, JlptQuestion } from '@/lib
 import { Language, getTranslation } from '@/lib/i18n';
 import { supabase } from '@/lib/supabase';
 import { BookOpen, CheckCircle, XCircle, RefreshCw , ChevronDown, ChevronUp } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface JlptPracticeProps {
   onRecordWeakness: (record: WeaknessRecord) => void;
@@ -205,16 +207,20 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
           <div className="space-y-3">
             <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 space-y-2">
                 <h4 className="text-xs font-bold text-emerald-900">💡 {isVi ? 'Giải thích & Lời khuyên VAK:' : '解説 & VAK アドバイス:'}</h4>
-                <p className="text-xs text-emerald-950">{currentQ.explanation}</p>
-                {isVi && selectedIndex !== currentQ.correctIndex && (
+                <div className="text-xs text-emerald-950 markdown-body prose prose-emerald prose-sm max-w-none overflow-x-auto bg-[#FAF7F2] p-3 rounded border border-emerald-200/50">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{currentQ.explanation || ''}</ReactMarkdown>
+                </div>
+                {isVi && (
                   <div className="mt-3 p-3 bg-white/60 rounded-lg border border-emerald-100">
-                    <h5 className="text-[11px] font-bold text-emerald-800 mb-1 flex items-center">
+                    <h5 className="text-[11px] font-bold text-emerald-800 mb-2 flex items-center">
                       <RefreshCw className={`w-3 h-3 mr-1 ${isAiLoading ? 'animate-spin' : ''}`} />
                       AI Giải thích chi tiết
                     </h5>
-                    <p className="text-xs text-emerald-900 leading-relaxed">
-                      {isAiLoading ? 'Đang tạo bản dịch...' : (aiExplanationVi || '(Không tải được bản dịch)')}
-                    </p>
+                    <div className="text-xs text-emerald-900 leading-relaxed markdown-body prose prose-emerald prose-sm max-w-none overflow-x-auto">
+                      {isAiLoading ? 'Đang tạo bản dịch...' : (
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>{aiExplanationVi || '(Không tải được bản dịch)'}</ReactMarkdown>
+                      )}
+                    </div>
                   </div>
                 )}
               </div>
