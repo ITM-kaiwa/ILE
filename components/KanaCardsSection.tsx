@@ -66,6 +66,27 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
 
   const currentCard: KanaCard = cards[currentIndex] || cards[0];
+  
+  useEffect(() => {
+    const handleOpenCard = (e: any) => {
+      if (e.detail.type === 'kana') {
+        const targetId = e.detail.id;
+        const targetCard = dbData.find(c => c.id === targetId);
+        if (targetCard) {
+          setIsExpanded(true);
+          setKanaType(targetCard.type);
+          const newCards = dbData.filter(c => c.type === targetCard.type);
+          const index = newCards.findIndex(c => c.id === targetId);
+          if (index !== -1) {
+            setCurrentIndex(index);
+          }
+        }
+      }
+    };
+    window.addEventListener('openCard', handleOpenCard);
+    return () => window.removeEventListener('openCard', handleOpenCard);
+  }, [dbData]);
+
   const isVi = lang === 'vi';
 
   const handleReview = async (isCorrect: boolean) => {
@@ -105,7 +126,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
   };
 
   return (
-    <div className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm space-y-6">
+    <div id="kana-section" className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-amber-100 gap-3">
         <div>
@@ -156,8 +177,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
             onClick={() => setIsExpanded(!isExpanded)}
             className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
           >
-            <span>{isExpanded ? t.collapseModule : t.viewModule}</span>
-            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+            <span>{isExpanded ? '閉' : '開'}</span>
           </button>
 
         </div>

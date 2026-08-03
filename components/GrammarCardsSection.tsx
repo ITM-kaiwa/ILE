@@ -56,6 +56,23 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
   const [selectedCardId, setSelectedCardId] = useState<string>(cards[0]?.id || 'card_n5_1');
 
   const activeCard = cards.find((c) => c.id === selectedCardId) || cards[0];
+  
+  useEffect(() => {
+    const handleOpenCard = (e: any) => {
+      if (e.detail.type === 'grammar') {
+        const targetId = e.detail.id;
+        const targetCard = allCards.find(c => c.id === targetId);
+        if (targetCard) {
+          setIsExpanded(true);
+          setLevel(targetCard.level);
+          setSelectedCardId(targetId);
+        }
+      }
+    };
+    window.addEventListener('openCard', handleOpenCard);
+    return () => window.removeEventListener('openCard', handleOpenCard);
+  }, [allCards]);
+
   const isVi = lang === 'vi';
 
   const handlePlayTTS = (text: string) => {
@@ -71,7 +88,7 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
   };
 
   return (
-    <div className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm space-y-6">
+    <div id="grammar-section" className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-amber-100 gap-3">
         <div>
           <div className="flex items-center space-x-2">
@@ -118,8 +135,13 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
             onClick={() => setIsExpanded(!isExpanded)}
             className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
           >
-            <span>{isExpanded ? t.collapseModule : t.viewModule}</span>
-            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+            <span>{isExpanded ? '閉' : '開'}</span>
+          </button>
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
+          >
+            <span>{isExpanded ? '閉' : '開'}</span>
           </button>
 
         </div>

@@ -53,17 +53,12 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
           <h2 className="text-xl font-bold text-slate-800">{t.srsTitle}</h2>
         </div>
         <div className="flex items-center space-x-3">
-          {dueReviews.length > 0 && (
-            <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800 border border-rose-300 animate-pulse">
-              {dueReviews.length} Due
-            </span>
-          )}
+          
           <button
             onClick={() => setIsExpanded(!isExpanded)}
             className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
           >
-            <span>{isExpanded ? t.collapseModule : t.viewModule}</span>
-            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+            <span>{isExpanded ? '閉' : '開'}</span>
           </button>
         </div>
       </div>
@@ -92,56 +87,64 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
                </div>
             ) : (
               <div className="space-y-3">
-                {dueKana > 0 && (
-                  <div className="flex items-center justify-between p-4 rounded-xl bg-amber-50 border border-amber-200 hover:border-amber-400 transition cursor-pointer">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 rounded-lg bg-amber-200 flex items-center justify-center text-amber-700">
-                        <Type className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-slate-800 text-sm">{isVi ? "Ôn tập Kana" : "かな復習"}</h4>
-                        <p className="text-xs font-medium text-amber-700 flex items-center mt-1">
-                          <Clock className="w-3.5 h-3.5 mr-1" />
-                          <span>{dueKana} {isVi ? "thẻ cần ôn" : "カード"}</span>
-                        </p>
+                {dueReviews.map(review => {
+                  let Icon = BookOpen;
+                  let colorClass = 'bg-emerald-50 border-emerald-200 hover:border-emerald-400';
+                  let iconBgClass = 'bg-emerald-200 text-emerald-700';
+                  let titlePrefix = isVi ? "Ôn tập Kanji" : "漢字復習";
+                  let sectionId = 'kanji-section';
+
+                  if (review.content_type === 'kana') {
+                    Icon = Type;
+                    colorClass = 'bg-amber-50 border-amber-200 hover:border-amber-400';
+                    iconBgClass = 'bg-amber-200 text-amber-700';
+                    titlePrefix = isVi ? "Ôn tập Kana" : "かな復習";
+                    sectionId = 'kana-section';
+                  } else if (review.content_type === 'vocab') {
+                    Icon = Layers;
+                    colorClass = 'bg-indigo-50 border-indigo-200 hover:border-indigo-400';
+                    iconBgClass = 'bg-indigo-200 text-indigo-700';
+                    titlePrefix = isVi ? "Ôn tập Từ vựng" : "語彙復習";
+                    sectionId = 'vocab-section';
+                  } else if (review.content_type === 'grammar') {
+                    Icon = BookOpen;
+                    colorClass = 'bg-rose-50 border-rose-200 hover:border-rose-400';
+                    iconBgClass = 'bg-rose-200 text-rose-700';
+                    titlePrefix = isVi ? "Ôn tập Ngữ pháp" : "文法復習";
+                    sectionId = 'grammar-section';
+                  }
+
+                  const jumpToCard = () => {
+                    window.dispatchEvent(new CustomEvent('openCard', { 
+                      detail: { type: review.content_type, id: review.content_id } 
+                    }));
+                    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+                  };
+
+                  // format ID to be a bit more readable
+                  const readableId = review.content_id.replace('card_', '').replace('_', ' ').toUpperCase();
+
+                  return (
+                    <div 
+                      key={review.content_id} 
+                      onClick={jumpToCard}
+                      className={`flex items-center justify-between p-4 rounded-xl border transition cursor-pointer shadow-sm ${colorClass}`}
+                    >
+                      <div className="flex items-center space-x-3">
+                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${iconBgClass}`}>
+                          <Icon className="w-5 h-5" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-slate-800 text-sm">{titlePrefix}: {readableId}</h4>
+                          <p className="text-xs font-medium text-slate-600 flex items-center mt-1">
+                            <Clock className="w-3.5 h-3.5 mr-1" />
+                            <span>{isVi ? "Nhấp để ôn ngay" : "クリックして復習へジャンプ"}</span>
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
-                
-                {dueVocab > 0 && (
-                  <div className="flex items-center justify-between p-4 rounded-xl bg-indigo-50 border border-indigo-200 hover:border-indigo-400 transition cursor-pointer">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 rounded-lg bg-indigo-200 flex items-center justify-center text-indigo-700">
-                        <Layers className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-slate-800 text-sm">{isVi ? "Ôn tập Từ vựng" : "語彙復習"}</h4>
-                        <p className="text-xs font-medium text-indigo-700 flex items-center mt-1">
-                          <Clock className="w-3.5 h-3.5 mr-1" />
-                          <span>{dueVocab} {isVi ? "thẻ cần ôn" : "カード"}</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-                
-                {dueKanji > 0 && (
-                  <div className="flex items-center justify-between p-4 rounded-xl bg-emerald-50 border border-emerald-200 hover:border-emerald-400 transition cursor-pointer">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 rounded-lg bg-emerald-200 flex items-center justify-center text-emerald-700">
-                        <BookOpen className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <h4 className="font-bold text-slate-800 text-sm">{isVi ? "Ôn tập Kanji" : "漢字復習"}</h4>
-                        <p className="text-xs font-medium text-emerald-700 flex items-center mt-1">
-                          <Clock className="w-3.5 h-3.5 mr-1" />
-                          <span>{dueKanji} {isVi ? "thẻ cần ôn" : "カード"}</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                  );
+                })}
               </div>
             )}
             

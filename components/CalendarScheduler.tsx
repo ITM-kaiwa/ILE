@@ -145,15 +145,12 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
           <h2 className="text-xl font-bold text-slate-800">{t.calendarTitle}</h2>
         </div>
         <div className="flex items-center space-x-3">
-          <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-900 border border-indigo-300">
-            AI Auto Sync
-          </span>
+          
           <button
             onClick={() => setIsExpanded(!isExpanded)}
             className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
           >
-            <span>{isExpanded ? t.collapseModule : t.viewModule}</span>
-            {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+            <span>{isExpanded ? '閉' : '開'}</span>
           </button>
         </div>
       </div>
