@@ -1,5 +1,6 @@
 'use client';
 
+import { useLog } from '@/providers/LogProvider';
 import React, { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { processReview } from '@/lib/srs';
@@ -32,6 +33,8 @@ interface KanjiCardsSectionProps {
 }
 
 export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, lang = 'ja' }) => {
+  const { addLog } = useLog();
+
   const t = getTranslation(lang);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -48,7 +51,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
   useEffect(() => {
     if (isExpanded && dbData.length === 0 && !isLoading) {
       const fetchData = async () => {
-        setIsLoading(true);
+        setIsLoading(true); addLog('Fetching Kanji cards from database...', 'INFO');
         const { data, error } = await supabase.from('kanji_cards').select('*').like('langoal_url', '%langoal.com%');
         if (data && !error) {
           const mapped: KanjiCard[] = data.map(item => ({
@@ -210,10 +213,10 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
             <ExternalLink className="w-3.5 h-3.5 text-orange-600" />
           </a>
           <button
-            onClick={() => setIsExpanded(!isExpanded)}
+            onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle KanjiCardsSection expanded: ${!isExpanded}`, 'INFO'); }}
             className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
           >
-            <span>{isExpanded ? '閉' : '開'}</span>
+            <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
           </button>
 
         </div>
@@ -246,7 +249,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
             <div className="flex-1 font-learning-card">
               {/* Flip Card */}
               <div
-                onClick={() => setIsFlipped(!isFlipped)}
+                onClick={() => { setIsFlipped(!isFlipped); addLog('Flipped Kanji card.', 'INFO'); }}
                 className="relative min-h-[280px] p-4 sm:p-8 rounded-3xl bg-gradient-to-br from-[#FFFDF9] via-[#FFF9F2] to-[#FAF3E0] border-2 border-amber-200/80 hover:border-orange-400 shadow-md cursor-pointer transition flex flex-col justify-between group"
               >
                 <div className="flex items-center justify-between">

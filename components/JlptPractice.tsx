@@ -1,5 +1,6 @@
 'use client';
 
+import { useLog } from '@/providers/LogProvider';
 import React, { useState, useEffect } from 'react';
 import { QuestionCategory, WeaknessRecord, JlptLevel, JlptQuestion } from '@/lib/types';
 import { Language, getTranslation } from '@/lib/i18n';
@@ -14,6 +15,8 @@ interface JlptPracticeProps {
 }
 
 export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, lang = 'ja' }) => {
+  const { addLog } = useLog();
+
   const [currentIdx, setCurrentIdx] = useState(0);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -128,10 +131,10 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
             N4 (100{isVi ? ' câu' : '問'})
           </button>
           <button
-            onClick={() => setIsExpanded(!isExpanded)}
+            onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle JlptPractice expanded: ${!isExpanded}`, 'INFO'); }}
             className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
           >
-            <span>{isExpanded ? '閉' : '開'}</span>
+            <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
           </button>
         </div>
       </div>

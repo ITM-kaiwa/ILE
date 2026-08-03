@@ -1,5 +1,6 @@
 'use client';
 
+import { useLog } from '@/providers/LogProvider';
 import React, { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { Language, getTranslation } from '@/lib/i18n';
@@ -11,6 +12,8 @@ interface ReviewManagerProps {
 }
 
 export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => {
+  const { addLog } = useLog();
+
   const t = getTranslation(lang);
   const [isExpanded, setIsExpanded] = useState(false);
   const isVi = lang === 'vi';
@@ -20,7 +23,7 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
 
   useEffect(() => {
     if (isExpanded) {
-      setIsLoading(true);
+      setIsLoading(true); addLog('Fetching SRS review data...', 'INFO');
       supabase.auth.getSession().then(({ data: { session } }) => {
         if (session?.user) {
           supabase.from('learning_history')
@@ -55,10 +58,10 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
         <div className="flex items-center space-x-3">
           
           <button
-            onClick={() => setIsExpanded(!isExpanded)}
+            onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle ReviewManager expanded: ${!isExpanded}`, 'INFO'); }}
             className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
           >
-            <span>{isExpanded ? '閉' : '開'}</span>
+            <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
           </button>
         </div>
       </div>
@@ -115,6 +118,7 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
                   }
 
                   const jumpToCard = () => {
+                    addLog(`Jumping to card ${review.content_id} (${review.content_type}) for review.`, 'INFO');
                     window.dispatchEvent(new CustomEvent('openCard', { 
                       detail: { type: review.content_type, id: review.content_id } 
                     }));

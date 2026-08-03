@@ -1,5 +1,6 @@
 'use client';
 
+import { useLog } from '@/providers/LogProvider';
 import React, { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { processReview } from '@/lib/srs';
@@ -31,6 +32,8 @@ interface MinnaFlashcardsSectionProps {
 }
 
 export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ vakType, lang = 'ja' }) => {
+  const { addLog } = useLog();
+
   const t = getTranslation(lang);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -51,7 +54,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
   useEffect(() => {
     if (isExpanded && dbData.length === 0 && !isLoading) {
       const fetchData = async () => {
-        setIsLoading(true);
+        setIsLoading(true); addLog('Fetching Vocabulary cards from database...', 'INFO');
         const { data, error } = await supabase.from('vocab_cards').select('*').not('word', 'like', '単語_%').limit(3000);
         if (data && !error) {
           const mapped: MinnaVocabCard[] = data.map(item => ({
@@ -69,7 +72,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
             vnjpclubUrl: item.vnjpclub_url || '',
             vakHelp: item.vak_help || { visual: '', auditory: '', kinesthetic: '' }
           }));
-          setDbData(mapped);
+          setDbData(mapped); addLog(`Successfully loaded ${mapped.length} Vocabulary cards.`, 'SUCCESS');
         }
         setIsLoading(false);
       };
@@ -238,7 +241,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
             </select>
           )}
           <button
-            onClick={() => setIsExpanded(!isExpanded)}
+            onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle MinnaFlashcardsSection expanded: ${!isExpanded}`, 'INFO'); }}
             className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
           >
             <span>{isExpanded ? t.collapseModule : t.viewModule}</span>
@@ -271,7 +274,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
             </button>
             <div className="flex-1 w-full min-w-0">
               <div
-                onClick={() => setIsFlipped(!isFlipped)}
+                onClick={() => { setIsFlipped(!isFlipped); addLog('Flipped Vocabulary card.', 'INFO'); }}
                 className="relative min-h-[260px] p-4 sm:p-8 rounded-3xl bg-gradient-to-br from-[#FFFDF9] via-[#FFF8F0] to-[#FAF3E0] border-2 border-amber-200/80 hover:border-orange-400 shadow-lg cursor-pointer transition flex flex-col justify-between group"
               >
             <div className="flex items-center justify-between">

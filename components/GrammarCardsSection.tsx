@@ -1,5 +1,6 @@
 'use client';
 
+import { useLog } from '@/providers/LogProvider';
 import React, { useState, useEffect } from 'react';
 import { VakType } from '@/data/vak-questions';
 import { GrammarCard, JlptLevel } from '@/lib/types';
@@ -16,6 +17,8 @@ interface GrammarCardsSectionProps {
 }
 
 export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakType, lang = 'ja' }) => {
+  const { addLog } = useLog();
+
   const t = getTranslation(lang);
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -132,16 +135,16 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
             {isVi ? 'Ngữ pháp N4' : 'N4 文法カード'}
           </button>
           <button
-            onClick={() => setIsExpanded(!isExpanded)}
+            onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle GrammarCardsSection expanded: ${!isExpanded}`, 'INFO'); }}
             className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
           >
-            <span>{isExpanded ? '閉' : '開'}</span>
+            <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
           </button>
           <button
-            onClick={() => setIsExpanded(!isExpanded)}
+            onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle GrammarCardsSection expanded: ${!isExpanded}`, 'INFO'); }}
             className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
           >
-            <span>{isExpanded ? '閉' : '開'}</span>
+            <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
           </button>
 
         </div>
