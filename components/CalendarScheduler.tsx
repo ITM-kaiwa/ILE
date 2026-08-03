@@ -183,16 +183,14 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-slate-600 mb-2">{isVi ? 'Ngày học' : '学習日'}</label>
-                <div className="flex space-x-3">
-                  <label className="flex items-center space-x-2 text-sm cursor-pointer">
-                    <input type="radio" checked={options.days === 'weekdays'} onChange={() => setOptions({...options, days: 'weekdays'})} className="accent-orange-600" />
-                    <span>{isVi ? 'Chỉ ngày thường' : '平日のみ'}</span>
-                  </label>
-                  <label className="flex items-center space-x-2 text-sm cursor-pointer">
-                    <input type="radio" checked={options.days === 'all'} onChange={() => setOptions({...options, days: 'all'})} className="accent-orange-600" />
-                    <span>{isVi ? 'Bao gồm cuối tuần' : '土日含む'}</span>
-                  </label>
-                </div>
+                <select 
+                  value={options.days} 
+                  onChange={(e) => setOptions({...options, days: e.target.value})}
+                  className="w-full px-3 py-1.5 rounded-lg bg-[#FAF7F2] border border-slate-200 text-sm focus:outline-none focus:border-orange-500 text-slate-700"
+                >
+                  <option value="weekdays">{isVi ? 'Chỉ ngày thường' : '平日のみ'}</option>
+                  <option value="all">{isVi ? 'Bao gồm ngày nghỉ' : '休日含む'}</option>
+                </select>
               </div>
               <div>
                 <label className="block text-xs font-semibold text-slate-600 mb-2">{isVi ? 'Thời lượng' : '期間'}</label>
@@ -262,7 +260,7 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && !isGenerating && inputMessage.trim() && generateSchedule(inputMessage)}
-                placeholder={isVi ? 'Ví dụ: Hãy dành 30 phút mỗi tối...' : '例：夜21時から30分で組んでください...'}
+                placeholder={isVi ? 'Viết điều kiện ở đây: vd ngày thường 18:00 - 20:00' : 'ここに作りたい予定の条件を書いてください：平日18時から20時など。'}
                 className="flex-1 px-4 py-2 rounded-xl bg-[#FAF7F2] border border-slate-200 text-sm focus:outline-none focus:border-orange-500 transition"
                 disabled={isGenerating}
               />
