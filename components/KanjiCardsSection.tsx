@@ -62,7 +62,11 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
             nihongokyoshiUrl: item.nihongokyoshi_url || '',
             vakHelp: item.vak_help || { visual: '', auditory: '', kinesthetic: '' }
           }));
-          setDbData(mapped);
+          // Remove duplicates based on the kanji character
+          const uniqueMapped = Array.from(new Map(mapped.map(c => [c.kanji, c])).values());
+          // Sort by id or kanji for consistent ordering
+          uniqueMapped.sort((a, b) => a.kanji.localeCompare(b.kanji, 'ja'));
+          setDbData(uniqueMapped);
         }
         setIsLoading(false);
       };
