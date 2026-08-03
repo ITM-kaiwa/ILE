@@ -39,7 +39,7 @@ export const TRANSLATIONS = {
     "scheduleHeader": "📅 生成されたAIパーソナライズ・スケジュール",
     "exportGoogle": "Googleカレンダーに一括書き込み・連携",
     "srsTitle": "エビングハウス忘却曲線 自動復習通知 (SRS)",
-    "srsAlert": "本日復習すべきタスクが 2 件あります！",
+    "srsAlert": "本日復習すべきタスクが {count} 件あります！",
     "srsAlertSub": "記憶定着率が最も下がるタイミング（1日後・3日後・7日後・21日後）でVercel Cronバッチ通知が届きます。",
     "startReview": "復習を開始",
     "statusDue": "要復習",

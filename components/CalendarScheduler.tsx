@@ -63,7 +63,7 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
   }, [isExpanded, hasStarted]);
 
   const generateSchedule = async (userMsg?: string) => {
-    setIsGenerating(true); addLog('Generating AI learning schedule...', 'INFO');
+    setIsGenerating(true); addLog('Generating AI learning schedule...', 'INFO'); addLog('Generating AI learning schedule...', 'INFO');
     
     // Optimistically add user message to chat
     let newHistory = [...chatHistory];
@@ -91,7 +91,7 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
       if (data.success) {
         setChatHistory([...newHistory, { role: 'assistant', content: data.reply }]);
         if (data.schedule && data.schedule.length > 0) {
-          setSchedule(data.schedule); addLog('AI learning schedule generated successfully.', 'SUCCESS');
+          setSchedule(data.schedule); addLog('AI learning schedule generated successfully.', 'SUCCESS'); addLog('AI learning schedule generated successfully.', 'SUCCESS');
         }
       } else {
         setChatHistory([...newHistory, { role: 'assistant', content: isVi ? 'Xin lỗi, đã xảy ra lỗi khi tạo lịch học.' : 'スケジュールの生成中にエラーが発生しました。' }]);

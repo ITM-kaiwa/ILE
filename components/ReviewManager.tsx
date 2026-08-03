@@ -20,17 +20,31 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
   
   const [reviews, setReviews] = useState<SrsRecord[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [vocabMap, setVocabMap] = useState<Record<string, string>>({});
 
   useEffect(() => {
     if (isExpanded) {
-      setIsLoading(true); addLog('Fetching SRS review data...', 'INFO');
+      setIsLoading(true); addLog('Fetching SRS review data...', 'INFO'); addLog('Fetching SRS review data...', 'INFO');
       supabase.auth.getSession().then(({ data: { session } }) => {
         if (session?.user) {
           supabase.from('learning_history')
             .select('*')
             .eq('user_id', session.user.id)
-            .then(({ data }) => {
-              if (data) setReviews(data as SrsRecord[]);
+            .then(async ({ data }) => {
+              if (data) {
+                const fetchedReviews = data as SrsRecord[];
+                setReviews(fetchedReviews);
+                
+                const vocabIds = fetchedReviews.filter(r => r.content_type === 'vocab').map(r => r.content_id);
+                if (vocabIds.length > 0) {
+                  const { data: vocabData } = await supabase.from('vocab_cards').select('id, word').in('id', vocabIds);
+                  if (vocabData) {
+                    const map: Record<string, string> = {};
+                    vocabData.forEach(v => map[v.id] = v.word);
+                    setVocabMap(map);
+                  }
+                }
+              }
               setIsLoading(false);
             });
         } else {
@@ -45,6 +59,23 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
   const dueVocab = dueReviews.filter(r => r.content_type === 'vocab').length;
   const dueKanji = dueReviews.filter(r => r.content_type === 'kanji').length;
   const dueKana = dueReviews.filter(r => r.content_type === 'kana').length;
+  
+  const [clickCount, setClickCount] = useState(0);
+
+  const getVisibleCount = () => {
+    if (dueReviews.length < 4) return dueReviews.length;
+    if (clickCount === 0) return 3;
+    if (clickCount === 1) return 13;
+    return dueReviews.length;
+  };
+  
+  const visibleCount = getVisibleCount();
+  const visibleReviews = dueReviews.slice(0, visibleCount);
+  
+  const handleShowMore = () => {
+    setClickCount(prev => prev + 1);
+  };
+
   
   const upcomingReviews = reviews.filter(r => new Date(r.next_review) > now).length;
 
@@ -71,7 +102,7 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
         <div className="p-4 rounded-xl bg-amber-100/80 border border-amber-300 flex items-start space-x-3 shadow-sm">
           <Bell className="w-5 h-5 text-amber-800 shrink-0 mt-0.5" />
           <div>
-            <h4 className="text-sm font-bold text-amber-950">{t.srsAlert}</h4>
+            <h4 className="text-sm font-bold text-amber-950">{t.srsAlert.replace('{count}', dueReviews.length.toString())}</h4>
             <p className="text-xs font-medium text-amber-900 mt-0.5">
               {t.srsAlertSub}
             </p>
@@ -89,8 +120,9 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
                  🎉 {isVi ? "Bạn đã hoàn thành tất cả bài ôn tập hôm nay!" : "本日の復習はすべて完了しました！"}
                </div>
             ) : (
+              <>
               <div className="space-y-3">
-                {dueReviews.map(review => {
+                {visibleReviews.map(review => {
                   let Icon = BookOpen;
                   let colorClass = 'bg-emerald-50 border-emerald-200 hover:border-emerald-400';
                   let iconBgClass = 'bg-emerald-200 text-emerald-700';
@@ -119,6 +151,7 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
 
                   const jumpToCard = () => {
                     addLog(`Jumping to card ${review.content_id} (${review.content_type}) for review.`, 'INFO');
+                    addLog(`Jumping to card ${review.content_id} (${review.content_type}) for review.`, 'INFO');
                     window.dispatchEvent(new CustomEvent('openCard', { 
                       detail: { type: review.content_type, id: review.content_id } 
                     }));
@@ -126,7 +159,14 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
                   };
 
                   // format ID to be a bit more readable
-                  const readableId = review.content_id.replace('card_', '').replace('_', ' ').toUpperCase();
+                  let readableId = review.content_id.replace('card_', '').replace('_', ' ').toUpperCase();
+                  if (review.content_type === 'vocab') {
+                    if (vocabMap[review.content_id]) {
+                      readableId = vocabMap[review.content_id];
+                    } else {
+                      readableId = readableId.substring(0, 8) + '...';
+                    }
+                  }
 
                   return (
                     <div 
@@ -150,6 +190,17 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
                   );
                 })}
               </div>
+                {dueReviews.length >= 4 && visibleCount < dueReviews.length && (
+                  <div className="flex justify-center mt-3 mb-2">
+                    <button
+                      onClick={handleShowMore}
+                      className="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 text-sm font-bold rounded-xl transition shadow-sm border border-stone-200"
+                    >
+                      {clickCount === 0 ? (isVi ? 'Xem thêm' : 'もっと見る') : (isVi ? 'Xem tất cả' : 'さらに見る')}
+                    </button>
+                  </div>
+                )}
+              </>
             )}
             
             <div className="pt-4 border-t border-slate-200 flex justify-between items-center px-2">

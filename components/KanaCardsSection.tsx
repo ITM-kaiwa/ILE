@@ -43,7 +43,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
   useEffect(() => {
     if (isExpanded && dbData.length === 0 && !isLoading) {
       const fetchData = async () => {
-        setIsLoading(true); addLog('Fetching Kana cards from database...', 'INFO');
+        setIsLoading(true); addLog('Fetching Kana cards from database...', 'INFO'); addLog('Fetching Kana cards from database...', 'INFO');
         const { data, error } = await supabase.from('kana_cards').select('*');
         if (data && !error) {
           const mapped: KanaCard[] = data.map(item => ({
@@ -55,7 +55,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
             mnemonicVn: item.mnemonic_vi || '',
             vakHelp: item.vak_help || { visual: '', auditory: '', kinesthetic: '' }
           }));
-          setDbData(mapped); addLog(`Successfully loaded ${mapped.length} Kana cards.`, 'SUCCESS');
+          setDbData(mapped); addLog(`Successfully loaded ${mapped.length} Kana cards.`, 'SUCCESS'); addLog(`Successfully loaded ${mapped.length} Kana cards.`, 'SUCCESS');
         }
         setIsLoading(false);
       };

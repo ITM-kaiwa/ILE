@@ -54,7 +54,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
   useEffect(() => {
     if (isExpanded && dbData.length === 0 && !isLoading) {
       const fetchData = async () => {
-        setIsLoading(true); addLog('Fetching Vocabulary cards from database...', 'INFO');
+        setIsLoading(true); addLog('Fetching Vocabulary cards from database...', 'INFO'); addLog('Fetching Vocabulary cards from database...', 'INFO');
         const { data, error } = await supabase.from('vocab_cards').select('*').not('word', 'like', '単語_%').limit(3000);
         if (data && !error) {
           const mapped: MinnaVocabCard[] = data.map(item => ({
@@ -72,7 +72,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
             vnjpclubUrl: item.vnjpclub_url || '',
             vakHelp: item.vak_help || { visual: '', auditory: '', kinesthetic: '' }
           }));
-          setDbData(mapped); addLog(`Successfully loaded ${mapped.length} Vocabulary cards.`, 'SUCCESS');
+          setDbData(mapped); addLog(`Successfully loaded ${mapped.length} Vocabulary cards.`, 'SUCCESS'); addLog(`Successfully loaded ${mapped.length} Vocabulary cards.`, 'SUCCESS');
         }
         setIsLoading(false);
       };
@@ -130,10 +130,38 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
     }
   };
 
+  
+  const [pendingJumpId, setPendingJumpId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleOpenCard = (e: any) => {
+      if (e.detail.type === 'vocab') {
+        setIsExpanded(true);
+        setPendingJumpId(e.detail.id);
+      }
+    };
+    window.addEventListener('openCard', handleOpenCard);
+    return () => window.removeEventListener('openCard', handleOpenCard);
+  }, []);
+
+  useEffect(() => {
+    if (pendingJumpId && dbData.length > 0) {
+      const targetCard = dbData.find(c => c.id === pendingJumpId);
+      if (targetCard) {
+        setFilterMode('lesson');
+        setSelectedLesson(targetCard.lesson);
+        const newCards = dbData.filter(c => c.lesson === targetCard.lesson);
+        const idx = newCards.findIndex(c => c.id === pendingJumpId);
+        if (idx !== -1) setCurrentIndex(idx);
+      }
+      setPendingJumpId(null);
+    }
+  }, [pendingJumpId, dbData]);
+
   const isVi = lang === 'vi';
 
   return (
-    <div className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm space-y-6">
+    <div id="vocab-section" className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-amber-100 gap-3">
         <div>

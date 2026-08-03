@@ -51,7 +51,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
   useEffect(() => {
     if (isExpanded && dbData.length === 0 && !isLoading) {
       const fetchData = async () => {
-        setIsLoading(true); addLog('Fetching Kanji cards from database...', 'INFO');
+        setIsLoading(true); addLog('Fetching Kanji cards from database...', 'INFO'); addLog('Fetching Kanji cards from database...', 'INFO');
         const { data, error } = await supabase.from('kanji_cards').select('*').like('langoal_url', '%langoal.com%');
         if (data && !error) {
           const mapped: KanjiCard[] = data.map(item => ({
