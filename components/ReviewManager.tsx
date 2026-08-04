@@ -180,6 +180,11 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
                   let readableId = review.content_id.replace('card_', '').replace('_', ' ').toUpperCase();
                   if (vocabMap[review.content_id]) {
                     readableId = vocabMap[review.content_id];
+                    // Format dummy vocab data beautifully
+                    if (readableId.startsWith('単語_')) {
+                      const num = readableId.split('_')[1];
+                      readableId = isVi ? `Từ vựng bài ${num} (${readableId})` : `第${num}課単語 (${readableId})`;
+                    }
                   } else {
                     readableId = readableId.substring(0, 8) + '...';
                   }

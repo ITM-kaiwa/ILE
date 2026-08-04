@@ -13,6 +13,13 @@ interface WeaknessAnalyzerProps {
   lang?: Language;
 }
 
+const getVakRecVi = (text: string) => {
+  if (text.includes('色分けして視覚的に覚えましょう')) return 'Hãy ghi nhớ một cách trực quan bằng cách tô màu mẫu câu đúng.';
+  if (text.includes('声に出してリズムで覚えましょう')) return 'Hãy ghi nhớ bằng nhịp điệu bằng cách đọc to toàn bộ câu đúng.';
+  if (text.includes('ジェスチャーを交えながら')) return 'Hãy thử phát âm thực tế kết hợp với chỉ tay và cử chỉ.';
+  return text;
+};
+
 export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({ vakType, weaknessRecords, lang = 'ja' }) => {
   const { addLog } = useLog();
 
@@ -79,7 +86,7 @@ export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({ vakType, wea
                   <span>💡 {vakType.toUpperCase()} {t.recommendTitle}:</span>
                 </div>
                 <p className="text-slate-700 leading-relaxed font-medium">
-                  {record.vakRecommendation[vakType]}
+                  {isVi ? getVakRecVi(record.vakRecommendation[vakType]) : record.vakRecommendation[vakType]}
                 </p>
               </div>
             </div>
