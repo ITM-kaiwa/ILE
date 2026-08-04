@@ -103,7 +103,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
         setIsFlipped(false);
         setCurrentIndex((prevIdx) => (prevIdx + 1 < dbData.length ? prevIdx + 1 : 0));
       }
-    }, 2000);
+    }, 3000);
     return () => clearTimeout(timer);
   }, [isAutoPlay, isFlipped, dbData.length]);
 
@@ -396,3 +396,4 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
     </div>
   );
 };
+

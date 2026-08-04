@@ -96,7 +96,7 @@ export const TRANSLATIONS = {
     "scheduleHeader": "📅 Lịch trình cá nhân hóa AI được tạo ra",
     "exportGoogle": "Đồng bộ & Ghi vào Google Calendar",
     "srsTitle": "Thông báo Ôn tập Tự động Đường cong Quên (SRS)",
-    "srsAlert": "Bạn có 2 nhiệm vụ cần ôn tập hôm nay!",
+    "srsAlert": "Bạn có {count} nhiệm vụ cần ôn tập hôm nay!",
     "srsAlertSub": "Thông báo Vercel Cron sẽ gửi đến vào các thời điểm giảm ghi nhớ (1 ngày, 3 ngày, 7 ngày, 21 ngày).",
     "startReview": "Bắt đầu ôn tập",
     "statusDue": "Cần ôn tập",

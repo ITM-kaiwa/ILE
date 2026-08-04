@@ -8,9 +8,18 @@ import { RefreshCw, CheckCircle, XCircle } from 'lucide-react';
 
 interface ReviewDashboardProps {
   vakType: VakType;
+  lang?: 'ja' | 'vi';
 }
 
-export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType }) => {
+const getVakRecVi = (text: string) => {
+  if (text.includes('色分けして視覚的に覚えましょう')) return 'Hãy ghi nhớ một cách trực quan bằng cách tô màu mẫu câu đúng.';
+  if (text.includes('声に出してリズムで覚えましょう')) return 'Hãy ghi nhớ bằng nhịp điệu bằng cách đọc to toàn bộ câu đúng.';
+  if (text.includes('ジェスチャーを交えながら')) return 'Hãy thử phát âm thực tế kết hợp với chỉ tay và cử chỉ.';
+  return text;
+};
+
+export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType, lang = 'ja' }) => {
+  // In a real app we might pass lang as prop, but we can assume UI is Vi if localStorage has it or just default to isVi = true for now. Wait, I should pass lang prop. Let's just use localStorage or fallback to false.
   const [selectedLevel, setSelectedLevel] = useState<JlptLevel | 'ALL'>('ALL');
   const [selectedCategory, setSelectedCategory] = useState<QuestionCategory | 'ALL'>('ALL');
 
@@ -19,6 +28,7 @@ export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType }) => 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [aiExplanationVi, setAiExplanationVi] = useState<string | null>(null);
   const [isAiLoading, setIsAiLoading] = useState(false);
+  const isVi = lang === 'vi';
 
   const [shuffledFiltered, setShuffledFiltered] = useState<typeof ALL_JLPT_QUESTIONS>([]);
 
@@ -191,7 +201,7 @@ export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType }) => 
           ) : (
             <div className="space-y-3">
               <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 space-y-2">
-                <h4 className="text-xs font-bold text-emerald-800">💡 解説 & VAK ({vakType.toUpperCase()}) アドバイス:</h4>
+                <h4 className="text-xs font-bold text-emerald-800">{isVi ? `💡 Giải thích & Lời khuyên VAK (${vakType.toUpperCase()}):` : `💡 解説 & VAK (${vakType.toUpperCase()}) アドバイス:`}</h4>
                 <p className="text-xs text-emerald-950">{currentQ.explanation}</p>
                 <div className="mt-3 p-3 bg-white/60 rounded-lg border border-emerald-100">
                   <h5 className="text-[11px] font-bold text-emerald-800 mb-1 flex items-center">
@@ -203,7 +213,7 @@ export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType }) => 
                   </p>
                 </div>
                 <div className="p-3 rounded-lg bg-[#FFFDF9] border border-emerald-200 text-xs text-emerald-900 mt-2">
-                  <strong>💡 {vakType.toUpperCase()}アドバイス:</strong> {currentQ.vakRecommendation[vakType]}
+                  <strong>💡 {vakType.toUpperCase()} {isVi ? 'Đề xuất ôn tập' : 'アドバイス'}:</strong> {isVi ? getVakRecVi(currentQ.vakRecommendation[vakType]) : currentQ.vakRecommendation[vakType]}
                 </div>
               </div>
 

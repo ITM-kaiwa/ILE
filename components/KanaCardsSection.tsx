@@ -78,7 +78,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
         setIsFlipped(false);
         setCurrentIndex((prevIdx) => (prevIdx + 1 < dbData.length ? prevIdx + 1 : 0));
       }
-    }, 2000);
+    }, 3000);
     return () => clearTimeout(timer);
   }, [isAutoPlay, isFlipped, dbData.length]);
 
@@ -341,3 +341,4 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
     </div>
   );
 };
+

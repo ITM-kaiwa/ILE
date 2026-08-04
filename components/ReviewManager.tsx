@@ -35,15 +35,33 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
                 const fetchedReviews = data as SrsRecord[];
                 setReviews(fetchedReviews);
                 
+                const map: Record<string, string> = {};
+                
                 const vocabIds = fetchedReviews.filter(r => r.content_type === 'vocab').map(r => r.content_id);
                 if (vocabIds.length > 0) {
                   const { data: vocabData } = await supabase.from('vocab_cards').select('id, word').in('id', vocabIds);
-                  if (vocabData) {
-                    const map: Record<string, string> = {};
-                    vocabData.forEach(v => map[v.id] = v.word);
-                    setVocabMap(map);
-                  }
+                  if (vocabData) vocabData.forEach(v => map[v.id] = v.word);
                 }
+
+                const kanaIds = fetchedReviews.filter(r => r.content_type === 'kana').map(r => r.content_id);
+                if (kanaIds.length > 0) {
+                  const { data: kanaData } = await supabase.from('kana_cards').select('id, character').in('id', kanaIds);
+                  if (kanaData) kanaData.forEach(v => map[v.id] = v.character);
+                }
+
+                const kanjiIds = fetchedReviews.filter(r => r.content_type === 'kanji').map(r => r.content_id);
+                if (kanjiIds.length > 0) {
+                  const { data: kanjiData } = await supabase.from('kanji_cards').select('id, kanji').in('id', kanjiIds);
+                  if (kanjiData) kanjiData.forEach(v => map[v.id] = v.kanji);
+                }
+
+                const grammarIds = fetchedReviews.filter(r => r.content_type === 'grammar').map(r => r.content_id);
+                if (grammarIds.length > 0) {
+                  const { data: grammarData } = await supabase.from('grammar_cards').select('id, title').in('id', grammarIds);
+                  if (grammarData) grammarData.forEach(v => map[v.id] = v.title);
+                }
+
+                setVocabMap(map);
               }
               setIsLoading(false);
             });
@@ -158,14 +176,12 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
                     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
                   };
 
-                  // format ID to be a bit more readable
+                  // format ID to be actual content
                   let readableId = review.content_id.replace('card_', '').replace('_', ' ').toUpperCase();
-                  if (review.content_type === 'vocab') {
-                    if (vocabMap[review.content_id]) {
-                      readableId = vocabMap[review.content_id];
-                    } else {
-                      readableId = readableId.substring(0, 8) + '...';
-                    }
+                  if (vocabMap[review.content_id]) {
+                    readableId = vocabMap[review.content_id];
+                  } else {
+                    readableId = readableId.substring(0, 8) + '...';
                   }
 
                   return (

@@ -304,7 +304,7 @@ export default function Home() {
         )}
 
         {activeTab === 'review' && (
-          <ReviewDashboard vakType={currentVak} />
+          <ReviewDashboard vakType={currentVak} lang={lang} />
         )}
           </div>
         )}

@@ -93,7 +93,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
         setIsFlipped(false);
         setCurrentIndex((prevIdx) => (prevIdx + 1 < dbData.length ? prevIdx + 1 : 0));
       }
-    }, 2000);
+    }, 3000);
     return () => clearTimeout(timer);
   }, [isAutoPlay, isFlipped, dbData.length]);
 
@@ -429,3 +429,4 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
     </div>
   );
 };
+
