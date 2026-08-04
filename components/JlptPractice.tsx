@@ -12,6 +12,7 @@ import remarkGfm from 'remark-gfm';
 interface JlptPracticeProps {
   onRecordWeakness: (record: WeaknessRecord) => void;
   lang?: Language;
+  vakType?: string;
 }
 
 export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, lang = 'ja', vakType = 'visual' as any }) => {
