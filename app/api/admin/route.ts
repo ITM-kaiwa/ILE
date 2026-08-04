@@ -1,20 +1,26 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
+export const dynamic = 'force-dynamic'; // Prevent Next.js from static generation
 
-const supabaseAdmin = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+// Lazy initialize to prevent build-time errors when env vars are missing
+const getSupabaseAdmin = () => {
+  const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://dummy.supabase.co';
+  const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || 'dummy_key';
+  return createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+};
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const password = searchParams.get('password');
     
-    // Hardcoded password for demonstration (in production, use environment variable)
+    // Hardcoded password for demonstration
     if (password !== 'admin123') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
+
+    const supabaseAdmin = getSupabaseAdmin();
 
     // Fetch all users
     const { data: users, error: usersError } = await supabaseAdmin
@@ -59,6 +65,8 @@ export async function POST(request: Request) {
     if (!id) {
       return NextResponse.json({ error: 'Missing user ID' }, { status: 400 });
     }
+
+    const supabaseAdmin = getSupabaseAdmin();
 
     const { data, error } = await supabaseAdmin
       .from('users')
