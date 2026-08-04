@@ -55,7 +55,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
     if (isExpanded && dbData.length === 0 && !isLoading) {
       const fetchData = async () => {
         setIsLoading(true); addLog('Fetching Vocabulary cards from database...', 'INFO'); addLog('Fetching Vocabulary cards from database...', 'INFO');
-        const { data, error } = await supabase.from('vocab_cards').select('*').not('word', 'like', '単語_%').limit(3000);
+        const { data, error } = await supabase.from('vocab_cards').select('*').not('word', 'like', '単語_%').limit(4000);
         if (data && !error) {
           const mapped: MinnaVocabCard[] = data.map(item => ({
             id: item.id,
@@ -147,16 +147,33 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
   
   const [pendingJumpId, setPendingJumpId] = useState<string | null>(null);
 
+  const [pendingCardIdToJump, setPendingCardIdToJump] = useState<string | null>(null);
+
   useEffect(() => {
     const handleOpenCard = (e: any) => {
-      if (e.detail.type === 'vocab') {
-        setIsExpanded(true);
-        setPendingJumpId(e.detail.id);
+      if (e.detail?.type === 'vocab') {
+        const card = dbData.find((c: any) => c.id === e.detail.id);
+        if (card) {
+          setIsExpanded(true);
+          if(card.lesson) { setFilterMode('lesson'); setSelectedLesson(card.lesson); }
+          setPendingCardIdToJump(card.id);
+        }
       }
     };
     window.addEventListener('openCard', handleOpenCard);
     return () => window.removeEventListener('openCard', handleOpenCard);
-  }, []);
+  }, [dbData]);
+
+  useEffect(() => {
+    if (pendingCardIdToJump && list.length > 0) {
+      const idx = list.findIndex(c => c.id === pendingCardIdToJump);
+      if (idx !== -1) {
+        setCurrentIndex(idx);
+        setIsFlipped(false);
+        setPendingCardIdToJump(null);
+      }
+    }
+  }, [list, pendingCardIdToJump]);
 
   useEffect(() => {
     if (pendingJumpId && dbData.length > 0) {
@@ -429,4 +446,3 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
     </div>
   );
 };
-

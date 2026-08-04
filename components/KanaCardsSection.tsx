@@ -84,25 +84,33 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
 
   const currentCard: KanaCard = cards[currentIndex] || cards[0];
   
+  const [pendingCardIdToJump, setPendingCardIdToJump] = useState<string | null>(null);
+
   useEffect(() => {
     const handleOpenCard = (e: any) => {
-      if (e.detail.type === 'kana') {
-        const targetId = e.detail.id;
-        const targetCard = dbData.find(c => c.id === targetId);
-        if (targetCard) {
+      if (e.detail?.type === 'kana') {
+        const card = dbData.find((c: any) => c.id === e.detail.id);
+        if (card) {
           setIsExpanded(true);
-          setKanaType(targetCard.type);
-          const newCards = dbData.filter(c => c.type === targetCard.type);
-          const index = newCards.findIndex(c => c.id === targetId);
-          if (index !== -1) {
-            setCurrentIndex(index);
-          }
+          if(card.type) setKanaType(card.type);
+          setPendingCardIdToJump(card.id);
         }
       }
     };
     window.addEventListener('openCard', handleOpenCard);
     return () => window.removeEventListener('openCard', handleOpenCard);
   }, [dbData]);
+
+  useEffect(() => {
+    if (pendingCardIdToJump && list.length > 0) {
+      const idx = list.findIndex(c => c.id === pendingCardIdToJump);
+      if (idx !== -1) {
+        setCurrentIndex(idx);
+        setIsFlipped(false);
+        setPendingCardIdToJump(null);
+      }
+    }
+  }, [list, pendingCardIdToJump]);
 
   const isVi = lang === 'vi';
 

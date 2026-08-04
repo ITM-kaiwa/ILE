@@ -62,13 +62,12 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
   
   useEffect(() => {
     const handleOpenCard = (e: any) => {
-      if (e.detail.type === 'grammar') {
-        const targetId = e.detail.id;
-        const targetCard = allCards.find(c => c.id === targetId);
-        if (targetCard) {
+      if (e.detail?.type === 'grammar') {
+        const card = allCards.find((c: any) => c.id === e.detail.id);
+        if (card) {
           setIsExpanded(true);
-          setLevel(targetCard.level);
-          setSelectedCardId(targetId);
+          if(card.level) setLevel(card.level);
+          setSelectedCardId(card.id);
         }
       }
     };

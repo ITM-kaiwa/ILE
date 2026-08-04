@@ -146,25 +146,33 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
   };
 
   
+  const [pendingCardIdToJump, setPendingCardIdToJump] = useState<string | null>(null);
+
   useEffect(() => {
     const handleOpenCard = (e: any) => {
-      if (e.detail.type === 'kanji') {
-        const targetId = e.detail.id;
-        const targetCard = dbData.find(c => c.id === targetId);
-        if (targetCard) {
+      if (e.detail?.type === 'kanji') {
+        const card = dbData.find((c: any) => c.id === e.detail.id);
+        if (card) {
           setIsExpanded(true);
-          setLevel(targetCard.level);
-          const newCards = dbData.filter(c => c.level === targetCard.level);
-          const index = newCards.findIndex(c => c.id === targetId);
-          if (index !== -1) {
-            setCurrentIndex(index);
-          }
+          if(card.level) setLevel(card.level);
+          setPendingCardIdToJump(card.id);
         }
       }
     };
     window.addEventListener('openCard', handleOpenCard);
     return () => window.removeEventListener('openCard', handleOpenCard);
   }, [dbData]);
+
+  useEffect(() => {
+    if (pendingCardIdToJump && list.length > 0) {
+      const idx = list.findIndex(c => c.id === pendingCardIdToJump);
+      if (idx !== -1) {
+        setCurrentIndex(idx);
+        setIsFlipped(false);
+        setPendingCardIdToJump(null);
+      }
+    }
+  }, [list, pendingCardIdToJump]);
 
   const isVi = lang === 'vi';
 

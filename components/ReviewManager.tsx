@@ -74,7 +74,13 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
 
   const now = new Date();
   // Filter out any dummy cards that don't exist in the database (not in vocabMap)
-  const validReviews = reviews.filter(r => !!vocabMap[r.content_id]);
+  // Also filter out any cards whose mapped word literally starts with '単語_' (dummy vocab data)
+  const validReviews = reviews.filter(r => {
+    const word = vocabMap[r.content_id];
+    if (!word) return false;
+    if (word.startsWith('単語_') || word.startsWith('card_')) return false;
+    return true;
+  });
   const dueReviews = validReviews.filter(r => new Date(r.next_review) <= now);
   const dueVocab = dueReviews.filter(r => r.content_type === 'vocab').length;
   const dueKanji = dueReviews.filter(r => r.content_type === 'kanji').length;
