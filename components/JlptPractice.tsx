@@ -228,13 +228,13 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
                 )}
               </div>
 
-            {currentQ.vakRecommendation && currentQ.vakRecommendation[(vakType as any)] && (
+            {currentQ.vakRecommendation && vakType && (
               <div className="p-3 rounded-lg bg-amber-50 border border-amber-200 text-xs text-amber-950 space-y-1">
                 <div className="font-bold text-amber-900">
-                  <span>&#128161; {(vakType as any).toUpperCase()} {isVi ? 'Loi khuyen on tap' : 'アドバイス'}:</span>
+                  <span>&#128161; {vakType.toUpperCase()} {isVi ? 'Lời khuyến ôn tập' : 'アドバイス'}:</span>
                 </div>
                 <p className="text-slate-700 leading-relaxed font-medium">
-                  {currentQ.vakRecommendation[(vakType as any)]}
+                  {(currentQ.vakRecommendation as Record<string, string>)[vakType]}
                 </p>
               </div>
             )}
