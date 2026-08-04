@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { VakType } from '@/data/vak-questions';
 import { JlptLevel, QuestionCategory } from '@/lib/types';
 import { ALL_JLPT_QUESTIONS } from '@/data/jlpt-questions';
@@ -20,15 +20,21 @@ export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType }) => 
   const [aiExplanationVi, setAiExplanationVi] = useState<string | null>(null);
   const [isAiLoading, setIsAiLoading] = useState(false);
 
-  let filtered = ALL_JLPT_QUESTIONS;
-  if (selectedLevel !== 'ALL') {
-    filtered = filtered.filter((q) => q.level === selectedLevel);
-  }
-  if (selectedCategory !== 'ALL') {
-    filtered = filtered.filter((q) => q.category === selectedCategory);
-  }
+  const [shuffledFiltered, setShuffledFiltered] = useState<typeof ALL_JLPT_QUESTIONS>([]);
 
-  const currentQ = filtered[currentIdx] || filtered[0];
+  useEffect(() => {
+    let base = ALL_JLPT_QUESTIONS;
+    if (selectedLevel !== 'ALL') {
+      base = base.filter((q) => q.level === selectedLevel);
+    }
+    if (selectedCategory !== 'ALL') {
+      base = base.filter((q) => q.category === selectedCategory);
+    }
+    const shuffled = [...base].sort(() => Math.random() - 0.5);
+    setShuffledFiltered(shuffled);
+  }, [selectedLevel, selectedCategory]);
+
+  const currentQ = shuffledFiltered[currentIdx] || shuffledFiltered[0];
 
   const handleSelect = (idx: number) => {
     if (isSubmitted) return;
@@ -62,7 +68,7 @@ export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType }) => 
   };
 
   const handleNext = () => {
-    if (currentIdx + 1 < filtered.length) {
+    if (currentIdx + 1 < shuffledFiltered.length) {
       setCurrentIdx((prev) => prev + 1);
       setSelectedIndex(null);
       setIsSubmitted(false);
@@ -123,11 +129,11 @@ export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType }) => 
         </div>
       </div>
 
-      {filtered.length > 0 && currentQ ? (
+      {shuffledFiltered.length > 0 && currentQ ? (
         <div className="space-y-4">
           <div className="flex items-center justify-between text-xs">
             <span className="font-mono font-bold text-amber-700">
-              抽出結果: {currentIdx + 1} / {filtered.length} 問 (レベル: {currentQ.level})
+              抽出結果: {currentIdx + 1} / {shuffledFiltered.length} 問 (レベル: {currentQ.level})
             </span>
             <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300 font-bold">
               🏷️ {currentQ.categoryName}

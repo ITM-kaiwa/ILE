@@ -67,6 +67,20 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
+  const [isAutoPlay, setIsAutoPlay] = useState(false);
+
+  useEffect(() => {
+    if (!isAutoPlay) return;
+    const timer = setTimeout(() => {
+      if (!isFlipped) {
+        setIsFlipped(true);
+      } else {
+        setIsFlipped(false);
+        setCurrentIndex((prevIdx) => (prevIdx + 1 < dbData.length ? prevIdx + 1 : 0));
+      }
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [isAutoPlay, isFlipped, dbData.length]);
 
   const currentCard: KanaCard = cards[currentIndex] || cards[0];
   
@@ -215,11 +229,22 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
                 className="relative min-h-[280px] p-4 sm:p-8 rounded-3xl bg-gradient-to-br from-[#FFFDF9] via-[#FFF9F2] to-[#FAF3E0] border-2 border-amber-200/80 hover:border-orange-400 shadow-md cursor-pointer transition flex flex-col justify-between group"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-orange-700 uppercase tracking-wider">
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setIsAutoPlay(!isAutoPlay); }}
+                      className={`px-2 py-1 text-[10px] sm:text-xs font-bold rounded-lg border flex items-center gap-1 transition ${
+                        isAutoPlay ? 'bg-orange-600 text-white border-orange-600' : 'bg-orange-100 text-orange-800 border-orange-300 hover:bg-orange-200'
+                      }`}
+                    >
+                      {isAutoPlay ? <Pause className="w-3 h-3 sm:w-4 sm:h-4" /> : <Play className="w-3 h-3 sm:w-4 sm:h-4" />}
+                      自動再生
+                    </button>
+                    <span className="text-xs font-bold text-orange-700 uppercase tracking-wider">
                     {isFlipped
                       ? (isVi ? 'Mẹo ghi nhớ (Mặt sau)' : '覚え方 (Ghi nhớ)')
                       : (isVi ? 'Chữ Kana (Mặt trước)' : 'かな文字 (Mặt trước)')}
                   </span>
+                  </div>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();

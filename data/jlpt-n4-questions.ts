@@ -4,2101 +4,2101 @@ export const JLPT_N4_QUESTIONS: JlptQuestion[] = [
   {
     "id": "n4_1",
     "level": "N4",
-    "question": "Q1. 雨が ふって いますから、かさを (　) ほうが いいです。",
+    "question": "Q1. ともだち (　) プレゼントを もらいました",
     "options": [
-      "もっていった",
-      "もっていく",
-      "もっていかない",
-      "もっていけば"
+      "に",
+      "と",
+      "へ",
+      "の"
     ],
     "correctIndex": 0,
-    "explanation": "助言・提案を表す文型は「〜た ほうが いいです」です。",
+    "explanation": "正解は「に」です。",
     "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "文型（〜たほうがいい）",
+    "category": "grammar_particle",
+    "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_2",
     "level": "N4",
-    "question": "Q2. えいごを はなす ことが (　)。",
+    "question": "Q2. 3にん (　) パーティーを します",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "で",
+      "へ",
+      "と",
+      "に"
     ],
     "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
+    "explanation": "正解は「で」です。",
     "errorType": "grammar",
-    "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "category": "grammar_particle",
+    "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_3",
     "level": "N4",
-    "question": "Q3. 「約束」の 読み方は どれですか。",
+    "question": "Q3. ともだち (　) プレゼントを もらいました",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "を",
+      "の",
+      "で",
+      "に"
     ],
-    "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
-    "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "correctIndex": 3,
+    "explanation": "正解は「に」です。",
+    "errorType": "grammar",
+    "category": "grammar_particle",
+    "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_4",
     "level": "N4",
-    "question": "Q4. この 仕事は とても (　) です。",
+    "question": "Q4. わたしは えいがを みる (　) が すきです",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "まで",
+      "の",
+      "で",
+      "へ"
     ],
-    "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
-    "errorType": "vocabulary",
-    "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "correctIndex": 1,
+    "explanation": "正解は「の」です。",
+    "errorType": "grammar",
+    "category": "grammar_particle",
+    "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_5",
     "level": "N4",
-    "question": "Q5. 先生に 本を (　) いただきました。",
+    "question": "Q5. としょかん (　) ほんを かりに いきます",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "が",
+      "まで",
+      "の",
+      "へ"
     ],
-    "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
+    "correctIndex": 3,
+    "explanation": "正解は「へ」です。",
     "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "category": "grammar_particle",
+    "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_6",
     "level": "N4",
-    "question": "Q6. ここでは たばこを (　) は いけません。",
+    "question": "Q6. 3にん (　) パーティーを します",
     "options": [
-      "すって",
-      "すい",
-      "すう",
-      "すった"
+      "が",
+      "で",
+      "と",
+      "の"
     ],
-    "correctIndex": 0,
-    "explanation": "禁止を表す表現は「〜ては いけません」です。",
+    "correctIndex": 1,
+    "explanation": "正解は「で」です。",
     "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "文型（〜てはいけない）",
+    "category": "grammar_particle",
+    "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_7",
     "level": "N4",
-    "question": "Q7. えいごを はなす ことが (　)。",
+    "question": "Q7. としょかん (　) ほんを かりに いきます",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "まで",
+      "と",
+      "へ",
+      "を"
     ],
-    "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
+    "correctIndex": 2,
+    "explanation": "正解は「へ」です。",
     "errorType": "grammar",
-    "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "category": "grammar_particle",
+    "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_8",
     "level": "N4",
-    "question": "Q8. 「約束」の 読み方は どれですか。",
+    "question": "Q8. わたしは えいがを みる (　) が すきです",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "の",
+      "と",
+      "で",
+      "まで"
     ],
     "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
-    "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "explanation": "正解は「の」です。",
+    "errorType": "grammar",
+    "category": "grammar_particle",
+    "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_9",
     "level": "N4",
-    "question": "Q9. この 仕事は とても (　) です。",
+    "question": "Q9. 3にん (　) パーティーを します",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "に",
+      "へ",
+      "で",
+      "と"
     ],
-    "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
-    "errorType": "vocabulary",
-    "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "correctIndex": 2,
+    "explanation": "正解は「で」です。",
+    "errorType": "grammar",
+    "category": "grammar_particle",
+    "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_10",
     "level": "N4",
-    "question": "Q10. 先生に 本を (　) いただきました。",
+    "question": "Q10. ともだち (　) プレゼントを もらいました",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "を",
+      "に",
+      "の",
+      "へ"
     ],
-    "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
+    "correctIndex": 1,
+    "explanation": "正解は「に」です。",
     "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "category": "grammar_particle",
+    "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_11",
     "level": "N4",
-    "question": "Q11. 明日までに この ほんを (　) しまいました。",
+    "question": "Q11. としょかん (　) ほんを かりに いきます",
     "options": [
-      "よんで",
-      "よむ",
-      "よんだ",
-      "よみ"
+      "に",
+      "で",
+      "へ",
+      "が"
     ],
-    "correctIndex": 0,
-    "explanation": "完了や後悔を表す表現は「〜て しまう」です。",
+    "correctIndex": 2,
+    "explanation": "正解は「へ」です。",
     "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "文型（〜てしまう）",
+    "category": "grammar_particle",
+    "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_12",
     "level": "N4",
-    "question": "Q12. えいごを はなす ことが (　)。",
+    "question": "Q12. 3にん (　) パーティーを します",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "の",
+      "を",
+      "へ",
+      "で"
     ],
-    "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
+    "correctIndex": 3,
+    "explanation": "正解は「で」です。",
     "errorType": "grammar",
-    "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "category": "grammar_particle",
+    "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_13",
     "level": "N4",
-    "question": "Q13. 「約束」の 読み方は どれですか。",
+    "question": "Q13. 3にん (　) パーティーを します",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "の",
+      "で",
+      "まで",
+      "から"
     ],
-    "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
-    "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "correctIndex": 1,
+    "explanation": "正解は「で」です。",
+    "errorType": "grammar",
+    "category": "grammar_particle",
+    "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_14",
     "level": "N4",
-    "question": "Q14. この 仕事は とても (　) です。",
+    "question": "Q14. ともだち (　) プレゼントを もらいました",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "が",
+      "へ",
+      "に",
+      "と"
     ],
-    "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
-    "errorType": "vocabulary",
-    "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "correctIndex": 2,
+    "explanation": "正解は「に」です。",
+    "errorType": "grammar",
+    "category": "grammar_particle",
+    "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_15",
     "level": "N4",
-    "question": "Q15. 先生に 本を (　) いただきました。",
+    "question": "Q15. ともだち (　) プレゼントを もらいました",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "に",
+      "の",
+      "が",
+      "まで"
     ],
     "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
+    "explanation": "正解は「に」です。",
     "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "category": "grammar_particle",
+    "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_16",
     "level": "N4",
-    "question": "Q16. 日本語の しんぶんが (　) ように なりたいです。",
+    "question": "Q16. わたしは えいがを みる (　) が すきです",
     "options": [
-      "よめる",
-      "よむ",
-      "よんだ",
-      "よんで"
+      "から",
+      "へ",
+      "の",
+      "が"
     ],
-    "correctIndex": 0,
-    "explanation": "能力や状態の変化を表す表現は「可能形 ＋ ように なる」です。",
+    "correctIndex": 2,
+    "explanation": "正解は「の」です。",
     "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "文型（〜ようになる）",
+    "category": "grammar_particle",
+    "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_17",
     "level": "N4",
-    "question": "Q17. えいごを はなす ことが (　)。",
+    "question": "Q17. としょかん (　) ほんを かりに いきます",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "から",
+      "を",
+      "へ",
+      "の"
     ],
-    "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
+    "correctIndex": 2,
+    "explanation": "正解は「へ」です。",
     "errorType": "grammar",
-    "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "category": "grammar_particle",
+    "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_18",
     "level": "N4",
-    "question": "Q18. 「約束」の 読み方は どれですか。",
+    "question": "Q18. えいがを (　)。",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "みる",
+      "みない",
+      "みた ことが あります",
+      "たべます"
     ],
-    "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
-    "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "correctIndex": 2,
+    "explanation": "正解は「みた ことが あります」です。",
+    "errorType": "grammar",
+    "category": "grammar_conjugation",
+    "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_19",
     "level": "N4",
-    "question": "Q19. この 仕事は とても (　) です。",
+    "question": "Q19. はやく (　)。",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "おきて ください",
+      "みました",
+      "たべた",
+      "たべます"
     ],
     "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
-    "errorType": "vocabulary",
-    "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "explanation": "正解は「おきて ください」です。",
+    "errorType": "grammar",
+    "category": "grammar_conjugation",
+    "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_20",
     "level": "N4",
-    "question": "Q20. 先生に 本を (　) いただきました。",
+    "question": "Q20. はやく (　)。",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "みない",
+      "みる",
+      "よむ",
+      "おきて ください"
     ],
-    "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
+    "correctIndex": 3,
+    "explanation": "正解は「おきて ください」です。",
     "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "category": "grammar_conjugation",
+    "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_21",
     "level": "N4",
-    "question": "Q21. あしたは はれる (　) かも しれません。",
+    "question": "Q21. あした あめが (　)。",
     "options": [
-      "かも",
-      "と",
-      "が",
-      "に"
+      "ふると おもいます",
+      "たべます",
+      "よむ",
+      "よみます"
     ],
     "correctIndex": 0,
-    "explanation": "推測を表す文法は「〜かも しれません」です。",
+    "explanation": "正解は「ふると おもいます」です。",
     "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "文型（〜かもしれない）",
+    "category": "grammar_conjugation",
+    "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_22",
     "level": "N4",
-    "question": "Q22. えいごを はなす ことが (　)。",
+    "question": "Q22. もっと べんきょう (　)。",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "しなければなりません",
+      "たべます",
+      "よむ",
+      "みます"
     ],
     "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
+    "explanation": "正解は「しなければなりません」です。",
     "errorType": "grammar",
     "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_23",
     "level": "N4",
-    "question": "Q23. 「約束」の 読み方は どれですか。",
+    "question": "Q23. あした あめが (　)。",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "よみます",
+      "よむ",
+      "ふると おもいます",
+      "たべます"
     ],
-    "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
-    "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "correctIndex": 2,
+    "explanation": "正解は「ふると おもいます」です。",
+    "errorType": "grammar",
+    "category": "grammar_conjugation",
+    "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_24",
     "level": "N4",
-    "question": "Q24. この 仕事は とても (　) です。",
+    "question": "Q24. もっと べんきょう (　)。",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "しなければなりません",
+      "みる",
+      "みました",
+      "たべた"
     ],
     "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
-    "errorType": "vocabulary",
-    "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "explanation": "正解は「しなければなりません」です。",
+    "errorType": "grammar",
+    "category": "grammar_conjugation",
+    "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_25",
     "level": "N4",
-    "question": "Q25. 先生に 本を (　) いただきました。",
+    "question": "Q25. えいがを (　)。",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "みない",
+      "みる",
+      "みました",
+      "みた ことが あります"
     ],
-    "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
+    "correctIndex": 3,
+    "explanation": "正解は「みた ことが あります」です。",
     "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "category": "grammar_conjugation",
+    "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_26",
     "level": "N4",
-    "question": "Q26. 雨が ふって いますから、かさを (　) ほうが いいです。",
+    "question": "Q26. はやく (　)。",
     "options": [
-      "もっていった",
-      "もっていく",
-      "もっていかない",
-      "もっていけば"
+      "よみます",
+      "みない",
+      "たべます",
+      "おきて ください"
     ],
-    "correctIndex": 0,
-    "explanation": "助言・提案を表す文型は「〜た ほうが いいです」です。",
+    "correctIndex": 3,
+    "explanation": "正解は「おきて ください」です。",
     "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "文型（〜たほうがいい）",
+    "category": "grammar_conjugation",
+    "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_27",
     "level": "N4",
-    "question": "Q27. えいごを はなす ことが (　)。",
+    "question": "Q27. えいがを (　)。",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "みた ことが あります",
+      "みます",
+      "みました",
+      "よみます"
     ],
     "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
+    "explanation": "正解は「みた ことが あります」です。",
     "errorType": "grammar",
     "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_28",
     "level": "N4",
-    "question": "Q28. 「約束」の 読み方は どれですか。",
+    "question": "Q28. あした あめが (　)。",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "よみます",
+      "たべます",
+      "みました",
+      "ふると おもいます"
     ],
-    "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
-    "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "correctIndex": 3,
+    "explanation": "正解は「ふると おもいます」です。",
+    "errorType": "grammar",
+    "category": "grammar_conjugation",
+    "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_29",
     "level": "N4",
-    "question": "Q29. この 仕事は とても (　) です。",
+    "question": "Q29. えいがを (　)。",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "たべます",
+      "みます",
+      "みない",
+      "みた ことが あります"
     ],
-    "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
-    "errorType": "vocabulary",
-    "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "correctIndex": 3,
+    "explanation": "正解は「みた ことが あります」です。",
+    "errorType": "grammar",
+    "category": "grammar_conjugation",
+    "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_30",
     "level": "N4",
-    "question": "Q30. 先生に 本を (　) いただきました。",
+    "question": "Q30. もっと べんきょう (　)。",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "よみます",
+      "みない",
+      "みる",
+      "しなければなりません"
     ],
-    "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
+    "correctIndex": 3,
+    "explanation": "正解は「しなければなりません」です。",
     "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "category": "grammar_conjugation",
+    "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_31",
     "level": "N4",
-    "question": "Q31. ここでは たばこを (　) は いけません。",
+    "question": "Q31. えいがを (　)。",
     "options": [
-      "すって",
-      "すい",
-      "すう",
-      "すった"
+      "たべた",
+      "たべます",
+      "みた ことが あります",
+      "よむ"
     ],
-    "correctIndex": 0,
-    "explanation": "禁止を表す表現は「〜ては いけません」です。",
+    "correctIndex": 2,
+    "explanation": "正解は「みた ことが あります」です。",
     "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "文型（〜てはいけない）",
+    "category": "grammar_conjugation",
+    "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_32",
     "level": "N4",
-    "question": "Q32. えいごを はなす ことが (　)。",
+    "question": "Q32. あした あめが (　)。",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "ふると おもいます",
+      "よむ",
+      "たべた",
+      "みる"
     ],
     "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
+    "explanation": "正解は「ふると おもいます」です。",
     "errorType": "grammar",
     "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_33",
     "level": "N4",
-    "question": "Q33. 「約束」の 読み方は どれですか。",
+    "question": "Q33. はやく (　)。",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "みます",
+      "おきて ください",
+      "みない",
+      "よむ"
     ],
-    "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
-    "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "correctIndex": 1,
+    "explanation": "正解は「おきて ください」です。",
+    "errorType": "grammar",
+    "category": "grammar_conjugation",
+    "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_34",
     "level": "N4",
-    "question": "Q34. この 仕事は とても (　) です。",
+    "question": "Q34. あした あめが (　)。",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "よむ",
+      "よみます",
+      "みます",
+      "ふると おもいます"
     ],
-    "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
-    "errorType": "vocabulary",
-    "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "correctIndex": 3,
+    "explanation": "正解は「ふると おもいます」です。",
+    "errorType": "grammar",
+    "category": "grammar_conjugation",
+    "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_35",
     "level": "N4",
-    "question": "Q35. 先生に 本を (　) いただきました。",
+    "question": "Q35. あしたは はれる (　)。",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "ですか",
+      "そうです",
+      "じゃありません",
+      "です"
     ],
-    "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
+    "correctIndex": 1,
+    "explanation": "正解は「そうです」です。",
     "errorType": "grammar",
     "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_36",
     "level": "N4",
-    "question": "Q36. 明日までに この ほんを (　) しまいました。",
+    "question": "Q36. こどもに ほんを (　)。",
     "options": [
-      "よんで",
-      "よむ",
-      "よんだ",
-      "よみ"
+      "らしいです",
+      "ですか",
+      "じゃありません",
+      "よませます"
     ],
-    "correctIndex": 0,
-    "explanation": "完了や後悔を表す表現は「〜て しまう」です。",
+    "correctIndex": 3,
+    "explanation": "正解は「よませます」です。",
     "errorType": "grammar",
     "category": "grammar_sentence",
-    "categoryName": "文型（〜てしまう）",
+    "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_37",
     "level": "N4",
-    "question": "Q37. えいごを はなす ことが (　)。",
+    "question": "Q37. こどもに ほんを (　)。",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "よませます",
+      "です",
+      "ではありません",
+      "ですか"
     ],
     "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
+    "explanation": "正解は「よませます」です。",
     "errorType": "grammar",
-    "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "category": "grammar_sentence",
+    "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_38",
     "level": "N4",
-    "question": "Q38. 「約束」の 読み方は どれですか。",
+    "question": "Q38. わたしは 先生に (　)。",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "らしいです",
+      "ですか",
+      "じゃありません",
+      "ほめられました"
     ],
-    "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
-    "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "correctIndex": 3,
+    "explanation": "正解は「ほめられました」です。",
+    "errorType": "grammar",
+    "category": "grammar_sentence",
+    "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_39",
     "level": "N4",
-    "question": "Q39. この 仕事は とても (　) です。",
+    "question": "Q39. かさを (　)。",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "ですか",
+      "ではありません",
+      "でした",
+      "わすれて しまいました"
     ],
-    "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
-    "errorType": "vocabulary",
-    "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "correctIndex": 3,
+    "explanation": "正解は「わすれて しまいました」です。",
+    "errorType": "grammar",
+    "category": "grammar_sentence",
+    "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_40",
     "level": "N4",
-    "question": "Q40. 先生に 本を (　) いただきました。",
+    "question": "Q40. わたしは 先生に (　)。",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "ではありません",
+      "だ",
+      "らしいです",
+      "ほめられました"
     ],
-    "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
+    "correctIndex": 3,
+    "explanation": "正解は「ほめられました」です。",
     "errorType": "grammar",
     "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_41",
     "level": "N4",
-    "question": "Q41. 日本語の しんぶんが (　) ように なりたいです。",
+    "question": "Q41. あしたは はれる (　)。",
     "options": [
-      "よめる",
-      "よむ",
-      "よんだ",
-      "よんで"
+      "らしいです",
+      "だ",
+      "そうです",
+      "です"
     ],
-    "correctIndex": 0,
-    "explanation": "能力や状態の変化を表す表現は「可能形 ＋ ように なる」です。",
+    "correctIndex": 2,
+    "explanation": "正解は「そうです」です。",
     "errorType": "grammar",
     "category": "grammar_sentence",
-    "categoryName": "文型（〜ようになる）",
+    "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_42",
     "level": "N4",
-    "question": "Q42. えいごを はなす ことが (　)。",
+    "question": "Q42. あしたは はれる (　)。",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "そうです",
+      "じゃありません",
+      "でした",
+      "です"
     ],
     "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
+    "explanation": "正解は「そうです」です。",
     "errorType": "grammar",
-    "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "category": "grammar_sentence",
+    "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_43",
     "level": "N4",
-    "question": "Q43. 「約束」の 読み方は どれですか。",
+    "question": "Q43. あしたは はれる (　)。",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "ではありません",
+      "ですか",
+      "らしいです",
+      "そうです"
     ],
-    "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
-    "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "correctIndex": 3,
+    "explanation": "正解は「そうです」です。",
+    "errorType": "grammar",
+    "category": "grammar_sentence",
+    "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_44",
     "level": "N4",
-    "question": "Q44. この 仕事は とても (　) です。",
+    "question": "Q44. こどもに ほんを (　)。",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "です",
+      "だ",
+      "ではありません",
+      "よませます"
     ],
-    "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
-    "errorType": "vocabulary",
-    "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "correctIndex": 3,
+    "explanation": "正解は「よませます」です。",
+    "errorType": "grammar",
+    "category": "grammar_sentence",
+    "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_45",
     "level": "N4",
-    "question": "Q45. 先生に 本を (　) いただきました。",
+    "question": "Q45. あしたは はれる (　)。",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "じゃありません",
+      "らしいです",
+      "ではありません",
+      "そうです"
     ],
-    "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
+    "correctIndex": 3,
+    "explanation": "正解は「そうです」です。",
     "errorType": "grammar",
     "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_46",
     "level": "N4",
-    "question": "Q46. あしたは はれる (　) かも しれません。",
+    "question": "Q46. こどもに ほんを (　)。",
     "options": [
-      "かも",
-      "と",
-      "が",
-      "に"
+      "らしいです",
+      "じゃありません",
+      "そうです",
+      "よませます"
     ],
-    "correctIndex": 0,
-    "explanation": "推測を表す文法は「〜かも しれません」です。",
+    "correctIndex": 3,
+    "explanation": "正解は「よませます」です。",
     "errorType": "grammar",
     "category": "grammar_sentence",
-    "categoryName": "文型（〜かもしれない）",
+    "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_47",
     "level": "N4",
-    "question": "Q47. えいごを はなす ことが (　)。",
+    "question": "Q47. こどもに ほんを (　)。",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "だ",
+      "らしいです",
+      "よませます",
+      "でした"
     ],
-    "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
+    "correctIndex": 2,
+    "explanation": "正解は「よませます」です。",
     "errorType": "grammar",
-    "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "category": "grammar_sentence",
+    "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_48",
     "level": "N4",
-    "question": "Q48. 「約束」の 読み方は どれですか。",
+    "question": "Q48. あしたは はれる (　)。",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "ですか",
+      "です",
+      "ではありません",
+      "そうです"
     ],
-    "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
-    "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "correctIndex": 3,
+    "explanation": "正解は「そうです」です。",
+    "errorType": "grammar",
+    "category": "grammar_sentence",
+    "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_49",
     "level": "N4",
-    "question": "Q49. この 仕事は とても (　) です。",
+    "question": "Q49. かさを (　)。",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "ですか",
+      "じゃありません",
+      "わすれて しまいました",
+      "らしいです"
     ],
-    "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
-    "errorType": "vocabulary",
-    "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "correctIndex": 2,
+    "explanation": "正解は「わすれて しまいました」です。",
+    "errorType": "grammar",
+    "category": "grammar_sentence",
+    "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_50",
     "level": "N4",
-    "question": "Q50. 先生に 本を (　) いただきました。",
+    "question": "Q50. かさを (　)。",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "わすれて しまいました",
+      "ですか",
+      "だ",
+      "じゃありません"
     ],
     "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
+    "explanation": "正解は「わすれて しまいました」です。",
     "errorType": "grammar",
     "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_51",
     "level": "N4",
-    "question": "Q51. 雨が ふって いますから、かさを (　) ほうが いいです。",
+    "question": "Q51. こどもに ほんを (　)。",
     "options": [
-      "もっていった",
-      "もっていく",
-      "もっていかない",
-      "もっていけば"
+      "らしいです",
+      "ではありません",
+      "だ",
+      "よませます"
     ],
-    "correctIndex": 0,
-    "explanation": "助言・提案を表す文型は「〜た ほうが いいです」です。",
+    "correctIndex": 3,
+    "explanation": "正解は「よませます」です。",
     "errorType": "grammar",
     "category": "grammar_sentence",
-    "categoryName": "文型（〜たほうがいい）",
+    "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_52",
     "level": "N4",
-    "question": "Q52. えいごを はなす ことが (　)。",
+    "question": "Q52. ともだちを (　)。",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "あそびます",
+      "かきます",
+      "たべます",
+      "むかえます"
     ],
-    "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
-    "errorType": "grammar",
-    "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "correctIndex": 3,
+    "explanation": "正解は「むかえます」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_daily",
+    "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_53",
     "level": "N4",
-    "question": "Q53. 「約束」の 読み方は どれですか。",
+    "question": "Q53. へやを (　)。",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "ききます",
+      "かたづけます",
+      "のみます",
+      "かきます"
     ],
-    "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
-    "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "correctIndex": 1,
+    "explanation": "正解は「かたづけます」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_daily",
+    "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_54",
     "level": "N4",
-    "question": "Q54. この 仕事は とても (　) です。",
+    "question": "Q54. ともだちを (　)。",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "かいます",
+      "むかえます",
+      "あらいます",
+      "ききます"
     ],
-    "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
+    "correctIndex": 1,
+    "explanation": "正解は「むかえます」です。",
     "errorType": "vocabulary",
     "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_55",
     "level": "N4",
-    "question": "Q55. 先生に 本を (　) いただきました。",
+    "question": "Q55. ともだちを (　)。",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "ききます",
+      "むかえます",
+      "のみます",
+      "かきます"
     ],
-    "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "correctIndex": 1,
+    "explanation": "正解は「むかえます」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_daily",
+    "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_56",
     "level": "N4",
-    "question": "Q56. ここでは たばこを (　) は いけません。",
+    "question": "Q56. じしょを (　)。",
     "options": [
-      "すって",
-      "すい",
-      "すう",
-      "すった"
+      "しらべます",
+      "かいます",
+      "あそびます",
+      "ききます"
     ],
     "correctIndex": 0,
-    "explanation": "禁止を表す表現は「〜ては いけません」です。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "文型（〜てはいけない）",
+    "explanation": "正解は「しらべます」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_daily",
+    "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_57",
     "level": "N4",
-    "question": "Q57. えいごを はなす ことが (　)。",
+    "question": "Q57. へやを (　)。",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "あらいます",
+      "かたづけます",
+      "のみます",
+      "たべます"
     ],
-    "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
-    "errorType": "grammar",
-    "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "correctIndex": 1,
+    "explanation": "正解は「かたづけます」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_daily",
+    "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_58",
     "level": "N4",
-    "question": "Q58. 「約束」の 読み方は どれですか。",
+    "question": "Q58. じしょを (　)。",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "たべます",
+      "しらべます",
+      "ききます",
+      "のみます"
     ],
-    "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
-    "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "correctIndex": 1,
+    "explanation": "正解は「しらべます」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_daily",
+    "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_59",
     "level": "N4",
-    "question": "Q59. この 仕事は とても (　) です。",
+    "question": "Q59. ともだちを (　)。",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "ききます",
+      "むかえます",
+      "かいます",
+      "あらいます"
     ],
-    "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
+    "correctIndex": 1,
+    "explanation": "正解は「むかえます」です。",
     "errorType": "vocabulary",
     "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_60",
     "level": "N4",
-    "question": "Q60. 先生に 本を (　) いただきました。",
+    "question": "Q60. じしょを (　)。",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "のみます",
+      "かいます",
+      "しらべます",
+      "ききます"
     ],
-    "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "correctIndex": 2,
+    "explanation": "正解は「しらべます」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_daily",
+    "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_61",
     "level": "N4",
-    "question": "Q61. 明日までに この ほんを (　) しまいました。",
+    "question": "Q61. じしょを (　)。",
     "options": [
-      "よんで",
-      "よむ",
-      "よんだ",
-      "よみ"
+      "のみます",
+      "ききます",
+      "あそびます",
+      "しらべます"
     ],
-    "correctIndex": 0,
-    "explanation": "完了や後悔を表す表現は「〜て しまう」です。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "文型（〜てしまう）",
+    "correctIndex": 3,
+    "explanation": "正解は「しらべます」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_daily",
+    "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_62",
     "level": "N4",
-    "question": "Q62. えいごを はなす ことが (　)。",
+    "question": "Q62. へやを (　)。",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "たべます",
+      "かたづけます",
+      "あそびます",
+      "かいます"
     ],
-    "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
-    "errorType": "grammar",
-    "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "correctIndex": 1,
+    "explanation": "正解は「かたづけます」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_daily",
+    "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_63",
     "level": "N4",
-    "question": "Q63. 「約束」の 読み方は どれですか。",
+    "question": "Q63. へやを (　)。",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "かいます",
+      "かきます",
+      "しらべます",
+      "かたづけます"
     ],
-    "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
-    "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "correctIndex": 3,
+    "explanation": "正解は「かたづけます」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_daily",
+    "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_64",
     "level": "N4",
-    "question": "Q64. この 仕事は とても (　) です。",
+    "question": "Q64. にもつを (　)。",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "あらいます",
+      "ききます",
+      "おくります",
+      "たべます"
     ],
-    "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
+    "correctIndex": 2,
+    "explanation": "正解は「おくります」です。",
     "errorType": "vocabulary",
     "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_65",
     "level": "N4",
-    "question": "Q65. 先生に 本を (　) いただきました。",
+    "question": "Q65. ともだちを (　)。",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "かきます",
+      "むかえます",
+      "たべます",
+      "あらいます"
     ],
-    "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "correctIndex": 1,
+    "explanation": "正解は「むかえます」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_daily",
+    "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_66",
     "level": "N4",
-    "question": "Q66. 日本語の しんぶんが (　) ように なりたいです。",
+    "question": "Q66. へやを (　)。",
     "options": [
-      "よめる",
-      "よむ",
-      "よんだ",
-      "よんで"
+      "かいます",
+      "ききます",
+      "しらべます",
+      "かたづけます"
     ],
-    "correctIndex": 0,
-    "explanation": "能力や状態の変化を表す表現は「可能形 ＋ ように なる」です。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "文型（〜ようになる）",
+    "correctIndex": 3,
+    "explanation": "正解は「かたづけます」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_daily",
+    "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_67",
     "level": "N4",
-    "question": "Q67. えいごを はなす ことが (　)。",
+    "question": "Q67. にもつを (　)。",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "ききます",
+      "おくります",
+      "かいます",
+      "かきます"
     ],
-    "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
-    "errorType": "grammar",
-    "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "correctIndex": 1,
+    "explanation": "正解は「おくります」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_daily",
+    "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_68",
     "level": "N4",
-    "question": "Q68. 「約束」の 読み方は どれですか。",
+    "question": "Q68. へやを (　)。",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "たべます",
+      "あそびます",
+      "かたづけます",
+      "ききます"
     ],
-    "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
-    "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "correctIndex": 2,
+    "explanation": "正解は「かたづけます」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_daily",
+    "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_69",
     "level": "N4",
-    "question": "Q69. この 仕事は とても (　) です。",
+    "question": "Q69. さらいげつ (　)。",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "せんしゅう",
+      "かようび",
+      "帰ります",
+      "きょう"
     ],
-    "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
+    "correctIndex": 2,
+    "explanation": "正解は「帰ります」です。",
     "errorType": "vocabulary",
-    "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "category": "vocabulary_time",
+    "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_70",
     "level": "N4",
-    "question": "Q70. 先生に 本を (　) いただきました。",
+    "question": "Q70. せんしゅうの (　)。",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "にちようび",
+      "すいようび",
+      "せんしゅう",
+      "きょう"
     ],
     "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "explanation": "正解は「にちようび」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_time",
+    "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_71",
     "level": "N4",
-    "question": "Q71. あしたは はれる (　) かも しれません。",
+    "question": "Q71. さらいげつ (　)。",
     "options": [
-      "かも",
-      "と",
-      "が",
-      "に"
+      "あさって",
+      "せんしゅう",
+      "帰ります",
+      "かようび"
     ],
-    "correctIndex": 0,
-    "explanation": "推測を表す文法は「〜かも しれません」です。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "文型（〜かもしれない）",
+    "correctIndex": 2,
+    "explanation": "正解は「帰ります」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_time",
+    "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_72",
     "level": "N4",
-    "question": "Q72. えいごを はなす ことが (　)。",
+    "question": "Q72. さらいげつ (　)。",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "きのう",
+      "らいしゅう",
+      "すいようび",
+      "帰ります"
     ],
-    "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
-    "errorType": "grammar",
-    "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "correctIndex": 3,
+    "explanation": "正解は「帰ります」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_time",
+    "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_73",
     "level": "N4",
-    "question": "Q73. 「約束」の 読み方は どれですか。",
+    "question": "Q73. せんしゅうの (　)。",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "きょう",
+      "にちようび",
+      "かようび",
+      "すいようび"
     ],
-    "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
-    "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "correctIndex": 1,
+    "explanation": "正解は「にちようび」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_time",
+    "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_74",
     "level": "N4",
-    "question": "Q74. この 仕事は とても (　) です。",
+    "question": "Q74. きょねんの (　)。",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "あした",
+      "すいようび",
+      "ふゆ",
+      "せんしゅう"
     ],
-    "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
+    "correctIndex": 2,
+    "explanation": "正解は「ふゆ」です。",
     "errorType": "vocabulary",
-    "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "category": "vocabulary_time",
+    "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_75",
     "level": "N4",
-    "question": "Q75. 先生に 本を (　) いただきました。",
+    "question": "Q75. らいしゅうの (　)。",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "きのう",
+      "げつようび",
+      "きょう",
+      "らいしゅう"
     ],
-    "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "correctIndex": 1,
+    "explanation": "正解は「げつようび」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_time",
+    "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_76",
     "level": "N4",
-    "question": "Q76. 雨が ふって いますから、かさを (　) ほうが いいです。",
+    "question": "Q76. きょねんの (　)。",
     "options": [
-      "もっていった",
-      "もっていく",
-      "もっていかない",
-      "もっていけば"
+      "ふゆ",
+      "あした",
+      "きょう",
+      "かようび"
     ],
     "correctIndex": 0,
-    "explanation": "助言・提案を表す文型は「〜た ほうが いいです」です。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "文型（〜たほうがいい）",
+    "explanation": "正解は「ふゆ」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_time",
+    "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_77",
     "level": "N4",
-    "question": "Q77. えいごを はなす ことが (　)。",
+    "question": "Q77. さらいげつ (　)。",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "帰ります",
+      "せんしゅう",
+      "きのう",
+      "あさって"
     ],
     "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
-    "errorType": "grammar",
-    "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "explanation": "正解は「帰ります」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_time",
+    "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_78",
     "level": "N4",
-    "question": "Q78. 「約束」の 読み方は どれですか。",
+    "question": "Q78. さらいげつ (　)。",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "帰ります",
+      "おととい",
+      "きのう",
+      "かようび"
     ],
     "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
-    "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "explanation": "正解は「帰ります」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_time",
+    "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_79",
     "level": "N4",
-    "question": "Q79. この 仕事は とても (　) です。",
+    "question": "Q79. せんしゅうの (　)。",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "にちようび",
+      "すいようび",
+      "あさって",
+      "きのう"
     ],
     "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
+    "explanation": "正解は「にちようび」です。",
     "errorType": "vocabulary",
-    "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "category": "vocabulary_time",
+    "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_80",
     "level": "N4",
-    "question": "Q80. 先生に 本を (　) いただきました。",
+    "question": "Q80. きょねんの (　)。",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "あした",
+      "きょう",
+      "せんしゅう",
+      "ふゆ"
     ],
-    "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "correctIndex": 3,
+    "explanation": "正解は「ふゆ」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_time",
+    "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_81",
     "level": "N4",
-    "question": "Q81. ここでは たばこを (　) は いけません。",
+    "question": "Q81. らいしゅうの (　)。",
     "options": [
-      "すって",
-      "すい",
-      "すう",
-      "すった"
+      "きょう",
+      "すいようび",
+      "げつようび",
+      "らいしゅう"
     ],
-    "correctIndex": 0,
-    "explanation": "禁止を表す表現は「〜ては いけません」です。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "文型（〜てはいけない）",
+    "correctIndex": 2,
+    "explanation": "正解は「げつようび」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_time",
+    "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_82",
     "level": "N4",
-    "question": "Q82. えいごを はなす ことが (　)。",
+    "question": "Q82. らいしゅうの (　)。",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "かようび",
+      "らいしゅう",
+      "あした",
+      "げつようび"
     ],
-    "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
-    "errorType": "grammar",
-    "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "correctIndex": 3,
+    "explanation": "正解は「げつようび」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_time",
+    "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_83",
     "level": "N4",
-    "question": "Q83. 「約束」の 読み方は どれですか。",
+    "question": "Q83. さらいげつ (　)。",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "きょう",
+      "きのう",
+      "せんしゅう",
+      "帰ります"
     ],
-    "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
-    "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "correctIndex": 3,
+    "explanation": "正解は「帰ります」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_time",
+    "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_84",
     "level": "N4",
-    "question": "Q84. この 仕事は とても (　) です。",
+    "question": "Q84. せんしゅうの (　)。",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "にちようび",
+      "あした",
+      "あさって",
+      "きのう"
     ],
     "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
+    "explanation": "正解は「にちようび」です。",
     "errorType": "vocabulary",
-    "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "category": "vocabulary_time",
+    "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_85",
     "level": "N4",
-    "question": "Q85. 先生に 本を (　) いただきました。",
+    "question": "Q85. らいしゅうの (　)。",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "きのう",
+      "きょう",
+      "おととい",
+      "げつようび"
     ],
-    "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "correctIndex": 3,
+    "explanation": "正解は「げつようび」です。",
+    "errorType": "vocabulary",
+    "category": "vocabulary_time",
+    "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_86",
     "level": "N4",
-    "question": "Q86. 明日までに この ほんを (　) しまいました。",
+    "question": "Q86. 経験 (　)。",
     "options": [
-      "よんで",
-      "よむ",
-      "よんだ",
-      "よみ"
+      "つち",
+      "やま",
+      "けいけん",
+      "ちゅうい"
     ],
-    "correctIndex": 0,
-    "explanation": "完了や後悔を表す表現は「〜て しまう」です。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "文型（〜てしまう）",
+    "correctIndex": 2,
+    "explanation": "正解は「けいけん」です。",
+    "errorType": "vocabulary",
+    "category": "kanji_reading",
+    "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_87",
     "level": "N4",
-    "question": "Q87. えいごを はなす ことが (　)。",
+    "question": "Q87. 準備 (　)。",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "やま",
+      "きん",
+      "じゅんび",
+      "つち"
     ],
-    "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
-    "errorType": "grammar",
-    "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "correctIndex": 2,
+    "explanation": "正解は「じゅんび」です。",
+    "errorType": "vocabulary",
+    "category": "kanji_reading",
+    "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_88",
     "level": "N4",
-    "question": "Q88. 「約束」の 読み方は どれですか。",
+    "question": "Q88. 約束 (　)。",
     "options": [
+      "けいけん",
       "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "じゅんび",
+      "きん"
     ],
-    "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
+    "correctIndex": 1,
+    "explanation": "正解は「やくそく」です。",
+    "errorType": "vocabulary",
     "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_89",
     "level": "N4",
-    "question": "Q89. この 仕事は とても (　) です。",
+    "question": "Q89. 約束 (　)。",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "やくそく",
+      "やま",
+      "きん",
+      "じゅんび"
     ],
     "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
+    "explanation": "正解は「やくそく」です。",
     "errorType": "vocabulary",
-    "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "category": "kanji_reading",
+    "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_90",
     "level": "N4",
-    "question": "Q90. 先生に 本を (　) いただきました。",
+    "question": "Q90. 経験 (　)。",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "ちゅうい",
+      "かわ",
+      "やくそく",
+      "けいけん"
     ],
-    "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "correctIndex": 3,
+    "explanation": "正解は「けいけん」です。",
+    "errorType": "vocabulary",
+    "category": "kanji_reading",
+    "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_91",
     "level": "N4",
-    "question": "Q91. 日本語の しんぶんが (　) ように なりたいです。",
+    "question": "Q91. 経験 (　)。",
     "options": [
-      "よめる",
-      "よむ",
-      "よんだ",
-      "よんで"
+      "きん",
+      "けいけん",
+      "やくそく",
+      "ちゅうい"
     ],
-    "correctIndex": 0,
-    "explanation": "能力や状態の変化を表す表現は「可能形 ＋ ように なる」です。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "文型（〜ようになる）",
+    "correctIndex": 1,
+    "explanation": "正解は「けいけん」です。",
+    "errorType": "vocabulary",
+    "category": "kanji_reading",
+    "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_92",
     "level": "N4",
-    "question": "Q92. えいごを はなす ことが (　)。",
+    "question": "Q92. 準備 (　)。",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "けいけん",
+      "いみ",
+      "じゅんび",
+      "ちゅうい"
     ],
-    "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
-    "errorType": "grammar",
-    "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "correctIndex": 2,
+    "explanation": "正解は「じゅんび」です。",
+    "errorType": "vocabulary",
+    "category": "kanji_reading",
+    "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_93",
     "level": "N4",
-    "question": "Q93. 「約束」の 読み方は どれですか。",
+    "question": "Q93. 約束 (　)。",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "つち",
+      "じゅんび",
+      "きん",
+      "やくそく"
     ],
-    "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
+    "correctIndex": 3,
+    "explanation": "正解は「やくそく」です。",
+    "errorType": "vocabulary",
     "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_94",
     "level": "N4",
-    "question": "Q94. この 仕事は とても (　) です。",
+    "question": "Q94. 意味 (　)。",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "いみ",
+      "じゅんび",
+      "やま",
+      "けいけん"
     ],
     "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
+    "explanation": "正解は「いみ」です。",
     "errorType": "vocabulary",
-    "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "category": "kanji_reading",
+    "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_95",
     "level": "N4",
-    "question": "Q95. 先生に 本を (　) いただきました。",
+    "question": "Q95. 約束 (　)。",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "かわ",
+      "きん",
+      "やま",
+      "やくそく"
     ],
-    "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "correctIndex": 3,
+    "explanation": "正解は「やくそく」です。",
+    "errorType": "vocabulary",
+    "category": "kanji_reading",
+    "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_96",
     "level": "N4",
-    "question": "Q96. あしたは はれる (　) かも しれません。",
+    "question": "Q96. 準備 (　)。",
     "options": [
-      "かも",
-      "と",
-      "が",
-      "に"
+      "かわ",
+      "ちゅうい",
+      "やま",
+      "じゅんび"
     ],
-    "correctIndex": 0,
-    "explanation": "推測を表す文法は「〜かも しれません」です。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "文型（〜かもしれない）",
+    "correctIndex": 3,
+    "explanation": "正解は「じゅんび」です。",
+    "errorType": "vocabulary",
+    "category": "kanji_reading",
+    "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "文末の接続形（〜たほうがいい / 〜てはいけない）の条件分岐フロー図を整理しましょう。",
-      "auditory": "「〜たほうがいい」「〜てはいけない」のフレーズを対話形式で口ずさみましょう。",
-      "kinesthetic": "「ダメ！」と手で×を作りながら禁止文型を大げさに動作演劇しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_97",
     "level": "N4",
-    "question": "Q97. えいごを はなす ことが (　)。",
+    "question": "Q97. 約束 (　)。",
     "options": [
-      "できます",
-      "します",
-      "なります",
-      "あります"
+      "じゅんび",
+      "ちゅうい",
+      "いみ",
+      "やくそく"
     ],
-    "correctIndex": 0,
-    "explanation": "能力を表す「辞書形 ＋ ことが できます」が正解です。",
-    "errorType": "grammar",
-    "category": "grammar_conjugation",
-    "categoryName": "可能表現（〜ことができる）",
+    "correctIndex": 3,
+    "explanation": "正解は「やくそく」です。",
+    "errorType": "vocabulary",
+    "category": "kanji_reading",
+    "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "可能形動詞のルール表（書ける、話せる、食べられる）を色分け表示で比較しましょう。",
-      "auditory": "「できます！できません！」の対話音声を聞いてリピート練習しましょう。",
-      "kinesthetic": "自分が得意な動作（走る・書く）をしながら「できます！」とガッツポーズしましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_98",
     "level": "N4",
-    "question": "Q98. 「約束」の 読み方は どれですか。",
+    "question": "Q98. 経験 (　)。",
     "options": [
-      "やくそく",
-      "しょうかい",
-      "準備",
-      "経験"
+      "やま",
+      "ちゅうい",
+      "いみ",
+      "けいけん"
     ],
-    "correctIndex": 0,
-    "explanation": "漢字「約束」の読み方は「やくそく」です。",
-    "errorType": "kanji",
+    "correctIndex": 3,
+    "explanation": "正解は「けいけん」です。",
+    "errorType": "vocabulary",
     "category": "kanji_reading",
-    "categoryName": "漢字の読み方（N4応用）",
+    "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "熟語「約束」の部首とふりがなをカード形式で視覚記憶しましょう。",
-      "auditory": "「やくそく・YAKUSOKU」の音節を意識して音読しましょう。",
-      "kinesthetic": "指切り（小指を絡める）身振りをしながら「やくそく」と言いましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_99",
     "level": "N4",
-    "question": "Q99. この 仕事は とても (　) です。",
+    "question": "Q99. 経験 (　)。",
     "options": [
-      "たいへん",
-      "しずか",
-      "ひま",
-      "親切"
+      "かわ",
+      "けいけん",
+      "ちゅうい",
+      "やま"
     ],
-    "correctIndex": 0,
-    "explanation": "文脈に合う形容詞は「たいへん（大変）」です。",
+    "correctIndex": 1,
+    "explanation": "正解は「けいけん」です。",
     "errorType": "vocabulary",
-    "category": "vocabulary_daily",
-    "categoryName": "形容詞・副詞の語彙",
+    "category": "kanji_reading",
+    "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "形容詞の対義語リスト（大変 ↔ 楽）を比較表でまとめましょう。",
-      "auditory": "感情を込めたトーンで「大変だ〜！」と声に出しましょう。",
-      "kinesthetic": "汗をぬぐうジェスチャーをしながら「たいへん」を表現しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   },
   {
     "id": "n4_100",
     "level": "N4",
-    "question": "Q100. 先生に 本を (　) いただきました。",
+    "question": "Q100. 準備 (　)。",
     "options": [
-      "かして",
-      "かりて",
-      "もらって",
-      "あげて"
+      "きん",
+      "つち",
+      "けいけん",
+      "じゅんび"
     ],
-    "correctIndex": 0,
-    "explanation": "敬語・授受表現「〜て いただく」です。先生が貸してくれたので「かして いただきました」となります。",
-    "errorType": "grammar",
-    "category": "grammar_sentence",
-    "categoryName": "授受表現・敬語（〜ていただく）",
+    "correctIndex": 3,
+    "explanation": "正解は「じゅんび」です。",
+    "errorType": "vocabulary",
+    "category": "kanji_reading",
+    "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "やりとりの矢印図（自分 ⇄ 先生/上司）を描いて方向を視覚化しましょう。",
-      "auditory": "丁寧な敬語の発音トーンを意識してシャドーイングしましょう。",
-      "kinesthetic": "お辞儀をしながら「〜していただきました」と頭を下げて練習しましょう。"
+      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
+      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
+      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
     }
   }
 ];

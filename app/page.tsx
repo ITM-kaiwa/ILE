@@ -107,7 +107,17 @@ export default function Home() {
       />
 
       {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 space-y-8">
+        {user && (
+          <div className="flex items-center justify-end px-2 space-x-3 mb-2 animate-fade-in">
+            <span className="text-sm font-bold text-slate-700 bg-white/60 px-3 py-1.5 rounded-xl border border-stone-200 shadow-sm">
+              {user.user_metadata?.full_name || 'ゲスト'} さん
+            </span>
+            <span className="text-xs font-bold px-3 py-1.5 bg-amber-100 text-amber-900 rounded-xl border border-amber-300 shadow-sm">
+              {user.user_metadata?.class_name || 'ITM日本語クラス'}
+            </span>
+          </div>
+        )}
         {/* Hero Header */}
         {!user && isHeroVisible && (
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#FFF9F2] via-[#FFF3E4] to-[#F7EFE5] p-5 sm:p-8 border border-amber-200/80 shadow-md">

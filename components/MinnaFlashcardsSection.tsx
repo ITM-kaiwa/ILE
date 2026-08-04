@@ -82,6 +82,20 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
+  const [isAutoPlay, setIsAutoPlay] = useState(false);
+
+  useEffect(() => {
+    if (!isAutoPlay) return;
+    const timer = setTimeout(() => {
+      if (!isFlipped) {
+        setIsFlipped(true);
+      } else {
+        setIsFlipped(false);
+        setCurrentIndex((prevIdx) => (prevIdx + 1 < dbData.length ? prevIdx + 1 : 0));
+      }
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [isAutoPlay, isFlipped, dbData.length]);
 
   let list: MinnaVocabCard[] = dbData;
   if (filterMode === 'lesson') {
@@ -306,11 +320,22 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
                 className="relative min-h-[260px] p-4 sm:p-8 rounded-3xl bg-gradient-to-br from-[#FFFDF9] via-[#FFF8F0] to-[#FAF3E0] border-2 border-amber-200/80 hover:border-orange-400 shadow-lg cursor-pointer transition flex flex-col justify-between group"
               >
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-orange-600 uppercase tracking-wider">
+              <div className="flex items-center gap-2">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setIsAutoPlay(!isAutoPlay); }}
+                      className={`px-2 py-1 text-[10px] sm:text-xs font-bold rounded-lg border flex items-center gap-1 transition ${
+                        isAutoPlay ? 'bg-orange-600 text-white border-orange-600' : 'bg-orange-100 text-orange-800 border-orange-300 hover:bg-orange-200'
+                      }`}
+                    >
+                      {isAutoPlay ? <Pause className="w-3 h-3 sm:w-4 sm:h-4" /> : <Play className="w-3 h-3 sm:w-4 sm:h-4" />}
+                      自動再生
+                    </button>
+                    <span className="text-xs font-bold text-orange-600 uppercase tracking-wider">
                 {isFlipped
                   ? (isVi ? 'Ý nghĩa Tiếng Việt (Mặt sau)' : 'ベトナム語の意味 (Mặt sau)')
                   : (isVi ? 'Từ vựng Tiếng Nhật (Mặt trước)' : '日本語単語 (Mặt trước)')}
               </span>
+              </div>
               <button
                 onClick={(e) => {
                   e.stopPropagation();
