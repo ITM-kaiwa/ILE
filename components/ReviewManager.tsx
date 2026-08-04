@@ -73,7 +73,9 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
   }, [isExpanded]);
 
   const now = new Date();
-  const dueReviews = reviews.filter(r => new Date(r.next_review) <= now);
+  // Filter out any dummy cards that don't exist in the database (not in vocabMap)
+  const validReviews = reviews.filter(r => !!vocabMap[r.content_id]);
+  const dueReviews = validReviews.filter(r => new Date(r.next_review) <= now);
   const dueVocab = dueReviews.filter(r => r.content_type === 'vocab').length;
   const dueKanji = dueReviews.filter(r => r.content_type === 'kanji').length;
   const dueKana = dueReviews.filter(r => r.content_type === 'kana').length;
@@ -180,11 +182,6 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
                   let readableId = review.content_id.replace('card_', '').replace('_', ' ').toUpperCase();
                   if (vocabMap[review.content_id]) {
                     readableId = vocabMap[review.content_id];
-                    // Format dummy vocab data beautifully
-                    if (readableId.startsWith('単語_')) {
-                      const num = readableId.split('_')[1];
-                      readableId = isVi ? `Từ vựng bài ${num} (${readableId})` : `第${num}課単語 (${readableId})`;
-                    }
                   } else {
                     readableId = readableId.substring(0, 8) + '...';
                   }
