@@ -164,15 +164,15 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
   }, [dbData]);
 
   useEffect(() => {
-    if (pendingCardIdToJump && list.length > 0) {
-      const idx = list.findIndex(c => c.id === pendingCardIdToJump);
+    if (pendingCardIdToJump && cards.length > 0) {
+      const idx = cards.findIndex(c => c.id === pendingCardIdToJump);
       if (idx !== -1) {
         setCurrentIndex(idx);
         setIsFlipped(false);
         setPendingCardIdToJump(null);
       }
     }
-  }, [list, pendingCardIdToJump]);
+  }, [cards, pendingCardIdToJump]);
 
   const isVi = lang === 'vi';
 
