@@ -72,7 +72,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
             vnjpclubUrl: item.vnjpclub_url || '',
             vakHelp: item.vak_help || { visual: '', auditory: '', kinesthetic: '' }
           }));
-          setDbData(mapped); addLog(`Successfully loaded ${mapped.length} Vocabulary cards.`, 'SUCCESS'); addLog(`Successfully loaded ${mapped.length} Vocabulary cards.`, 'SUCCESS');
+          setDbData(mapped); addLog(`Successfully loaded ${mapped.length} Vocabulary cards.`, 'SUCCESS');
         }
         setIsLoading(false);
       };

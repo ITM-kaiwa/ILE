@@ -20,6 +20,7 @@ import { JlptPractice } from '@/components/JlptPractice';
 import { ExternalIntegrations } from '@/components/ExternalIntegrations';
 import { LogFloatingModal } from '@/components/LogFloatingModal';
 import { Sparkles, ArrowRight, BookOpen, RefreshCw, Layers, X } from 'lucide-react';
+import { APP_VERSION } from '@/lib/config';
 
 export default function Home() {
   const [lang, setLang] = useState<Language>('vi');
@@ -133,7 +134,7 @@ export default function Home() {
                 VAK-Adaptive Language Learning Coach
               </span>
               <span className="px-2.5 py-0.5 text-xs font-bold rounded-full bg-orange-600 text-white shadow-sm">
-                v2.8β
+                {APP_VERSION}
               </span>
             </div>
 
@@ -282,7 +283,7 @@ export default function Home() {
           )}
           {activeTab === 'jlpt' && (
             <div id="jlpt-practice-section" className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <JlptPractice onRecordWeakness={handleRecordWeakness} lang={lang} />
+              <JlptPractice onRecordWeakness={handleRecordWeakness} lang={lang} vakType={currentVak} />
               <WeaknessAnalyzer vakType={currentVak} weaknessRecords={weaknessRecords} lang={lang} />
             </div>
           )}

@@ -177,7 +177,6 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
 
                   const jumpToCard = () => {
                     addLog(`Jumping to card ${review.content_id} (${review.content_type}) for review.`, 'INFO');
-                    addLog(`Jumping to card ${review.content_id} (${review.content_type}) for review.`, 'INFO');
                     window.dispatchEvent(new CustomEvent('openCard', { 
                       detail: { type: review.content_type, id: review.content_id } 
                     }));

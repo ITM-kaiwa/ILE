@@ -113,9 +113,9 @@ export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType, lang 
             }}
             className="px-3 py-1.5 rounded-xl bg-[#FAF7F2] border border-amber-300 text-xs font-bold text-slate-800 focus:outline-none focus:border-amber-500"
           >
-            <option value="ALL">全レベル (N5 + N4)</option>
-            <option value="N5">JLPT N5 (100問)</option>
-            <option value="N4">JLPT N4 (100問)</option>
+            <option value="ALL">{isVi ? "Tất cả (N5 + N4)" : "全レベル (N5 + N4)"}</option>
+            <option value="N5">{isVi ? "JLPT N5 (100 câu)" : "JLPT N5 (100問)"}</option>
+            <option value="N4">{isVi ? "JLPT N4 (100 câu)" : "JLPT N4 (100問)"}</option>
           </select>
 
           <select
@@ -128,7 +128,7 @@ export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType, lang 
             }}
             className="px-3 py-1.5 rounded-xl bg-[#FAF7F2] border border-amber-300 text-xs font-bold text-amber-900 focus:outline-none focus:border-amber-500"
           >
-            <option value="ALL">全ジャンルタグ</option>
+            <option value="ALL">{isVi ? "Tất cả thể loại" : "全ジャンルタグ"}</option>
             <option value="grammar_particle">🏷️ 助詞 (grammar_particle)</option>
             <option value="grammar_conjugation">🏷️ 動詞活用 (grammar_conjugation)</option>
             <option value="grammar_sentence">🏷️ 文型表現 (grammar_sentence)</option>
@@ -221,14 +221,14 @@ export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType, lang 
                 onClick={handleNext}
                 className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm transition"
               >
-                次の抽出問題へ
+                {isVi ? "Câu hỏi tiếp theo" : "次の抽出問題へ"}
               </button>
             </div>
           )}
         </div>
       ) : (
         <div className="text-center py-8 text-slate-500">
-          該当するジャンルタグの問題が見つかりませんでした。条件を変更してください。
+          {isVi ? "Không tìm thấy câu hỏi phù hợp. Hãy thay đổi điều kiện." : "該当するジャンルタグの問題が見つかりませんでした。条件を変更してください。"}
         </div>
       )}
     </div>
