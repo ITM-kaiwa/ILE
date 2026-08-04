@@ -1,0 +1,39 @@
+
+> ile-vak-learning-coach@8.0.0-beta build
+> next build
+
+  ▲ Next.js 14.2.35
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/12) ...
+   Generating static pages (3/12) 
+   Generating static pages (6/12) 
+   Generating static pages (9/12) 
+ ✓ Generating static pages (12/12)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    253 kB          413 kB
+├ ○ /_not-found                          880 B          89.6 kB
+├ ○ /admin                               3.51 kB        92.2 kB
+├ ƒ /api/admin                           0 B                0 B
+├ ○ /api/cron/review                     0 B                0 B
+├ ƒ /api/gemini/explain                  0 B                0 B
+├ ƒ /api/gemini/learn                    0 B                0 B
+├ ƒ /api/gemini/schedule                 0 B                0 B
+├ ƒ /api/gemini/translate                0 B                0 B
+└ ○ /login                               2.08 kB         163 kB
++ First Load JS shared by all            88.7 kB
+  ├ chunks/2117-3aa4cc23aa335ba5.js      31.9 kB
+  ├ chunks/fd9d1056-95d25d74b73d54e4.js  53.6 kB
+  └ other shared chunks (total)          3.13 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
