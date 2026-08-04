@@ -95,10 +95,10 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
         <div>
           <div className="flex items-center space-x-2">
             <Sparkles className="w-5 h-5 text-orange-600" />
-            <h2 className="text-xl font-bold text-slate-800">VAK 動的AI学習コンテンツ生成</h2>
+            <h2 className="text-xl font-bold text-slate-800">{lang === 'vi' ? 'Tạo nội dung học AI động theo VAK' : 'VAK 動的AI学習コンテンツ生成'}</h2>
           </div>
           <p className="text-xs text-slate-500 mt-1">
-            Gemini APIが認知特性に合わせてリアルタイムでカスタマイズ解説を出力します
+            {lang === 'vi' ? 'Gemini API xuất các giải thích tùy chỉnh theo thời gian thực dựa trên đặc điểm nhận thức của bạn' : 'Gemini APIが認知特性に合わせてリアルタイムでカスタマイズ解説を出力します'}
           </p>
         </div>
 
@@ -136,7 +136,7 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
             <div className="p-4 rounded-xl bg-indigo-50 border border-indigo-200 flex items-center space-x-3">
               <Eye className="w-5 h-5 text-indigo-600 shrink-0" />
               <span className="text-xs text-indigo-900">
-                <strong>視覚優位（Visual）モード</strong>: Markdown表・フロー図解・色分け表示で構造的に学習します。
+                {lang === 'vi' ? <span><strong>Chế độ Ưu tiên Thị giác (Visual)</strong>: Học theo cấu trúc với bảng Markdown, sơ đồ luồng và hiển thị bằng màu sắc.</span> : <span><strong>視覚優位（Visual）モード</strong>: Markdown表・フロー図解・色分け表示で構造的に学習します。</span>}
               </span>
             </div>
 
@@ -165,7 +165,7 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
               <div className="flex items-center space-x-3">
                 <Volume2 className="w-5 h-5 text-emerald-600 shrink-0" />
                 <span className="text-xs text-emerald-900">
-                  <strong>聴覚優位（Auditory）モード</strong>: 対話調テキスト・音読・シャドーイング・TTS音声連携。
+                  {lang === 'vi' ? <span><strong>Chế độ Ưu tiên Thính giác (Auditory)</strong>: Học qua văn bản hội thoại, đọc to, shadowing và tích hợp giọng nói TTS.</span> : <span><strong>聴覚優位（Auditory）モード</strong>: 対話調テキスト・音読・シャドーイング・TTS音声連携。</span>}
                 </span>
               </div>
               <button
@@ -177,7 +177,7 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
                 }`}
               >
                 <Play className="w-3.5 h-3.5" />
-                <span>{isPlayingAudio ? '再生中...' : '全文音声朗読 (TTS)'}</span>
+                <span>{isPlayingAudio ? (lang === 'vi' ? 'Đang phát...' : '再生中...') : (lang === 'vi' ? 'Đọc toàn bộ văn bản (TTS)' : '全文音声朗読 (TTS)')}</span>
               </button>
             </div>
 
@@ -215,7 +215,7 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
             <div className="p-4 rounded-xl bg-orange-50 border border-orange-200 flex items-center space-x-3">
               <Hand className="w-5 h-5 text-orange-600 shrink-0" />
               <span className="text-xs text-orange-900">
-                <strong>身体感覚優位（Kinesthetic）モード</strong>: 身振り手振り指示・体感アクション・ロールプレイング。
+                {lang === 'vi' ? <span><strong>Chế độ Ưu tiên Vận động (Kinesthetic)</strong>: Hướng dẫn cử chỉ, hành động trải nghiệm và đóng vai.</span> : <span><strong>身体感覚優位（Kinesthetic）モード</strong>: 身振り手振り指示・体感アクション・ロールプレイング。</span>}
               </span>
             </div>
 
