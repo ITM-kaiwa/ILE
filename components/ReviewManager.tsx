@@ -40,25 +40,25 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
                 const vocabIds = fetchedReviews.filter(r => r.content_type === 'vocab').map(r => r.content_id);
                 if (vocabIds.length > 0) {
                   const { data: vocabData } = await supabase.from('vocab_cards').select('id, word').in('id', vocabIds);
-                  if (vocabData) vocabData.forEach(v => map[v.id] = v.word);
+                  if (vocabData) vocabData.forEach(v => map[v.id.toLowerCase()] = v.word);
                 }
 
                 const kanaIds = fetchedReviews.filter(r => r.content_type === 'kana').map(r => r.content_id);
                 if (kanaIds.length > 0) {
                   const { data: kanaData } = await supabase.from('kana_cards').select('id, character').in('id', kanaIds);
-                  if (kanaData) kanaData.forEach(v => map[v.id] = v.character);
+                  if (kanaData) kanaData.forEach(v => map[v.id.toLowerCase()] = v.character);
                 }
 
                 const kanjiIds = fetchedReviews.filter(r => r.content_type === 'kanji').map(r => r.content_id);
                 if (kanjiIds.length > 0) {
                   const { data: kanjiData } = await supabase.from('kanji_cards').select('id, kanji').in('id', kanjiIds);
-                  if (kanjiData) kanjiData.forEach(v => map[v.id] = v.kanji);
+                  if (kanjiData) kanjiData.forEach(v => map[v.id.toLowerCase()] = v.kanji);
                 }
 
                 const grammarIds = fetchedReviews.filter(r => r.content_type === 'grammar').map(r => r.content_id);
                 if (grammarIds.length > 0) {
                   const { data: grammarData } = await supabase.from('grammar_cards').select('id, title').in('id', grammarIds);
-                  if (grammarData) grammarData.forEach(v => map[v.id] = v.title);
+                  if (grammarData) grammarData.forEach(v => map[v.id.toLowerCase()] = v.title);
                 }
 
                 setVocabMap(map);
@@ -76,7 +76,7 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
   // Filter out any dummy cards that don't exist in the database (not in vocabMap)
   // Also filter out any cards whose mapped word literally starts with '単語_' (dummy vocab data)
   const validReviews = reviews.filter(r => {
-    const word = vocabMap[r.content_id];
+    const word = vocabMap[r.content_id?.toLowerCase() || ''];
     if (!word) return false;
     if (word.startsWith('単語_') || word.startsWith('card_')) return false;
     return true;
@@ -128,7 +128,7 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
         <div className="p-4 rounded-xl bg-amber-100/80 border border-amber-300 flex items-start space-x-3 shadow-sm">
           <Bell className="w-5 h-5 text-amber-800 shrink-0 mt-0.5" />
           <div>
-            <h4 className="text-sm font-bold text-amber-950">{t.srsAlert.replace('{count}', dueReviews.length.toString())}</h4>
+            <h4 className="text-sm font-bold text-amber-950">{t.srsAlert.replace('{count}', visibleReviews.length.toString())}</h4>
             <p className="text-xs font-medium text-amber-900 mt-0.5">
               {t.srsAlertSub}
             </p>
@@ -185,8 +185,9 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
 
                   // format ID to be actual content
                   let readableId = review.content_id.replace('card_', '').replace('_', ' ').toUpperCase();
-                  if (vocabMap[review.content_id]) {
-                    readableId = vocabMap[review.content_id];
+                  const mappedWord = vocabMap[review.content_id?.toLowerCase() || ''];
+                  if (mappedWord) {
+                    readableId = mappedWord;
                   } else {
                     readableId = readableId.substring(0, 8) + '...';
                   }

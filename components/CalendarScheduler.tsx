@@ -275,7 +275,7 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
 
           {/* Chat Interface */}
           <div className="flex flex-col h-[300px] border border-amber-200 rounded-xl bg-white overflow-hidden shadow-sm">
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[#FAF7F2]">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-900">
               {chatHistory.length === 0 && isGenerating && (
                 <div className="flex items-center justify-center h-full text-slate-500 text-sm space-x-2">
                   <Sparkles className="w-4 h-4 animate-spin text-orange-500" />
@@ -291,7 +291,7 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
                     <div className={`p-3 rounded-2xl text-sm whitespace-pre-wrap ${
                       msg.role === 'user' 
                         ? 'bg-orange-600 text-white rounded-tr-none' 
-                        : 'bg-white border border-slate-200 text-slate-700 rounded-tl-none shadow-sm'
+                        : 'bg-slate-800 border border-slate-700 text-slate-200 rounded-tl-none shadow-sm'
                     }`}>
                       {msg.content}
                     </div>
@@ -315,14 +315,14 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
               <div ref={chatEndRef} />
             </div>
             
-            <div className="p-3 bg-white border-t border-slate-200 flex gap-2">
+            <div className="p-3 bg-slate-950 border-t border-slate-800 flex gap-2">
               <input
                 type="text"
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && !isGenerating && inputMessage.trim() && generateSchedule(inputMessage)}
                 placeholder={isVi ? 'Viết điều kiện ở đây: vd ngày thường 18:00 - 20:00' : 'ここに作りたい予定の条件を書いてください：平日18時から20時など。'}
-                className="flex-1 px-4 py-2 rounded-xl bg-[#FAF7F2] border border-slate-200 text-sm focus:outline-none focus:border-orange-500 transition"
+                className="flex-1 px-4 py-2 rounded-xl bg-slate-800 border border-slate-700 text-slate-200 text-sm focus:outline-none focus:border-orange-500 transition placeholder-slate-400"
                 disabled={isGenerating}
               />
               <button

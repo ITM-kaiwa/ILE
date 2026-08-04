@@ -7,3 +7,5 @@ build
 *.pem 
 .env*.local 
 .vercel
+
+.env.local

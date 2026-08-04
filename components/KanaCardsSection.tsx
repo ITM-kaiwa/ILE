@@ -89,7 +89,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
   useEffect(() => {
     const handleOpenCard = (e: any) => {
       if (e.detail?.type === 'kana') {
-        const card = dbData.find((c: any) => c.id === e.detail.id);
+        const card = dbData.find((c: any) => c.id.toLowerCase() === e.detail.id.toLowerCase());
         if (card) {
           setIsExpanded(true);
           if(card.type) setKanaType(card.type);
