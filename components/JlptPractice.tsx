@@ -35,7 +35,9 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
     const fetchQuestions = async () => {
       const { data, error } = await supabase.from('jlpt_questions').select('*');
       if (!error && data) {
-        setAllQuestions(data as JlptQuestion[]);
+        const badIds = new Set(['n4_119', 'n4_147', 'n4_156', 'n4_177', 'n4_183', 'n4_186']);
+          const filteredData = (data as JlptQuestion[]).filter(q => !badIds.has(q.id));
+          setAllQuestions(filteredData);
       }
       setIsLoading(false);
     };
