@@ -24,7 +24,7 @@ export interface MinnaVocabCard {
   vnjpclubUrl: string;
   vakHelp: { visual: string; auditory: string; kinesthetic: string; };
 }
-import { ExternalLink, Volume2, Eye, Hand, Filter, Layers, Tag, Grid, ArrowLeft, ArrowRight, RotateCw , ChevronDown, ChevronUp , ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExternalLink, Volume2, Eye, Hand, Filter, Layers, Tag, Grid, ArrowLeft, ArrowRight, RotateCw , ChevronDown, ChevronUp , ChevronLeft, ChevronRight , Play, Pause } from 'lucide-react';
 
 interface MinnaFlashcardsSectionProps {
   vakType: VakType;
