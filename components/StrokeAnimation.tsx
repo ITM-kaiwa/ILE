@@ -114,7 +114,7 @@ export const StrokeAnimation = ({ charCode }: { charCode: string }) => {
        </div>
        {svgContent && (
          <button 
-           onClick={playAnimation} 
+           onClick={(e) => { e.stopPropagation(); playAnimation(); }} 
            className="mt-2 text-[10px] text-indigo-600 font-bold hover:text-white bg-indigo-50 hover:bg-indigo-500 px-3 py-1.5 rounded-full border border-indigo-200 transition-colors flex items-center space-x-1 shadow-sm"
          >
            <RefreshCw className="w-3 h-3" />
