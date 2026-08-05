@@ -23,8 +23,8 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const password = searchParams.get('password');
     
-    // Hardcoded password for demonstration
-    if (password !== 'admin123') {
+    const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
+    if (password !== ADMIN_PASSWORD) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
