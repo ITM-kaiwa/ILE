@@ -139,12 +139,6 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
           >
             <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
           </button>
-          <button
-            onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle GrammarCardsSection expanded: ${!isExpanded}`, 'INFO'); }}
-            className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
-          >
-            <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
-          </button>
 
         </div>
       </div>
@@ -215,7 +209,7 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
 
             <div className="markdown-body prose prose-slate max-w-none text-sm text-slate-700 leading-relaxed bg-[#FAF7F2] p-4 rounded-lg border border-amber-200 overflow-x-auto">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {activeCard.vakContent[vakType] || ''}
+                {(activeCard.vakContent[vakType] || '').replace('ハイライト', `**${activeCard.structure}**`)}
               </ReactMarkdown>
             </div>
           </div>
