@@ -63,7 +63,7 @@ export const StrokeAnimation = ({ charCode }: { charCode: string }) => {
     subArrows.forEach(p => p.style.opacity = '0');
     numbers.forEach(p => p.style.opacity = '0');
 
-    void svg.offsetWidth;
+    void svg.getBoundingClientRect();
 
     let delay = 0;
     paths.forEach((p, i) => {
