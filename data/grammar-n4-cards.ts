@@ -60,7 +60,7 @@ export const VNJPCLUB_N4_GRAMMAR_CARDS: GrammarCard[] = [
     "categoryName": "N4文法 第29課",
     "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-29.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (第29課：自動詞 ＋ ています (Trạng thái kết quả))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **N が V(自動詞)-ています** | ハイライト | N đang ở trạng thái V |\n\n> 💡 VNJPClub公式図解カード",
+      "visual": "### 👁️ 視覚イメージ解説 (第29課：自動詞 ＋ ています (Trạng thái kết quả))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **N が V(自動詞)-ています** | ハイライト | N đang ở trạng thái V |\n\n> 💡 VNJPClub公式図解カード\n\n![窓が開いています](/images/grammar/open_window.jpg)",
       "auditory": "### 👂 聴覚朗読 (第29課)\n- 「あいています・ついています」",
       "kinesthetic": "### ✋ 身体感覚タスク (第29課)\n- 開いている窓を指さす。"
     }
@@ -76,7 +76,7 @@ export const VNJPCLUB_N4_GRAMMAR_CARDS: GrammarCard[] = [
     "categoryName": "N4文法 第30課",
     "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-30.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (第30課：他動詞 ＋ てあります (Chuẩn bị sẵn))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **N が V(他動詞)-てあります** | ハイライト | N đã được V sẵn |\n\n> 💡 VNJPClub公式図解カード",
+      "visual": "### 👁️ 視覚イメージ解説 (第30課：他動詞 ＋ てあります (Chuẩn bị sẵn))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **N が V(他動詞)-てあります** | ハイライト | N đã được V sẵn |\n\n> 💡 VNJPClub公式図解カード\n\n![カレンダーに予定が書いてあります](/images/grammar/calendar.jpg)",
       "auditory": "### 👂 聴覚朗読 (第30課)\n- 「書いてあります」",
       "kinesthetic": "### ✋ 身体感覚タスク (第30課)\n- 壁にメモを貼る動作。"
     }
@@ -140,7 +140,7 @@ export const VNJPCLUB_N4_GRAMMAR_CARDS: GrammarCard[] = [
     "categoryName": "N4文法 第29課",
     "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-29.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (第29課：自動詞 ＋ ています (Trạng thái kết quả của tự động từ))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **N が V(自動詞)-ています** | ハイライト | N đang ở trạng thái V (Trạng thái là kết quả của hành động đã phát sinh) |\n\n> 💡 VNJPClub公式図解カード",
+      "visual": "### 👁️ 視覚イメージ解説 (第29課：自動詞 ＋ ています (Trạng thái kết quả của tự động từ))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **N が V(自動詞)-ています** | ハイライト | N đang ở trạng thái V (Trạng thái là kết quả của hành động đã phát sinh) |\n\n> 💡 VNJPClub公式図解カード\n\n![窓が開いています](/images/grammar/open_window.jpg)",
       "auditory": "### 👂 聴覚朗読 (第29課)\n- 「あいています・ついています・こわれています」の音読リピート。",
       "kinesthetic": "### ✋ 身体感覚タスク (第29課)\n- 部屋の中の物の状態（開いている、消えている）を指さしながら説明。"
     }
@@ -156,7 +156,7 @@ export const VNJPCLUB_N4_GRAMMAR_CARDS: GrammarCard[] = [
     "categoryName": "N4文法 第30課",
     "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-30.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (第30課：他動詞 ＋ てあります (Hành động có chuẩn bị sẵn/chuẩn bị trước))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **N が V(他動詞)-てあります** | ハイライト | N đã được V sẵn (Do ai đó làm có mục đích chuẩn bị trước) |\n\n> 💡 VNJPClub公式図解カード",
+      "visual": "### 👁️ 視覚イメージ解説 (第30課：他動詞 ＋ てあります (Hành động có chuẩn bị sẵn/chuẩn bị trước))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **N が V(他動詞)-てあります** | ハイライト | N đã được V sẵn (Do ai đó làm có mục đích chuẩn bị trước) |\n\n> 💡 VNJPClub公式図解カード\n\n![カレンダーに予定が書いてあります](/images/grammar/calendar.jpg)",
       "auditory": "### 👂 聴覚朗読 (第30課)\n- 「書いてあります・はってあります・かざってあります」を音読。",
       "kinesthetic": "### ✋ 身体感覚タスク (第30課)\n- メモを壁に貼る動作をしながら「はってあります」と言う。"
     }
