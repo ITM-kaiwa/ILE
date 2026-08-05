@@ -178,7 +178,7 @@ export default function Home() {
               className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
                 activeTab === 'vak'
                   ? 'bg-orange-600 text-white shadow'
-                  : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
+                  : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900'
               }`}
             >
               <Sparkles className="w-3.5 h-3.5" />
@@ -189,7 +189,7 @@ export default function Home() {
               className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
                 activeTab === 'jlpt'
                   ? 'bg-orange-600 text-white shadow'
-                  : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
+                  : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900'
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
@@ -200,7 +200,7 @@ export default function Home() {
               className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
                 activeTab === 'kana'
                   ? 'bg-amber-600 text-white shadow'
-                  : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
+                  : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900'
               }`}
             >
               <Sparkles className="w-3.5 h-3.5" />
@@ -211,7 +211,7 @@ export default function Home() {
               className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
                 activeTab === 'vocab'
                   ? 'bg-indigo-600 text-white shadow'
-                  : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
+                  : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900'
               }`}
             >
               <Layers className="w-3.5 h-3.5" />
@@ -222,7 +222,7 @@ export default function Home() {
               className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
                 activeTab === 'grammar'
                   ? 'bg-emerald-600 text-white shadow'
-                  : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
+                  : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900'
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" />
@@ -233,7 +233,7 @@ export default function Home() {
               className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
                 activeTab === 'kanji'
                   ? 'bg-rose-600 text-white shadow'
-                  : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
+                  : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900'
               }`}
             >
               <Layers className="w-3.5 h-3.5" />
@@ -244,7 +244,7 @@ export default function Home() {
               className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
                 activeTab === 'review'
                   ? 'bg-teal-600 text-white shadow'
-                  : 'bg-amber-50/80 text-slate-600 hover:bg-amber-100 hover:text-slate-800'
+                  : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900'
               }`}
             >
               <RefreshCw className="w-3.5 h-3.5" />
@@ -265,7 +265,7 @@ export default function Home() {
                       : type === 'auditory'
                       ? 'bg-emerald-600 text-white shadow'
                       : 'bg-orange-600 text-white shadow'
-                    : 'bg-amber-50 text-slate-500 hover:text-slate-800 border border-amber-200/50'
+                    : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900 border border-amber-300'
                 }`}
               >
                 {type === 'visual' ? t.vakVisual : type === 'auditory' ? t.vakAuditory : t.vakKinesthetic}
