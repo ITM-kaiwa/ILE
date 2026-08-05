@@ -21,6 +21,7 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
 
   const t = getTranslation(lang);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(5);
 
   const [allCards, setAllCards] = useState<GrammarCard[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -126,6 +127,7 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
             onClick={() => {
               setLevel('N5');
               setSelectedCardId('card_n5_1');
+              setVisibleCount(5);
             }}
             className={`px-4 py-1.5 rounded-xl text-xs font-bold transition ${
               level === 'N5'
@@ -139,6 +141,7 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
             onClick={() => {
               setLevel('N4');
               setSelectedCardId('card_n4_1');
+              setVisibleCount(5);
             }}
             className={`px-4 py-1.5 rounded-xl text-xs font-bold transition ${
               level === 'N4'
@@ -167,7 +170,27 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
           <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
             📑 {isVi ? `Danh sách mẫu ngữ pháp ${level}` : `${level} 文法項目リスト`}
           </h4>
-          {cards.map((c) => (
+          
+          <div className="mb-3">
+            <input 
+              type="number" 
+              placeholder={isVi ? 'Nhập số bài (VD: 26)' : '課数で検索 (例: 26)'}
+              className="w-full px-3 py-2 rounded-xl bg-white border border-amber-200 text-sm focus:outline-none focus:border-emerald-500 transition shadow-inner"
+              onChange={(e) => {
+                const val = e.target.value;
+                if (val) {
+                  const idx = cards.findIndex(c => c.title.includes(`第${val}課`));
+                  if (idx !== -1) {
+                    setSelectedCardId(cards[idx].id);
+                    if (idx >= visibleCount) {
+                      setVisibleCount(idx + 5);
+                    }
+                  }
+                }
+              }}
+            />
+          </div>
+          {cards.slice(0, visibleCount).map((c) => (
             <button
               key={c.id}
               onClick={() => setSelectedCardId(c.id)}
@@ -186,6 +209,14 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
               </span>
             </button>
           ))}
+          {visibleCount < cards.length && (
+            <button
+              onClick={() => setVisibleCount(v => v + 5)}
+              className="w-full mt-3 py-2 rounded-xl border-2 border-dashed border-emerald-300 text-emerald-700 bg-emerald-50/50 font-bold text-xs hover:bg-emerald-100 transition"
+            >
+              {isVi ? 'Xem thêm 5 mục' : '続きをみる (5件)'}
+            </button>
+          )}
         </div>
 
         <div className="md:col-span-2 space-y-4">
