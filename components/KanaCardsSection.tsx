@@ -269,14 +269,19 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
                 {/* Main Kana character rendering */}
                 <div className="text-center py-6">
                   {!isFlipped ? (
-                    <div>
-                      <h3
-                        className="text-6xl sm:text-7xl font-extrabold text-slate-900 tracking-wide mb-3 font-learning-card"
-                        style={{ fontFamily: '"UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Klee One", sans-serif' }}
-                      >
-                        {currentCard.kana}
-                      </h3>
-                      <p className="text-xl sm:text-2xl font-bold text-indigo-700 mt-4">[{currentCard.romaji}]</p>
+                    <div className="flex justify-center items-center gap-6 sm:gap-12">
+                      <div className="flex flex-col items-center">
+                        <h3
+                          className="text-6xl sm:text-7xl font-extrabold text-slate-900 tracking-wide mb-3 font-learning-card"
+                          style={{ fontFamily: '"UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Klee One", sans-serif' }}
+                        >
+                          {currentCard.kana}
+                        </h3>
+                        <p className="text-xl sm:text-2xl font-bold text-indigo-700 mt-4">[{currentCard.romaji}]</p>
+                      </div>
+                      <div className="flex-shrink-0">
+                        <StrokeAnimation charCode={currentCard.kana} />
+                      </div>
                     </div>
                   ) : (
                     <div className="space-y-3">
@@ -342,9 +347,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
             <p className="text-xs text-slate-700 leading-relaxed font-medium">
               {currentCard.vakHelp[vakType]}
             </p>
-            {vakType === 'visual' && (
-              <StrokeAnimation charCode={currentCard.kana} />
-            )}
+
           </div>
         </div>
       ) : null}

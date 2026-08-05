@@ -307,20 +307,25 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
                 {/* Front & Back Content */}
                 <div className="text-center py-6">
                   {!isFlipped ? (
-                    <div>
-                      <h3
-                        className="text-5xl sm:text-6xl font-extrabold text-slate-900 tracking-wide mb-3 font-learning-card"
-                        style={{ fontFamily: '"UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Klee One", sans-serif' }}
-                      >
-                        {currentCard.kanji}
-                      </h3>
-                      <div className="flex flex-col sm:flex-row justify-center items-center gap-2 text-xs sm:text-sm font-semibold mt-4">
-                        <span className="px-3 py-1 rounded-lg bg-indigo-100 text-indigo-900 border border-indigo-200">
-                          {isVi ? `Âm Onyomi: ${currentCard.onyomi}` : `音読み: ${currentCard.onyomi}`}
-                        </span>
-                        <span className="px-3 py-1 rounded-lg bg-emerald-100 text-emerald-900 border border-emerald-200">
-                          {isVi ? `Âm Kunyomi: ${currentCard.kunyomi}` : `訓読み: ${currentCard.kunyomi}`}
-                        </span>
+                    <div className="flex justify-center items-center gap-6 sm:gap-12">
+                      <div className="flex flex-col items-center">
+                        <h3
+                          className="text-5xl sm:text-6xl font-extrabold text-slate-900 tracking-wide mb-3 font-learning-card"
+                          style={{ fontFamily: '"UD Digi Kyokasho NK-R", "UD デジタル 教科書体 NK-R", "Klee One", sans-serif' }}
+                        >
+                          {currentCard.kanji}
+                        </h3>
+                        <div className="flex flex-col sm:flex-row justify-center items-center gap-2 text-xs sm:text-sm font-semibold mt-4">
+                          <span className="px-3 py-1 rounded-lg bg-indigo-100 text-indigo-900 border border-indigo-200">
+                            {isVi ? `Âm Onyomi: ${currentCard.onyomi}` : `音読み: ${currentCard.onyomi}`}
+                          </span>
+                          <span className="px-3 py-1 rounded-lg bg-emerald-100 text-emerald-900 border border-emerald-200">
+                            {isVi ? `Âm Kunyomi: ${currentCard.kunyomi}` : `訓読み: ${currentCard.kunyomi}`}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex-shrink-0">
+                        <StrokeAnimation charCode={currentCard.kanji} />
                       </div>
                     </div>
                   ) : (
@@ -397,9 +402,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
             <p className="text-xs text-slate-700 leading-relaxed font-medium">
               {currentCard.vakHelp[vakType]}
             </p>
-            {vakType === 'visual' && (
-              <StrokeAnimation charCode={currentCard.kanji} />
-            )}
+
           </div>
         </div>
       ) : null}

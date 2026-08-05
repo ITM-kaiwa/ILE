@@ -101,7 +101,7 @@ export const StrokeAnimation = ({ charCode }: { charCode: string }) => {
   if (isNotFound) return null;
 
   return (
-    <div className="flex flex-col items-center mt-3 mb-2 animate-fade-in">
+    <div className="flex flex-col items-center animate-fade-in">
        <div 
           ref={containerRef}
           className="w-32 h-32 border border-slate-200 rounded-xl bg-white shadow-sm flex items-center justify-center relative overflow-hidden"
