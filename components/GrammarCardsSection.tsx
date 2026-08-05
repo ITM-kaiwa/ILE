@@ -179,10 +179,17 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
               onChange={(e) => {
                 const val = e.target.value;
                 if (val) {
-                  const idx = cards.findIndex(c => c.title.includes(`第${val}課`));
-                  if (idx !== -1) {
-                    setSelectedCardId(cards[idx].id);
-                    if (idx >= visibleCount) {
+                  const matchedCard = allCards.find((c: any) => c.title.includes(`第${val}課`));
+                  if (matchedCard) {
+                    const matchedLevel = matchedCard.level;
+                    if (level !== matchedLevel) {
+                      setLevel(matchedLevel);
+                    }
+                    setSelectedCardId(matchedCard.id);
+                    
+                    const levelCards = matchedLevel === 'N5' ? allCards.filter((c:any) => c.level === 'N5') : allCards.filter((c:any) => c.level === 'N4');
+                    const idx = levelCards.findIndex((c:any) => c.id === matchedCard.id);
+                    if (idx !== -1 && idx >= visibleCount) {
                       setVisibleCount(idx + 5);
                     }
                   }
