@@ -5,8 +5,16 @@ export const dynamic = 'force-dynamic'; // Prevent Next.js from static generatio
 
 // Lazy initialize to prevent build-time errors when env vars are missing
 const getSupabaseAdmin = () => {
-  const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://dummy.supabase.co';
-  const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || 'dummy_key';
+  const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  
+  if (!SUPABASE_URL || SUPABASE_URL === 'https://dummy.supabase.co') {
+    throw new Error('Vercelの環境変数に NEXT_PUBLIC_SUPABASE_URL が設定されていません。必ず設定して再デプロイしてください。');
+  }
+  if (!SUPABASE_SERVICE_ROLE_KEY || SUPABASE_SERVICE_ROLE_KEY === 'dummy_key') {
+    throw new Error('Vercelの環境変数に SUPABASE_SERVICE_ROLE_KEY が設定されていません。必ず設定して再デプロイしてください。');
+  }
+  
   return createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 };
 
