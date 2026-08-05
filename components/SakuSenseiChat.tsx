@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
-import { X, Send, Mail, Bot } from 'lucide-react';
-import Image from 'next/image';
+import React, { useState } from 'react';
+import { X, Mail, Bot } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
@@ -22,11 +21,10 @@ export const SakuSenseiChat = () => {
     }
     
     const subject = encodeURIComponent('【質問】VAK-sys-Question');
-    const body = encodeURIComponent(
-      \`名前 (Tên): \${studentName}\\nクラス番号 (Lớp): \${classNum}\\n\\n【質問内容 / Câu hỏi】\\n\${question}\`
-    );
-    
-    window.location.href = \`mailto:ohkawatakeyoshi@itmgroup.com.vn?subject=\${subject}&body=\${body}\`;
+    const bodyText = `名前 (Tên): ${studentName}\nクラス番号 (Lớp): ${classNum}\n\n【質問内容 / Câu hỏi】\n${question}`;
+    const body = encodeURIComponent(bodyText);
+    const mailtoUrl = 'mailto:ohkawatakeyoshi@itmgroup.com.vn?subject=' + subject + '&body=' + body;
+    window.location.href = mailtoUrl;
   };
 
   const handleAskAI = async () => {
@@ -46,7 +44,7 @@ export const SakuSenseiChat = () => {
       });
       const data = await res.json();
       setAiResponse(data.answer || 'エラーが発生しました。');
-    } catch (err) {
+    } catch {
       setAiResponse('ネットワークエラーが発生しました。');
     } finally {
       setIsAiTyping(false);
@@ -102,14 +100,14 @@ export const SakuSenseiChat = () => {
                     placeholder="名前 / Tên"
                     value={studentName}
                     onChange={(e) => setStudentName(e.target.value)}
-                    className="w-1/2 text-sm border-slate-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                    className="w-1/2 text-sm border border-slate-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
                   />
                   <input
                     type="text"
                     placeholder="クラス / Lớp"
                     value={classNum}
                     onChange={(e) => setClassNum(e.target.value)}
-                    className="w-1/2 text-sm border-slate-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                    className="w-1/2 text-sm border border-slate-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
                 
@@ -118,7 +116,7 @@ export const SakuSenseiChat = () => {
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
                   rows={4}
-                  className="w-full text-sm border-slate-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 resize-none transition-all"
+                  className="w-full text-sm border border-slate-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500 resize-none transition-all"
                 />
 
                 {(isAiTyping || aiResponse) && (
@@ -134,7 +132,7 @@ export const SakuSenseiChat = () => {
                         <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                       </div>
                     ) : (
-                      <div className="text-sm text-slate-700 whitespace-pre-wrap markdown-body prose prose-sm max-w-none">
+                      <div className="text-sm text-slate-700 whitespace-pre-wrap prose prose-sm max-w-none">
                         <ReactMarkdown remarkPlugins={[remarkGfm]}>
                           {aiResponse}
                         </ReactMarkdown>
