@@ -4,7 +4,7 @@ import { useLog } from '@/providers/LogProvider';
 import React, { useState, useEffect, useRef } from 'react';
 import { VakType } from '@/data/vak-questions';
 import { Language, getTranslation } from '@/lib/i18n';
-import { Calendar, Clock, Sparkles, CheckCircle2, Download , ChevronDown, ChevronUp, Send, Bot, User, Settings2 } from 'lucide-react';
+import { Calendar, Clock, Sparkles, CheckCircle2, Download , ChevronDown, ChevronUp, Send, Bot, User, Settings2, HelpCircle, X } from 'lucide-react';
 
 interface CalendarSchedulerProps {
   vakType: VakType;
@@ -45,6 +45,7 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
   const [isGenerating, setIsGenerating] = useState(false);
   const [isExported, setIsExported] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
 
   const chatEndRef = useRef<HTMLDivElement>(null);
 
@@ -146,6 +147,9 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
         <div className="flex items-center space-x-2">
           <Calendar className="w-5 h-5 text-indigo-600" />
           <h2 className="text-xl font-bold text-slate-800">{t.calendarTitle}</h2>
+          <button onClick={() => setShowHelp(true)} className="p-1 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-full transition" title="Help">
+            <HelpCircle className="w-5 h-5" />
+          </button>
         </div>
         <div className="flex items-center space-x-3">
           
@@ -390,6 +394,71 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
         </div>
         )}
       </div>
+
+      {showHelp && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white w-full max-w-2xl max-h-[80vh] rounded-2xl shadow-xl overflow-hidden flex flex-col">
+            <div className="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+              <h3 className="font-bold text-lg text-slate-800 flex items-center gap-2">
+                <HelpCircle className="w-5 h-5 text-indigo-600" />
+                {isVi ? 'Hướng dẫn nhập lịch (.ics)' : 'カレンダー（.ics）のインポート方法'}
+              </h3>
+              <button onClick={() => setShowHelp(false)} className="p-2 hover:bg-slate-200 rounded-full text-slate-500 transition">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="p-6 overflow-y-auto space-y-6 text-sm text-slate-700">
+              
+              <div className="space-y-3">
+                <h4 className="font-bold text-base text-slate-900 border-b pb-1">🍏 Apple Calendar (iPhone / Mac)</h4>
+                <div className="space-y-4">
+                  <div>
+                    <p className="font-bold text-slate-800">【日本語】</p>
+                    <ol className="list-decimal pl-5 space-y-1">
+                      <li>生成されたスケジュールの下にある「カレンダーにエクスポート (.ics)」ボタンを押します。</li>
+                      <li>ダウンロードされた <code>.ics</code> ファイルを開きます。</li>
+                      <li>自動的にAppleカレンダーが起動するので、「すべて追加」をタップして完了です。</li>
+                    </ol>
+                  </div>
+                  <div>
+                    <p className="font-bold text-slate-800">【Tiếng Việt】</p>
+                    <ol className="list-decimal pl-5 space-y-1">
+                      <li>Nhấn vào nút "Tải xuống Lịch (.ics)" ở dưới lịch trình.</li>
+                      <li>Mở file <code>.ics</code> vừa được tải về.</li>
+                      <li>Ứng dụng Lịch Apple sẽ tự động mở, chọn "Thêm tất cả (Add All)" để hoàn tất.</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <h4 className="font-bold text-base text-slate-900 border-b pb-1">🌐 Google Calendar (PC / Android)</h4>
+                <div className="space-y-4">
+                  <div>
+                    <p className="font-bold text-slate-800">【日本語】</p>
+                    <ol className="list-decimal pl-5 space-y-1">
+                      <li>「カレンダーにエクスポート (.ics)」ボタンを押してファイルを保存します。</li>
+                      <li>PCのブラウザで <a href="https://calendar.google.com/" target="_blank" className="text-blue-600 underline">Google カレンダー</a> を開きます。</li>
+                      <li>右上の歯車アイコン（設定）＞「設定」＞左メニューの「インポート / エクスポート」を開きます。</li>
+                      <li>「パソコンからファイルを選択」でダウンロードした <code>.ics</code> ファイルを選び、「インポート」を押します。</li>
+                    </ol>
+                  </div>
+                  <div>
+                    <p className="font-bold text-slate-800">【Tiếng Việt】</p>
+                    <ol className="list-decimal pl-5 space-y-1">
+                      <li>Nhấn nút "Tải xuống Lịch (.ics)" để lưu file.</li>
+                      <li>Mở <a href="https://calendar.google.com/" target="_blank" className="text-blue-600 underline">Google Calendar</a> trên trình duyệt máy tính.</li>
+                      <li>Nhấn vào biểu tượng Bánh răng (Cài đặt) góc phải trên {'>'} Cài đặt {'>'} Chọn "Nhập & xuất (Import & export)" ở menu trái.</li>
+                      <li>Chọn "Chọn tệp từ máy tính (Select file from your computer)", tải lên file <code>.ics</code> vừa tải về và nhấn "Nhập (Import)".</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
