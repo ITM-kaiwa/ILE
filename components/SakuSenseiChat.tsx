@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState } from 'react';
 import { X, Mail, Bot } from 'lucide-react';
@@ -53,10 +53,12 @@ export const SakuSenseiChat = () => {
 
   return (
     <>
+      {/* Saku-sensei floating button */}
       <div className="fixed top-24 left-4 z-40">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="relative w-16 h-16 rounded-full overflow-hidden shadow-lg border-4 border-white hover:scale-105 transition-transform bg-white"
+          title="サク先生に質問する"
         >
           <img 
             src="/saku-sensei.jpg" 
@@ -66,12 +68,27 @@ export const SakuSenseiChat = () => {
         </button>
       </div>
 
+      {/* Chat dialog - positioned near top of screen so buttons are always visible */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-start pt-44 pl-6 bg-slate-900/20 backdrop-blur-sm" onClick={() => setIsOpen(false)}>
+        <>
+          {/* Backdrop for click-outside-to-close */}
           <div 
-            className="bg-white rounded-2xl shadow-2xl border border-blue-100 w-[340px] max-w-[90vw] overflow-hidden flex flex-col max-h-[80vh]"
+            className="fixed inset-0 z-40 bg-slate-900/20 backdrop-blur-sm"
+            onClick={() => setIsOpen(false)}
+          />
+          {/* Dialog panel - fixed near top-left, below the Saku button */}
+          <div
+            className="fixed z-50 bg-white rounded-2xl shadow-2xl border border-blue-100 overflow-hidden flex flex-col"
+            style={{
+              top: '6rem',
+              left: '1rem',
+              width: '340px',
+              maxWidth: 'calc(100vw - 2rem)',
+              maxHeight: 'calc(100vh - 7rem)',
+            }}
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Header */}
             <div className="bg-blue-500 p-4 text-white flex justify-between items-center shrink-0">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-blue-300 bg-white">
@@ -87,6 +104,7 @@ export const SakuSenseiChat = () => {
               </button>
             </div>
             
+            {/* Body - scrollable */}
             <div className="flex-1 overflow-y-auto p-4 bg-[#F8FAFC] space-y-4">
               <div className="text-sm text-slate-700 bg-white p-3 rounded-lg border border-slate-100 shadow-sm">
                 わからないことがあったら質問してね！<br/>
@@ -115,12 +133,12 @@ export const SakuSenseiChat = () => {
                   placeholder="質問内容を入力... / Nhập câu hỏi..."
                   value={question}
                   onChange={(e) => setQuestion(e.target.value)}
-                  rows={4}
+                  rows={3}
                   className="w-full text-sm border border-slate-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500 resize-none transition-all"
                 />
 
                 {(isAiTyping || aiResponse) && (
-                  <div className="mt-2 bg-blue-50 border border-blue-200 rounded-lg p-3">
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
                     <div className="flex items-center space-x-2 mb-2">
                       <Bot className="w-4 h-4 text-blue-600" />
                       <span className="text-xs font-bold text-blue-800">AIの回答 / AI Trả lời</span>
@@ -132,7 +150,7 @@ export const SakuSenseiChat = () => {
                         <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                       </div>
                     ) : (
-                      <div className="text-sm text-slate-700 whitespace-pre-wrap prose prose-sm max-w-none">
+                      <div className="text-sm text-slate-700 prose prose-sm max-w-none">
                         <ReactMarkdown remarkPlugins={[remarkGfm]}>
                           {aiResponse}
                         </ReactMarkdown>
@@ -141,7 +159,8 @@ export const SakuSenseiChat = () => {
                   </div>
                 )}
                 
-                <div className="grid grid-cols-2 gap-2 pt-2">
+                {/* Buttons always visible at bottom */}
+                <div className="grid grid-cols-2 gap-2 pt-1">
                   <button
                     onClick={handleSendEmail}
                     className="flex items-center justify-center space-x-1.5 bg-red-500 hover:bg-red-600 text-white py-2.5 px-2 rounded-xl font-bold transition-colors shadow-sm"
@@ -161,7 +180,7 @@ export const SakuSenseiChat = () => {
               </div>
             </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );
