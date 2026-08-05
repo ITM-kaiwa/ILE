@@ -47,12 +47,13 @@ export default function AdminDashboard() {
 
   const handleExportCSV = () => {
     if (users.length === 0) return;
-    const headers = ['ID', 'Name', 'Gender', 'Class', 'Email', 'Learning History Count', 'Weaknesses'];
+    const headers = ['ID', 'Name', 'VAK', 'Gender', 'Class', 'Email', 'Learning History Count', 'Weaknesses'];
     const csvContent = [
       headers.join(','),
       ...users.map(u => [
         u.id,
         `"${u.name || ''}"`,
+        u.vak_type ? u.vak_type.charAt(0).toUpperCase() : '',
         u.gender || '',
         `"${u.class_name || ''}"`,
         `"${u.email || ''}"`,
@@ -144,6 +145,7 @@ export default function AdminDashboard() {
                 <tr className="bg-slate-50 border-b border-slate-200 text-sm text-slate-600 font-semibold">
                   <th className="p-4">Student ID</th>
                   <th className="p-4">Name</th>
+                  <th className="p-4 text-center">VAK</th>
                   <th className="p-4">Gender</th>
                   <th className="p-4">Class</th>
                   <th className="p-4">Email</th>
@@ -157,6 +159,7 @@ export default function AdminDashboard() {
                   <tr key={user.id} className="hover:bg-slate-50 transition">
                     <td className="p-4 font-mono text-xs text-slate-500">{user.id}</td>
                     <td className="p-4 font-medium text-slate-800">{user.name || '-'}</td>
+                    <td className="p-4 text-center font-bold text-blue-600">{user.vak_type ? user.vak_type.charAt(0).toUpperCase() : '-'}</td>
                     <td className="p-4 text-slate-600">{user.gender || '-'}</td>
                     <td className="p-4 text-slate-600">{user.class_name || '-'}</td>
                     <td className="p-4 text-slate-600">{user.email || '-'}</td>
@@ -175,7 +178,7 @@ export default function AdminDashboard() {
                 ))}
                 {users.length === 0 && (
                   <tr>
-                    <td colSpan={8} className="p-8 text-center text-slate-500">
+                    <td colSpan={9} className="p-8 text-center text-slate-500">
                       データがありません。
                     </td>
                   </tr>
