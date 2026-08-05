@@ -399,9 +399,18 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
                   : `${vakType.toUpperCase()}タイプ向け 漢字記憶ガイド`}
               </span>
             </div>
-            <p className="text-xs text-slate-700 leading-relaxed font-medium">
-              {currentCard.vakHelp[vakType]}
-            </p>
+            <p className="text-xs text-slate-700 leading-relaxed font-medium whitespace-pre-line">
+                              {currentCard.vakHelp[vakType]}
+              </p>
+              {vakType === 'visual' && (currentCard.vakHelp as any).visualImage && (
+                <div className="mt-4 flex justify-center">
+                  <img 
+                    src={(currentCard.vakHelp as any).visualImage} 
+                    alt={`${currentCard.kanji} mnemonic`} 
+                    className="max-h-40 object-contain rounded-lg shadow-sm mix-blend-multiply"
+                  />
+                </div>
+              )}
 
           </div>
         </div>
