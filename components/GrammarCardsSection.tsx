@@ -89,6 +89,21 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
     }
   };
 
+
+  const extractHighlight = (structure: string) => {
+    let parts = structure.split(/N\d?|V(?:辞書形|た形|て形|ない形|ます形)?|\([^)]+\)|です|ます|行きます|来ます|帰ります/);
+    let validParts = parts.map(p => {
+      let clean = p.trim();
+      clean = clean.replace(/^[+／\/〜\s]+|[+／\/〜\s]+$/g, '').trim();
+      return clean;
+    }).filter(p => p.length > 0);
+    
+    if (validParts.length > 0) {
+      return validParts.join(' / ');
+    }
+    return structure;
+  };
+
   return (
     <div id="grammar-section" className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-amber-100 gap-3">
@@ -209,7 +224,7 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
 
             <div className="markdown-body prose prose-slate max-w-none text-sm text-slate-700 leading-relaxed bg-[#FAF7F2] p-4 rounded-lg border border-amber-200 overflow-x-auto">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {(activeCard.vakContent[vakType] || '').replace('ハイライト', `**${activeCard.structure}**`)}
+                {(activeCard.vakContent[vakType] || '').replace('ハイライト', `**${extractHighlight(activeCard.structure)}**`)}
               </ReactMarkdown>
             </div>
           </div>
