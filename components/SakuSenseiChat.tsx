@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { X, Mail, Bot } from 'lucide-react';
@@ -23,7 +23,7 @@ export const SakuSenseiChat = () => {
     const subject = encodeURIComponent('【質問】VAK-sys-Question');
     const bodyText = `名前 (Tên): ${studentName}\nクラス番号 (Lớp): ${classNum}\n\n【質問内容 / Câu hỏi】\n${question}`;
     const body = encodeURIComponent(bodyText);
-    const mailtoUrl = 'mailto:ohkawatakeyoshi@itmgroup.com.vn?subject=' + subject + '&body=' + body;
+    const mailtoUrl = 'mailto:otec.media.smith@gmail.com?subject=' + subject + '&body=' + body;
     window.location.href = mailtoUrl;
   };
 
