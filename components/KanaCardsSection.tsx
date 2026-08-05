@@ -7,6 +7,7 @@ import { processReview } from '@/lib/srs';
 import { VakType } from '@/data/vak-questions';
 import { Language, getTranslation } from '@/lib/i18n';
 import { Volume2, Eye, Hand, RotateCw, ArrowLeft, ArrowRight, Sparkles , ChevronDown, ChevronUp , ChevronLeft, ChevronRight , Play, Pause } from 'lucide-react';
+import { StrokeAnimation } from '@/components/StrokeAnimation';
 
 export type KanaType = 'hiragana' | 'katakana';
 export interface KanaCard {
@@ -341,6 +342,9 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
             <p className="text-xs text-slate-700 leading-relaxed font-medium">
               {currentCard.vakHelp[vakType]}
             </p>
+            {vakType === 'visual' && (
+              <StrokeAnimation charCode={currentCard.kana} />
+            )}
           </div>
         </div>
       ) : null}

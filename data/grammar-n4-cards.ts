@@ -12,7 +12,7 @@ export const VNJPCLUB_N4_GRAMMAR_CARDS: GrammarCard[] = [
     "categoryName": "N4文法 第26課",
     "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-26.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (第26課：〜んです / 〜んですか (Giải thích lý do, xác nhận))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **普通形 (ナ形/N な) ＋ んです / んですか** | ハイライト | Dùng để nhấn mạnh lý do, giải thích tình huống (Thực ra là/Bởi vì...) |\n\n> 💡 VNJPClub公式図解カード",
+      "visual": "### 👁️ 視覚イメージ解説 (第26課：〜んです / 〜んですか (Giải thích lý do, xác nhận))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **普通形 (ナ形/N な) ＋ んです / んですか** | ハイライト | Dùng để nhấn mạnh lý do, giải thích tình huống (Thực ra là/Bởi vì...) |\n\n> 💡 VNJPClub公式図解カード\n\n![頭が痛いんです](/images/grammar/ndesu.jpg)",
       "auditory": "### 👂 聴覚朗読 (第26課)\n- 「どうしたんですか。頭が痛いんです。」を音読。",
       "kinesthetic": "### ✋ 身体感覚タスク (第26課)\n- 頭を押さえて「〜なんです」と説明。"
     }
@@ -44,7 +44,7 @@ export const VNJPCLUB_N4_GRAMMAR_CARDS: GrammarCard[] = [
     "categoryName": "N4文法 第28課",
     "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-28.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (第28課：〜ながら V2 (Vừa làm V1 vừa làm V2))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V1(ます形) ＋ ながら、V2** | ハイライト | Vừa làm V1 vừa làm V2 |\n\n> 💡 VNJPClub公式図解カード",
+      "visual": "### 👁️ 視覚イメージ解説 (第28課：〜ながら V2 (Vừa làm V1 vừa làm V2))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V1(ます形) ＋ ながら、V2** | ハイライト | Vừa làm V1 vừa làm V2 |\n\n> 💡 VNJPClub公式図解カード\n\n![音楽を聴きながら勉強します](/images/grammar/nagara.jpg)",
       "auditory": "### 👂 聴覚朗読 (第28課)\n- 「〜ながら〜します」を音読。",
       "kinesthetic": "### ✋ 身体感覚タスク (第28課)\n- 歩きながら話すジェスチャー。"
     }
@@ -92,7 +92,7 @@ export const VNJPCLUB_N4_GRAMMAR_CARDS: GrammarCard[] = [
     "categoryName": "N4文法 第26課",
     "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-26.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (第26課：〜んです / 〜んですか (Giải thích lý do, xác nhận))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **普通形 (ナ形/N な) ＋ んです / んですか** | ハイライト | Dùng để nhấn mạnh lý do, giải thích tình huống hoặc hỏi để xác nhận nguyên do (Thực ra là/Bởi vì...) |\n\n> 💡 VNJPClub公式図解カード",
+      "visual": "### 👁️ 視覚イメージ解説 (第26課：〜んです / 〜んですか (Giải thích lý do, xác nhận))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **普通形 (ナ形/N な) ＋ んです / んですか** | ハイライト | Dùng để nhấn mạnh lý do, giải thích tình huống hoặc hỏi để xác nhận nguyên do (Thực ra là/Bởi vì...) |\n\n> 💡 VNJPClub公式図解カード\n\n![頭が痛いんです](/images/grammar/ndesu.jpg)",
       "auditory": "### 👂 聴覚朗読 (第26課)\n- 例文: 「どうしたんですか。頭が痛いんです。」を感情を込めて5回音読。",
       "kinesthetic": "### ✋ 身体感覚タスク (第26課)\n- 頭を押さえるポーズをしながら「頭が痛いんです」と理由を説明するロールプレイ。"
     }
@@ -124,7 +124,7 @@ export const VNJPCLUB_N4_GRAMMAR_CARDS: GrammarCard[] = [
     "categoryName": "N4文法 第28課",
     "vnjpclubUrl": "https://www.vnjpclub.com/ngu-phap-n4/bai-28.html",
     "vakContent": {
-      "visual": "### 👁️ 視覚イメージ解説 (第28課：〜ながら V2 (Vừa làm V1 vừa làm V2))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V1(ます形) ＋ ながら、V2** | ハイライト | Vừa làm V1 vừa làm V2 (Hành động V2 là hành động chính) |\n\n> 💡 VNJPClub公式図解カード",
+      "visual": "### 👁️ 視覚イメージ解説 (第28課：〜ながら V2 (Vừa làm V1 vừa làm V2))\n| 構造 | 助詞・接続 | 意味 |\n|---|---|---|\n| **V1(ます形) ＋ ながら、V2** | ハイライト | Vừa làm V1 vừa làm V2 (Hành động V2 là hành động chính) |\n\n> 💡 VNJPClub公式図解カード\n\n![音楽を聴きながら勉強します](/images/grammar/nagara.jpg)",
       "auditory": "### 👂 聴覚朗読 (第28課)\n- リズムに乗せて「〜ながら〜します」をリズミカルに音読。",
       "kinesthetic": "### ✋ 身体感覚タスク (第28課)\n- 実際に歩きながら話し、2つの動作を同時に行う体感練習。"
     }
