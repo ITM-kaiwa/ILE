@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { LogProvider } from '@/providers/LogProvider';
+import { SakuSenseiChat } from '@/components/SakuSenseiChat';
 
 export const metadata: Metadata = {
   title: 'VAK-Adaptive Language Learning Coach | ITM ILE',
@@ -21,6 +22,7 @@ export default function RootLayout({
       </head>
       <body className="bg-[#FAF7F2] text-slate-800 min-h-screen selection:bg-orange-500 selection:text-white flex flex-col">
       <LogProvider>
+        <SakuSenseiChat />
         <div className="flex-grow">
           {children}
         </div>

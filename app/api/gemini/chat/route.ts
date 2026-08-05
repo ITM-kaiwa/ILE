@@ -5,36 +5,41 @@ export async function POST(req: Request) {
   let requestData: any = {};
   try {
     requestData = await req.json();
-    const { explanation } = requestData;
+    const { question } = requestData;
 
     const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
     if (!apiKey) {
       return NextResponse.json({
         success: true,
-        explanationVi: '(Chưa cấu hình GEMINI_API_KEY)'
+        answer: 'ごめんなさい、現在AI先生はお休み中です。(API Keyが設定されていません)'
       });
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
-    const prompt = `以下の日本語の文法解説をベトナム語に翻訳してください。出力はベトナム語の翻訳文のみとし、挨拶や他のテキストは含めないでください。
+    const prompt = `あなたは「サク先生」という日本語教師の鳥のキャラクターです。
+ユーザーから以下の質問が届きました。
+わかりやすく、親しみやすい言葉遣い（〜ですよ、〜ですね等）で回答してください。
+必要に応じてベトナム語の訳も併記してあげてください。
 
-【解説】: ${explanation}`;
+【ユーザーからの質問】:
+${question}
+`;
 
     const result = await model.generateContent(prompt);
     const response = await result.response;
-    const explanationVi = response.text().trim();
+    const answer = response.text().trim();
 
     return NextResponse.json({
       success: true,
-      explanationVi,
+      answer,
     });
   } catch (error) {
     console.error('Gemini API Error:', error);
     return NextResponse.json({ 
       success: true, 
-      explanationVi: '(Lỗi kết nối AI để tạo bản dịch)' 
+      answer: 'システムエラーが発生しました。しばらく経ってからもう一度お試しください。 (Lỗi hệ thống)' 
     });
   }
 }

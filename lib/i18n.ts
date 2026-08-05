@@ -5,7 +5,7 @@ export const TRANSLATIONS = {
     "appName": "ILE VAK Coach",
     "subTitle": "ITM Language Empowerment",
     "quickDiagnostic": "⚡ 簡易診断 (5問)",
-    "detailedDiagnostic": "✨ 詳細診断 (20問)",
+    "detailedDiagnostic": "詳細診断 (20問)",
     "heroTitle1": "あなたの認知特性 (VAK) に完全パーソナライズされた",
     "heroTitle2": "統合AI日本語学習プラットフォーム",
     "heroDesc": "ベトナム人日本語学習者の自己学習を支援。視覚・聴覚・身体感覚の認知タイプ判定と、エビングハウスの忘却曲線アルゴリズムで、最適な復習タイミングを全自動プロデュースします。",

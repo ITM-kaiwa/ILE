@@ -167,19 +167,19 @@ export const VakDiagnosticModal: React.FC<VakDiagnosticModalProps> = ({
                 {/* Scores */}
                 <div className="mt-6 grid grid-cols-3 gap-3">
                   <div className="p-3 rounded-xl bg-indigo-50 border border-indigo-200">
-                    <span className="text-xs text-indigo-700 block font-semibold">視覚 (V) <br/><span className="text-[10px]">Thị giác</span></span>
+                    <span className="text-xs text-indigo-700 block font-semibold">視覚 (V) <br/><span className="text-xs">Thị giác</span></span>
                     <span className="text-lg font-bold text-indigo-900">
                       {Math.round((result.scores.visual / total) * 100)}%
                     </span>
                   </div>
                   <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200">
-                    <span className="text-xs text-emerald-700 block font-semibold">聴覚 (A) <br/><span className="text-[10px]">Thính giác</span></span>
+                    <span className="text-xs text-emerald-700 block font-semibold">聴覚 (A) <br/><span className="text-xs">Thính giác</span></span>
                     <span className="text-lg font-bold text-emerald-900">
                       {Math.round((result.scores.auditory / total) * 100)}%
                     </span>
                   </div>
                   <div className="p-3 rounded-xl bg-orange-50 border border-orange-200">
-                    <span className="text-xs text-orange-700 block font-semibold">身体感覚 (K) <br/><span className="text-[10px]">Vận động</span></span>
+                    <span className="text-xs text-orange-700 block font-semibold">身体感覚 (K) <br/><span className="text-xs">Vận động</span></span>
                     <span className="text-lg font-bold text-orange-900">
                       {Math.round((result.scores.kinesthetic / total) * 100)}%
                     </span>
@@ -189,7 +189,7 @@ export const VakDiagnosticModal: React.FC<VakDiagnosticModalProps> = ({
 
               <button
                 onClick={handleFinish}
-                className="w-full py-3.5 px-6 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-medium transition shadow-md"
+                className="w-full py-3 px-4 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-medium text-[13px] md:text-sm leading-tight whitespace-normal transition shadow-md"
               >
                 {isLoggedIn ? 'このタイプでAI学習を開始する / Bắt đầu học AI với kiểu này' : '診断結果を保存して今すぐ登録する / Lưu kết quả và đăng ký ngay'}
               </button>
