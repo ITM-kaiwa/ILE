@@ -12,7 +12,7 @@ export async function GET(request: Request) {
     hex = hex.toUpperCase();
   }
   
-  const url = https://kakikata.maripo.org/svg/chars/u.svg;
+  const url = `https://kakikata.maripo.org/svg/chars/u${hex}.svg`;
   try {
     const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
     if (!res.ok) return new NextResponse('Not found', { status: res.status });
