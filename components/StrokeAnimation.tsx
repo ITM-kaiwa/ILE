@@ -5,6 +5,7 @@ import { RefreshCw } from 'lucide-react';
 
 export const StrokeAnimation = ({ charCode }: { charCode: string }) => {
   const [svgContent, setSvgContent] = useState<string | null>(null);
+  const [isNotFound, setIsNotFound] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -17,8 +18,12 @@ export const StrokeAnimation = ({ charCode }: { charCode: string }) => {
     }
     
     fetch(`/images/kana-strokes/u${hex}.svg`)
-      .then(r => {
-         if (!r.ok) throw new Error("Network response was not ok");
+      .then(async r => {
+         if (!r.ok) {
+             const fallback = await fetch(`/api/svg?char=${hex}`);
+             if (!fallback.ok) throw new Error("SVG not found even on proxy");
+             return fallback.text();
+         }
          return r.text();
       })
       .then(text => {
@@ -31,7 +36,10 @@ export const StrokeAnimation = ({ charCode }: { charCode: string }) => {
              console.error("Not SVG content");
          }
       })
-      .catch(e => console.error("Error loading SVG", e));
+      .catch(e => {
+          console.error("Error loading SVG", e);
+          setIsNotFound(true);
+      });
   }, [charCode]);
 
   const playAnimation = () => {
@@ -89,6 +97,8 @@ export const StrokeAnimation = ({ charCode }: { charCode: string }) => {
        setTimeout(playAnimation, 200);
     }
   }, [svgContent]);
+
+  if (isNotFound) return null;
 
   return (
     <div className="flex flex-col items-center mt-3 mb-2 animate-fade-in">
