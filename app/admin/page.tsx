@@ -19,9 +19,12 @@ export default function AdminDashboard() {
     }
 
     fetch(`/api/admin?password=${encodeURIComponent(pwd)}`)
-      .then(res => {
-        if (!res.ok) throw new Error('Unauthorized or API Error');
-        return res.json();
+      .then(async res => {
+        const data = await res.json();
+        if (!res.ok) {
+           throw new Error(data.error || 'Unauthorized or API Error');
+        }
+        return data;
       })
       .then(data => {
         if (data.users) {
