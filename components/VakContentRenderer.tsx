@@ -26,6 +26,7 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
   const [lesson, setLesson] = useState<GeneratedVakLesson>(getMockVakLesson('JLPT N5 文法：〜です / 〜ます', vakType));
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const { addLog } = useLog();
 
   // Automatically generate when VAK type changes, provided there's input
@@ -64,6 +65,7 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
       addLog(`Network or fetch error: ${e.message}. Falling back to mock data.`, 'ERROR');
     } finally {
       setIsGenerating(false);
+      setIsOpen(true);
     }
   };
 
@@ -123,6 +125,12 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
             >
               {lang === 'vi' ? 'Tạo' : '生成'}
             </button>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="px-4 py-1.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-sm font-medium transition whitespace-nowrap"
+            >
+              {isOpen ? (lang === 'vi' ? 'Đóng' : '閉') : (lang === 'vi' ? 'Mở' : '開')}
+            </button>
           </div>
 
 
@@ -130,6 +138,7 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
       </div>
 
       {/* Dynamic VAK Render Box */}
+      {isOpen && (
       <div className="mt-6">
         {vakType === 'visual' && (
           <div className="space-y-6">
@@ -240,6 +249,7 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
           </div>
         )}
       </div>
+      )}
     </div>
   );
 };
