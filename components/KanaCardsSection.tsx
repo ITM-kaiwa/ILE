@@ -227,6 +227,15 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
           <Download className="w-3.5 h-3.5" />
           <span>カタカナノート</span>
         </a>
+        <a
+          href="https://drive.google.com/file/d/1FqMJMkcz7ixNtZuPpxZBUomfoiENbg1x/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center space-x-1.5 px-3 py-1.5 bg-green-50 text-green-700 hover:bg-green-100 border border-green-200 rounded-lg text-xs font-bold transition-colors"
+        >
+          <Download className="w-3.5 h-3.5" />
+          <span>50音表</span>
+        </a>
       </div>
       {isExpanded && (
       <>
@@ -376,5 +385,6 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
     </div>
   );
 };
+
 
 
