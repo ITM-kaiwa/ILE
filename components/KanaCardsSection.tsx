@@ -6,7 +6,7 @@ import { supabase } from '@/lib/supabase';
 import { processReview } from '@/lib/srs';
 import { VakType } from '@/data/vak-questions';
 import { Language, getTranslation } from '@/lib/i18n';
-import { Sparkles, Eye, Volume2, Hand, XCircle, ChevronDown, ChevronUp, Download, ArrowLeft, ArrowRight, RotateCw, Play, Pause } from 'lucide-react';
+import { Sparkles, Eye, Volume2, Hand, XCircle, ChevronDown, ChevronUp, Download, ArrowLeft, ArrowRight, RotateCw, Play, Pause, ChevronLeft, ChevronRight } from 'lucide-react';
 import { StrokeAnimation } from '@/components/StrokeAnimation';
 
 const ROMAJI_ORDER = [

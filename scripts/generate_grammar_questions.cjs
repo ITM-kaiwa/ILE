@@ -29,13 +29,27 @@ if (cleanUrl.includes('/rest/v1')) {
 
 const supabase = createClient(cleanUrl, supabaseKey);
 
-async function main() {
-  if (!apiKey) {
-    console.error("GEMINI_API_KEY is not set.");
-    process.exit(1);
+const delay = ms => new Promise(res => setTimeout(res, ms));
+
+async function generateWithRetry(model, prompt, retries = 3) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const result = await model.generateContent(prompt);
+      return result.response.text();
+    } catch (e) {
+      if (e.status === 429) {
+        console.log(`Rate limit hit. Waiting 60 seconds before retry ${i + 1}/${retries}...`);
+        await delay(60000);
+      } else {
+        throw e;
+      }
+    }
   }
+  throw new Error("Max retries exceeded");
+}
+
+async function main() {
   const genAI = new GoogleGenerativeAI(apiKey);
-  // Using gemini-2.5-flash which is very fast and cheap for bulk generation
   const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash', generationConfig: { responseMimeType: 'application/json' } });
 
   const { data: cards, error } = await supabase.from('grammar_cards').select('*');
@@ -44,6 +58,13 @@ async function main() {
   console.log(`Found ${cards.length} grammar cards. Generating contextual questions...`);
 
   for (const card of cards) {
+    // Check if this card already has ruby tags and 5 questions
+    const { data: existing } = await supabase.from('jlpt_questions').select('question').like('id', `${card.id}_q%`);
+    if (existing && existing.length >= 5 && existing[0].question.includes('<ruby>')) {
+      console.log(`Skipping ${card.id}: already has ruby questions.`);
+      continue;
+    }
+
     console.log(`Processing card ${card.id}: ${card.title}`);
     
     // Extract lesson number
@@ -78,9 +99,9 @@ No other text, just the JSON array.
 `;
 
     try {
-      const result = await model.generateContent(prompt);
-      const text = result.response.text().replace(/```json/g, '').replace(/```/g, '').trim();
-      const questions = JSON.parse(text);
+      const text = await generateWithRetry(model, prompt);
+      const cleanText = text.replace(/```json/g, '').replace(/```/g, '').trim();
+      const questions = JSON.parse(cleanText);
       
       for (let i = 0; i < questions.length; i++) {
         const q = questions[i];
@@ -100,11 +121,11 @@ No other text, just the JSON array.
       }
       console.log(`- Updated 5 contextual questions with ruby for ${card.title}.`);
     } catch (err) {
-      console.error(`- Failed to generate questions for ${card.id}:`, err);
+      console.error(`- Failed to generate questions for ${card.id}:`, err.message);
     }
     
-    // Slight delay to avoid rate limits
-    await new Promise(r => setTimeout(r, 1000));
+    // 4.5 second delay to respect 15 RPM limit (60s / 15 = 4s)
+    await delay(4500);
   }
   console.log("Finished generating all questions.");
 }
