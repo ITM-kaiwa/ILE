@@ -11,6 +11,7 @@ import {
   VakResult,
 } from '@/data/vak-questions';
 import { X, ArrowRight, Brain, Award } from 'lucide-react';
+import { VakExplanation } from './VakExplanation';
 
 interface VakDiagnosticModalProps {
   isOpen: boolean;
@@ -186,6 +187,9 @@ export const VakDiagnosticModal: React.FC<VakDiagnosticModalProps> = ({
                   </div>
                 </div>
               </div>
+
+              {/* Expanded VAK Explanation */}
+              <VakExplanation vakType={result.primaryVak} />
 
               <button
                 onClick={handleFinish}

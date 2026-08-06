@@ -19,7 +19,7 @@ import { WeaknessAnalyzer } from '@/components/WeaknessAnalyzer';
 import { JlptPractice } from '@/components/JlptPractice';
 import { ExternalIntegrations } from '@/components/ExternalIntegrations';
 import { LogFloatingModal } from '@/components/LogFloatingModal';
-import { Sparkles, ArrowRight, BookOpen, RefreshCw, Layers, X } from 'lucide-react';
+import { Sparkles, ArrowRight, BookOpen, RefreshCw, Layers, X, MessageCircle } from 'lucide-react';
 import { APP_VERSION } from '@/lib/config';
 
 export default function Home() {
@@ -250,6 +250,15 @@ export default function Home() {
               <RefreshCw className="w-3.5 h-3.5" />
               <span>{t.tabReview}</span>
             </button>
+            <button
+              onClick={() => {
+                document.getElementById('external-integrations-section')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900"
+            >
+              <MessageCircle className="w-3.5 h-3.5" />
+              <span>{lang === 'vi' ? 'Luyện hội thoại / QA' : '会話・QA練習'}</span>
+            </button>
           </div>
 
           {/* VAK Selector */}
@@ -320,7 +329,9 @@ export default function Home() {
 
         {/* Section 4: ITM External App Integrations */}
         {user && (
-          <ExternalIntegrations lang={lang} />
+          <div id="external-integrations-section">
+            <ExternalIntegrations lang={lang} />
+          </div>
         )}
       </main>
 
