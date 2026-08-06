@@ -10,6 +10,10 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [editingUser, setEditingUser] = useState<any>(null);
+  const [classes, setClasses] = useState<string[]>([]);
+  const [newClassName, setNewClassName] = useState('');
+  const [isAddingClass, setIsAddingClass] = useState(false);
+  const [activeTab, setActiveTab] = useState<'users' | 'classes'>('users');
 
   useEffect(() => {
     const pwd = sessionStorage.getItem('admin_pwd');
@@ -18,27 +22,23 @@ export default function AdminDashboard() {
       return;
     }
 
-    fetch(`/api/admin?password=${encodeURIComponent(pwd)}`)
-      .then(async res => {
-        const data = await res.json();
-        if (!res.ok) {
-           throw new Error(data.error || 'Unauthorized or API Error');
-        }
-        return data;
-      })
-      .then(data => {
-        if (data.users) {
-          setUsers(data.users);
-        } else {
-          throw new Error('Failed to load users');
-        }
-      })
-      .catch(err => {
-        setError(err.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    Promise.all([
+      fetch(`/api/admin?password=${encodeURIComponent(pwd)}`).then(res => {
+        if (!res.ok) throw new Error('Unauthorized or API Error for Users');
+        return res.json();
+      }),
+      fetch('/api/classes').then(res => res.json())
+    ])
+    .then(([adminData, classData]) => {
+      if (adminData.users) setUsers(adminData.users);
+      if (classData.classes) setClasses(classData.classes);
+    })
+    .catch(err => {
+      setError(err.message);
+    })
+    .finally(() => {
+      setLoading(false);
+    });
   }, [router]);
 
   const handlePrint = () => {
@@ -102,6 +102,42 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleAddClass = async () => {
+    if (!newClassName.trim()) return;
+    const pwd = sessionStorage.getItem('admin_pwd');
+    setIsAddingClass(true);
+    try {
+      const res = await fetch('/api/classes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: pwd, className: newClassName })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+      setClasses([...classes, newClassName.trim()].sort());
+      setNewClassName('');
+    } catch (err: any) {
+      alert('Failed to add class: ' + err.message);
+    } finally {
+      setIsAddingClass(false);
+    }
+  };
+
+  const handleDeleteClass = async (className: string) => {
+    if (!confirm(`クラス "${className}" を削除しますか？`)) return;
+    const pwd = sessionStorage.getItem('admin_pwd');
+    try {
+      const res = await fetch(`/api/classes?password=${encodeURIComponent(pwd || '')}&className=${encodeURIComponent(className)}`, {
+        method: 'DELETE'
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+      setClasses(classes.filter(c => c !== className));
+    } catch (err: any) {
+      alert('Failed to delete class: ' + err.message);
+    }
+  };
+
   if (loading) return <div className="min-h-screen flex items-center justify-center bg-slate-50"><p>Loading...</p></div>;
   if (error) return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50">
@@ -123,7 +159,7 @@ export default function AdminDashboard() {
               </button>
               <h1 className="text-2xl font-bold text-slate-800">Admin Dashboard</h1>
             </div>
-            <p className="text-slate-500 text-sm ml-11">学生の学習データとプロフィール管理</p>
+            <p className="text-slate-500 text-sm ml-11">学生の学習データとクラスの管理</p>
           </div>
           <div className="flex items-center gap-3">
             <button onClick={handlePrint} className="flex items-center space-x-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl transition font-medium text-sm border border-slate-300">
@@ -137,10 +173,26 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* Data Table */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+        {/* Tabs */}
+        <div className="flex space-x-4 border-b border-slate-200">
+          <button
+            className={`pb-3 px-1 text-sm font-bold border-b-2 transition-colors ${activeTab === 'users' ? 'border-orange-500 text-orange-600' : 'border-transparent text-slate-500 hover:text-slate-700'}`}
+            onClick={() => setActiveTab('users')}
+          >
+            学生一覧
+          </button>
+          <button
+            className={`pb-3 px-1 text-sm font-bold border-b-2 transition-colors ${activeTab === 'classes' ? 'border-orange-500 text-orange-600' : 'border-transparent text-slate-500 hover:text-slate-700'}`}
+            onClick={() => setActiveTab('classes')}
+          >
+            クラス管理
+          </button>
+        </div>
+
+        {activeTab === 'users' ? (
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-200 text-sm text-slate-600 font-semibold">
                   <th className="p-4">Student ID</th>
@@ -187,6 +239,46 @@ export default function AdminDashboard() {
             </table>
           </div>
         </div>
+        ) : (
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+            <h2 className="text-lg font-bold text-slate-800 mb-4">クラスの管理</h2>
+            <div className="flex space-x-3 mb-6">
+              <input
+                type="text"
+                value={newClassName}
+                onChange={(e) => setNewClassName(e.target.value)}
+                placeholder="新しいクラス名 (例: 26M16)"
+                className="px-4 py-2 border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 flex-1 max-w-sm"
+              />
+              <button
+                onClick={handleAddClass}
+                disabled={isAddingClass || !newClassName.trim()}
+                className="px-4 py-2 bg-slate-800 text-white rounded-xl text-sm font-bold hover:bg-slate-700 transition disabled:opacity-50"
+              >
+                {isAddingClass ? '追加中...' : 'クラスを追加'}
+              </button>
+            </div>
+            
+            <div className="border border-slate-200 rounded-xl overflow-hidden max-w-xl">
+              <ul className="divide-y divide-slate-100">
+                {classes.map(c => (
+                  <li key={c} className="p-4 flex items-center justify-between hover:bg-slate-50 transition">
+                    <span className="font-medium text-slate-700">{c}</span>
+                    <button
+                      onClick={() => handleDeleteClass(c)}
+                      className="text-red-500 hover:bg-red-50 p-2 rounded-lg transition text-xs font-bold"
+                    >
+                      削除
+                    </button>
+                  </li>
+                ))}
+                {classes.length === 0 && (
+                  <li className="p-4 text-slate-500 text-center">クラスが登録されていません。</li>
+                )}
+              </ul>
+            </div>
+          </div>
+        )}
 
         {/* Edit Modal */}
         {editingUser && (

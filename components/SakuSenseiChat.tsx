@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { X, Mail, Bot } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { SearchableClassSelect } from '@/components/SearchableClassSelect';
 
 export const SakuSenseiChat = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -120,13 +121,13 @@ export const SakuSenseiChat = () => {
                     onChange={(e) => setStudentName(e.target.value)}
                     className="w-1/2 text-sm border border-slate-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
                   />
-                  <input
-                    type="text"
-                    placeholder="クラス / Lớp"
-                    value={classNum}
-                    onChange={(e) => setClassNum(e.target.value)}
-                    className="w-1/2 text-sm border border-slate-300 rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
+                  <div className="w-1/2">
+                    <SearchableClassSelect
+                      value={classNum}
+                      onChange={setClassNum}
+                      placeholder="クラス / Lớp"
+                    />
+                  </div>
                 </div>
                 
                 <textarea
