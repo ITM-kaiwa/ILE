@@ -219,7 +219,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
           <span>ひらがなノート</span>
         </a>
         <a
-          href="https://drive.google.com/file/d/1TOjxvyL6RxNxN6zYsAhj338FLCD6v0-1/view?usp=sharing"
+          href="https://drive.google.com/file/d/1O32toVYlvl9Mlf_Q4tbfhLegTR5eShE4/view?usp=drive_link"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center space-x-1.5 px-3 py-1.5 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 rounded-lg text-xs font-bold transition-colors"
@@ -385,6 +385,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
     </div>
   );
 };
+
 
 
 
