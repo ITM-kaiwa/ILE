@@ -6,7 +6,7 @@ import { supabase } from '@/lib/supabase';
 import { processReview } from '@/lib/srs';
 import { VakType } from '@/data/vak-questions';
 import { Language, getTranslation } from '@/lib/i18n';
-import { Volume2, Eye, Hand, RotateCw, ArrowLeft, ArrowRight, Sparkles , ChevronDown, ChevronUp , ChevronLeft, ChevronRight , Play, Pause } from 'lucide-react';
+import { Volume2, Eye, Hand, RotateCw, ArrowLeft, ArrowRight, Sparkles , ChevronDown, ChevronUp , ChevronLeft, ChevronRight , Play, Pause, Download } from 'lucide-react';
 import { StrokeAnimation } from '@/components/StrokeAnimation';
 
 export type KanaType = 'hiragana' | 'katakana';
@@ -208,6 +208,26 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
 
         </div>
       </div>
+      <div className="flex items-center space-x-3 pb-3">
+        <a
+          href="https://drive.google.com/file/d/1TOjxvyL6RxNxN6zYsAhj338FLCD6v0-1/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center space-x-1.5 px-3 py-1.5 bg-orange-50 text-orange-700 hover:bg-orange-100 border border-orange-200 rounded-lg text-xs font-bold transition-colors"
+        >
+          <Download className="w-3.5 h-3.5" />
+          <span>ひらがなノート</span>
+        </a>
+        <a
+          href="https://drive.google.com/file/d/1TOjxvyL6RxNxN6zYsAhj338FLCD6v0-1/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center space-x-1.5 px-3 py-1.5 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200 rounded-lg text-xs font-bold transition-colors"
+        >
+          <Download className="w-3.5 h-3.5" />
+          <span>カタカナノート</span>
+        </a>
+      </div>
       {isExpanded && (
       <>
       {isLoading && (
@@ -356,4 +376,5 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
     </div>
   );
 };
+
 

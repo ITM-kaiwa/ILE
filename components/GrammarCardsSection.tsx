@@ -325,7 +325,7 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
                           <div key={q.id} className="space-y-2">
                             <p className="text-sm font-semibold text-slate-700">
                               <span className="inline-block w-5 h-5 mr-1 text-center rounded-full bg-blue-100 text-blue-700 text-xs font-bold leading-5">{qIdx + 1}</span>
-                              {q.question}
+                              <span dangerouslySetInnerHTML={{ __html: q.question }} />
                             </p>
                             <div className="grid grid-cols-2 gap-2">
                               {q.options.map((opt, oIdx) => {
@@ -348,7 +348,7 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
                                   >
                                     {answered && oIdx === q.correctIndex && <CheckCircle className="inline w-3 h-3 mr-1 text-green-600" />}
                                     {answered && oIdx === selectedIdx && oIdx !== q.correctIndex && <XCircle className="inline w-3 h-3 mr-1 text-red-500" />}
-                                    {opt}
+                                    <span dangerouslySetInnerHTML={{ __html: opt }} />
                                   </button>
                                 );
                               })}
@@ -375,9 +375,10 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
                             )}
 
                             {answered && showExplanation[q.id] && q.explanation && (
-                              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-xs text-slate-700 leading-relaxed">
-                                {q.explanation}
-                              </div>
+                              <div 
+                                className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-xs text-slate-700 leading-relaxed"
+                                dangerouslySetInnerHTML={{ __html: q.explanation }} 
+                              />
                             )}
                           </div>
                         );
@@ -393,4 +394,5 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
     </div>
   );
 };
+
 

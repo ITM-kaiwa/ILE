@@ -6,37 +6,53 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 const envPath = path.resolve('.env.local');
 const envContent = fs.existsSync(envPath) ? fs.readFileSync(envPath, 'utf-8') : '';
 const env = {};
-envContent.split('\n').forEach(line => {
+envContent.split(/\r?\n/).forEach(line => {
   const [key, ...val] = line.split('=');
   if (key && val.length > 0) {
     env[key.trim()] = val.join('=').trim().replace(/(^"|"$)/g, '');
   }
 });
 
-const supabase = createClient(env.NEXT_PUBLIC_SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
+const supabaseUrl = env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseKey = env.SUPABASE_SERVICE_ROLE_KEY;
 const apiKey = env.GEMINI_API_KEY || process.env.GEMINI_API_KEY;
+
+if (!supabaseUrl || !supabaseKey) {
+  console.error("Supabase URL or Key is missing.");
+  process.exit(1);
+}
+
+let cleanUrl = supabaseUrl;
+if (cleanUrl.includes('/rest/v1')) {
+  cleanUrl = cleanUrl.replace('/rest/v1/', '').replace('/rest/v1', '');
+}
+
+const supabase = createClient(cleanUrl, supabaseKey);
 
 async function main() {
   if (!apiKey) {
-    console.error("GEMINI_API_KEY is not set. Please set it in .env.local or as an environment variable.");
+    console.error("GEMINI_API_KEY is not set.");
     process.exit(1);
   }
   const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: 'gemini-3.6-flash', generationConfig: { responseMimeType: 'application/json' } });
+  // Using gemini-2.5-flash which is very fast and cheap for bulk generation
+  const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash', generationConfig: { responseMimeType: 'application/json' } });
 
   const { data: cards, error } = await supabase.from('grammar_cards').select('*');
   if (error) throw error;
   
-  console.log(`Found ${cards.length} grammar cards. Generating questions...`);
+  console.log(`Found ${cards.length} grammar cards. Generating contextual questions...`);
 
   for (const card of cards) {
     console.log(`Processing card ${card.id}: ${card.title}`);
     
-    // Check if questions already exist
-    const { data: existing } = await supabase.from('jlpt_questions').select('id').like('id', `${card.id}_q%`);
-    if (existing && existing.length >= 5) {
-      console.log(`- Already has ${existing.length} questions. Skipping.`);
-      continue;
+    // Extract lesson number
+    const lessonMatch = card.title.match(/第(\d+)課/);
+    let lessonPrompt = "";
+    if (lessonMatch) {
+      lessonPrompt = `This is for Minna no Nihongo Lesson ${lessonMatch[1]}. CRITICAL RULE: DO NOT use any vocabulary or grammar introduced AFTER Lesson ${lessonMatch[1]}. Keep the sentences simple and appropriate for a student at exactly this lesson level.`;
+    } else {
+      lessonPrompt = `This is for JLPT ${card.level}. Keep the vocabulary and grammar strictly within ${card.level} level.`;
     }
 
     const prompt = `
@@ -44,11 +60,16 @@ Generate 5 JLPT-style fill-in-the-blank practice questions for the following Jap
 Grammar: ${card.title}
 Meaning: ${card.meaning}
 
+${lessonPrompt}
+
+CRITICAL RULE 2: You MUST add furigana (ruby tags) to ALL Kanji in the "question" and "options" fields using standard HTML format.
+Example: <ruby>私<rt>わたし</rt></ruby>は<ruby>学生<rt>がくせい</rt></ruby>です。
+
 The output MUST be a JSON array of 5 objects matching this exact schema:
 [
   {
-    "question": "The Japanese sentence with a blank (e.g. わたし (　) がくせいです。)",
-    "options": ["option1", "option2", "option3", "option4"],
+    "question": "The Japanese sentence with a blank (e.g. <ruby>私<rt>わたし</rt></ruby>は (　) です。)",
+    "options": ["option1 with ruby", "option2 with ruby", "option3 with ruby", "option4 with ruby"],
     "correctIndex": integer (0 to 3),
     "explanation": "Explanation in Japanese and Vietnamese. Format: 【JP】... 【VN】..."
   }
@@ -77,11 +98,15 @@ No other text, just the JSON array.
         };
         await supabase.from('jlpt_questions').upsert(payload);
       }
-      console.log(`- Inserted 5 questions.`);
+      console.log(`- Updated 5 contextual questions with ruby for ${card.title}.`);
     } catch (err) {
       console.error(`- Failed to generate questions for ${card.id}:`, err);
     }
+    
+    // Slight delay to avoid rate limits
+    await new Promise(r => setTimeout(r, 1000));
   }
+  console.log("Finished generating all questions.");
 }
 
 main();
