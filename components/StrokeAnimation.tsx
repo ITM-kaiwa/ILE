@@ -9,6 +9,9 @@ export const StrokeAnimation = ({ charCode }: { charCode: string }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setIsNotFound(false);
+    setSvgContent(null);
+
     // Disable stroke animation for compound kana (e.g., "にゃ") to prevent 404 errors
     if (!charCode || charCode.length > 1) {
        setIsNotFound(true);
