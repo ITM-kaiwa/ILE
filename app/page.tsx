@@ -22,6 +22,33 @@ import { LogFloatingModal } from '@/components/LogFloatingModal';
 import { Sparkles, ArrowRight, BookOpen, RefreshCw, Layers, X, MessageCircle } from 'lucide-react';
 import { APP_VERSION } from '@/lib/config';
 
+const smoothScrollTo = (targetId: string, duration: number) => {
+  const target = document.getElementById(targetId);
+  if (!target) return;
+  
+  const targetPosition = target.getBoundingClientRect().top + window.scrollY;
+  const startPosition = window.scrollY;
+  const distance = targetPosition - startPosition;
+  let startTime: number | null = null;
+  
+  const ease = (t: number, b: number, c: number, d: number) => {
+    t /= d / 2;
+    if (t < 1) return c / 2 * t * t + b;
+    t--;
+    return -c / 2 * (t * (t - 2) - 1) + b;
+  };
+  
+  const animation = (currentTime: number) => {
+    if (startTime === null) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+    const run = ease(timeElapsed, startPosition, distance, duration);
+    window.scrollTo(0, run);
+    if (timeElapsed < duration) requestAnimationFrame(animation);
+  };
+  
+  requestAnimationFrame(animation);
+};
+
 export default function Home() {
   const [lang, setLang] = useState<Language>('vi');
   const t = getTranslation(lang);
@@ -252,7 +279,7 @@ export default function Home() {
             </button>
             <button
               onClick={() => {
-                document.getElementById('external-integrations-section')?.scrollIntoView({ behavior: 'smooth' });
+                smoothScrollTo('external-integrations-section', 1000);
               }}
               className="px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900"
             >
