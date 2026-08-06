@@ -140,10 +140,14 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
     }
   };
 
-  const handlePlayTTS = (text: string) => {
-    if ('speechSynthesis' in window) {
+  const handlePlayAudio = (card: any) => {
+    const url = card.audio_url || card.vakHelp?.audio_url;
+    if (url) {
+      const audio = new Audio(url);
+      audio.play().catch(e => console.error("Audio play failed:", e));
+    } else if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
+      const utterance = new SpeechSynthesisUtterance(card.kana);
       utterance.lang = 'ja-JP';
       window.speechSynthesis.speak(utterance);
     } else {
@@ -154,7 +158,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
   return (
     <div id="kana-section" className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-amber-100 gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-2 gap-3">
         <div>
           <div className="flex items-center space-x-2">
             <Sparkles className="w-5 h-5 text-orange-600" />
@@ -208,7 +212,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
 
         </div>
       </div>
-      <div className="flex items-center space-x-3 pb-3">
+      <div className="flex items-center space-x-3 pb-4 border-b border-amber-100 mb-2">
         <a
           href="https://drive.google.com/file/d/1TOjxvyL6RxNxN6zYsAhj338FLCD6v0-1/view?usp=sharing"
           target="_blank"
@@ -286,12 +290,12 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      handlePlayTTS(currentCard.kana);
+                      handlePlayAudio(currentCard);
                     }}
                     className="p-2 rounded-xl bg-orange-100 hover:bg-orange-200 text-orange-900 transition flex items-center space-x-1"
                   >
                     <Volume2 className="w-4 h-4 text-orange-600" />
-                    <span className="text-xs font-bold hidden sm:inline">{isVi ? 'Phát âm' : 'TTS発音'}</span>
+                    <span className="text-xs font-bold hidden sm:inline">{isVi ? 'Phát âm' : '発音'}</span>
                   </button>
                 </div>
 
@@ -385,6 +389,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
     </div>
   );
 };
+
 
 
 
