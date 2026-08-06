@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: linear-gradient(135deg, #FAF7F2 0%, #F5EFE6 50%, #EFEAD8 100%);
   color: #2D3748;

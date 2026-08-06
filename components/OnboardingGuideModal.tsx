@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { X, BookOpen, Brain, TrendingUp, CheckCircle } from 'lucide-react';
+import { X, BookOpen, Brain, TrendingUp, CheckCircle, HelpCircle } from 'lucide-react';
 
 interface OnboardingGuideModalProps {
   isOpen: boolean;
@@ -9,13 +9,16 @@ interface OnboardingGuideModalProps {
 }
 
 export const OnboardingGuideModal: React.FC<OnboardingGuideModalProps> = ({ isOpen, onClose }) => {
+  const [showVakInfo, setShowVakInfo] = React.useState(false);
+
   if (!isOpen) return null;
 
   return (
-    <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm"
-      onClick={onClose}
-    >
+    <>
+      <div 
+        className="fixed inset-0 z-40 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm"
+        onClick={onClose}
+      >
       <div 
         className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
@@ -36,7 +39,15 @@ export const OnboardingGuideModal: React.FC<OnboardingGuideModalProps> = ({ isOp
           {/* Intro */}
           <div className="text-slate-700 leading-relaxed text-sm">
             <p>
-              VAKシステムへようこそ！このシステムは、あなたの「学習特性（VAK）」に合わせて最適な日本語学習を提供するプラットフォームです。
+              VAKシステムへようこそ！このシステムは、あなたの「学習特性（VAK）
+              <button 
+                onClick={(e) => { e.stopPropagation(); setShowVakInfo(true); }}
+                className="inline-flex items-center justify-center w-5 h-5 ml-1 mr-1 rounded-full bg-orange-100 text-orange-600 hover:bg-orange-200 transition align-middle"
+                title="VAKについて"
+              >
+                <HelpCircle className="w-3.5 h-3.5" />
+              </button>
+              」に合わせて最適な日本語学習を提供するプラットフォームです。
               <br/><span className="text-slate-500 text-xs">Chào mừng đến với hệ thống VAK! Đây là nền tảng cung cấp việc học tiếng Nhật tối ưu dựa trên "đặc điểm học tập (VAK)" của bạn.</span>
             </p>
           </div>
@@ -121,5 +132,46 @@ export const OnboardingGuideModal: React.FC<OnboardingGuideModalProps> = ({ isOp
         </div>
       </div>
     </div>
+
+      {/* Nested VAK Info Modal */}
+      {showVakInfo && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md animate-fade-in"
+          onClick={() => setShowVakInfo(false)}
+        >
+          <div 
+            className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 relative border border-orange-100"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              onClick={() => setShowVakInfo(false)}
+              className="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-full transition"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <h3 className="text-lg font-bold text-orange-600 flex items-center mb-4">
+              <Brain className="w-5 h-5 mr-2" />
+              VAK学習特性とは？
+            </h3>
+            <div className="text-sm text-slate-700 space-y-4">
+              <p>
+                <span className="font-bold text-slate-800">VAK (Visual, Auditory, Kinesthetic)</span> は、人が情報を学習・記憶する際に「視覚（見る）」「聴覚（聞く）」「身体感覚（動く・感じる）」のどの感覚を最も得意とするかを表す学習スタイル（認知特性）の指標です。
+              </p>
+              <p className="text-xs text-slate-500 border-t border-slate-100 pt-3">
+                <strong className="text-slate-700">VAK (Thị giác, Thính giác, Vận động)</strong> là chỉ số về phong cách học tập (đặc điểm nhận thức) thể hiện giác quan nào trong số "Thị giác (nhìn)", "Thính giác (nghe)" và "Vận động (chuyển động/cảm giác)" mà một người có khả năng ghi nhớ và tiếp thu thông tin tốt nhất.
+              </p>
+            </div>
+            <div className="mt-6 flex justify-end">
+              <button 
+                onClick={() => setShowVakInfo(false)}
+                className="px-4 py-2 bg-orange-100 text-orange-700 hover:bg-orange-200 rounded-lg text-sm font-bold transition"
+              >
+                閉じる / Đóng
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
