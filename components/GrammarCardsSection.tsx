@@ -149,7 +149,7 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
     // Link to SRS processReview
     if (user) {
       try {
-        await processReview(user.id, questionId, isCorrect ? 'correct' : 'incorrect');
+        await processReview(user.id, 'grammar', questionId, isCorrect);
       } catch (e) {
         // silently fail
       }
@@ -393,3 +393,4 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
     </div>
   );
 };
+
