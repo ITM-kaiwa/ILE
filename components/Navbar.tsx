@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -96,7 +96,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => setIsGuideOpen(true)}
               title="初心者ガイド / Hướng dẫn cho người mới"
-              className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-white bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105 border border-green-400"
+              className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105 border border-indigo-500"
             >
               <BookOpen className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">🔰 ガイド</span>
