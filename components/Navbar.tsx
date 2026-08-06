@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -6,7 +6,7 @@ import { supabase } from '@/lib/supabase';
 import type { User } from '@supabase/supabase-js';
 import { VakType } from '@/data/vak-questions';
 import { Language, getTranslation } from '@/lib/i18n';
-import { Sparkles, Brain, Globe, BookOpen } from 'lucide-react';
+import { Sparkles, Brain, Globe, BookOpen, Bell } from 'lucide-react';
 import { APP_VERSION } from '@/lib/config';
 import { OnboardingGuideModal } from '@/components/OnboardingGuideModal';
 
@@ -32,6 +32,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const t = getTranslation(lang);
   const [user, setUser] = useState<User | null>(null);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
+  const [pendingReviews, setPendingReviews] = useState(0);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -44,6 +45,61 @@ export const Navbar: React.FC<NavbarProps> = ({
 
     return () => subscription.unsubscribe();
   }, []);
+
+  // Fetch pending reviews count when user logs in
+  useEffect(() => {
+    if (!user) {
+      setPendingReviews(0);
+      return;
+    }
+
+    const fetchPendingCount = async () => {
+      const now = new Date().toISOString();
+      const { count, error } = await supabase
+        .from('learning_history')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_id', user.id)
+        .lte('next_review', now);
+        
+      if (!error && count !== null) {
+        setPendingReviews(count);
+      }
+    };
+    
+    fetchPendingCount();
+    
+    // Set up a listener for custom event if review manager updates it
+    const handleUpdate = () => fetchPendingCount();
+    window.addEventListener('srs-updated', handleUpdate);
+    return () => window.removeEventListener('srs-updated', handleUpdate);
+  }, [user]);
+
+  const handleScrollToReview = () => {
+    // Ebbinghaus review section is often at id 'review' or 'ebbinghaus'
+    const target = document.getElementById('review') || document.getElementById('ebbinghaus');
+    if (target) {
+      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+      const startPosition = window.pageYOffset;
+      const distance = targetPosition - startPosition;
+      const duration = 1000;
+      let start: number | null = null;
+
+      const step = (timestamp: number) => {
+        if (!start) start = timestamp;
+        const progress = timestamp - start;
+        const percentage = Math.min(progress / duration, 1);
+        const easeInOutCubic = percentage < 0.5 
+          ? 4 * percentage * percentage * percentage 
+          : 1 - Math.pow(-2 * percentage + 2, 3) / 2;
+        
+        window.scrollTo(0, startPosition + distance * easeInOutCubic);
+        if (progress < duration) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+  };
 
   const getVakBadge = () => {
     if (isHybrid && hybridLabel) {
@@ -84,6 +140,22 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-orange-100 text-orange-800 border border-orange-300">
                   {APP_VERSION}
                 </span>
+                {user && (
+                  <button
+                    onClick={handleScrollToReview}
+                    className={`relative p-1.5 rounded-full transition-colors flex items-center justify-center ${
+                      pendingReviews > 0 
+                        ? 'text-amber-500 hover:bg-amber-50' 
+                        : 'text-slate-300 hover:bg-slate-50 opacity-70'
+                    }`}
+                    title={pendingReviews > 0 ? `復習が必要な項目があります (${pendingReviews})` : '復習項目はありません'}
+                  >
+                    <Bell className={`w-5 h-5 ${pendingReviews > 0 ? 'animate-wiggle text-amber-500' : 'text-slate-400'}`} fill={pendingReviews > 0 ? 'currentColor' : 'none'} />
+                    {pendingReviews > 0 && (
+                      <span className="absolute top-0.5 right-0.5 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white shadow-sm"></span>
+                    )}
+                  </button>
+                )}
               </div>
               <p className="hidden sm:block text-xs text-slate-500 mt-0.5">{t.subTitle}</p>
             </div>

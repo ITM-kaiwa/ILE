@@ -348,7 +348,7 @@ export default function Home() {
 
         {/* Section 3: Google Calendar & SRS Review Manager */}
         {user && (
-        <div id="jlpt-practice-section" className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div id="ebbinghaus" className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <CalendarScheduler vakType={currentVak} lang={lang} />
           <ReviewManager lang={lang} />
         </div>

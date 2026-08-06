@@ -55,10 +55,10 @@ export const SakuSenseiChat = () => {
   return (
     <>
       {/* Saku-sensei floating button */}
-      <div className="fixed top-24 left-4 z-40">
+      <div className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative w-11 h-11 rounded-full overflow-hidden shadow-lg border-2 border-white hover:scale-105 transition-transform bg-white"
+          className="relative w-14 h-14 rounded-full overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.15)] border-2 border-white hover:scale-105 transition-transform bg-white"
           title="サク先生に質問する"
         >
           <img 
@@ -77,14 +77,14 @@ export const SakuSenseiChat = () => {
             className="fixed inset-0 z-40 bg-slate-900/20 backdrop-blur-sm"
             onClick={() => setIsOpen(false)}
           />
-          {/* Dialog panel - fixed near top-left, below the Saku button */}
+          {/* Dialog panel - fixed near bottom-right, above the Saku button */}
           <div
             className="fixed z-50 bg-white rounded-2xl shadow-2xl border border-blue-100 overflow-hidden flex flex-col"
             style={{
-              top: '6rem',
-              left: '1rem',
+              bottom: '6rem',
+              right: '1.5rem',
               width: '340px',
-              maxWidth: 'calc(100vw - 2rem)',
+              maxWidth: 'calc(100vw - 3rem)',
               maxHeight: 'calc(100vh - 7rem)',
             }}
             onClick={(e) => e.stopPropagation()}

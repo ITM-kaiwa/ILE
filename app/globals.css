@@ -88,3 +88,12 @@ body {
 .markdown-body tr:nth-child(even) {
   background-color: #f9fafb; /* Tailwind gray-50 */
 }
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+}
+
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out infinite;
+}
