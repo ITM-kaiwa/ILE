@@ -379,8 +379,10 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
                         </h3>
                         <p className="text-xl sm:text-2xl font-bold text-indigo-700 mt-4">[{currentCard.romaji}]</p>
                       </div>
-                      <div className="flex-shrink-0">
-                        <StrokeAnimation charCode={currentCard.kana} />
+                      <div className="flex-shrink-0 flex gap-1 sm:gap-2">
+                        {currentCard.kana.split('').map((char: string, i: number) => (
+                          <StrokeAnimation key={`${currentCard.id}-${char}-${i}`} charCode={char} />
+                        ))}
                       </div>
                     </div>
                   ) : (
