@@ -9,20 +9,27 @@ export const StrokeAnimation = ({ charCode }: { charCode: string }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let hex = charCode;
-    // If it's a single character like "あ", convert to hex
-    if (hex.length === 1) {
-       hex = hex.charCodeAt(0).toString(16).toUpperCase();
-    } else {
-       hex = hex.toUpperCase();
+    // Disable stroke animation for compound kana (e.g., "にゃ") to prevent 404 errors
+    if (!charCode || charCode.length > 1) {
+       setIsNotFound(true);
+       return;
     }
+
+    let hex = charCode.charCodeAt(0).toString(16).toUpperCase();
     
-    fetch(`/images/kana-strokes/u${hex}.svg`)
+    // Kanji characters typically start from 0x4E00. We don't have local SVGs for them.
+    const isKanji = charCode.charCodeAt(0) >= 0x4E00 && charCode.charCodeAt(0) <= 0x9FAF;
+    const initialUrl = isKanji ? `/api/svg?char=${hex}` : `/images/kana-strokes/u${hex}.svg`;
+
+    fetch(initialUrl)
       .then(async r => {
-         if (!r.ok) {
+         if (!r.ok && !isKanji) {
              const fallback = await fetch(`/api/svg?char=${hex}`);
              if (!fallback.ok) throw new Error("SVG not found even on proxy");
              return fallback.text();
+         }
+         if (!r.ok && isKanji) {
+             throw new Error("SVG not found on proxy");
          }
          return r.text();
       })
