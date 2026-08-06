@@ -6,8 +6,37 @@ import { supabase } from '@/lib/supabase';
 import { processReview } from '@/lib/srs';
 import { VakType } from '@/data/vak-questions';
 import { Language, getTranslation } from '@/lib/i18n';
-import { Volume2, Eye, Hand, RotateCw, ArrowLeft, ArrowRight, Sparkles , ChevronDown, ChevronUp , ChevronLeft, ChevronRight , Play, Pause, Download } from 'lucide-react';
+import { Sparkles, Eye, Volume2, Hand, XCircle, ChevronDown, ChevronUp, Download, ArrowLeft, ArrowRight, RotateCw, Play, Pause } from 'lucide-react';
 import { StrokeAnimation } from '@/components/StrokeAnimation';
+
+const ROMAJI_ORDER = [
+  'a', 'i', 'u', 'e', 'o',
+  'ka', 'ki', 'ku', 'ke', 'ko',
+  'ga', 'gi', 'gu', 'ge', 'go',
+  'sa', 'shi', 'su', 'se', 'so',
+  'za', 'ji', 'zu', 'ze', 'zo',
+  'ta', 'chi', 'tsu', 'te', 'to',
+  'da', 'di', 'du', 'de', 'do',
+  'na', 'ni', 'nu', 'ne', 'no',
+  'ha', 'hi', 'fu', 'he', 'ho',
+  'ba', 'bi', 'bu', 'be', 'bo',
+  'pa', 'pi', 'pu', 'pe', 'po',
+  'ma', 'mi', 'mu', 'me', 'mo',
+  'ya', 'yu', 'yo',
+  'ra', 'ri', 'ru', 're', 'ro',
+  'wa', 'wo', 'o', 'n',
+  'kya', 'kyu', 'kyo',
+  'gya', 'gyu', 'gyo',
+  'sha', 'shu', 'sho',
+  'ja', 'ju', 'jo',
+  'cha', 'chu', 'cho',
+  'nya', 'nyu', 'nyo',
+  'hya', 'hyu', 'hyo',
+  'bya', 'byu', 'byo',
+  'pya', 'pyu', 'pyo',
+  'mya', 'myu', 'myo',
+  'rya', 'ryu', 'ryo'
+];
 
 export type KanaType = 'hiragana' | 'katakana';
 export interface KanaCard {
@@ -56,6 +85,19 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
             mnemonicVn: item.mnemonic_vi || '',
             vakHelp: item.vak_help || { visual: '', auditory: '', kinesthetic: '' }
           }));
+
+          mapped.sort((a, b) => {
+            let idxA = ROMAJI_ORDER.indexOf(a.romaji);
+            let idxB = ROMAJI_ORDER.indexOf(b.romaji);
+            if (idxA === -1) idxA = 999;
+            if (idxB === -1) idxB = 999;
+            
+            if (idxA !== idxB) {
+              return idxA - idxB;
+            }
+            return a.kana.localeCompare(b.kana);
+          });
+            
           setDbData(mapped); addLog(`Successfully loaded ${mapped.length} Kana cards.`, 'SUCCESS'); addLog(`Successfully loaded ${mapped.length} Kana cards.`, 'SUCCESS');
         }
         setIsLoading(false);
@@ -389,6 +431,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
     </div>
   );
 };
+
 
 
 
