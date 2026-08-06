@@ -185,17 +185,6 @@ export default function Home() {
               <span>{t.tabVakAi}</span>
             </button>
             <button
-              onClick={() => setActiveTab('jlpt')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
-                activeTab === 'jlpt'
-                  ? 'bg-orange-600 text-white shadow'
-                  : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900'
-              }`}
-            >
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>{t.tabJlpt}</span>
-            </button>
-            <button
               onClick={() => setActiveTab('kana')}
               className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
                 activeTab === 'kana'
@@ -238,6 +227,17 @@ export default function Home() {
             >
               <Layers className="w-3.5 h-3.5" />
               <span>{t.tabKanji}</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('jlpt')}
+              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
+                activeTab === 'jlpt'
+                  ? 'bg-orange-600 text-white shadow'
+                  : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900'
+              }`}
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>{t.tabJlpt}</span>
             </button>
             <button
               onClick={() => setActiveTab('review')}
@@ -342,3 +342,4 @@ export default function Home() {
     </div>
   );
 }
+
