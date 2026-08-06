@@ -57,7 +57,7 @@ export const SakuSenseiChat = () => {
       <div className="fixed top-24 left-4 z-40">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative w-16 h-16 rounded-full overflow-hidden shadow-lg border-4 border-white hover:scale-105 transition-transform bg-white"
+          className="relative w-11 h-11 rounded-full overflow-hidden shadow-lg border-2 border-white hover:scale-105 transition-transform bg-white"
           title="サク先生に質問する"
         >
           <img 
@@ -166,7 +166,7 @@ export const SakuSenseiChat = () => {
                     className="flex items-center justify-center space-x-1.5 bg-red-500 hover:bg-red-600 text-white py-2.5 px-2 rounded-xl font-bold transition-colors shadow-sm"
                   >
                     <Mail className="w-4 h-4" />
-                    <span className="text-xs">先生に質問</span>
+                    <span className="text-xs">Hỏi giáo viên</span>
                   </button>
                   <button
                     onClick={handleAskAI}
@@ -174,7 +174,7 @@ export const SakuSenseiChat = () => {
                     className="flex items-center justify-center space-x-1.5 bg-blue-500 hover:bg-blue-600 text-white py-2.5 px-2 rounded-xl font-bold transition-colors shadow-sm disabled:opacity-50"
                   >
                     <Bot className="w-4 h-4" />
-                    <span className="text-xs">AIに質問</span>
+                    <span className="text-xs">Hỏi AI</span>
                   </button>
                 </div>
               </div>
@@ -185,3 +185,5 @@ export const SakuSenseiChat = () => {
     </>
   );
 };
+
+
