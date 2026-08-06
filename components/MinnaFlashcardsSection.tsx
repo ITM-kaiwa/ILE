@@ -24,7 +24,7 @@ export interface MinnaVocabCard {
   vnjpclubUrl: string;
   vakHelp: { visual: string; auditory: string; kinesthetic: string; };
 }
-import { ExternalLink, Volume2, Eye, Hand, Filter, Layers, Tag, Grid, ArrowLeft, ArrowRight, RotateCw , ChevronDown, ChevronUp , ChevronLeft, ChevronRight , Play, Pause } from 'lucide-react';
+import { ExternalLink, Volume2, Eye, Hand, Filter, Layers, Tag, Grid, ArrowLeft, ArrowRight, RotateCw , ChevronDown, ChevronUp , ChevronLeft, ChevronRight , Play, Pause, Shuffle } from 'lucide-react';
 
 interface MinnaFlashcardsSectionProps {
   vakType: VakType;
@@ -41,6 +41,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
   const [selectedLesson, setSelectedLesson] = useState<number>(1);
   const [selectedCategory, setSelectedCategory] = useState<SemanticCategory>('people');
   const [selectedPos, setSelectedPos] = useState<PartOfSpeech>('noun');
+  const [shuffleSeed, setShuffleSeed] = useState(0);
 
   const [dbData, setDbData] = useState<MinnaVocabCard[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -106,7 +107,14 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
     list = dbData.filter(v => v.partOfSpeech === selectedPos);
   }
 
-  const currentCard = list[currentIndex] || list[0];
+  const shuffledList = React.useMemo(() => {
+    if (shuffleSeed > 0) {
+      return [...list].sort(() => Math.random() - 0.5);
+    }
+    return list;
+  }, [list, shuffleSeed]);
+
+  const currentCard = shuffledList[currentIndex] || shuffledList[0];
 
   const handleReview = async (isCorrect: boolean) => {
     if (user && currentCard) {
@@ -117,7 +125,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
 
   const handleNext = () => {
     setIsFlipped(false);
-    if (currentIndex + 1 < list.length) {
+    if (currentIndex + 1 < shuffledList.length) {
       setCurrentIndex((prev) => prev + 1);
     } else {
       setCurrentIndex(0);
@@ -129,7 +137,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
     if (currentIndex > 0) {
       setCurrentIndex((prev) => prev - 1);
     } else {
-      setCurrentIndex(list.length - 1);
+      setCurrentIndex(shuffledList.length - 1);
     }
   };
 
@@ -225,7 +233,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
         <div className="flex items-center space-x-2">
           <span className="text-xs font-semibold text-slate-500 hidden sm:inline">{isVi ? 'Phân loại:' : '分類軸:'}</span>
           <button
-            onClick={() => { setFilterMode('lesson'); setCurrentIndex(0); setIsFlipped(false); }}
+            onClick={() => { setFilterMode('lesson'); setCurrentIndex(0); setIsFlipped(false); setShuffleSeed(0); }}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1 ${
               filterMode === 'lesson' ? 'bg-indigo-600 text-white shadow-sm' : 'bg-amber-50 text-slate-600 hover:bg-amber-100'
             }`}
@@ -234,7 +242,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
             <span>{isVi ? 'Theo Bài (Bài 1 ~ Bài 50)' : '学習課別 (第1課〜第50課)'}</span>
           </button>
           <button
-            onClick={() => { setFilterMode('category'); setCurrentIndex(0); setIsFlipped(false); }}
+            onClick={() => { setFilterMode('category'); setCurrentIndex(0); setIsFlipped(false); setShuffleSeed(0); }}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1 ${
               filterMode === 'category' ? 'bg-purple-600 text-white shadow-sm' : 'bg-amber-50 text-slate-600 hover:bg-amber-100'
             }`}
@@ -243,7 +251,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
             <span>{isVi ? 'Theo Chủ đề ý nghĩa' : '意味の似通った単語別'}</span>
           </button>
           <button
-            onClick={() => { setFilterMode('pos'); setCurrentIndex(0); setIsFlipped(false); }}
+            onClick={() => { setFilterMode('pos'); setCurrentIndex(0); setIsFlipped(false); setShuffleSeed(0); }}
             className={`px-3 py-1.5 rounded-lg text-xs font-bold transition flex items-center space-x-1 ${
               filterMode === 'pos' ? 'bg-emerald-600 text-white shadow-sm' : 'bg-amber-50 text-slate-600 hover:bg-amber-100'
             }`}
@@ -258,7 +266,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
           {filterMode === 'lesson' && (
             <select
               value={selectedLesson}
-              onChange={(e) => { setSelectedLesson(Number(e.target.value)); setCurrentIndex(0); setIsFlipped(false); }}
+              onChange={(e) => { setSelectedLesson(Number(e.target.value)); setCurrentIndex(0); setIsFlipped(false); setShuffleSeed(0); }}
               className="px-3 py-1.5 rounded-lg bg-[#FAF7F2] border border-amber-300 text-xs font-semibold text-indigo-900"
             >
               {Array.from({ length: 50 }, (_, i) => i + 1).map((num) => (
@@ -272,7 +280,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
           {filterMode === 'category' && (
             <select
               value={selectedCategory}
-              onChange={(e) => { setSelectedCategory(e.target.value as SemanticCategory); setCurrentIndex(0); setIsFlipped(false); }}
+              onChange={(e) => { setSelectedCategory(e.target.value as SemanticCategory); setCurrentIndex(0); setIsFlipped(false); setShuffleSeed(0); }}
               className="px-3 py-1.5 rounded-lg bg-[#FAF7F2] border border-amber-300 text-xs font-semibold text-purple-900"
             >
               <option value="people">Con người / Nghề nghiệp (人・職業)</option>
@@ -289,7 +297,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
           {filterMode === 'pos' && (
             <select
               value={selectedPos}
-              onChange={(e) => { setSelectedPos(e.target.value as PartOfSpeech); setCurrentIndex(0); setIsFlipped(false); }}
+              onChange={(e) => { setSelectedPos(e.target.value as PartOfSpeech); setCurrentIndex(0); setIsFlipped(false); setShuffleSeed(0); }}
               className="px-3 py-1.5 rounded-lg bg-[#FAF7F2] border border-amber-300 text-xs font-semibold text-emerald-900"
             >
               <option value="noun">Danh từ (名詞)</option>
@@ -299,6 +307,22 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
               <option value="expression">Chào hỏi / Thành ngữ (あいさつ)</option>
             </select>
           )}
+          <button
+            onClick={() => {
+              setShuffleSeed(Date.now());
+              setCurrentIndex(0);
+              setIsFlipped(false);
+              addLog('Shuffled Vocab cards', 'INFO');
+            }}
+            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors border shadow-sm ${
+              shuffleSeed > 0 
+                ? 'bg-blue-600 text-white border-blue-700 hover:bg-blue-700' 
+                : 'bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100'
+            }`}
+          >
+            <Shuffle className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">{isVi ? 'Trộn (Shuffle)' : 'シャッフル'}</span>
+          </button>
           <button
             onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle MinnaFlashcardsSection expanded: ${!isExpanded}`, 'INFO'); }}
             className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
@@ -318,10 +342,10 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
         </div>
       )}
       {/* Interactive Card */}
-      {!isLoading && list.length > 0 && currentCard ? (
+      {!isLoading && shuffledList.length > 0 && currentCard ? (
         <div className="space-y-6">
           <div className="flex items-center justify-between text-xs text-slate-500">
-            <span>{isVi ? `Thẻ từ ${currentIndex + 1} / ${list.length}` : `カード ${currentIndex + 1} / ${list.length}`}</span>
+            <span>{isVi ? `Thẻ từ ${currentIndex + 1} / ${shuffledList.length}` : `カード ${currentIndex + 1} / ${shuffledList.length}`}</span>
             <span className="px-2.5 py-0.5 rounded bg-amber-100 text-amber-900 font-mono font-semibold border border-amber-300">
               {isVi ? `Bài ${currentCard.lesson}` : `第${currentCard.lesson}課`} | {currentCard.partOfSpeechName}
             </span>

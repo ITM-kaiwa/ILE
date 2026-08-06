@@ -22,7 +22,7 @@ export interface KanjiCard {
   nihongokyoshiUrl: string;
   vakHelp: { visual: string; auditory: string; kinesthetic: string; };
 }
-import { ExternalLink, Volume2, Eye, Hand, Layers, RotateCw, ArrowLeft, ArrowRight , ChevronDown, ChevronUp, ChevronLeft, ChevronRight , Play, Pause } from 'lucide-react';
+import { ExternalLink, Volume2, Eye, Hand, Layers, RotateCw, ArrowLeft, ArrowRight , ChevronDown, ChevronUp, ChevronLeft, ChevronRight , Play, Pause, Shuffle } from 'lucide-react';
 import { StrokeAnimation } from '@/components/StrokeAnimation';
 
 const LANGOAL_N5_ORDER = ["一","二","三","四","五","六","七","八","九","十","百","千","円","月","火","水","木","金","土","日","年","人","子","男","女","父","母","口","目","耳","手","足","体","力","上","下","左","右","大","小","中","外","学","校","先","生","本","名","友","山","川","田","石","雨","夕","岩","音","林","森","花","竹","犬","貝","牛","魚","鳥","米","肉","茶","好","物","今","何","分","半","方","時","間","町","寺","東","西","南","北","車","電","高","安","多","少","新","古","明","暗","長","元","気","見","立","入","出","休","行","来","言","帰","書","読","話","聞","食","飲","買"];
@@ -40,6 +40,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
   const [isExpanded, setIsExpanded] = useState(false);
 
   const [level, setLevel] = useState<JlptLevel>('N5');
+  const [shuffleSeed, setShuffleSeed] = useState(0);
   const [dbData, setDbData] = useState<KanjiCard[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState<any>(null);
@@ -81,6 +82,9 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
 
   const cards = React.useMemo(() => {
     const filtered = dbData.filter(c => c.level === level);
+    if (shuffleSeed > 0) {
+      return [...filtered].sort(() => Math.random() - 0.5);
+    }
     const orderArray = level === 'N5' ? LANGOAL_N5_ORDER : LANGOAL_N4_ORDER;
     return filtered.sort((a, b) => {
       const indexA = orderArray.indexOf(a.kanji);
@@ -90,7 +94,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
       if (indexB !== -1) return 1;
       return a.kanji.localeCompare(b.kanji, 'ja');
     });
-  }, [dbData, level]);
+  }, [dbData, level, shuffleSeed]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
   const [isAutoPlay, setIsAutoPlay] = useState(false);
@@ -202,6 +206,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
               setLevel('N5');
               setCurrentIndex(0);
               setIsFlipped(false);
+              setShuffleSeed(0);
             }}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${
               level === 'N5'
@@ -216,6 +221,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
               setLevel('N4');
               setCurrentIndex(0);
               setIsFlipped(false);
+              setShuffleSeed(0);
             }}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${
               level === 'N4'
@@ -235,6 +241,22 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
             <span>{isVi ? `Danh sách Kanji ${level}` : `Langoal ${level} 漢字一覧`}</span>
             <ExternalLink className="w-3.5 h-3.5 text-orange-600" />
           </a>
+          <button
+            onClick={() => {
+              setShuffleSeed(Date.now());
+              setCurrentIndex(0);
+              setIsFlipped(false);
+              addLog('Shuffled Kanji cards', 'INFO');
+            }}
+            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors border shadow-sm ${
+              shuffleSeed > 0 
+                ? 'bg-blue-600 text-white border-blue-700 hover:bg-blue-700' 
+                : 'bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100'
+            }`}
+          >
+            <Shuffle className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">{isVi ? 'Trộn (Shuffle)' : 'シャッフル'}</span>
+          </button>
           <button
             onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle KanjiCardsSection expanded: ${!isExpanded}`, 'INFO'); }}
             className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"

@@ -6,7 +6,7 @@ import { supabase } from '@/lib/supabase';
 import { processReview } from '@/lib/srs';
 import { VakType } from '@/data/vak-questions';
 import { Language, getTranslation } from '@/lib/i18n';
-import { Sparkles, Eye, Volume2, Hand, XCircle, ChevronDown, ChevronUp, Download, ArrowLeft, ArrowRight, RotateCw, Play, Pause, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Sparkles, Eye, Volume2, Hand, XCircle, ChevronDown, ChevronUp, Download, ArrowLeft, ArrowRight, RotateCw, Play, Pause, ChevronLeft, ChevronRight, Shuffle } from 'lucide-react';
 import { StrokeAnimation } from '@/components/StrokeAnimation';
 
 const ROMAJI_ORDER = [
@@ -61,6 +61,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
   const [isExpanded, setIsExpanded] = useState(false);
 
   const [kanaType, setKanaType] = useState<KanaType>('hiragana');
+  const [shuffleSeed, setShuffleSeed] = useState(0);
   const [dbData, setDbData] = useState<KanaCard[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState<any>(null);
@@ -106,7 +107,13 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
     }
   }, [isExpanded, dbData.length, isLoading]);
 
-  const cards = dbData.filter(c => c.type === kanaType);
+  const cards = React.useMemo(() => {
+    let result = dbData.filter(c => c.type === kanaType);
+    if (shuffleSeed > 0) {
+      result = [...result].sort(() => Math.random() - 0.5);
+    }
+    return result;
+  }, [dbData, kanaType, shuffleSeed]);
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
@@ -222,6 +229,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
               setKanaType('hiragana');
               setCurrentIndex(0);
               setIsFlipped(false);
+              setShuffleSeed(0);
             }}
             className={`px-4 py-1.5 rounded-xl text-xs font-bold transition ${
               kanaType === 'hiragana'
@@ -236,6 +244,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
               setKanaType('katakana');
               setCurrentIndex(0);
               setIsFlipped(false);
+              setShuffleSeed(0);
             }}
             className={`px-4 py-1.5 rounded-xl text-xs font-bold transition ${
               kanaType === 'katakana'
@@ -282,6 +291,22 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
           <Download className="w-3.5 h-3.5" />
           <span>50音表</span>
         </a>
+        <button
+          onClick={() => {
+            setShuffleSeed(Date.now());
+            setCurrentIndex(0);
+            setIsFlipped(false);
+            addLog('Shuffled Kana cards', 'INFO');
+          }}
+          className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors border shadow-sm ${
+            shuffleSeed > 0 
+              ? 'bg-blue-600 text-white border-blue-700 hover:bg-blue-700' 
+              : 'bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100'
+          }`}
+        >
+          <Shuffle className="w-3.5 h-3.5" />
+          <span>{isVi ? 'Trộn thẻ (Shuffle)' : 'シャッフル'}</span>
+        </button>
       </div>
       {isExpanded && (
       <>
