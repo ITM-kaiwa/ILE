@@ -4,7 +4,7 @@ export const TRANSLATIONS = {
   "ja": {
     "appName": "ILE VAK Coach",
     "subTitle": "ITM Language Empowerment",
-    "quickDiagnostic": "⚡ 簡易診断 (5問)",
+    "quickDiagnostic": "簡易診断 (5問)",
     "detailedDiagnostic": "詳細診断 (20問)",
     "heroTitle1": "あなたの認知特性 (VAK) に完全パーソナライズされた",
     "heroTitle2": "統合AI日本語学習プラットフォーム",
@@ -61,8 +61,8 @@ export const TRANSLATIONS = {
   "vi": {
     "appName": "HLV ILE VAK",
     "subTitle": "Nâng cao ngôn ngữ ITM",
-    "quickDiagnostic": "⚡ CĐ 5 câu",
-    "detailedDiagnostic": "✨ CĐ 20 câu",
+    "quickDiagnostic": "CĐ 5 câu",
+    "detailedDiagnostic": "CĐ 20 câu",
     "heroTitle1": "Nền tảng học tiếng Nhật AI tích hợp hoàn toàn cá nhân hóa",
     "heroTitle2": "theo phong cách nhận thức (VAK) của bạn",
     "heroDesc": "Hỗ trợ tự học cho người Việt Nam. Đánh giá nhận thức Thị giác - Thính giác - Vận động và tự động sắp xếp lịch ôn tập theo đường cong quên Ebbinghaus.",

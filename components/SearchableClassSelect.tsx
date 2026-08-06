@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Search } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Search, ChevronDown } from 'lucide-react';
 
 interface SearchableClassSelectProps {
   value: string;
@@ -14,11 +14,13 @@ export const SearchableClassSelect: React.FC<SearchableClassSelectProps> = ({
   value,
   onChange,
   className = '',
-  placeholder = 'Search or select class...',
+  placeholder = 'クラス名を入力または選択... / Nhập hoặc chọn tên lớp...',
 }) => {
   const [classes, setClasses] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetch('/api/classes')
@@ -26,12 +28,20 @@ export const SearchableClassSelect: React.FC<SearchableClassSelectProps> = ({
       .then(data => {
         if (data.classes) {
           setClasses(data.classes);
-          // If the current value is empty and classes are loaded, we shouldn't auto-select to force user choice
-          // or we can auto-select the first one. Let's leave it as is so user must select or it defaults from parent.
         }
       })
       .catch(err => console.error('Failed to fetch classes:', err))
       .finally(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const filteredClasses = classes.filter(c => 
@@ -39,40 +49,54 @@ export const SearchableClassSelect: React.FC<SearchableClassSelectProps> = ({
   );
 
   return (
-    <div className={`space-y-2 ${className}`}>
-      <div className="relative">
-        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <Search className="h-4 w-4 text-slate-400" />
+    <div ref={wrapperRef} className={`relative space-y-1 ${className}`}>
+      <div 
+        className=""
+        onClick={() => setIsOpen(true)}
+      >
+        <div className="relative">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <Search className="h-4 w-4 text-slate-400" />
+          </div>
+          <input
+            type="text"
+            placeholder={value || placeholder}
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setIsOpen(true);
+            }}
+            onFocus={() => setIsOpen(true)}
+            className="w-full pl-10 pr-10 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 bg-white"
+          />
+          <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+            <ChevronDown className="h-4 w-4 text-slate-400" />
+          </div>
         </div>
-        <input
-          type="text"
-          placeholder="クラス名を検索... / Tìm kiếm tên lớp..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 bg-slate-50"
-        />
       </div>
       
-      {loading ? (
-        <div className="w-full px-4 py-2 rounded-xl border border-slate-200 text-sm bg-slate-50 text-slate-500 animate-pulse">
-          Loading classes...
-        </div>
-      ) : (
-        <select
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          className="w-full px-4 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 bg-white"
-        >
-          <option value="" disabled>
-            {placeholder}
-          </option>
-          {filteredClasses.map(c => (
-            <option key={c} value={c}>{c}</option>
-          ))}
-          {filteredClasses.length === 0 && (
-            <option value="" disabled>No classes found</option>
+      {isOpen && (
+        <div className="absolute z-50 w-full mt-1 bg-white border border-slate-200 rounded-xl shadow-lg max-h-48 overflow-y-auto">
+          {loading ? (
+            <div className="px-4 py-2 text-sm text-slate-500 animate-pulse">Loading...</div>
+          ) : filteredClasses.length > 0 ? (
+            filteredClasses.map(c => (
+              <div
+                key={c}
+                onClick={() => {
+                  onChange(c);
+                  setSearchQuery('');
+                  setIsOpen(false);
+                }}
+                className={`px-4 py-2 text-sm cursor-pointer hover:bg-orange-50 ${value === c ? 'bg-orange-100 text-orange-800 font-medium' : 'text-slate-700'}`}
+              >
+                {c}
+              </div>
+            ))
+          ) : (
+            <div className="px-4 py-2 text-sm text-slate-500">No classes found</div>
           )}
-        </select>
+        </div>
       )}
     </div>
   );
