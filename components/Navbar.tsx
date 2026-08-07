@@ -35,6 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [user, setUser] = useState<User | null>(null);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
   const [pendingReviews, setPendingReviews] = useState(0);
+  const [showAdvanced, setShowAdvanced] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -134,7 +135,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <Brain className="w-6 h-6 group-hover:rotate-12 transition duration-300" />
             </button>
-            <div className="flex flex-col">
+            <div className="flex flex-col justify-center">
               <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                 <h1 className="font-bold text-base sm:text-lg text-slate-800 leading-none tracking-tight">
                   {t.appName}
@@ -158,14 +159,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                     )}
                   </button>
                 )}
-                {/* 🔰 Beginner Guide Button - blinking, next to bell */}
-                <button
-                  onClick={() => setIsGuideOpen(true)}
-                  title="初心者ガイド / Hướng dẫn cho người mới"
-                  className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-md transition-all duration-200 hover:scale-105 border border-indigo-500 animate-pulse"
-                >
-                  <span>🔰 Guide</span>
-                </button>
               </div>
               <p className="hidden sm:block text-xs text-slate-500 mt-0.5">{t.subTitle}</p>
             </div>
@@ -173,54 +166,81 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Right side controls flow after Logo area */}
           <div className="flex flex-wrap items-center gap-2">
-            {/* Flag Language Switcher Dropdown */}
-            <div className="relative flex items-center space-x-1.5 bg-[#FAF7F2] p-1.5 rounded-xl border border-amber-300 shadow-inner">
-              <Globe className="w-4 h-4 text-orange-600 ml-1" />
-              <select
-                value={lang}
-                onChange={(e) => onLanguageChange(e.target.value as Language)}
-                className="bg-transparent text-xs font-bold text-slate-800 focus:outline-none cursor-pointer pr-1"
-              >
-                <option value="ja">JP</option>
-                <option value="vi">VN</option>
-              </select>
-            </div>
+            
+            {/* 🔰 Beginner Guide Button - blinking, next to bell / logo section */}
+            <button
+              onClick={() => setIsGuideOpen(true)}
+              title="初心者ガイド / Hướng dẫn cho người mới"
+              className="flex items-center px-3 py-1.5 text-xs font-bold text-white bg-indigo-400 hover:bg-indigo-500 rounded-lg shadow-md transition-all duration-200 hover:scale-105 border border-indigo-300 animate-pulse"
+            >
+              <BookOpen className="w-4 h-4 mr-1.5 text-emerald-200 fill-amber-200" />
+              <span>Guide</span>
+            </button>
 
-            {getVakBadge()}
+            {/* Advanced Toggle */}
+            <button
+              onClick={() => setShowAdvanced(!showAdvanced)}
+              className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-colors border ${
+                showAdvanced 
+                  ? 'bg-slate-500 text-white border-slate-600' 
+                  : 'bg-slate-200 text-slate-600 hover:bg-slate-300 border-slate-300'
+              }`}
+            >
+              Advanced
+            </button>
 
-            {/* Auth Button */}
-            {user ? (
-              <button
-                onClick={() => supabase.auth.signOut()}
-                className="px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg border border-slate-200 transition"
-              >
-                Sign out
-              </button>
-            ) : (
-              <Link
-                href="/login"
-                className="px-3 py-1.5 text-xs font-bold text-orange-700 bg-orange-100 hover:bg-orange-200 rounded-lg border border-orange-300 transition"
-              >
-                Sign in
-              </Link>
+            {showAdvanced && (
+              <>
+                {/* Flag Language Switcher Dropdown */}
+                <div className="relative flex items-center space-x-1.5 bg-[#FAF7F2] p-1.5 rounded-xl border border-amber-300 shadow-inner">
+                  <Globe className="w-4 h-4 text-orange-600 ml-1" />
+                  <select
+                    value={lang}
+                    onChange={(e) => onLanguageChange(e.target.value as Language)}
+                    className="bg-transparent text-xs font-bold text-slate-800 focus:outline-none cursor-pointer pr-1"
+                  >
+                    <option value="ja">JP</option>
+                    <option value="vi">VN</option>
+                  </select>
+                </div>
+
+                {getVakBadge()}
+
+                {/* Auth Button */}
+                {user ? (
+                  <button
+                    onClick={() => supabase.auth.signOut()}
+                    className="px-3 py-1.5 text-xs font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg border border-slate-200 transition"
+                  >
+                    Sign out
+                  </button>
+                ) : (
+                  <Link
+                    href="/login"
+                    className="px-3 py-1.5 text-xs font-bold text-orange-700 bg-orange-100 hover:bg-orange-200 rounded-lg border border-orange-300 transition"
+                  >
+                    Sign in
+                  </Link>
+                )}
+
+                {/* Gap for Diagnostics */}
+                <div className="flex items-center gap-2 ml-0 sm:ml-2">
+                  <button
+                    onClick={() => onOpenDiagnostic('quick')}
+                    className="px-3 py-1.5 text-[10px] sm:text-xs font-medium text-slate-700 bg-amber-100/70 hover:bg-amber-200/70 rounded-lg border border-amber-200 transition"
+                  >
+                    CĐ 5 câu
+                  </button>
+                  <button
+                    onClick={() => onOpenDiagnostic('detailed')}
+                    className="px-3 py-1.5 text-[10px] sm:text-xs font-medium text-orange-700 bg-orange-100/80 hover:bg-orange-200/80 rounded-lg border border-orange-300 transition flex items-center space-x-1"
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-orange-600" />
+                    <span>CĐ 20 câu</span>
+                  </button>
+                </div>
+              </>
             )}
-
-            {/* Gap for Diagnostics */}
-            <div className="flex items-center gap-2 ml-0 sm:ml-2">
-              <button
-                onClick={() => onOpenDiagnostic('quick')}
-                className="px-3 py-1.5 text-[10px] sm:text-xs font-medium text-slate-700 bg-amber-100/70 hover:bg-amber-200/70 rounded-lg border border-amber-200 transition"
-              >
-                {t.quickDiagnostic}
-              </button>
-              <button
-                onClick={() => onOpenDiagnostic('detailed')}
-                className="px-3 py-1.5 text-[10px] sm:text-xs font-medium text-orange-700 bg-orange-100/80 hover:bg-orange-200/80 rounded-lg border border-orange-300 transition flex items-center space-x-1"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-orange-600" />
-                <span>{t.detailedDiagnostic}</span>
-              </button>
-            </div>
           </div>
         </div>
       </header>
