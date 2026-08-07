@@ -55,10 +55,11 @@ export const SakuSenseiChat = () => {
   return (
     <>
       {/* Saku-sensei floating button */}
-      <div className="fixed bottom-20 left-4 md:bottom-8 md:left-8 z-[999]">
+      <div className="fixed bottom-28 left-4 md:bottom-8 md:left-8 z-[999]">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative w-14 h-14 rounded-full overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] border-2 border-white hover:scale-105 transition-transform bg-white"
+          className="relative w-14 h-14 rounded-full overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.2)] border-2 border-white hover:scale-105 transition-transform bg-white animate-pulse"
+          style={{ animationDuration: '3s' }}
           title="サク先生に質問する"
         >
           <img 
