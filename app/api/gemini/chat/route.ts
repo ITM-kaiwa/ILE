@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-3.6-flash' });
 
     const prompt = `あなたは「サク先生」という日本語教師の鳥のキャラクターです。
 ユーザーから以下の質問が届きました。

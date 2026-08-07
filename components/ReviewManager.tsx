@@ -102,6 +102,24 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
     setClickCount(prev => prev + 1);
   };
 
+  const handleMarkLearned = async (e: React.ChangeEvent<HTMLInputElement>, contentType: string, contentId: string) => {
+    e.stopPropagation();
+    if (!e.target.checked) return;
+    addLog(`Marking ${contentType}_${contentId} as learned (suppressing review)`, 'INFO');
+    
+    // Optimistic update
+    setReviews(prev => prev.filter(r => !(r.content_type === contentType && r.content_id === contentId)));
+    
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session?.user) {
+      await supabase.from('learning_history')
+        .update({ status: 'mastered', next_review: new Date('2099-12-31').toISOString() })
+        .eq('user_id', session.user.id)
+        .eq('content_type', contentType)
+        .eq('content_id', contentId);
+    }
+  };
+
   
   const upcomingReviews = reviews.filter(r => new Date(r.next_review) > now).length;
 
@@ -147,6 +165,9 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
                </div>
             ) : (
               <>
+              <p className="text-xs text-slate-500 mb-2 font-medium px-1">
+                {isVi ? "Đánh dấu check (✓) để ẩn thông báo ôn tập cho thẻ này vào lần sau." : "※ チェック(✓)をつけると、次回からこのカードの復習通知が消えます。"}
+              </p>
               <div className="space-y-3">
                 {visibleReviews.map(review => {
                   let Icon = BookOpen;
@@ -209,6 +230,16 @@ export const ReviewManager: React.FC<ReviewManagerProps> = ({ lang = 'ja' }) => 
                             <span>{isVi ? "Nhấp để ôn ngay" : "クリックして復習へジャンプ"}</span>
                           </p>
                         </div>
+                      </div>
+
+                      <div className="flex items-center" onClick={e => e.stopPropagation()}>
+                        <label className="flex items-center cursor-pointer p-2 hover:bg-slate-100 rounded-lg transition-colors border border-transparent hover:border-slate-300 group" title={isVi ? "Đánh dấu đã học" : "学習済みとしてマーク"}>
+                          <input 
+                            type="checkbox"
+                            className="w-5 h-5 rounded border-slate-300 text-emerald-500 focus:ring-emerald-500 cursor-pointer"
+                            onChange={(e) => handleMarkLearned(e, review.content_type, review.content_id)}
+                          />
+                        </label>
                       </div>
                     </div>
                   );
