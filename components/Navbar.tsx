@@ -18,6 +18,7 @@ interface NavbarProps {
   onLanguageChange: (lang: Language) => void;
   onOpenDiagnostic: (mode: 'quick' | 'detailed') => void;
   onOpenLog?: () => void;
+  onVakCycle?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -28,6 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onLanguageChange,
   onOpenDiagnostic,
   onOpenLog,
+  onVakCycle,
 }) => {
   const t = getTranslation(lang);
   const [user, setUser] = useState<User | null>(null);
@@ -104,18 +106,18 @@ export const Navbar: React.FC<NavbarProps> = ({
   const getVakBadge = () => {
     if (isHybrid && hybridLabel) {
       return (
-        <span className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-indigo-500 via-emerald-500 to-amber-500 text-white shadow-sm">
+        <button onClick={onVakCycle} className="px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r from-indigo-500 via-emerald-500 to-amber-500 text-white shadow-sm hover:scale-105 transition-transform cursor-pointer">
           {hybridLabel}
-        </span>
+        </button>
       );
     }
     switch (currentVak) {
       case 'visual':
-        return <span className="px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-semibold rounded-full bg-indigo-600 text-white shadow-sm truncate max-w-[90px] sm:max-w-none">{t.visualLabel}</span>;
+        return <button onClick={onVakCycle} className="px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-semibold rounded-full bg-indigo-600 text-white shadow-sm truncate max-w-[90px] sm:max-w-none hover:bg-indigo-700 hover:scale-105 transition cursor-pointer">{t.visualLabel}</button>;
       case 'auditory':
-        return <span className="px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-semibold rounded-full bg-emerald-600 text-white shadow-sm truncate max-w-[90px] sm:max-w-none">{t.auditoryLabel}</span>;
+        return <button onClick={onVakCycle} className="px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-semibold rounded-full bg-emerald-600 text-white shadow-sm truncate max-w-[90px] sm:max-w-none hover:bg-emerald-700 hover:scale-105 transition cursor-pointer">{t.auditoryLabel}</button>;
       case 'kinesthetic':
-        return <span className="px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-semibold rounded-full bg-orange-600 text-white shadow-sm font-sans truncate max-w-[90px] sm:max-w-none">{t.kinestheticLabel}</span>;
+        return <button onClick={onVakCycle} className="px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-semibold rounded-full bg-orange-600 text-white shadow-sm font-sans truncate max-w-[90px] sm:max-w-none hover:bg-orange-700 hover:scale-105 transition cursor-pointer">{t.kinestheticLabel}</button>;
     }
   };
 
@@ -170,7 +172,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               title="初心者ガイド / Hướng dẫn cho người mới"
               className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105 border border-indigo-500"
             >
-              <BookOpen className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">🔰 ガイド</span>
               <span className="sm:hidden">🔰</span>
             </button>

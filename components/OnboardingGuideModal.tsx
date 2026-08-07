@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { X, BookOpen, Brain, TrendingUp, CheckCircle, HelpCircle } from 'lucide-react';
+import { X, BookOpen, Brain, TrendingUp, CheckCircle, HelpCircle, Globe } from 'lucide-react';
 
 interface OnboardingGuideModalProps {
   isOpen: boolean;
