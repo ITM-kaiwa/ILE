@@ -15,7 +15,7 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
     {
       name: isVi ? 'Ứng dụng Web Luyện hội thoại LingoBot' : 'LingoBot 会話練習Webアプリ',
       desc: isVi ? 'Luyện nói tiếng Nhật qua hội thoại AI thời gian thực' : 'リアルタイムAI対話で日本語スピーキングを練習',
-      url: 'https://lingobot2.onrender.com/',
+      url: 'https://lingo-bot2.vercel.app/',
       icon: MessageCircle,
       badge: isVi ? 'Luyện hội thoại' : '会話練習',
       color: 'from-orange-500 to-amber-600',
