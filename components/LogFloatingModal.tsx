@@ -104,6 +104,19 @@ export const LogFloatingModal: React.FC<LogFloatingModalProps> = ({ isOpen, lang
 
           <div className="flex flex-wrap items-center gap-2">
             <button
+              onClick={() => {
+                const pwd = window.prompt("管理者パスワードを入力してください:");
+                if (pwd) {
+                  sessionStorage.setItem('admin_pwd', pwd);
+                  window.location.href = '/admin';
+                }
+              }}
+              className="px-3.5 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold transition flex items-center space-x-1.5 shadow-sm mr-4"
+            >
+              <span>Admin</span>
+            </button>
+
+            <button
               onClick={handleCopy}
               className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition flex items-center space-x-1.5 shadow-sm"
             >
