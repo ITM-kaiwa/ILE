@@ -82,7 +82,7 @@ export const OnboardingGuideModal: React.FC<OnboardingGuideModalProps> = ({ isOp
                   <h3 className="font-bold text-emerald-900 text-sm">STEP 2: VAK学習 (Học theo VAK)</h3>
                   <button
                     onClick={() => setShowRoadmap(true)}
-                    className="ml-2 px-2 py-1 bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-bold rounded shadow-sm transition"
+                    className="ml-2 px-3 py-1.5 bg-gradient-to-b from-emerald-500 to-emerald-700 hover:from-emerald-400 hover:to-emerald-600 text-white text-sm font-extrabold rounded-lg shadow-[0_4px_0_rgb(4,120,87)] hover:shadow-[0_2px_0_rgb(4,120,87)] hover:translate-y-[2px] transition-all animate-pulse duration-2000"
                   >
                     Lộ trình
                   </button>
@@ -123,7 +123,10 @@ export const OnboardingGuideModal: React.FC<OnboardingGuideModalProps> = ({ isOp
                   「復習ダッシュボード」で自分の弱点や学習履歴を確認できます。日々の進捗を管理しましょう。<br/>
                   <span className="text-slate-500 mt-1 block">Kiểm tra điểm yếu và lịch sử học tập của bạn tại Bảng điều khiển ôn tập.</span>
                 </p>
-                {/* Step 5 */}
+              </div>
+            </div>
+
+            {/* Step 5 */}
             <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
               <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-purple-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
                 <Globe className="w-4 h-4" />
@@ -137,9 +140,6 @@ export const OnboardingGuideModal: React.FC<OnboardingGuideModalProps> = ({ isOp
                   <span className="text-slate-500 mt-1 block">Tận dụng các công cụ và trang web được đặt ở phần cuối trang VAK để tìm hiểu văn hóa Nhật Bản và luyện tập hội thoại.</span>
                 </p>
               </div>
-            </div>
-
-          </div>
             </div>
 
           </div>
