@@ -14,6 +14,14 @@ export default function AdminDashboard() {
   const [newClassName, setNewClassName] = useState('');
   const [isAddingClass, setIsAddingClass] = useState(false);
   const [activeTab, setActiveTab] = useState<'users' | 'classes'>('users');
+  const [filters, setFilters] = useState({
+    id: '',
+    name: '',
+    vak: '',
+    gender: '',
+    className: '',
+    email: ''
+  });
 
   useEffect(() => {
     const pwd = sessionStorage.getItem('admin_pwd');
@@ -189,25 +197,55 @@ export default function AdminDashboard() {
           </button>
         </div>
 
-        {activeTab === 'users' ? (
+        {activeTab === 'users' ? (() => {
+          const filteredUsers = users.filter(user => {
+            return (
+              (user.id || '').toLowerCase().includes(filters.id.toLowerCase()) &&
+              (user.name || '').toLowerCase().includes(filters.name.toLowerCase()) &&
+              (user.vak_type || '').toLowerCase().includes(filters.vak.toLowerCase()) &&
+              (user.gender || '').toLowerCase().includes(filters.gender.toLowerCase()) &&
+              (user.class_name || '').toLowerCase().includes(filters.className.toLowerCase()) &&
+              (user.email || '').toLowerCase().includes(filters.email.toLowerCase())
+            );
+          });
+          
+          return (
           <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-200 text-sm text-slate-600 font-semibold">
-                  <th className="p-4">Student ID</th>
-                  <th className="p-4">Name</th>
-                  <th className="p-4 text-center">VAK</th>
-                  <th className="p-4">Gender</th>
-                  <th className="p-4">Class</th>
-                  <th className="p-4">Email</th>
-                  <th className="p-4 text-center">History Count</th>
-                  <th className="p-4">Weaknesses</th>
-                  <th className="p-4 text-center">Action</th>
+                  <th className="p-4 align-top">
+                    <div className="mb-2">Student ID</div>
+                    <input type="text" className="w-full px-2 py-1 text-xs border border-slate-300 rounded font-normal" placeholder="検索..." value={filters.id} onChange={e => setFilters({...filters, id: e.target.value})} />
+                  </th>
+                  <th className="p-4 align-top">
+                    <div className="mb-2">Name</div>
+                    <input type="text" className="w-full px-2 py-1 text-xs border border-slate-300 rounded font-normal" placeholder="検索..." value={filters.name} onChange={e => setFilters({...filters, name: e.target.value})} />
+                  </th>
+                  <th className="p-4 text-center align-top">
+                    <div className="mb-2">VAK</div>
+                    <input type="text" className="w-full px-2 py-1 text-xs border border-slate-300 rounded font-normal" placeholder="検索..." value={filters.vak} onChange={e => setFilters({...filters, vak: e.target.value})} />
+                  </th>
+                  <th className="p-4 align-top">
+                    <div className="mb-2">Gender</div>
+                    <input type="text" className="w-full px-2 py-1 text-xs border border-slate-300 rounded font-normal" placeholder="検索..." value={filters.gender} onChange={e => setFilters({...filters, gender: e.target.value})} />
+                  </th>
+                  <th className="p-4 align-top">
+                    <div className="mb-2">Class</div>
+                    <input type="text" className="w-full px-2 py-1 text-xs border border-slate-300 rounded font-normal" placeholder="検索..." value={filters.className} onChange={e => setFilters({...filters, className: e.target.value})} />
+                  </th>
+                  <th className="p-4 align-top">
+                    <div className="mb-2">Email</div>
+                    <input type="text" className="w-full px-2 py-1 text-xs border border-slate-300 rounded font-normal" placeholder="検索..." value={filters.email} onChange={e => setFilters({...filters, email: e.target.value})} />
+                  </th>
+                  <th className="p-4 text-center align-top"><div className="mb-2">History Count</div></th>
+                  <th className="p-4 align-top"><div className="mb-2">Weaknesses</div></th>
+                  <th className="p-4 text-center align-top"><div className="mb-2">Action</div></th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-sm">
-                {users.map(user => (
+                {filteredUsers.map(user => (
                   <tr key={user.id} className="hover:bg-slate-50 transition">
                     <td className="p-4 font-mono text-xs text-slate-500">{user.id}</td>
                     <td className="p-4 font-medium text-slate-800">{user.name || '-'}</td>
@@ -228,7 +266,7 @@ export default function AdminDashboard() {
                     </td>
                   </tr>
                 ))}
-                {users.length === 0 && (
+                {filteredUsers.length === 0 && (
                   <tr>
                     <td colSpan={9} className="p-8 text-center text-slate-500">
                       データがありません。
@@ -239,7 +277,8 @@ export default function AdminDashboard() {
             </table>
           </div>
         </div>
-        ) : (
+        );
+        })() : (
           <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
             <h2 className="text-lg font-bold text-slate-800 mb-4">クラスの管理</h2>
             <div className="flex space-x-3 mb-6">
