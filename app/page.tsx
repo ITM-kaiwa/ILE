@@ -121,6 +121,20 @@ export default function Home() {
     setWeaknessRecords((prev) => [newRecord, ...prev]);
   };
 
+  const handleVakCycle = () => {
+    const sequence: VakType[] = ['visual', 'auditory', 'kinesthetic'];
+    const currentIndex = sequence.indexOf(currentVak);
+    const nextIndex = (currentIndex + 1) % sequence.length;
+    const nextVak = sequence[nextIndex];
+    
+    setCurrentVak(nextVak);
+    if (user) {
+      supabase.from('users').update({ vak_type: nextVak }).eq('id', user.id);
+    } else {
+      localStorage.setItem('pending_vak_type', nextVak);
+    }
+  };
+
   return (
     <div className="min-h-screen pb-16">
       {/* Top Navbar with Flag Language Switcher & Interactive Brain Log Trigger */}
@@ -132,6 +146,7 @@ export default function Home() {
         onLanguageChange={(newLang) => setLang(newLang)}
         onOpenDiagnostic={(mode) => setDiagnosticModal({ isOpen: true, mode })}
         onOpenLog={() => setIsLogModalOpen(true)}
+        onVakCycle={handleVakCycle}
       />
 
       {/* Main Container */}
@@ -286,27 +301,6 @@ export default function Home() {
               <MessageCircle className="w-3.5 h-3.5" />
               <span>{lang === 'vi' ? 'Luyện hội thoại / QA' : '会話・QA練習'}</span>
             </button>
-          </div>
-
-          {/* VAK Selector */}
-          <div className="grid grid-cols-3 gap-2">
-            {(['visual', 'auditory', 'kinesthetic'] as VakType[]).map((type) => (
-              <button
-                key={type}
-                onClick={() => setCurrentVak(type)}
-                className={`py-1.5 px-3 rounded-xl text-xs font-bold transition ${
-                  currentVak === type
-                    ? type === 'visual'
-                      ? 'bg-indigo-600 text-white shadow'
-                      : type === 'auditory'
-                      ? 'bg-emerald-600 text-white shadow'
-                      : 'bg-orange-600 text-white shadow'
-                    : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900 border border-amber-300'
-                }`}
-              >
-                {type === 'visual' ? t.vakVisual : type === 'auditory' ? t.vakAuditory : t.vakKinesthetic}
-              </button>
-            ))}
           </div>
         </div>
         )}
