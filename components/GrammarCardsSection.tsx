@@ -7,7 +7,7 @@ import { GrammarCard, JlptLevel } from '@/lib/types';
 import { Language, getTranslation } from '@/lib/i18n';
 import { supabase } from '@/lib/supabase';
 import { processReview } from '@/lib/srs';
-import { BookOpen, Eye, Volume2, Hand, ChevronDown, CheckCircle, XCircle, HelpCircle } from 'lucide-react';
+import { BookOpen, Eye, Volume2, Hand, ChevronDown, CheckCircle, XCircle, HelpCircle, Download } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
@@ -174,7 +174,15 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
           </p>
         </div>
 
-        <div className="flex items-center space-x-2">
+        <div className="flex flex-wrap items-center gap-2 mt-2 sm:mt-0">
+          <a
+            href="/downloads/Minna-no-Nihongo-Ngu_Phap_50_bai.pdf"
+            download
+            className="px-4 py-1.5 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition flex items-center space-x-1"
+          >
+            <Download className="w-3.5 h-3.5" />
+            <span>{isVi ? 'Tải PDF' : 'Download PDF'}</span>
+          </a>
           <button
             onClick={() => { setLevel('N5'); setSelectedCardId('card_n5_1'); setVisibleCount(5); }}
             className={`px-4 py-1.5 rounded-xl text-xs font-bold transition ${level === 'N5' ? 'bg-emerald-600 text-white shadow-sm' : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'}`}
