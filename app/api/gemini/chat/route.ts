@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-3.6-flash' });
+    const modelsToTry = ['gemini-4.0-flash', 'gemini-3.7-flash', 'gemini-3.6-flash', 'gemini-3.5-flash', 'gemini-2.5-flash', 'gemini-1.5-flash'];
 
     const prompt = `あなたは「サク先生」という日本語教師の鳥のキャラクターです。
 ユーザーから以下の質問が届きました。
@@ -27,9 +27,26 @@ export async function POST(req: Request) {
 ${question}
 `;
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const answer = response.text().trim();
+    let answer = '';
+    let generationSuccess = false;
+    let lastError: any = null;
+
+    for (const modelName of modelsToTry) {
+      try {
+        const model = genAI.getGenerativeModel({ model: modelName });
+        const result = await model.generateContent(prompt);
+        answer = result.response.text().trim();
+        generationSuccess = true;
+        break; // Successfully generated content
+      } catch (err: any) {
+        lastError = err;
+        console.warn(`[SakuChat] Model ${modelName} failed. Falling back... Error: ${err.message}`);
+      }
+    }
+
+    if (!generationSuccess) {
+      throw lastError;
+    }
 
     return NextResponse.json({
       success: true,
