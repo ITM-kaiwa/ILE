@@ -36,6 +36,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
 
   const t = getTranslation(lang);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [hasBeenExpanded, setHasBeenExpanded] = useState(false);
 
   const [filterMode, setFilterMode] = useState<'lesson' | 'category' | 'pos'>('lesson');
   const [selectedLesson, setSelectedLesson] = useState<number>(1);
@@ -336,8 +337,8 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
             <span className="hidden sm:inline">{isVi ? 'Trộn (Shuffle)' : 'シャッフル'}</span>
           </button>
           <button
-            onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle MinnaFlashcardsSection expanded: ${!isExpanded}`, 'INFO'); }}
-            className={`px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 ${!isExpanded ? 'animate-attention-blink' : 'shadow-sm'}`}
+            onClick={() => { setIsExpanded(!isExpanded); setHasBeenExpanded(true); addLog(`Toggle MinnaFlashcardsSection expanded: ${!isExpanded}`, 'INFO'); }}
+            className={`px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 `${!isExpanded && !hasBeenExpanded ? 'animate-attention-blink' : 'shadow-sm'}`}
           >
             <span>{isExpanded ? t.collapseModule : t.viewModule}</span>
             {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}

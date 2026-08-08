@@ -29,6 +29,7 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
 
   const t = getTranslation(lang);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [hasBeenExpanded, setHasBeenExpanded] = useState(false);
   const [visibleCount, setVisibleCount] = useState(5);
 
   const [allCards, setAllCards] = useState<GrammarCard[]>([]);
@@ -190,8 +191,8 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
               {isVi ? 'Ngữ pháp N4' : 'N4 文法カード'}
             </button>
             <button
-              onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle GrammarCardsSection expanded: ${!isExpanded}`, 'INFO'); }}
-              className={`px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 ${!isExpanded ? 'animate-attention-blink' : 'shadow-sm'}`}
+              onClick={() => { setIsExpanded(!isExpanded); setHasBeenExpanded(true); addLog(`Toggle GrammarCardsSection expanded: ${!isExpanded}`, 'INFO'); }}
+              className={`px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 `${!isExpanded && !hasBeenExpanded ? 'animate-attention-blink' : 'shadow-sm'}`}
             >
               <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
             </button>

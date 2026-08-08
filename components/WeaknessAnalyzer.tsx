@@ -25,6 +25,7 @@ export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({ vakType, wea
 
   const t = getTranslation(lang);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [hasBeenExpanded, setHasBeenExpanded] = useState(false);
   const isVi = lang === 'vi';
 
   return (
@@ -39,8 +40,8 @@ export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({ vakType, wea
         <div className="flex items-center space-x-3">
           
           <button
-            onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle WeaknessAnalyzer expanded: ${!isExpanded}`, 'INFO'); }}
-            className={`px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 ${!isExpanded ? 'animate-attention-blink' : 'shadow-sm'}`}
+            onClick={() => { setIsExpanded(!isExpanded); setHasBeenExpanded(true); addLog(`Toggle WeaknessAnalyzer expanded: ${!isExpanded}`, 'INFO'); }}
+            className={`px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 `${!isExpanded && !hasBeenExpanded ? 'animate-attention-blink' : 'shadow-sm'}`}
           >
             <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
           </button>

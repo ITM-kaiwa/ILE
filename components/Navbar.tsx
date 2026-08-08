@@ -34,6 +34,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const t = getTranslation(lang);
   const [user, setUser] = useState<User | null>(null);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
+  const [hasClickedGuide, setHasClickedGuide] = useState(false);
   const [pendingReviews, setPendingReviews] = useState(0);
   const [showAdvanced, setShowAdvanced] = useState(false);
 
@@ -127,7 +128,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <header className="sticky top-0 z-40 w-full border-b border-amber-200/60 bg-[#FFFDF9]/90 backdrop-blur-md shadow-sm">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 min-h-16 flex flex-wrap items-center justify-start gap-2 sm:gap-3">
           {/* Logo & Version with Interactive Brain Icon for Telemetry Log */}
-          <div className="flex items-center gap-2">
+          <div className={`flex items-center gap-2">
             <button
               onClick={onOpenLog}
               title="クリックしてシステム通信ログを表示 (Mở nhật ký hệ thống)"
@@ -165,7 +166,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex flex-wrap items-center gap-2">
             
             {user && (
-              <div className="flex items-center space-x-2 mr-1 sm:mr-3">
+              <div className={`flex items-center space-x-2 mr-1 sm:mr-3">
                 <span className="whitespace-nowrap shrink-0 text-sm font-bold text-slate-700 bg-white/60 px-3 py-1.5 rounded-xl border border-stone-200 shadow-sm">
                   {user.user_metadata?.full_name || 'ゲスト'} さん
                 </span>
@@ -177,9 +178,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             
             {/* 🔰 Beginner Guide Button - blinking, next to bell / logo section */}
             <button
-              onClick={() => setIsGuideOpen(true)}
+              onClick={() => { setIsGuideOpen(true); setHasClickedGuide(true); }}
               title="初心者ガイド / Hướng dẫn cho người mới"
-              className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-white bg-indigo-400 hover:bg-indigo-500 rounded-lg shadow-md transition-all duration-200 hover:scale-105 border border-indigo-300 animate-pulse"
+              className={`flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-white bg-indigo-400 hover:bg-indigo-500 rounded-lg shadow-md transition-all duration-200 hover:scale-105 border border-indigo-300 ${!hasClickedGuide ? 'animate-pulse' : ''}`"
             >
               <span>🔰 Guide</span>
             </button>
@@ -231,7 +232,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 )}
 
                 {/* Gap for Diagnostics */}
-                <div className="flex items-center gap-2 ml-0 sm:ml-2">
+                <div className={`flex items-center gap-2 ml-0 sm:ml-2">
                   <button
                     onClick={() => onOpenDiagnostic('quick')}
                     className="px-3 py-1.5 text-[10px] sm:text-xs font-medium text-slate-700 bg-amber-100/70 hover:bg-amber-200/70 rounded-lg border border-amber-200 transition"

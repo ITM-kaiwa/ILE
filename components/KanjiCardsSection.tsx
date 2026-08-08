@@ -38,6 +38,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
 
   const t = getTranslation(lang);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [hasBeenExpanded, setHasBeenExpanded] = useState(false);
 
   const [level, setLevel] = useState<JlptLevel>('N5');
   const [shuffleSeed, setShuffleSeed] = useState(0);
@@ -249,8 +250,8 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
               <span className="hidden sm:inline">{isVi ? 'Trộn (Shuffle)' : 'シャッフル'}</span>
             </button>
             <button
-              onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle KanjiCardsSection expanded: ${!isExpanded}`, 'INFO'); }}
-              className={`px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 ${!isExpanded ? 'animate-attention-blink' : 'shadow-sm'}`}
+              onClick={() => { setIsExpanded(!isExpanded); setHasBeenExpanded(true); addLog(`Toggle KanjiCardsSection expanded: ${!isExpanded}`, 'INFO'); }}
+              className={`px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 `${!isExpanded && !hasBeenExpanded ? 'animate-attention-blink' : 'shadow-sm'}`}
             >
               <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
             </button>

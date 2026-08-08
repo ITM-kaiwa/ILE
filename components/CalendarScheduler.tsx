@@ -29,6 +29,7 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
 
   const t = getTranslation(lang);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [hasBeenExpanded, setHasBeenExpanded] = useState(false);
   const isVi = lang === 'vi';
 
   const [goal, setGoal] = useState(isVi ? 'Thi đỗ JLPT N5 sau 1 tháng' : '1ヶ月後のJLPT N5合格');
@@ -154,8 +155,8 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
         <div className="flex items-center space-x-3">
           
           <button
-            onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle CalendarScheduler expanded: ${!isExpanded}`, 'INFO'); }}
-            className={`px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 ${!isExpanded ? 'animate-attention-blink' : 'shadow-sm'}`}
+            onClick={() => { setIsExpanded(!isExpanded); setHasBeenExpanded(true); addLog(`Toggle CalendarScheduler expanded: ${!isExpanded}`, 'INFO'); }}
+            className={`px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 `${!isExpanded && !hasBeenExpanded ? 'animate-attention-blink' : 'shadow-sm'}`}
           >
             <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
           </button>
