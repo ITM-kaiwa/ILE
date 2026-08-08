@@ -24,7 +24,7 @@ export interface MinnaVocabCard {
   vnjpclubUrl: string;
   vakHelp: { visual: string; auditory: string; kinesthetic: string; };
 }
-import { ExternalLink, Volume2, Eye, Hand, Filter, Layers, Tag, Grid, ArrowLeft, ArrowRight, RotateCw , ChevronDown, ChevronUp , ChevronLeft, ChevronRight , Play, Pause, Shuffle } from 'lucide-react';
+import { Download, ExternalLink, Volume2, Eye, Hand, Filter, Layers, Tag, Grid, ArrowLeft, ArrowRight, RotateCw , ChevronDown, ChevronUp , ChevronLeft, ChevronRight , Play, Pause, Shuffle } from 'lucide-react';
 
 interface MinnaFlashcardsSectionProps {
   vakType: VakType;
@@ -217,15 +217,27 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
           </p>
         </div>
 
-        <a
-          href={currentCard ? currentCard.vnjpclubUrl : 'https://www.vnjpclub.com/minna-no-nihongo/'}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-3.5 py-1.5 rounded-xl bg-amber-100/80 hover:bg-amber-200 text-amber-900 text-xs font-semibold border border-amber-300 transition flex items-center space-x-1.5 shrink-0"
-        >
-          <span>VNJPClub {isVi ? 'Danh sách từ vựng gốc' : '単語リスト公式'}</span>
-          <ExternalLink className="w-3.5 h-3.5" />
-        </a>
+        <div className="flex items-center gap-2">
+          <a
+            href="/downloads/Minna-no-Nihongo-Tu_Vung_50_Bai.pdf"
+            download="Minna-no-Nihongo-Tu_Vung_50_Bai.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3.5 py-1.5 rounded-xl bg-indigo-100 hover:bg-indigo-200 text-indigo-700 text-xs font-bold border border-indigo-200 transition flex items-center space-x-1.5 shrink-0"
+          >
+            <Download className="w-4 h-4" />
+            <span>{isVi ? 'Tải PDF' : 'ダウンロード'}</span>
+          </a>
+          <a
+            href={currentCard ? currentCard.vnjpclubUrl : 'https://www.vnjpclub.com/minna-no-nihongo/'}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3.5 py-1.5 rounded-xl bg-amber-100/80 hover:bg-amber-200 text-amber-900 text-xs font-semibold border border-amber-300 transition flex items-center space-x-1.5 shrink-0"
+          >
+            <span>VNJPClub {isVi ? 'Danh sách từ vựng gốc' : '単語リスト公式'}</span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
+        </div>
       </div>
 
       {/* Filter Mode Buttons */}
