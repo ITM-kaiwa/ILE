@@ -198,83 +198,85 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
               : '音読み・訓読み・ベトナム語の意味をカード化し、VAK認知特性で覚えられます'}
           </p>
         </div>
-
         {/* Langoal Official Reference Link Buttons */}
-        <div className="flex items-center space-x-2">
-          <button
-            onClick={() => {
-              setLevel('N5');
-              setCurrentIndex(0);
-              setIsFlipped(false);
-              setShuffleSeed(0);
-            }}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${
-              level === 'N5'
-                ? 'bg-orange-600 text-white shadow-sm'
-                : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'
-            }`}
-          >
-            {isVi ? 'Thẻ N5' : 'N5 漢字カード'}
-          </button>
-          <button
-            onClick={() => {
-              setLevel('N4');
-              setCurrentIndex(0);
-              setIsFlipped(false);
-              setShuffleSeed(0);
-            }}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${
-              level === 'N4'
-                ? 'bg-purple-600 text-white shadow-sm'
-                : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'
-            }`}
-          >
-            {isVi ? 'Thẻ N4' : 'N4 漢字カード'}
-          </button>
+        <div className="flex flex-col items-end gap-2 mt-2 sm:mt-0">
+          {/* Row 1: Internal Controls */}
+          <div className="flex flex-wrap items-center justify-end gap-2">
+            <button
+              onClick={() => {
+                setLevel('N5');
+                setCurrentIndex(0);
+                setIsFlipped(false);
+                setShuffleSeed(0);
+              }}
+              className={px-3.5 py-1.5 rounded-xl text-xs font-bold transition }
+            >
+              {isVi ? 'Thẻ N5' : 'N5 漢字カード'}
+            </button>
+            <button
+              onClick={() => {
+                setLevel('N4');
+                setCurrentIndex(0);
+                setIsFlipped(false);
+                setShuffleSeed(0);
+              }}
+              className={px-3.5 py-1.5 rounded-xl text-xs font-bold transition }
+            >
+              {isVi ? 'Thẻ N4' : 'N4 漢字カード'}
+            </button>
+            <button
+              onClick={() => {
+                setShuffleSeed(Date.now());
+                setCurrentIndex(0);
+                setIsFlipped(false);
+                addLog('Shuffled Kanji cards', 'INFO');
+              }}
+              className={lex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors border shadow-sm }
+            >
+              <Shuffle className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">{isVi ? 'Trộn (Shuffle)' : 'シャッフル'}</span>
+            </button>
+            <button
+              onClick={() => { setIsExpanded(!isExpanded); addLog(Toggle KanjiCardsSection expanded: , 'INFO'); }}
+              className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
+            >
+              <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
+            </button>
+          </div>
 
-          <a
-            href="/downloads/KANJI_INFO_VN_reviewed.pdf"
-            download="KANJI_INFO_VN_reviewed.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-3.5 py-1.5 rounded-xl bg-indigo-100 hover:bg-indigo-200 text-indigo-700 text-xs font-bold border border-indigo-200 transition flex items-center space-x-1.5 shrink-0 shadow-sm"
-          >
-            <Download className="w-4 h-4" />
-            <span>{isVi ? 'Tải PDF' : 'ダウンロード'}</span>
-          </a>
-          <a
-            href={level === 'N5' ? 'https://langoal.com/teaching-materials/kanji/n5-overview.html' : 'https://langoal.com/teaching-materials/kanji/n4-overview.html'}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-3.5 py-1.5 rounded-xl bg-orange-100 hover:bg-orange-200 text-orange-900 border border-orange-300 text-xs font-bold transition flex items-center space-x-1.5 shrink-0 shadow-sm"
-          >
-            <span>{isVi ? `Danh sách Kanji ${level}` : `Langoal ${level} 漢字一覧`}</span>
-            <ExternalLink className="w-3.5 h-3.5 text-orange-600" />
-          </a>
-          <button
-            onClick={() => {
-              setShuffleSeed(Date.now());
-              setCurrentIndex(0);
-              setIsFlipped(false);
-              addLog('Shuffled Kanji cards', 'INFO');
-            }}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors border shadow-sm ${
-              shuffleSeed > 0 
-                ? 'bg-blue-600 text-white border-blue-700 hover:bg-blue-700' 
-                : 'bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100'
-            }`}
-          >
-            <Shuffle className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">{isVi ? 'Trộn (Shuffle)' : 'シャッフル'}</span>
-          </button>
-          <button
-            onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle KanjiCardsSection expanded: ${!isExpanded}`, 'INFO'); }}
-            className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
-          >
-            <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
-          </button>
-
+          {/* Row 2: External Links */}
+          <div className="flex flex-wrap items-center justify-end gap-2">
+            <a
+              href="/downloads/KANJI_INFO_VN_reviewed.pdf"
+              download="KANJI_INFO_VN_reviewed.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3.5 py-1.5 rounded-xl bg-indigo-100 hover:bg-indigo-200 text-indigo-700 text-xs font-bold border border-indigo-200 transition flex items-center space-x-1.5 shrink-0 shadow-sm"
+            >
+              <Download className="w-4 h-4" />
+              <span>{isVi ? 'Tải PDF' : 'ダウンロード'}</span>
+            </a>
+            <a
+              href="https://langoal.com/teaching-materials/kanji/n5-overview.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3.5 py-1.5 rounded-xl bg-orange-100 hover:bg-orange-200 text-orange-900 border border-orange-300 text-xs font-bold transition flex items-center space-x-1.5 shrink-0 shadow-sm"
+            >
+              <span>{isVi ? 'Danh sách Kanji N5' : 'Langoal N5 漢字一覧'}</span>
+              <ExternalLink className="w-3.5 h-3.5 text-orange-600" />
+            </a>
+            <a
+              href="https://langoal.com/teaching-materials/kanji/n4-overview.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3.5 py-1.5 rounded-xl bg-purple-100 hover:bg-purple-200 text-purple-900 border border-purple-300 text-xs font-bold transition flex items-center space-x-1.5 shrink-0 shadow-sm"
+            >
+              <span>{isVi ? 'Danh sách Kanji N4' : 'Langoal N4 漢字一覧'}</span>
+              <ExternalLink className="w-3.5 h-3.5 text-purple-600" />
+            </a>
+          </div>
         </div>
+
       </div>
       {isExpanded && (
       <>
