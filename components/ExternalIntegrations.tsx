@@ -6,9 +6,10 @@ import { ExternalLink, MessageCircle, HelpCircle, School, Smartphone, Globe, Boo
 
 interface ExternalIntegrationsProps {
   lang?: Language;
+  mode?: 'all' | 'itm' | 'external';
 }
 
-export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang = 'ja' }) => {
+export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang = 'ja', mode = 'all' }) => {
   const isVi = lang === 'vi';
 
   const itmApps = [
@@ -75,7 +76,8 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
 
   return (
     <div className="space-y-8">
-      {/* ITM Ecosystem Apps Section */}
+            {/* ITM Ecosystem Apps Section */}
+      {(mode === 'all' || mode === 'itm') && (
       <div className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm">
         <div className="flex items-center justify-between pb-4 border-b border-amber-100">
           <h2 className="text-xl font-bold text-slate-800 flex items-center space-x-2">
@@ -117,7 +119,10 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
         </div>
       </div>
 
+            )}
+
       {/* External Learning Resources Section */}
+      {(mode === 'all' || mode === 'external') && (
       <div className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm">
         <div className="flex items-center justify-between pb-4 border-b border-amber-100">
           <div>
@@ -170,6 +175,7 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
           })}
         </div>
       </div>
+      )}
     </div>
   );
 };

@@ -144,9 +144,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   {APP_VERSION}
                 </span>
                 {user && (
-                  <button
-                    onClick={handleScrollToReview}
-                    className={`relative p-1.5 rounded-full transition-colors flex items-center justify-center ${
+                  <button onClick={handleScrollToReview} className={`outline-none focus:outline-none border-none ring-0 relative p-1.5 rounded-full transition-colors flex items-center justify-center ${
                       pendingReviews > 0 
                         ? 'text-amber-500 hover:bg-amber-50' 
                         : 'text-slate-300 hover:bg-slate-50 opacity-70'
@@ -168,10 +166,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             
             {user && (
               <div className="flex items-center space-x-2 mr-1 sm:mr-3">
-                <span className="text-sm font-bold text-slate-700 bg-white/60 px-3 py-1.5 rounded-xl border border-stone-200 shadow-sm">
+                <span className="whitespace-nowrap shrink-0 text-sm font-bold text-slate-700 bg-white/60 px-3 py-1.5 rounded-xl border border-stone-200 shadow-sm">
                   {user.user_metadata?.full_name || 'ゲスト'} さん
                 </span>
-                <span className="text-xs font-bold px-3 py-1.5 bg-amber-100 text-amber-900 rounded-xl border border-amber-300 shadow-sm">
+                <span className="whitespace-nowrap shrink-0 text-xs font-bold px-3 py-1.5 bg-amber-100 text-amber-900 rounded-xl border border-amber-300 shadow-sm">
                   {user.user_metadata?.class_name || 'ITM日本語クラス'}
                 </span>
               </div>
