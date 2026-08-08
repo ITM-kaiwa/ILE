@@ -174,33 +174,60 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2 mt-2 sm:mt-0">
-          <a
-            href="/downloads/Minna-no-Nihongo-Ngu_Phap_50_bai.pdf"
-            download
-            className="px-4 py-1.5 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition flex items-center space-x-1"
-          >
-            <Download className="w-3.5 h-3.5" />
-            <span>{isVi ? 'Tải PDF' : 'Download PDF'}</span>
-          </a>
-          <button
-            onClick={() => { setLevel('N5'); setSelectedCardId('card_n5_1'); setVisibleCount(5); }}
-            className={`px-4 py-1.5 rounded-xl text-xs font-bold transition ${level === 'N5' ? 'bg-emerald-600 text-white shadow-sm' : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'}`}
-          >
-            {isVi ? 'Ngữ pháp N5' : 'N5 文法カード'}
-          </button>
-          <button
-            onClick={() => { setLevel('N4'); setSelectedCardId('card_n4_1'); setVisibleCount(5); }}
-            className={`px-4 py-1.5 rounded-xl text-xs font-bold transition ${level === 'N4' ? 'bg-purple-600 text-white shadow-sm' : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'}`}
-          >
-            {isVi ? 'Ngữ pháp N4' : 'N4 文法カード'}
-          </button>
-          <button
-            onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle GrammarCardsSection expanded: ${!isExpanded}`, 'INFO'); }}
-            className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
-          >
-            <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
-          </button>
+        <div className="flex flex-col items-end gap-2 mt-2 sm:mt-0">
+          {/* Row 1: App Controls */}
+          <div className="flex flex-wrap items-center justify-end gap-2">
+            <button
+              onClick={() => { setLevel('N5'); setSelectedCardId('card_n5_1'); setVisibleCount(5); }}
+              className={`px-4 py-1.5 rounded-xl text-xs font-bold transition ${level === 'N5' ? 'bg-emerald-600 text-white shadow-sm' : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'}`}
+            >
+              {isVi ? 'Ngữ pháp N5' : 'N5 文法カード'}
+            </button>
+            <button
+              onClick={() => { setLevel('N4'); setSelectedCardId('card_n4_1'); setVisibleCount(5); }}
+              className={`px-4 py-1.5 rounded-xl text-xs font-bold transition ${level === 'N4' ? 'bg-purple-600 text-white shadow-sm' : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'}`}
+            >
+              {isVi ? 'Ngữ pháp N4' : 'N4 文法カード'}
+            </button>
+            <button
+              onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle GrammarCardsSection expanded: ${!isExpanded}`, 'INFO'); }}
+              className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
+            >
+              <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
+            </button>
+          </div>
+
+          {/* Row 2: External Links / Downloads */}
+          <div className="flex flex-wrap items-center justify-end gap-2">
+            <a
+              href="/downloads/Minna-no-Nihongo-Ngu_Phap_50_bai.pdf"
+              download="Minna-no-Nihongo-Ngu_Phap_50_bai.pdf"
+              className="px-3.5 py-1.5 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition flex items-center space-x-1 shrink-0"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>{isVi ? 'Ngữ pháp 50 bài' : '文法解説 PDF'}</span>
+            </a>
+            <a
+              href="/downloads/Minna-no-Nihongo-Vol.1.pdf"
+              download="Minna-no-Nihongo-Vol.1.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3.5 py-1.5 rounded-xl bg-indigo-100 hover:bg-indigo-200 text-indigo-700 text-xs font-bold border border-indigo-200 shadow-sm transition flex items-center space-x-1 shrink-0"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>{isVi ? 'Sơ cấp 1' : '初級１'}</span>
+            </a>
+            <a
+              href="/downloads/Minna-no-Nihongo-Vol.2.pdf"
+              download="Minna-no-Nihongo-Vol.2.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3.5 py-1.5 rounded-xl bg-orange-100 hover:bg-orange-200 text-orange-800 text-xs font-bold border border-orange-200 shadow-sm transition flex items-center space-x-1 shrink-0"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>{isVi ? 'Sơ cấp 2' : '初級２'}</span>
+            </a>
+          </div>
         </div>
       </div>
 
