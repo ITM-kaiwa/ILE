@@ -257,7 +257,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
           </button>
           <button
             onClick={() => { setIsExpanded(!isExpanded); setHasBeenExpanded(true); addLog(`Toggle KanaCardsSection expanded: ${!isExpanded}`, 'INFO'); }}
-            className={`px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 `${!isExpanded && !hasBeenExpanded ? 'animate-attention-blink' : 'shadow-sm'}`}
+            className={`px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 ${!isExpanded && !hasBeenExpanded ? 'animate-attention-blink' : 'shadow-sm'}`}
           >
             <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
           </button>
