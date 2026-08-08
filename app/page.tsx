@@ -216,56 +216,88 @@ export default function Home() {
           <div className="flex border-b border-slate-300 w-full overflow-x-auto bg-slate-50 mb-6">
             <button
               onClick={() => setActiveTab('vak')}
-              className={whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 }
+              className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+                activeTab === 'vak'
+                  ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
+                  : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
+              }`}
             >
               <Sparkles className="w-4 h-4" />
               <span>AI</span>
             </button>
             <button
               onClick={() => setActiveTab('kana')}
-              className={whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 }
+              className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+                activeTab === 'kana'
+                  ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
+                  : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
+              }`}
             >
               <Sparkles className="w-4 h-4" />
               <span>{lang === 'vi' ? 'Chữ Kana' : 'かな'}</span>
             </button>
             <button
               onClick={() => setActiveTab('vocab')}
-              className={whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 }
+              className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+                activeTab === 'vocab'
+                  ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
+                  : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
+              }`}
             >
               <Layers className="w-4 h-4" />
               <span>{lang === 'vi' ? 'Từ vựng' : '単語'}</span>
             </button>
             <button
               onClick={() => setActiveTab('grammar')}
-              className={whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 }
+              className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+                activeTab === 'grammar'
+                  ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
+                  : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
+              }`}
             >
               <BookOpen className="w-4 h-4" />
               <span>{lang === 'vi' ? 'Ngữ pháp' : '文法'}</span>
             </button>
             <button
               onClick={() => setActiveTab('kanji')}
-              className={whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 }
+              className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+                activeTab === 'kanji'
+                  ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
+                  : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
+              }`}
             >
               <Layers className="w-4 h-4" />
               <span>{lang === 'vi' ? 'Kanji' : '漢字'}</span>
             </button>
             <button
               onClick={() => setActiveTab('jlpt')}
-              className={whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 }
+              className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+                activeTab === 'jlpt'
+                  ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
+                  : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
+              }`}
             >
               <BookOpen className="w-4 h-4" />
               <span>JLPT</span>
             </button>
             <button
               onClick={() => setActiveTab('review')}
-              className={whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 }
+              className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+                activeTab === 'review'
+                  ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
+                  : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
+              }`}
             >
               <RefreshCw className="w-4 h-4" />
               <span>{lang === 'vi' ? 'Ôn tập' : '復習'}</span>
             </button>
             <button
               onClick={() => setActiveTab('conversation')}
-              className={whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 }
+              className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+                activeTab === 'conversation'
+                  ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
+                  : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
+              }`}
             >
               <MessageCircle className="w-4 h-4" />
               <span>{lang === 'vi' ? 'Hội thoại' : '会話'}</span>
