@@ -150,17 +150,7 @@ export default function Home() {
       />
 
       {/* Main Container */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 space-y-8">
-        {user && (
-          <div className="flex items-center justify-end px-2 space-x-3 mb-2 animate-fade-in">
-            <span className="text-sm font-bold text-slate-700 bg-white/60 px-3 py-1.5 rounded-xl border border-stone-200 shadow-sm">
-              {user.user_metadata?.full_name || 'ゲスト'} さん
-            </span>
-            <span className="text-xs font-bold px-3 py-1.5 bg-amber-100 text-amber-900 rounded-xl border border-amber-300 shadow-sm">
-              {user.user_metadata?.class_name || 'ITM日本語クラス'}
-            </span>
-          </div>
-        )}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 space-y-6">
         {/* Hero Header */}
         {!user && isHeroVisible && (
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#FFF9F2] via-[#FFF3E4] to-[#F7EFE5] p-5 sm:p-8 border border-amber-200/80 shadow-md">
@@ -213,7 +203,7 @@ export default function Home() {
 
         {/* Main Navigation Tabs */}
         {user && (
-          <div className="flex border-b border-slate-300 w-full overflow-x-auto bg-slate-50 mb-6">
+          <div className="flex flex-wrap border-b border-slate-300 w-full bg-slate-50 mb-6">
             <button
               onClick={() => setActiveTab('vak')}
               className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${

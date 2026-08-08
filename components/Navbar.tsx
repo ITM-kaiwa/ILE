@@ -163,9 +163,19 @@ export const Navbar: React.FC<NavbarProps> = ({
               <p className="hidden sm:block text-xs text-slate-500 mt-0.5">{t.subTitle}</p>
             </div>
           </div>
-
           {/* Right side controls flow after Logo area */}
           <div className="flex flex-wrap items-center gap-2">
+            
+            {user && (
+              <div className="flex items-center space-x-2 mr-1 sm:mr-3">
+                <span className="text-sm font-bold text-slate-700 bg-white/60 px-3 py-1.5 rounded-xl border border-stone-200 shadow-sm">
+                  {user.user_metadata?.full_name || 'ゲスト'} さん
+                </span>
+                <span className="text-xs font-bold px-3 py-1.5 bg-amber-100 text-amber-900 rounded-xl border border-amber-300 shadow-sm">
+                  {user.user_metadata?.class_name || 'ITM日本語クラス'}
+                </span>
+              </div>
+            )}
             
             {/* 🔰 Beginner Guide Button - blinking, next to bell / logo section */}
             <button
