@@ -226,7 +226,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
               }}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${
                 level === 'N4'
-                  ? 'bg-purple-600 text-white shadow-sm'
+                  ? 'bg-purple-500 text-white shadow-sm'
                   : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'
               }`}
             >
@@ -250,7 +250,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
             </button>
             <button
               onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle KanjiCardsSection expanded: ${!isExpanded}`, 'INFO'); }}
-              className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
+              className={`px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 ${!isExpanded ? 'shadow-md shadow-stone-400/50 animate-pulse' : 'shadow-sm'}`}
             >
               <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
             </button>

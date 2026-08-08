@@ -179,19 +179,19 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
           <div className="flex flex-wrap items-center justify-end gap-2">
             <button
               onClick={() => { setLevel('N5'); setSelectedCardId('card_n5_1'); setVisibleCount(5); }}
-              className={`px-4 py-1.5 rounded-xl text-xs font-bold transition ${level === 'N5' ? 'bg-emerald-600 text-white shadow-sm' : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'}`}
+              className={`px-4 py-1.5 rounded-xl text-xs font-bold transition ${level === 'N5' ? 'bg-emerald-500 text-white shadow-sm' : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'}`}
             >
               {isVi ? 'Ngữ pháp N5' : 'N5 文法カード'}
             </button>
             <button
               onClick={() => { setLevel('N4'); setSelectedCardId('card_n4_1'); setVisibleCount(5); }}
-              className={`px-4 py-1.5 rounded-xl text-xs font-bold transition ${level === 'N4' ? 'bg-purple-600 text-white shadow-sm' : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'}`}
+              className={`px-4 py-1.5 rounded-xl text-xs font-bold transition ${level === 'N4' ? 'bg-purple-500 text-white shadow-sm' : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'}`}
             >
               {isVi ? 'Ngữ pháp N4' : 'N4 文法カード'}
             </button>
             <button
               onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle GrammarCardsSection expanded: ${!isExpanded}`, 'INFO'); }}
-              className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
+              className={`px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 ${!isExpanded ? 'shadow-md shadow-stone-400/50 animate-pulse' : 'shadow-sm'}`}
             >
               <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
             </button>
@@ -202,7 +202,7 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
             <a
               href="/downloads/Minna-no-Nihongo-Ngu_Phap_50_bai.pdf"
               download="Minna-no-Nihongo-Ngu_Phap_50_bai.pdf"
-              className="px-3.5 py-1.5 rounded-xl text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition flex items-center space-x-1 shrink-0"
+              className="px-3.5 py-1.5 rounded-xl bg-blue-100 hover:bg-blue-200 text-blue-700 text-xs font-bold border border-blue-200 shadow-sm transition flex items-center space-x-1 shrink-0"
             >
               <Download className="w-3.5 h-3.5" />
               <span>{isVi ? 'Ngữ pháp 50 bài' : '文法解説 PDF'}</span>
