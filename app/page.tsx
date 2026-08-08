@@ -57,7 +57,7 @@ export default function Home() {
   const [vakResult, setVakResult] = useState<VakResult | null>(null);
   const [weaknessRecords, setWeaknessRecords] = useState<WeaknessRecord[]>([]);
 
-  const [activeTab, setActiveTab] = useState<'vak' | 'jlpt' | 'kana' | 'vocab' | 'grammar' | 'kanji' | 'review' | 'conversation' | null>('vak');
+  const [activeTab, setActiveTab] = useState<'vak' | 'jlpt' | 'kana' | 'vocab' | 'grammar' | 'kanji' | 'review' | 'conversation' | 'link' | null>('vak');
   const [isHeroVisible, setIsHeroVisible] = useState(true);
 
   const [user, setUser] = useState<any>(null);
