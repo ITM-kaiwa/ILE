@@ -19,7 +19,7 @@ import { WeaknessAnalyzer } from '@/components/WeaknessAnalyzer';
 import { JlptPractice } from '@/components/JlptPractice';
 import { ExternalIntegrations } from '@/components/ExternalIntegrations';
 import { LogFloatingModal } from '@/components/LogFloatingModal';
-import { Sparkles, ArrowRight, BookOpen, RefreshCw, Layers, X, MessageCircle } from 'lucide-react';
+import { Sparkles, ArrowRight, BookOpen, RefreshCw, Layers, X, MessageCircle, Link } from 'lucide-react';
 import { APP_VERSION } from '@/lib/config';
 
 const smoothScrollTo = (targetId: string, duration: number) => {
