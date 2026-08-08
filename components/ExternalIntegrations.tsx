@@ -72,6 +72,22 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
       badge: 'NHK WORLD',
       color: 'from-amber-500 to-orange-600',
     },
+    {
+      name: isVi ? 'Thẻ từ vựng Minna no Nihongo' : 'みんなのにほんご単語カード',
+      desc: isVi ? 'Học từ vựng Minna no Nihongo trên Quizlet' : 'Quizletでみんなの日本語の単語を学習',
+      url: 'https://quizlet.com/khoanhatngusuleco/folders/117874482?x=1xqt&i=540xsa',
+      icon: BookOpen,
+      badge: 'Quizlet',
+      color: 'from-blue-500 to-indigo-600',
+    },
+    {
+      name: isVi ? 'Thẻ Kanji JLPT N5/N4' : 'JLPT N5/N4漢字カード',
+      desc: isVi ? 'Học Kanji JLPT N5/N4 trên Quizlet' : 'QuizletでJLPT N5/N4の漢字を学習',
+      url: 'https://quizlet.com/khoanhatngusuleco/folders/jlpt-kanji?x=1xqt&i=540xsa',
+      icon: BookOpen,
+      badge: 'Quizlet',
+      color: 'from-blue-500 to-indigo-600',
+    }
   ];
 
   return (
