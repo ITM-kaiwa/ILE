@@ -180,7 +180,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => { setIsGuideOpen(true); setHasClickedGuide(true); }}
               title="初心者ガイド / Hướng dẫn cho người mới"
-              className={`flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-white bg-indigo-400 hover:bg-indigo-500 rounded-lg shadow-md transition-all duration-200 hover:scale-105 border border-indigo-300 ${!hasClickedGuide ? 'animate-pulse' : ''}`
+              className={`flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-white bg-indigo-400 hover:bg-indigo-500 rounded-lg shadow-md transition-all duration-200 hover:scale-105 border border-indigo-300 ${!hasClickedGuide ? 'animate-pulse' : ''}`}
             >
               <span>🔰 Guide</span>
             </button>
