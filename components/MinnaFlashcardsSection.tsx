@@ -337,7 +337,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
           </button>
           <button
             onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle MinnaFlashcardsSection expanded: ${!isExpanded}`, 'INFO'); }}
-            className={`px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 ${!isExpanded ? 'shadow-md shadow-stone-400/50 animate-pulse' : 'shadow-sm'}`}
+            className={`px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 ${!isExpanded ? 'animate-attention-blink' : 'shadow-sm'}`}
           >
             <span>{isExpanded ? t.collapseModule : t.viewModule}</span>
             {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}

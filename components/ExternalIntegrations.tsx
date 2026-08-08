@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Language } from '@/lib/i18n';
-import { ExternalLink, MessageCircle, HelpCircle, School, Smartphone, Globe, BookOpen, Tv } from 'lucide-react';
+import { ExternalLink, MessageCircle, HelpCircle, School, Smartphone, Globe, BookOpen, Tv, Home } from 'lucide-react';
 
 interface ExternalIntegrationsProps {
   lang?: Language;
@@ -60,9 +60,9 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
       name: isVi ? 'Kết nối & Lan tỏa Cuộc sống bằng Tiếng Nhật' : 'つながるひろがる にほんごでのくらし',
       desc: isVi ? 'Trang web chính thức của Bộ Giáo dục & Đào tạo Nhật Bản (MEXT)' : '文部科学省 (MEXT) 公式 生活日本語学習サイト',
       url: 'https://tsunagarujp.mext.go.jp/',
-      icon: BookOpen,
+      icon: Home,
       badge: isVi ? 'Bộ Giáo dục Nhật Bản' : '文部科学省 (MEXT)',
-      color: 'from-indigo-600 to-blue-600',
+      color: 'from-cyan-500 to-sky-500',
     },
     {
       name: isVi ? 'NHK WORLD-JAPAN Learn Japanese' : 'NHK WORLD-JAPAN Learn Japanese',
