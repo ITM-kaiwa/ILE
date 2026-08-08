@@ -341,7 +341,13 @@ export default function Home() {
             )}
             {activeTab === 'conversation' && (
               <div id="external-integrations-section">
-                <ExternalIntegrations lang={lang} />
+                <ExternalIntegrations lang={lang} mode="itm" />
+              </div>
+            )}
+
+            {activeTab === 'link' && (
+              <div id="external-links-section">
+                <ExternalIntegrations lang={lang} mode="external" />
               </div>
             )}
           </div>
