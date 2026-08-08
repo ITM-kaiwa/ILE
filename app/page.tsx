@@ -57,7 +57,7 @@ export default function Home() {
   const [vakResult, setVakResult] = useState<VakResult | null>(null);
   const [weaknessRecords, setWeaknessRecords] = useState<WeaknessRecord[]>([]);
 
-  const [activeTab, setActiveTab] = useState<'vak' | 'jlpt' | 'kana' | 'vocab' | 'grammar' | 'kanji' | 'review' | null>('vak');
+  const [activeTab, setActiveTab] = useState<'vak' | 'jlpt' | 'kana' | 'vocab' | 'grammar' | 'kanji' | 'review' | 'conversation' | null>('vak');
   const [isHeroVisible, setIsHeroVisible] = useState(true);
 
   const [user, setUser] = useState<any>(null);
@@ -213,96 +213,65 @@ export default function Home() {
 
         {/* Main Navigation Tabs */}
         {user && (
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-2xl bg-[#FFFDF9] border border-amber-200/80 shadow-sm gap-3">
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex border-b border-slate-300 w-full overflow-x-auto bg-slate-50 mb-6">
             <button
               onClick={() => setActiveTab('vak')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
-                activeTab === 'vak'
-                  ? 'bg-orange-600 text-white shadow'
-                  : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900'
-              }`}
+              className={whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 }
             >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>{t.tabVakAi}</span>
+              <Sparkles className="w-4 h-4" />
+              <span>AI</span>
             </button>
             <button
               onClick={() => setActiveTab('kana')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
-                activeTab === 'kana'
-                  ? 'bg-amber-600 text-white shadow'
-                  : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900'
-              }`}
+              className={whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 }
             >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>{t.tabKana}</span>
+              <Sparkles className="w-4 h-4" />
+              <span>{lang === 'vi' ? 'Chữ Kana' : 'かな'}</span>
             </button>
             <button
               onClick={() => setActiveTab('vocab')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
-                activeTab === 'vocab'
-                  ? 'bg-indigo-600 text-white shadow'
-                  : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900'
-              }`}
+              className={whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 }
             >
-              <Layers className="w-3.5 h-3.5" />
-              <span>{t.tabVocab}</span>
+              <Layers className="w-4 h-4" />
+              <span>{lang === 'vi' ? 'Từ vựng' : '単語'}</span>
             </button>
             <button
               onClick={() => setActiveTab('grammar')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
-                activeTab === 'grammar'
-                  ? 'bg-emerald-600 text-white shadow'
-                  : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900'
-              }`}
+              className={whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 }
             >
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>{t.tabGrammar}</span>
+              <BookOpen className="w-4 h-4" />
+              <span>{lang === 'vi' ? 'Ngữ pháp' : '文法'}</span>
             </button>
             <button
               onClick={() => setActiveTab('kanji')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
-                activeTab === 'kanji'
-                  ? 'bg-rose-600 text-white shadow'
-                  : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900'
-              }`}
+              className={whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 }
             >
-              <Layers className="w-3.5 h-3.5" />
-              <span>{t.tabKanji}</span>
+              <Layers className="w-4 h-4" />
+              <span>{lang === 'vi' ? 'Kanji' : '漢字'}</span>
             </button>
             <button
               onClick={() => setActiveTab('jlpt')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
-                activeTab === 'jlpt'
-                  ? 'bg-orange-600 text-white shadow'
-                  : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900'
-              }`}
+              className={whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 }
             >
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>{t.tabJlpt}</span>
+              <BookOpen className="w-4 h-4" />
+              <span>JLPT</span>
             </button>
             <button
               onClick={() => setActiveTab('review')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
-                activeTab === 'review'
-                  ? 'bg-teal-600 text-white shadow'
-                  : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900'
-              }`}
+              className={whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 }
             >
-              <RefreshCw className="w-3.5 h-3.5" />
-              <span>{t.tabReview}</span>
+              <RefreshCw className="w-4 h-4" />
+              <span>{lang === 'vi' ? 'Ôn tập' : '復習'}</span>
             </button>
             <button
-              onClick={() => {
-                smoothScrollTo('external-integrations-section', 1000);
-              }}
-              className="px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 bg-amber-100/80 text-slate-700 hover:bg-amber-200 hover:text-slate-900"
+              onClick={() => setActiveTab('conversation')}
+              className={whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 }
             >
-              <MessageCircle className="w-3.5 h-3.5" />
-              <span>{lang === 'vi' ? 'Luyện hội thoại / QA' : '会話・QA練習'}</span>
+              <MessageCircle className="w-4 h-4" />
+              <span>{lang === 'vi' ? 'Hội thoại' : '会話'}</span>
             </button>
           </div>
-        </div>
+
         )}
 
         {/* Tab Content */}
@@ -335,8 +304,13 @@ export default function Home() {
         )}
 
         {activeTab === 'review' && (
-          <ReviewDashboard vakType={currentVak} lang={lang} />
-        )}
+              <ReviewDashboard vakType={currentVak} lang={lang} />
+            )}
+            {activeTab === 'conversation' && (
+              <div id="external-integrations-section">
+                <ExternalIntegrations lang={lang} />
+              </div>
+            )}
           </div>
         )}
 
@@ -346,13 +320,6 @@ export default function Home() {
           <CalendarScheduler vakType={currentVak} lang={lang} />
           <ReviewManager lang={lang} />
         </div>
-        )}
-
-        {/* Section 4: ITM External App Integrations */}
-        {user && (
-          <div id="external-integrations-section">
-            <ExternalIntegrations lang={lang} />
-          </div>
         )}
       </main>
 
