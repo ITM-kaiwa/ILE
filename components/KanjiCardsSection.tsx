@@ -209,7 +209,11 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
                 setIsFlipped(false);
                 setShuffleSeed(0);
               }}
-              className={px-3.5 py-1.5 rounded-xl text-xs font-bold transition }
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${
+                level === 'N5'
+                  ? 'bg-orange-600 text-white shadow-sm'
+                  : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'
+              }`}
             >
               {isVi ? 'Thẻ N5' : 'N5 漢字カード'}
             </button>
@@ -220,7 +224,11 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
                 setIsFlipped(false);
                 setShuffleSeed(0);
               }}
-              className={px-3.5 py-1.5 rounded-xl text-xs font-bold transition }
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${
+                level === 'N4'
+                  ? 'bg-purple-600 text-white shadow-sm'
+                  : 'bg-amber-100/80 text-slate-700 hover:bg-amber-200'
+              }`}
             >
               {isVi ? 'Thẻ N4' : 'N4 漢字カード'}
             </button>
@@ -231,13 +239,17 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
                 setIsFlipped(false);
                 addLog('Shuffled Kanji cards', 'INFO');
               }}
-              className={lex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors border shadow-sm }
+              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors border shadow-sm ${
+                shuffleSeed > 0 
+                  ? 'bg-blue-600 text-white border-blue-700 hover:bg-blue-700' 
+                  : 'bg-blue-50 text-blue-700 border-blue-200 hover:bg-blue-100'
+              }`}
             >
               <Shuffle className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">{isVi ? 'Trộn (Shuffle)' : 'シャッフル'}</span>
             </button>
             <button
-              onClick={() => { setIsExpanded(!isExpanded); addLog(Toggle KanjiCardsSection expanded: , 'INFO'); }}
+              onClick={() => { setIsExpanded(!isExpanded); addLog(`Toggle KanjiCardsSection expanded: ${!isExpanded}`, 'INFO'); }}
               className="px-3 py-1.5 rounded-lg bg-stone-200 hover:bg-stone-300 text-stone-700 text-xs font-bold transition flex items-center space-x-1 border border-stone-300/60 shadow-sm"
             >
               <span>{isExpanded ? (isVi ? 'Đóng' : '閉') : (isVi ? 'Mở' : '開')}</span>
@@ -276,6 +288,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
             </a>
           </div>
         </div>
+
 
       </div>
       {isExpanded && (
