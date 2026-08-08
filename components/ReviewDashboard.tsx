@@ -94,12 +94,15 @@ export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType, lang 
       <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-amber-100 gap-4">
         <div>
           <div className="flex items-center space-x-2">
-            <RefreshCw className="w-5 h-5 text-amber-600" />
-            <h2 className="text-xl font-bold text-slate-800">復習専用ダッシュボード (タグ・ジャンル別抽出)</h2>
-          </div>
-          <p className="text-xs text-slate-500 mt-1">
-            N5・N4の全200問から希望のジャンルタグ（助詞・動詞活用・文型・語彙）を絞り込んで復習できます
-          </p>
+            <RefreshCw className="w-5 h-5 text-amber-600" />              <h2 className="text-xl font-bold text-slate-800">
+                {isVi ? "Bảng điều khiển ôn tập (Lọc theo thẻ/thể loại)" : "復習専用ダッシュボード (タグ・ジャンル別抽出)"}
+              </h2>
+            </div>
+            <p className="text-xs text-slate-500 mt-1">
+              {isVi 
+                ? "Bạn có thể lọc và ôn tập theo thẻ thể loại (trợ từ, chia động từ, mẫu câu, từ vựng) từ tổng số 200 câu hỏi N5/N4" 
+                : "N5・N4の全200問から希望のジャンルタグ（助詞・動詞活用・文型・語彙）を絞り込んで復習できます"}
+            </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
@@ -143,7 +146,7 @@ export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType, lang 
         <div className="space-y-4">
           <div className="flex items-center justify-between text-xs">
             <span className="font-mono font-bold text-amber-700">
-              抽出結果: {currentIdx + 1} / {shuffledFiltered.length} 問 (レベル: {currentQ.level})
+              {isVi ? "Kết quả lọc" : "抽出結果"}: {currentIdx + 1} / {shuffledFiltered.length} {isVi ? "câu" : "問"} ({isVi ? "Cấp độ" : "レベル"}: {currentQ.level})
             </span>
             <span className="px-3 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300 font-bold">
               🏷️ {currentQ.categoryName}

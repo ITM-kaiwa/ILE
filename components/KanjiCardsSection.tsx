@@ -22,7 +22,7 @@ export interface KanjiCard {
   nihongokyoshiUrl: string;
   vakHelp: { visual: string; auditory: string; kinesthetic: string; };
 }
-import { ExternalLink, Volume2, Eye, Hand, Layers, RotateCw, ArrowLeft, ArrowRight , ChevronDown, ChevronUp, ChevronLeft, ChevronRight , Play, Pause, Shuffle } from 'lucide-react';
+import { Download, ExternalLink, Volume2, Eye, Hand, Layers, RotateCw, ArrowLeft, ArrowRight , ChevronDown, ChevronUp, ChevronLeft, ChevronRight , Play, Pause, Shuffle } from 'lucide-react';
 import { StrokeAnimation } from '@/components/StrokeAnimation';
 
 const LANGOAL_N5_ORDER = ["一","二","三","四","五","六","七","八","九","十","百","千","円","月","火","水","木","金","土","日","年","人","子","男","女","父","母","口","目","耳","手","足","体","力","上","下","左","右","大","小","中","外","学","校","先","生","本","名","友","山","川","田","石","雨","夕","岩","音","林","森","花","竹","犬","貝","牛","魚","鳥","米","肉","茶","好","物","今","何","分","半","方","時","間","町","寺","東","西","南","北","車","電","高","安","多","少","新","古","明","暗","長","元","気","見","立","入","出","休","行","来","言","帰","書","読","話","聞","食","飲","買"];
@@ -232,6 +232,16 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
             {isVi ? 'Thẻ N4' : 'N4 漢字カード'}
           </button>
 
+          <a
+            href="/downloads/KANJI_INFO_VN_reviewed.pdf"
+            download="KANJI_INFO_VN_reviewed.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3.5 py-1.5 rounded-xl bg-indigo-100 hover:bg-indigo-200 text-indigo-700 text-xs font-bold border border-indigo-200 transition flex items-center space-x-1.5 shrink-0 shadow-sm"
+          >
+            <Download className="w-4 h-4" />
+            <span>{isVi ? 'Tải PDF' : 'ダウンロード'}</span>
+          </a>
           <a
             href={level === 'N5' ? 'https://langoal.com/teaching-materials/kanji/n5-overview.html' : 'https://langoal.com/teaching-materials/kanji/n4-overview.html'}
             target="_blank"
