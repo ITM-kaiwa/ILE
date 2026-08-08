@@ -7,6 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        attentionBlink: {
+          '0%, 100%': { backgroundColor: '#e7e5e4', borderColor: 'rgba(214, 211, 209, 0.6)', boxShadow: '0 1px 2px 0 rgb(0 0 0 / 0.05)' },
+          '50%': { backgroundColor: '#fef3c7', borderColor: '#fcd34d', boxShadow: '0 0 8px rgba(252, 211, 77, 0.6)' },
+        }
+      },
+      animation: {
+        'attention-blink': 'attentionBlink 1.5s ease-in-out infinite',
+      },
       colors: {
         vak: {
           visual: {
