@@ -292,7 +292,18 @@ export default function Home() {
               <MessageCircle className="w-4 h-4" />
               <span>{lang === 'vi' ? 'Hội thoại' : '会話'}</span>
             </button>
-            <button
+                          <button
+                onClick={() => setActiveTab('tool')}
+                className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+                  activeTab === 'tool'
+                    ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
+                    : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
+                }`}
+              >
+                <Wrench className="w-4 h-4" />
+                <span>{lang === 'vi' ? 'Công cụ' : 'ツール'}</span>
+              </button>
+<button
               onClick={() => setActiveTab('link')}
               className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
                 activeTab === 'link'
