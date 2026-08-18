@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Language } from '@/lib/i18n';
-import { ExternalLink, MessageCircle, HelpCircle, School, Smartphone, Globe, BookOpen, Tv, Home } from 'lucide-react';
+import { ExternalLink, MessageCircle, HelpCircle, School, Smartphone, Globe, BookOpen, Tv, Home, Hash, CalendarDays, ListOrdered } from 'lucide-react';
 
 interface ExternalIntegrationsProps {
   lang?: Language;
@@ -13,6 +13,30 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
   const isVi = lang === 'vi';
 
   const itmApps = [
+    {
+      name: isVi ? 'Ứng dụng Web Luyện số đếm' : '数字練習アプリ',
+      desc: isVi ? 'Luyện nghe và đọc số đếm tiếng Nhật' : '日本語の数字の読み書き・リスニングを練習',
+      url: 'https://itm-kaiwa.github.io/Random/',
+      icon: Hash,
+      badge: isVi ? 'Luyện số' : '数字練習',
+      color: 'from-blue-500 to-cyan-600',
+    },
+    {
+      name: isVi ? 'Ứng dụng Luyện Lịch & Đồng hồ' : 'カレンダー＆時計練習アプリ',
+      desc: isVi ? 'Luyện cách nói ngày tháng và thời gian' : '日付と時間の読み方を練習',
+      url: 'https://itm-kaiwa.github.io/calender/',
+      icon: CalendarDays,
+      badge: isVi ? 'Thời gian' : 'カレンダー・時計',
+      color: 'from-pink-500 to-rose-600',
+    },
+    {
+      name: isVi ? 'Ứng dụng Luyện Trợ từ đếm' : '助数詞練習アプリ',
+      desc: isVi ? 'Luyện cách đếm các loại đồ vật khác nhau' : 'モノの種類に応じた助数詞（数え方）を練習',
+      url: 'https://counter-ebon-nu.vercel.app/',
+      icon: ListOrdered,
+      badge: isVi ? 'Trợ từ đếm' : '助数詞',
+      color: 'from-fuchsia-500 to-purple-600',
+    },
     {
       name: isVi ? 'Ứng dụng Web Luyện hội thoại LingoBot' : 'LingoBot 会話練習Webアプリ',
       desc: isVi ? 'Luyện nói tiếng Nhật qua hội thoại AI thời gian thực' : 'リアルタイムAI対話で日本語スピーキングを練習',
