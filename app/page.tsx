@@ -19,7 +19,7 @@ import { WeaknessAnalyzer } from '@/components/WeaknessAnalyzer';
 import { JlptPractice } from '@/components/JlptPractice';
 import { ExternalIntegrations } from '@/components/ExternalIntegrations';
 import { LogFloatingModal } from '@/components/LogFloatingModal';
-import { Sparkles, ArrowRight, BookOpen, RefreshCw, Layers, X, MessageCircle, Link } from 'lucide-react';
+import { Sparkles, ArrowRight, BookOpen, RefreshCw, Layers, X, MessageCircle, Link , Wrench} from 'lucide-react';
 import { APP_VERSION } from '@/lib/config';
 
 const smoothScrollTo = (targetId: string, duration: number) => {
@@ -57,7 +57,7 @@ export default function Home() {
   const [vakResult, setVakResult] = useState<VakResult | null>(null);
   const [weaknessRecords, setWeaknessRecords] = useState<WeaknessRecord[]>([]);
 
-  const [activeTab, setActiveTab] = useState<'vak' | 'jlpt' | 'kana' | 'vocab' | 'grammar' | 'kanji' | 'review' | 'conversation' | 'link' | null>('vak');
+  const [activeTab, setActiveTab] = useState<'vak' | 'jlpt' | 'kana' | 'vocab' | 'grammar' | 'kanji' | 'review' | 'conversation' | 'tool' | 'link' | null>('vak');
   const [isHeroVisible, setIsHeroVisible] = useState(true);
 
   const [user, setUser] = useState<any>(null);
@@ -341,7 +341,13 @@ export default function Home() {
             )}
             {activeTab === 'conversation' && (
               <div id="external-integrations-section">
-                <ExternalIntegrations lang={lang} mode="itm" />
+                <ExternalIntegrations lang={lang} mode="conversation" />
+              </div>
+            )}
+
+            {activeTab === 'tool' && (
+              <div id="external-tools-section">
+                <ExternalIntegrations lang={lang} mode="tool" />
               </div>
             )}
 

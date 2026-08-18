@@ -6,13 +6,13 @@ import { ExternalLink, MessageCircle, HelpCircle, School, Smartphone, Globe, Boo
 
 interface ExternalIntegrationsProps {
   lang?: Language;
-  mode?: 'all' | 'itm' | 'external';
+  mode?: 'all' | 'conversation' | 'tool' | 'external';
 }
 
 export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang = 'ja', mode = 'all' }) => {
   const isVi = lang === 'vi';
 
-  const itmApps: any[] = [
+  const conversationApps: any[] = [
     {
       name: isVi ? 'Ứng dụng Web Luyện hội thoại LingoBot' : 'LingoBot 会話練習Webアプリ',
       desc: isVi ? 'Luyện nói tiếng Nhật qua hội thoại AI thời gian thực' : 'リアルタイムAI対話で日本語スピーキングを練習',
@@ -28,7 +28,10 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
       icon: HelpCircle,
       badge: isVi ? 'Luyện QA' : 'QA練習',
       color: 'from-indigo-600 to-purple-600',
-    },
+    }
+  ];
+
+  const toolApps: any[] = [
     {
       name: isVi ? 'Ứng dụng Web Luyện số đếm' : '数字練習アプリ',
       desc: isVi ? 'Luyện nghe và đọc số đếm tiếng Nhật' : '日本語の数字の読み書き・リスニングを練習',
@@ -69,7 +72,7 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
       icon: Smartphone,
       badge: 'Android App',
       color: 'from-amber-600 to-orange-600',
-    },
+    }
   ];
 
   const externalResources = [
@@ -118,19 +121,16 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
   return (
     <div className="space-y-8">
             {/* ITM Ecosystem Apps Section */}
-      {(mode === 'all' || mode === 'itm') && (
+      {(mode === 'all' || mode === 'conversation') && (
       <div className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm">
         <div className="flex items-center justify-between pb-4 border-b border-amber-100">
           <h2 className="text-xl font-bold text-slate-800 flex items-center space-x-2">
-            <span>{isVi ? 'Hệ sinh thái liên kết tích hợp ITM' : 'ITM 統合連携エコシステム'}</span>
+            <span>{isVi ? 'Ứng dụng luyện hội thoại' : '会話練習アプリ'}</span>
           </h2>
-          <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-800 border border-orange-300">
-            {isVi ? 'Liên kết 1 click' : 'ワンクリック連携'}
-          </span>
         </div>
 
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-          {itmApps.map((app, index) => {
+          {conversationApps.map((app, index) => {
             if (app.isEmpty) {
               return <div key={index} className="hidden md:block"></div>;
             }
@@ -164,6 +164,57 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
       </div>
 
             )}
+
+      {/* Tools Section */}
+      {(mode === 'all' || mode === 'tool') && (
+      <div className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm">
+        <div className="flex items-center justify-between pb-4 border-b border-amber-100">
+          <h2 className="text-xl font-bold text-slate-800 flex items-center space-x-2">
+            <span>{isVi ? 'Công cụ học tập & Tiện ích' : '学習ツール・アプリ'}</span>
+          </h2>
+        </div>
+
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          {toolApps.map((app, index) => {
+            if (app.isEmpty) {
+              return <div key={index} className="hidden md:block"></div>;
+            }
+            const Icon = app.icon;
+            return (
+              <a
+                key={index}
+                href={app.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 rounded-xl bg-[#FFFDF9] border border-amber-200/80 hover:border-orange-300 transition group flex items-start justify-between shadow-sm"
+              >
+                <div className="flex items-start space-x-3">
+                  <div className={`p-2.5 rounded-lg bg-gradient-to-br ${app.color} text-white shadow-sm`}>
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="flex items-center space-x-2">
+                      <h3 className="text-sm font-semibold text-slate-800 group-hover:text-orange-600 transition">
+                        {app.name}
+                      </h3>
+                      <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-orange-500 transition" />
+                    </div>
+                    <p className="text-xs text-slate-500 mt-1 line-clamp-2">
+                      {app.desc}
+                    </p>
+                  </div>
+                </div>
+                {app.badge && (
+                  <span className="shrink-0 ml-2 px-2 py-0.5 text-[10px] font-medium bg-slate-100 text-slate-600 rounded-full border border-slate-200">
+                    {app.badge}
+                  </span>
+                )}
+              </a>
+            );
+          })}
+        </div>
+      </div>
+      )}
 
       {/* External Learning Resources Section */}
       {(mode === 'all' || mode === 'external') && (
