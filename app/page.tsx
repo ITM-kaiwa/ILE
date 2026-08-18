@@ -206,7 +206,7 @@ export default function Home() {
           <div className="flex flex-wrap border-b border-slate-300 w-full bg-slate-50 mb-6">
             <button
               onClick={() => setActiveTab('vak')}
-              className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+              className={`whitespace-nowrap px-2 py-2.5 text-[13px] sm:px-3 sm:text-sm transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1 ${
                 activeTab === 'vak'
                   ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
                   : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
@@ -217,7 +217,7 @@ export default function Home() {
             </button>
             <button
               onClick={() => setActiveTab('kana')}
-              className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+              className={`whitespace-nowrap px-2 py-2.5 text-[13px] sm:px-3 sm:text-sm transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1 ${
                 activeTab === 'kana'
                   ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
                   : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
@@ -228,7 +228,7 @@ export default function Home() {
             </button>
             <button
               onClick={() => setActiveTab('vocab')}
-              className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+              className={`whitespace-nowrap px-2 py-2.5 text-[13px] sm:px-3 sm:text-sm transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1 ${
                 activeTab === 'vocab'
                   ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
                   : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
@@ -239,7 +239,7 @@ export default function Home() {
             </button>
             <button
               onClick={() => setActiveTab('grammar')}
-              className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+              className={`whitespace-nowrap px-2 py-2.5 text-[13px] sm:px-3 sm:text-sm transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1 ${
                 activeTab === 'grammar'
                   ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
                   : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
@@ -250,7 +250,7 @@ export default function Home() {
             </button>
             <button
               onClick={() => setActiveTab('kanji')}
-              className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+              className={`whitespace-nowrap px-2 py-2.5 text-[13px] sm:px-3 sm:text-sm transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1 ${
                 activeTab === 'kanji'
                   ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
                   : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
@@ -261,7 +261,7 @@ export default function Home() {
             </button>
             <button
               onClick={() => setActiveTab('jlpt')}
-              className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+              className={`whitespace-nowrap px-2 py-2.5 text-[13px] sm:px-3 sm:text-sm transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1 ${
                 activeTab === 'jlpt'
                   ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
                   : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
@@ -272,7 +272,7 @@ export default function Home() {
             </button>
             <button
               onClick={() => setActiveTab('review')}
-              className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+              className={`whitespace-nowrap px-2 py-2.5 text-[13px] sm:px-3 sm:text-sm transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1 ${
                 activeTab === 'review'
                   ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
                   : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
@@ -283,7 +283,7 @@ export default function Home() {
             </button>
             <button
               onClick={() => setActiveTab('conversation')}
-              className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+              className={`whitespace-nowrap px-2 py-2.5 text-[13px] sm:px-3 sm:text-sm transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1 ${
                 activeTab === 'conversation'
                   ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
                   : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
@@ -294,7 +294,7 @@ export default function Home() {
             </button>
                           <button
                 onClick={() => setActiveTab('tool')}
-                className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+                className={`whitespace-nowrap px-2 py-2.5 text-[13px] sm:px-3 sm:text-sm transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1 ${
                   activeTab === 'tool'
                     ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
                     : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
@@ -305,7 +305,7 @@ export default function Home() {
               </button>
 <button
               onClick={() => setActiveTab('link')}
-              className={`whitespace-nowrap px-5 py-3 text-[15px] transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1.5 ${
+              className={`whitespace-nowrap px-2 py-2.5 text-[13px] sm:px-3 sm:text-sm transition-colors border-t-[3px] border-l border-r -mb-px flex items-center space-x-1 ${
                 activeTab === 'link'
                   ? 'bg-white text-slate-900 border-t-slate-800 border-l-slate-300 border-r-slate-300 font-bold'
                   : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
