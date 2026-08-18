@@ -12,7 +12,23 @@ interface ExternalIntegrationsProps {
 export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang = 'ja', mode = 'all' }) => {
   const isVi = lang === 'vi';
 
-  const itmApps = [
+  const itmApps: any[] = [
+    {
+      name: isVi ? 'Ứng dụng Web Luyện hội thoại LingoBot' : 'LingoBot 会話練習Webアプリ',
+      desc: isVi ? 'Luyện nói tiếng Nhật qua hội thoại AI thời gian thực' : 'リアルタイムAI対話で日本語スピーキングを練習',
+      url: 'https://lingo-bot2.vercel.app/',
+      icon: MessageCircle,
+      badge: isVi ? 'Luyện hội thoại' : '会話練習',
+      color: 'from-orange-500 to-amber-600',
+    },
+    {
+      name: isVi ? 'Ứng dụng Luyện tập QA CheckKaiwa' : 'CheckKaiwa QA練習アプリ',
+      desc: isVi ? 'Ứng dụng Web ôn tập câu hỏi Q&A giao tiếp hàng ngày & JLPT' : 'JLPT・日常会話のQ&A復習問題Webアプリ',
+      url: 'https://itm-kaiwa.github.io/CheckKaiwa_/',
+      icon: HelpCircle,
+      badge: isVi ? 'Luyện QA' : 'QA練習',
+      color: 'from-indigo-600 to-purple-600',
+    },
     {
       name: isVi ? 'Ứng dụng Web Luyện số đếm' : '数字練習アプリ',
       desc: isVi ? 'Luyện nghe và đọc số đếm tiếng Nhật' : '日本語の数字の読み書き・リスニングを練習',
@@ -37,22 +53,7 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
       badge: isVi ? 'Trợ từ đếm' : '助数詞',
       color: 'from-fuchsia-500 to-purple-600',
     },
-    {
-      name: isVi ? 'Ứng dụng Web Luyện hội thoại LingoBot' : 'LingoBot 会話練習Webアプリ',
-      desc: isVi ? 'Luyện nói tiếng Nhật qua hội thoại AI thời gian thực' : 'リアルタイムAI対話で日本語スピーキングを練習',
-      url: 'https://lingo-bot2.vercel.app/',
-      icon: MessageCircle,
-      badge: isVi ? 'Luyện hội thoại' : '会話練習',
-      color: 'from-orange-500 to-amber-600',
-    },
-    {
-      name: isVi ? 'Ứng dụng Luyện tập QA CheckKaiwa' : 'CheckKaiwa QA練習アプリ',
-      desc: isVi ? 'Ứng dụng Web ôn tập câu hỏi Q&A giao tiếp hàng ngày & JLPT' : 'JLPT・日常会話のQ&A復習問題Webアプリ',
-      url: 'https://itm-kaiwa.github.io/CheckKaiwa_/',
-      icon: HelpCircle,
-      badge: isVi ? 'Luyện QA' : 'QA練習',
-      color: 'from-indigo-600 to-purple-600',
-    },
+    { isEmpty: true },
     {
       name: isVi ? 'Ứng dụng Web ITM E-School' : 'ITM E-School Webアプリ',
       desc: isVi ? 'Nền tảng E-Learning chính thức của ITM' : 'ITM公式E-Learningプラットフォーム',
@@ -130,6 +131,9 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
 
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
           {itmApps.map((app, index) => {
+            if (app.isEmpty) {
+              return <div key={index} className="hidden md:block"></div>;
+            }
             const Icon = app.icon;
             return (
               <a
