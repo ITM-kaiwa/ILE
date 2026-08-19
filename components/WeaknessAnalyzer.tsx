@@ -23,11 +23,13 @@ const getVakRecVi = (text: string) => {
 export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({ vakType, weaknessRecords, lang = 'ja' }) => {
   const [aiAnalysis, setAiAnalysis] = useState<any>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [aiError, setAiError] = useState<string | null>(null);
 
   const handleAnalyze = async () => {
     if (weaknessRecords.length === 0) return;
     setIsAnalyzing(true);
     setAiAnalysis(null);
+    setAiError(null);
     try {
       const res = await fetch('/api/gemini/analyze-weakness', {
         method: 'POST',
@@ -37,9 +39,12 @@ export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({ vakType, wea
       const data = await res.json();
       if (data.success && data.analysis) {
         setAiAnalysis(data.analysis);
+      } else {
+        setAiError(data.error || 'Unknown error occurred.');
       }
-    } catch (e) {
+    } catch (e: any) {
       console.error(e);
+      setAiError(e.message || 'Network error occurred.');
     } finally {
       setIsAnalyzing(false);
     }
@@ -92,6 +97,12 @@ export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({ vakType, wea
         </div>
       )}
 
+
+      {aiError && (
+        <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-medium">
+          ⚠️ {aiError}
+        </div>
+      )}
       {aiAnalysis && (
         <div className="mb-6 p-5 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 border border-orange-200 shadow-sm space-y-4">
           <h3 className="text-lg font-bold text-orange-900 flex items-center gap-2">

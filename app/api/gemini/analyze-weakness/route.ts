@@ -11,13 +11,12 @@ export async function POST(req: Request) {
 
     const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
     if (!apiKey) {
-      return NextResponse.json({ success: false, error: 'GEMINI_API_KEY not configured' }, { status: 500 });
+      return NextResponse.json({ success: false, error: 'GEMINI_API_KEY not configured' });
     }
 
     const isVi = lang === 'vi';
     const outputLang = isVi ? 'ベトナム語（vi）' : '日本語（ja）';
 
-    // Build a summary of weakness records for the prompt
     const recordsSummary = weaknessRecords.map((r: any, i: number) => (
       `[${i + 1}] トピック: ${r.topic} | カテゴリ: ${r.categoryName} | 誤答: 「${r.incorrectAnswer}」→ 正答: 「${r.correctAnswer}」| エラー種別: ${r.errorType}`
     )).join('\n');
@@ -46,31 +45,38 @@ ${recordsSummary}
   ],
   "priorityTopics": ["最優先で復習すべきトピック1", "トピック2", "トピック3"],
   "vakStudyPlan": {
-    "title": "${vakLabel}タイプ向け学習プランのタイトル",
+    "title": "学習プランのタイトル",
     "steps": [
-      { "step": 1, "action": "具体的な学習アクション（VAKタイプに合わせた方法）", "duration": "目安時間" },
-      { "step": 2, "action": "...", "duration": "..." },
-      { "step": 3, "action": "...", "duration": "..." }
+      { "step": 1, "action": "アクション", "duration": "目安時間" }
     ]
   },
-  "encouragement": "学習者への励ましのメッセージ（1文、優しいトーンで）"
+  "encouragement": "励ましのメッセージ"
 }`;
 
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({
       model: 'gemini-1.5-flash',
-      generationConfig: { responseMimeType: 'application/json' },
     });
 
     const result = await model.generateContent(prompt);
     const responseText = result.response.text();
-    const clean = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
-    const analysis = JSON.parse(clean);
+    let clean = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
+    
+    // Attempt to parse JSON
+    let analysis;
+    try {
+      analysis = JSON.parse(clean);
+    } catch (parseError: any) {
+      console.error("JSON Parse Error:", parseError, "Response Text:", clean);
+      return NextResponse.json({ success: false, error: "AIが正しいJSON形式を返しませんでした。もう一度お試しください。", details: clean });
+    }
 
     return NextResponse.json({ success: true, analysis });
 
   } catch (err: unknown) {
+    console.error("Analyze Weakness Error:", err);
     const message = err instanceof Error ? err.message : 'Unknown error';
-    return NextResponse.json({ success: false, error: message }, { status: 500 });
+    // Return 200 with success: false so frontend can read it instead of crashing with 500
+    return NextResponse.json({ success: false, error: message, details: String(err) });
   }
 }
