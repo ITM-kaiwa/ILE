@@ -6,6 +6,9 @@ import { JlptLevel, QuestionCategory } from '@/lib/types';
 import { ALL_JLPT_QUESTIONS } from '@/data/jlpt-questions';
 import { RefreshCw, CheckCircle, XCircle } from 'lucide-react';
 import { AiVisualAdvice } from './AiVisualAdvice';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
 
 interface ReviewDashboardProps {
   vakType: VakType;
