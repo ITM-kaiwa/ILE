@@ -7,6 +7,7 @@ import { Language, getTranslation } from '@/lib/i18n';
 import { supabase } from '@/lib/supabase';
 import { BookOpen, CheckCircle, XCircle, RefreshCw , ChevronDown, ChevronUp } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import { AiVisualAdvice } from './AiVisualAdvice';
 import remarkGfm from 'remark-gfm';
 
 interface JlptPracticeProps {
@@ -236,9 +237,7 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
                 <div className="font-bold text-amber-900">
                   <span>&#128161; {vakType.toUpperCase()} {isVi ? 'Lời khuyến ôn tập' : 'アドバイス'}:</span>
                 </div>
-                <p className="text-slate-700 leading-relaxed font-medium">
-                  {(currentQ.vakRecommendation as Record<string, string>)[vakType]}
-                </p>
+                <AiVisualAdvice adviceText={(currentQ.vakRecommendation as Record<string, string>)[vakType]} vakType={vakType} lang={lang} />
               </div>
             )}
             <button

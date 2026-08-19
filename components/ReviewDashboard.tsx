@@ -216,8 +216,9 @@ export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType, lang 
                   </p>
                 </div>
                 <div className="p-3 rounded-lg bg-[#FFFDF9] border border-emerald-200 text-xs text-emerald-900 mt-2">
-                  <strong>💡 {vakType.toUpperCase()} {isVi ? 'Đề xuất ôn tập' : 'アドバイス'}:</strong> {isVi ? getVakRecVi(currentQ.vakRecommendation[vakType]) : currentQ.vakRecommendation[vakType]}
-                </div>
+                  <strong>💡 {vakType.toUpperCase()} {isVi ? 'Đề xuất ôn tập' : 'アドバイス'}:</strong>
+                    <AiVisualAdvice adviceText={currentQ.vakRecommendation[vakType]} vakType={vakType} lang={lang} />
+                  </div>
               </div>
 
               <button

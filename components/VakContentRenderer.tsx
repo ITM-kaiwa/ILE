@@ -30,23 +30,7 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
   const [contentSource, setContentSource] = useState<'mock' | 'ai' | null>(null);
   const { addLog } = useLog();
 
-  // Auto-generate default lesson on first mount
-  useEffect(() => {
-    const defaultTopic = lang === 'vi' 
-      ? 'Ngữ pháp JLPT N5 cơ bản: です / ます' 
-      : 'JLPT N5 基本文法：〜です / 〜ます';
-    handleGenerate(defaultTopic);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // Auto-regenerate when VAK type changes (use current topic or default)
-  useEffect(() => {
-    if (lesson.vakType !== vakType && !isGenerating) {
-      const activeTopic = customTopicInput.trim() || topic;
-      handleGenerate(activeTopic);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [vakType]);
+  
 
 
   const handleGenerate = async (selectedTopic: string) => {

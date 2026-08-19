@@ -121,13 +121,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, []);
 
   const handleBellClick = () => {
-    if (onRequestReview) {
-      setShowNotifPanel(false);
-      onRequestReview();
-    } else {
-      setShowNotifPanel((prev) => !prev);
-      if (!showNotifPanel) fetchNotifications();
-    }
+    setShowNotifPanel((prev) => !prev);
+    if (!showNotifPanel) fetchNotifications();
   };
 
   const markAllAsRead = async () => {
