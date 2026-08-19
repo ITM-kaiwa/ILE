@@ -35,7 +35,8 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
   const [goal, setGoal] = useState(isVi ? 'Thi đỗ JLPT N5 sau 1 tháng' : '1ヶ月後のJLPT N5合格');
   const [options, setOptions] = useState({
     days: 'weekdays', // 'weekdays' | 'all'
-    duration: 'week', // 'day' | 'week' | 'month'
+    durationValue: 1, // 1 | 2 | 3
+    durationUnit: 'week', // 'day' | 'week' | 'month'
     timeSlots: [] as string[]
   });
   const [timeDropdownOpen, setTimeDropdownOpen] = useState(false);
@@ -200,21 +201,27 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
               </div>
               <div>
                 <label className="block text-xs font-semibold text-slate-600 mb-2">{isVi ? 'Thời lượng' : '期間'}</label>
-                <div className="flex space-x-3">
-                  <label className="flex items-center space-x-2 text-sm cursor-pointer">
-                    <input type="radio" checked={options.duration === 'day'} onChange={() => setOptions({...options, duration: 'day'})} className="accent-orange-600" />
-                    <span>{isVi ? '1 Ngày' : '1日'}</span>
-                  </label>
-                  <label className="flex items-center space-x-2 text-sm cursor-pointer">
-                    <input type="radio" checked={options.duration === 'week'} onChange={() => setOptions({...options, duration: 'week'})} className="accent-orange-600" />
-                    <span>{isVi ? '1 Tuần' : '1週間'}</span>
-                  </label>
-                  <label className="flex items-center space-x-2 text-sm cursor-pointer">
-                    <input type="radio" checked={options.duration === 'month'} onChange={() => setOptions({...options, duration: 'month'})} className="accent-orange-600" />
-                    <span>{isVi ? '1 Tháng' : '1ヶ月'}</span>
-                  </label>
+                  <div className="flex space-x-2">
+                    <select 
+                      value={options.durationValue} 
+                      onChange={(e) => setOptions({...options, durationValue: parseInt(e.target.value)})}
+                      className="px-3 py-1.5 rounded-lg bg-[#FAF7F2] border border-slate-200 text-sm focus:outline-none focus:border-orange-500 text-slate-700"
+                    >
+                      <option value={1}>1</option>
+                      <option value={2}>2</option>
+                      <option value={3}>3</option>
+                    </select>
+                    <select 
+                      value={options.durationUnit} 
+                      onChange={(e) => setOptions({...options, durationUnit: e.target.value})}
+                      className="px-3 py-1.5 rounded-lg bg-[#FAF7F2] border border-slate-200 text-sm focus:outline-none focus:border-orange-500 text-slate-700"
+                    >
+                      <option value="day">{isVi ? 'Ngày' : '日'}</option>
+                      <option value="week">{isVi ? 'Tuần' : '週間'}</option>
+                      <option value="month">{isVi ? 'Tháng' : 'ヶ月'}</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
 
               <div className="md:col-span-2 relative">
                 <label className="block text-xs font-semibold text-slate-600 mb-2">{isVi ? 'Khung giờ' : '時間帯 (複数選択可)'}</label>

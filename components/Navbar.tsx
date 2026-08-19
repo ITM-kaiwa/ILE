@@ -370,27 +370,20 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                 {/* VAK Mode Selector */}
                   <div className="flex items-center bg-[#FAF7F2] p-1 rounded-lg border border-amber-300 shadow-inner">
-                    <span className="text-[10px] font-bold text-amber-800 ml-1 mr-2 hidden sm:inline">VAK:</span>
-                    <div className="flex space-x-1">
-                      <button 
-                        onClick={() => onSetVak ? onSetVak('visual') : onVakCycle()}
-                        className={`px-2 py-1 text-[10px] sm:text-xs font-bold rounded-md transition ${
-                          (vakType || currentVak) === 'visual' ? 'bg-blue-600 text-white shadow-sm' : 'text-blue-600 hover:bg-blue-100'
+                                          <span className="text-[10px] font-bold text-amber-800 ml-1 mr-2 hidden sm:inline">VAK:</span>
+                      <select
+                        value={vakType || currentVak}
+                        onChange={(e) => onSetVak ? onSetVak(e.target.value as any) : null}
+                        className={`px-2 py-1 text-xs font-bold rounded-md transition outline-none cursor-pointer border-none shadow-sm ${
+                          (vakType || currentVak) === 'visual' ? 'bg-blue-600 text-white' :
+                          (vakType || currentVak) === 'auditory' ? 'bg-emerald-600 text-white' :
+                          'bg-orange-600 text-white font-sans'
                         }`}
-                      >Visual</button>
-                      <button 
-                        onClick={() => onSetVak ? onSetVak('auditory') : onVakCycle()}
-                        className={`px-2 py-1 text-[10px] sm:text-xs font-bold rounded-md transition ${
-                          (vakType || currentVak) === 'auditory' ? 'bg-emerald-600 text-white shadow-sm' : 'text-emerald-600 hover:bg-emerald-100'
-                        }`}
-                      >Audio</button>
-                      <button 
-                        onClick={() => onSetVak ? onSetVak('kinesthetic') : onVakCycle()}
-                        className={`px-2 py-1 text-[10px] sm:text-xs font-bold rounded-md transition ${
-                          (vakType || currentVak) === 'kinesthetic' ? 'bg-orange-600 text-white shadow-sm' : 'text-orange-600 hover:bg-orange-100'
-                        }`}
-                      >Kine...</button>
-                    </div>
+                      >
+                        <option value="visual" className="bg-white text-blue-600 font-bold">Visual</option>
+                        <option value="auditory" className="bg-white text-emerald-600 font-bold">Auditory</option>
+                        <option value="kinesthetic" className="bg-white text-orange-600 font-bold font-sans">Kinesthetic</option>
+                      </select>
                   </div>
 
                 {user ? (

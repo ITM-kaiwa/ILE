@@ -42,7 +42,7 @@ Current Date: ${new Date().toISOString().split('T')[0]}.
 
 The user has selected the following schedule options:
 - Days: ${options.days === 'weekdays' ? 'Weekdays only (Mon-Fri)' : 'All days (Mon-Sun)'}
-- Duration: ${options.duration === 'day' ? '1 day' : options.duration === 'week' ? '1 week (7 days)' : '1 month (30 days)'}
+- Duration: ${options.durationValue} ${options.durationUnit}(s)
 - Preferred Time Slots: ${options.timeSlots && options.timeSlots.length > 0 ? options.timeSlots.join(', ') : 'Any time'}
 
 Instructions:
