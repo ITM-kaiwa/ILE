@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Language } from '@/lib/i18n';
-import { ExternalLink, MessageCircle, HelpCircle, School, Smartphone, Globe, BookOpen, Tv, Home, Hash, CalendarDays, ListOrdered } from 'lucide-react';
+import { ExternalLink, MessageCircle, HelpCircle, School, Smartphone, Globe, BookOpen, Tv, Home, Hash, CalendarDays, ListOrdered, Puzzle } from 'lucide-react';
 
 interface ExternalIntegrationsProps {
   lang?: Language;
@@ -56,7 +56,14 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
       badge: isVi ? 'Trợ từ đếm' : '助数詞',
       color: 'from-fuchsia-500 to-purple-600',
     },
-    { isEmpty: true },
+    {
+      name: isVi ? 'Ứng dụng Luyện Trợ từ' : '助詞練習アプリ',
+      desc: isVi ? 'Luyện tập cách sử dụng trợ từ tiếng Nhật (は, が, を, に, v.v.)' : '日本語の助詞（は、が、を、に等）の使い方を練習',
+      url: 'https://itm-kaiwa.github.io/particle/',
+      icon: Puzzle,
+      badge: isVi ? 'Trợ từ' : '助詞',
+      color: 'from-violet-500 to-purple-600',
+    },
     {
       name: isVi ? 'Ứng dụng Web ITM E-School' : 'ITM E-School Webアプリ',
       desc: isVi ? 'Nền tảng E-Learning chính thức của ITM' : 'ITM公式E-Learningプラットフォーム',
