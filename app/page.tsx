@@ -117,8 +117,21 @@ export default function Home() {
     }
   };
 
-  const handleRecordWeakness = (newRecord: WeaknessRecord) => {
+  const handleRecordWeakness = async (newRecord: WeaknessRecord) => {
     setWeaknessRecords((prev) => [newRecord, ...prev]);
+    
+    if (user) {
+      await supabase.from('weakness_records').insert({
+        user_id: user.id,
+        topic: newRecord.topic,
+        category: newRecord.category,
+        category_name: newRecord.categoryName,
+        incorrect_answer: newRecord.incorrectAnswer,
+        correct_answer: newRecord.correctAnswer,
+        error_type: newRecord.errorType,
+        vak_recommendation: newRecord.vakRecommendation,
+      });
+    }
   };
 
   const handleVakCycle = () => {
