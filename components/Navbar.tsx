@@ -27,6 +27,7 @@ interface NavbarProps {
   isHybrid?: boolean;
   hybridLabel?: string;
   onVakCycle: () => void;
+    onSetVak?: (vak: VakType) => void;
   onOpenDiagnostic: (mode: 'quick' | 'detailed') => void;
   onOpenLog: () => void;
   onRequestReview?: () => void;
@@ -40,6 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   isHybrid,
   hybridLabel,
   onVakCycle,
+  onSetVak,
   onOpenDiagnostic,
   onOpenLog,
   onRequestReview,
@@ -168,7 +170,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   const getVakBadge = () => {
-    switch (vakType) {
+    const effectiveVak = vakType || currentVak;
+    switch (effectiveVak) {
       case 'visual':
         return <button onClick={onVakCycle} className="px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-semibold rounded-full bg-blue-600 text-white shadow-sm truncate max-w-[90px] sm:max-w-none hover:bg-blue-700 hover:scale-105 transition cursor-pointer">{t.visualLabel}</button>;
       case 'auditory':
@@ -370,7 +373,30 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </select>
                 </div>
 
-                {getVakBadge()}
+                {/* VAK Mode Selector */}
+                  <div className="flex items-center bg-[#FAF7F2] p-1 rounded-lg border border-amber-300 shadow-inner">
+                    <span className="text-[10px] font-bold text-amber-800 ml-1 mr-2 hidden sm:inline">VAK:</span>
+                    <div className="flex space-x-1">
+                      <button 
+                        onClick={() => onSetVak ? onSetVak('visual') : onVakCycle()}
+                        className={`px-2 py-1 text-[10px] sm:text-xs font-bold rounded-md transition ${
+                          (vakType || currentVak) === 'visual' ? 'bg-blue-600 text-white shadow-sm' : 'text-blue-600 hover:bg-blue-100'
+                        }`}
+                      >V</button>
+                      <button 
+                        onClick={() => onSetVak ? onSetVak('auditory') : onVakCycle()}
+                        className={`px-2 py-1 text-[10px] sm:text-xs font-bold rounded-md transition ${
+                          (vakType || currentVak) === 'auditory' ? 'bg-emerald-600 text-white shadow-sm' : 'text-emerald-600 hover:bg-emerald-100'
+                        }`}
+                      >A</button>
+                      <button 
+                        onClick={() => onSetVak ? onSetVak('kinesthetic') : onVakCycle()}
+                        className={`px-2 py-1 text-[10px] sm:text-xs font-bold rounded-md transition ${
+                          (vakType || currentVak) === 'kinesthetic' ? 'bg-orange-600 text-white shadow-sm' : 'text-orange-600 hover:bg-orange-100'
+                        }`}
+                      >K</button>
+                    </div>
+                  </div>
 
                 {user ? (
                   <button

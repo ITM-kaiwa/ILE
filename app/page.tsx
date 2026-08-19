@@ -166,6 +166,7 @@ export default function Home() {
         onOpenDiagnostic={(mode) => setDiagnosticModal({ isOpen: true, mode })}
         onOpenLog={() => setIsLogModalOpen(true)}
         onVakCycle={handleVakCycle}
+          onSetVak={(v) => setCurrentVak(v)}
         onRequestReview={() => {
             setActiveTab('tool');
             setTimeout(() => {
