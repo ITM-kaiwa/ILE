@@ -242,8 +242,8 @@ export default function Home() {
                   : 'text-blue-700 bg-transparent hover:bg-slate-100 hover:underline border-t-transparent border-l-transparent border-r-transparent font-medium'
               }`}
             >
-              <Sparkles className="w-4 h-4" />
-              <span>{lang === 'vi' ? 'Chữ Kana' : 'かな'}</span>
+              <IconA className="w-4 h-4" />
+                <span>{lang === \'vi\' ? \'Chữ Kana\' : \'かな\'}</span>
             </button>
             <button
               onClick={() => setActiveTab('vocab')}
