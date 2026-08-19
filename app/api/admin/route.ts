@@ -44,14 +44,26 @@ export async function GET(request: Request) {
       .select('id, user_id, content_type');
 
     if (historyError) throw historyError;
+    
+    // Fetch weakness records for all users
+    const { data: weaknessRecords, error: weaknessError } = await supabaseAdmin
+      .from('weakness_records')
+      .select('user_id, category_name');
+      
+    if (weaknessError) throw weaknessError;
 
     // Aggregate data
     const aggregatedUsers = users.map(user => {
       const userHistory = history.filter(h => h.user_id === user.id);
+      
+      // Get unique weakness categories for this user
+      const userWeaknesses = weaknessRecords.filter(w => w.user_id === user.id);
+      const uniqueWeaknesses = Array.from(new Set(userWeaknesses.map(w => w.category_name)));
+      
       return {
         ...user,
         historyCount: userHistory.length,
-        weaknesses: [] // Weaknesses are currently not stored in a database table in this project
+        weaknesses: uniqueWeaknesses
       };
     });
 
