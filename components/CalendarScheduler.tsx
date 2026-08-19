@@ -40,7 +40,12 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
   });
   const [timeDropdownOpen, setTimeDropdownOpen] = useState(false);
 
-  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
+  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([{
+    role: 'assistant',
+    content: lang === 'vi' 
+      ? 'Xin chào! Vui lòng nhập điều kiện lịch học của bạn (ví dụ: "chỉ học cuối tuần", "mỗi ngày 30 phút buổi sáng"). Tôi sẽ tạo lịch trình tối ưu cho bạn.'
+      : 'こんにちは！学習スケジュールの希望条件を入力してください（例：「週末だけ」「毎朝30分」など）。あなたに最適なスケジュールを作成します。'
+  }]);
   const [schedule, setSchedule] = useState<ScheduleEvent[]>([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -56,13 +61,7 @@ export const CalendarScheduler: React.FC<CalendarSchedulerProps> = ({ vakType, l
     }
   }, [chatHistory]);
 
-  useEffect(() => {
-    // Auto-start the conversation when first expanded
-    if (isExpanded && !hasStarted && chatHistory.length === 0) {
-      setHasStarted(true);
-      generateSchedule();
-    }
-  }, [isExpanded, hasStarted]);
+
 
   const generateSchedule = async (userMsg?: string) => {
     setIsGenerating(true); addLog('Generating AI learning schedule...', 'INFO'); addLog('Generating AI learning schedule...', 'INFO');
