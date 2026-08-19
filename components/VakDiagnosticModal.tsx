@@ -12,6 +12,7 @@ import {
 } from '@/data/vak-questions';
 import { X, ArrowRight, Brain, Award } from 'lucide-react';
 import { VakExplanation } from './VakExplanation';
+import { Language } from '@/lib/i18n';
 
 interface VakDiagnosticModalProps {
   isOpen: boolean;
@@ -19,6 +20,7 @@ interface VakDiagnosticModalProps {
   onClose: () => void;
   onComplete: (result: VakResult) => void;
   isLoggedIn?: boolean;
+  lang?: Language;
 }
 
 export const VakDiagnosticModal: React.FC<VakDiagnosticModalProps> = ({
@@ -27,6 +29,7 @@ export const VakDiagnosticModal: React.FC<VakDiagnosticModalProps> = ({
   onClose,
   onComplete,
   isLoggedIn = false,
+  lang = 'ja',
 }) => {
   const [questions, setQuestions] = useState<VakQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);

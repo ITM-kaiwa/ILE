@@ -49,6 +49,12 @@ const smoothScrollTo = (targetId: string, duration: number) => {
   requestAnimationFrame(animation);
 };
 
+const IconA = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <text x="12" y="17" fontSize="16" fontFamily="sans-serif" textAnchor="middle" fill="currentColor" stroke="none" fontWeight="bold">あ</text>
+  </svg>
+);
+
 export default function Home() {
   const [lang, setLang] = useState<Language>('vi');
   const t = getTranslation(lang);
@@ -370,8 +376,16 @@ export default function Home() {
             )}
 
             {activeTab === 'tool' && (
-              <div id="external-tools-section">
+              <div id="external-tools-section" className="space-y-8">
                 <ExternalIntegrations lang={lang} mode="tool" />
+                {user && (
+                  <div id="ebbinghaus" className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <CalendarScheduler vakType={currentVak} lang={lang} />
+                    <div id="review-dashboard-anchor">
+                      <ReviewDashboard vakType={currentVak} lang={lang} />
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 
@@ -383,13 +397,7 @@ export default function Home() {
           </div>
         )}
 
-        {/* Section 3: Google Calendar & SRS Review Manager */}
-        {user && (
-        <div id="ebbinghaus" className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <CalendarScheduler vakType={currentVak} lang={lang} />
-          <ReviewManager lang={lang} />
-        </div>
-        )}
+
       </main>
 
       {/* Diagnostic Modal */}

@@ -29,6 +29,7 @@ interface NavbarProps {
   onVakCycle: () => void;
   onOpenDiagnostic: (mode: 'quick' | 'detailed') => void;
   onOpenLog: () => void;
+  onRequestReview?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -41,6 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onVakCycle,
   onOpenDiagnostic,
   onOpenLog,
+  onRequestReview,
 }) => {
   // currentVak/isHybrid/hybridLabel kept for forward compatibility
   void currentVak; void isHybrid; void hybridLabel;
@@ -117,8 +119,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, []);
 
   const handleBellClick = () => {
-    setShowNotifPanel((prev) => !prev);
-    if (!showNotifPanel) fetchNotifications();
+    if (onRequestReview) {
+      setShowNotifPanel(false);
+      onRequestReview();
+    } else {
+      setShowNotifPanel((prev) => !prev);
+      if (!showNotifPanel) fetchNotifications();
+    }
   };
 
   const markAllAsRead = async () => {
@@ -402,7 +409,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </header>
 
-      <OnboardingGuideModal isOpen={isGuideOpen} onClose={() => setIsGuideOpen(false)} />
+      <OnboardingGuideModal isOpen={isGuideOpen} onClose={() => setIsGuideOpen(false)} lang={lang} />
     </>
   );
 };

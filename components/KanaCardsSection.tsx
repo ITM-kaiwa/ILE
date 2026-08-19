@@ -347,7 +347,7 @@ export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lan
                       }`}
                     >
                       {isAutoPlay ? <Pause className="w-3 h-3 sm:w-4 sm:h-4" /> : <Play className="w-3 h-3 sm:w-4 sm:h-4" />}
-                      自動再生
+                      {isVi ? 'Tự động phát' : '自動再生'}
                     </button>
                     <span className="text-xs font-bold text-orange-700 uppercase tracking-wider">
                     {isFlipped

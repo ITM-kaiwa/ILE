@@ -10,6 +10,8 @@ import { processReview } from '@/lib/srs';
 import { BookOpen, Eye, Volume2, Hand, ChevronDown, CheckCircle, XCircle, HelpCircle, Download } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
+import { addRuby } from '@/lib/rubyHelper';
 
 interface GrammarCardsSectionProps {
   vakType: VakType;
@@ -328,8 +330,20 @@ export const GrammarCardsSection: React.FC<GrammarCardsSectionProps> = ({ vakTyp
                     </div>
                   </div>
                   <div className="markdown-body prose prose-slate max-w-none text-sm text-slate-700 leading-relaxed bg-[#FAF7F2] p-4 rounded-lg border border-amber-200 overflow-x-auto">
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                      {(activeCard?.vakContent?.[vakType] || '').replace('ハイライト', `**${extractHighlight(activeCard?.structure || '')}**`)}
+                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                      {(() => {
+                        let text = (activeCard?.vakContent?.[vakType] || '').replace('ハイライト', `**${extractHighlight(activeCard?.structure || '')}**`);
+                        if (isVi) {
+                          text = text
+                            .replace('| 構造 | 助詞・接続 | 意味 |', '| Cấu trúc | Trợ từ/Kết nối | Ý nghĩa |')
+                            .replace('視覚イメージ解説', 'Giải thích hình ảnh trực quan')
+                            .replace('聴覚音読スクリプト', 'Script đọc to qua thính giác')
+                            .replace('身体感覚タスク', 'Nhiệm vụ cảm giác vận động')
+                            .replace('公式図解カード', 'Thẻ hình ảnh minh họa chính thức');
+                        }
+                        text = addRuby(text);
+                        return text;
+                      })()}
                     </ReactMarkdown>
                   </div>
                 </div>

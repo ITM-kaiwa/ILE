@@ -3,12 +3,16 @@
 import React from 'react';
 import { X, BookOpen, Brain, TrendingUp, CheckCircle, HelpCircle, Globe } from 'lucide-react';
 
+import { Language } from '@/lib/i18n';
+
 interface OnboardingGuideModalProps {
+  lang?: Language;
   isOpen: boolean;
   onClose: () => void;
 }
 
-export const OnboardingGuideModal: React.FC<OnboardingGuideModalProps> = ({ isOpen, onClose }) => {
+export const OnboardingGuideModal: React.FC<OnboardingGuideModalProps> = ({ isOpen, onClose, lang = 'ja' }) => {
+  const isVi = lang === 'vi';
   const [showVakInfo, setShowVakInfo] = React.useState(false);
   const [showRoadmap, setShowRoadmap] = React.useState(false);
 
@@ -26,7 +30,7 @@ export const OnboardingGuideModal: React.FC<OnboardingGuideModalProps> = ({ isOp
       >
         <div className="sticky top-0 bg-white border-b border-slate-100 p-4 flex items-center justify-between z-10 rounded-t-2xl">
           <h2 className="text-xl font-bold text-slate-800 flex items-center">
-            <span className="text-2xl mr-2">🔰</span> はじめての方へ / Hướng dẫn cho người mới
+            <span className="text-2xl mr-2">🔰</span> {isVi ? 'Hướng dẫn cho người mới' : 'はじめての方へ'}
           </h2>
           <button 
             onClick={onClose}
@@ -174,10 +178,10 @@ export const OnboardingGuideModal: React.FC<OnboardingGuideModalProps> = ({ isOp
             </button>
             <h3 className="font-bold text-lg text-slate-800 mb-4 border-b pb-2 border-slate-100 flex items-center">
               <Brain className="w-5 h-5 text-orange-500 mr-2" />
-              VAK（学習特性）とは？
+              {isVi ? 'VAK (Đặc điểm học tập) là gì?' : 'VAK（学習特性）とは？'}
             </h3>
             <div className="space-y-4 text-sm text-slate-700 leading-relaxed">
-              <p>人はそれぞれ、情報を処理する際に得意な「感覚（VAK）」を持っています。</p>
+              <p>{isVi ? 'Mỗi người đều có một "giác quan (VAK)" ưu thế khi xử lý thông tin.' : '人はそれぞれ、情報を処理する際に得意な「感覚（VAK）」を持っています。'}</p>
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center mr-2 shrink-0">V</span>
@@ -193,7 +197,7 @@ export const OnboardingGuideModal: React.FC<OnboardingGuideModalProps> = ({ isOp
                 </li>
               </ul>
               <p className="pt-2 border-t border-slate-100 text-xs text-slate-500">
-                あなたに合ったアプローチで学習を進めることで、効率的に日本語を習得できます。
+                {isVi ? 'Bằng cách áp dụng phương pháp học phù hợp với bản thân, bạn có thể tiếp thu tiếng Nhật một cách hiệu quả nhất.' : 'あなたに合ったアプローチで学習を進めることで、効率的に日本語を習得できます。'}
               </p>
             </div>
           </div>
