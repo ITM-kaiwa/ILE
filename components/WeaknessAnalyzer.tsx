@@ -26,6 +26,7 @@ export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({ vakType, wea
   const [aiError, setAiError] = useState<string | null>(null);
   const [autoAnalyzed, setAutoAnalyzed] = useState(false);
   const [autoAnalysisToast, setAutoAnalysisToast] = useState(false);
+  const [revealedAnswers, setRevealedAnswers] = useState<Record<number, boolean>>({});
   const AUTO_TRIGGER_THRESHOLD = 3; // auto-analyze after this many mistakes
 
   // Auto-trigger analysis when weakness records reach threshold
@@ -50,6 +51,7 @@ export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({ vakType, wea
     setIsAnalyzing(true);
     setAiAnalysis(null);
     setAiError(null);
+    setRevealedAnswers({});
     try {
       const res = await fetch('/api/gemini/analyze-weakness', {
         method: 'POST',
