@@ -59,7 +59,7 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
     {
       name: isVi ? 'Ứng dụng Luyện Trợ từ' : '助詞練習アプリ',
       desc: isVi ? 'Luyện tập cách sử dụng trợ từ tiếng Nhật (は, が, を, に, v.v.)' : '日本語の助詞（は、が、を、に等）の使い方を練習',
-      url: 'https://itm-kaiwa.github.io/particle/',
+      url: 'https://particle-brown.vercel.app/',
       icon: Puzzle,
       badge: isVi ? 'Trợ từ' : '助詞',
       color: 'from-violet-500 to-purple-600',
