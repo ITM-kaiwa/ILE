@@ -17,9 +17,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_particle",
     "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -38,9 +38,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_particle",
     "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -59,9 +59,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_particle",
     "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -80,9 +80,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_particle",
     "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -101,9 +101,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_particle",
     "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -122,9 +122,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_particle",
     "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -143,9 +143,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_particle",
     "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -164,9 +164,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_particle",
     "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -185,9 +185,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_particle",
     "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -206,9 +206,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_particle",
     "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -227,9 +227,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_particle",
     "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -248,9 +248,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_particle",
     "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -269,9 +269,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_particle",
     "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -290,9 +290,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_particle",
     "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -311,9 +311,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_particle",
     "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -332,9 +332,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_particle",
     "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -353,9 +353,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_particle",
     "categoryName": "助詞",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -374,9 +374,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_conjugation",
     "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -395,9 +395,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_conjugation",
     "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -416,9 +416,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_conjugation",
     "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -437,9 +437,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_conjugation",
     "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -458,9 +458,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_conjugation",
     "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -479,9 +479,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_conjugation",
     "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -500,9 +500,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_conjugation",
     "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -521,9 +521,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_conjugation",
     "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -542,9 +542,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_conjugation",
     "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -563,9 +563,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_conjugation",
     "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -584,9 +584,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_conjugation",
     "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -605,9 +605,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_conjugation",
     "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -626,9 +626,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_conjugation",
     "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -647,9 +647,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_conjugation",
     "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -668,9 +668,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_conjugation",
     "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -689,9 +689,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_conjugation",
     "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -710,9 +710,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_conjugation",
     "categoryName": "動詞の活用",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -731,9 +731,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_sentence",
     "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -752,9 +752,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_sentence",
     "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -773,9 +773,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_sentence",
     "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -794,9 +794,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_sentence",
     "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -815,9 +815,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_sentence",
     "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -836,9 +836,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_sentence",
     "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -857,9 +857,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_sentence",
     "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -878,9 +878,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_sentence",
     "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -899,9 +899,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_sentence",
     "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -920,9 +920,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_sentence",
     "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -941,9 +941,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_sentence",
     "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -962,9 +962,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_sentence",
     "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -983,9 +983,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_sentence",
     "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1004,9 +1004,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_sentence",
     "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1025,9 +1025,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_sentence",
     "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1046,9 +1046,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_sentence",
     "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1067,9 +1067,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "grammar_sentence",
     "categoryName": "文型",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1088,9 +1088,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_daily",
     "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1109,9 +1109,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_daily",
     "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1130,9 +1130,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_daily",
     "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1151,9 +1151,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_daily",
     "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1172,9 +1172,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_daily",
     "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1193,9 +1193,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_daily",
     "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1214,9 +1214,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_daily",
     "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1235,9 +1235,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_daily",
     "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1256,9 +1256,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_daily",
     "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1277,9 +1277,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_daily",
     "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1298,9 +1298,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_daily",
     "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1319,9 +1319,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_daily",
     "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1340,9 +1340,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_daily",
     "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1361,9 +1361,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_daily",
     "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1382,9 +1382,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_daily",
     "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1403,9 +1403,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_daily",
     "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1424,9 +1424,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_daily",
     "categoryName": "日常語彙",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1445,9 +1445,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_time",
     "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1466,9 +1466,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_time",
     "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1487,9 +1487,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_time",
     "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1508,9 +1508,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_time",
     "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1529,9 +1529,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_time",
     "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1550,9 +1550,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_time",
     "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1571,9 +1571,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_time",
     "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1592,9 +1592,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_time",
     "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1613,9 +1613,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_time",
     "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1634,9 +1634,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_time",
     "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1655,9 +1655,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_time",
     "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1676,9 +1676,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_time",
     "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1697,9 +1697,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_time",
     "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1718,9 +1718,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_time",
     "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1739,9 +1739,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_time",
     "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1760,9 +1760,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_time",
     "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1781,9 +1781,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "vocabulary_time",
     "categoryName": "時間表現",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1802,9 +1802,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "kanji_reading",
     "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1823,9 +1823,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "kanji_reading",
     "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1844,9 +1844,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "kanji_reading",
     "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1865,9 +1865,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "kanji_reading",
     "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1886,9 +1886,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "kanji_reading",
     "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1907,9 +1907,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "kanji_reading",
     "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1928,9 +1928,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "kanji_reading",
     "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1949,9 +1949,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "kanji_reading",
     "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1970,9 +1970,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "kanji_reading",
     "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -1991,9 +1991,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "kanji_reading",
     "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -2012,9 +2012,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "kanji_reading",
     "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -2033,9 +2033,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "kanji_reading",
     "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -2054,9 +2054,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "kanji_reading",
     "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -2075,9 +2075,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "kanji_reading",
     "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   },
   {
@@ -2096,9 +2096,9 @@ export const JLPT_N5_QUESTIONS: JlptQuestion[] = [
     "category": "kanji_reading",
     "categoryName": "漢字読み",
     "vakRecommendation": {
-      "visual": "正解のパターンを色分けして視覚的に覚えましょう。",
-      "auditory": "正解の文全体を声に出してリズムで覚えましょう。",
-      "kinesthetic": "指差し確認やジェスチャーを交えながら実際に発音してみましょう。"
+      "visual": "Hãy nhớ mô hình đáp án đúng bằng cách sử dụng màu sắc để học trực quan.",
+      "auditory": "Hãy đọc to toàn bộ câu có đáp án đúng để ghi nhớ bằng nhịp điệu.",
+      "kinesthetic": "Hãy thử phát âm thực tế trong khi kết hợp với cử chỉ và chỉ tay."
     }
   }
 ];

@@ -75,7 +75,7 @@ export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({ vakType, wea
   const { addLog } = useLog();
 
   const t = getTranslation(lang);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
   const [hasBeenExpanded, setHasBeenExpanded] = useState(false);
   const isVi = lang === 'vi';
 

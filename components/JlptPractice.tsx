@@ -26,7 +26,7 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
   const [isAiLoading, setIsAiLoading] = useState(false);
 
   const t = getTranslation(lang);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
   const [hasBeenExpanded, setHasBeenExpanded] = useState(false);
   const isVi = lang === 'vi';
 
@@ -212,40 +212,36 @@ export const JlptPractice: React.FC<JlptPracticeProps> = ({ onRecordWeakness, la
           </button>
         ) : (
           <div className="space-y-3">
-            <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 space-y-2">
-                <h4 className="text-xs font-bold text-emerald-900">💡 {isVi ? 'Giải thích & Lời khuyên VAK:' : '解説 & VAK アドバイス:'}</h4>
-                <div className="text-xs text-emerald-950 markdown-body prose prose-emerald prose-sm max-w-none overflow-x-auto bg-[#FAF7F2] p-3 rounded border border-emerald-200/50">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{currentQ.explanation || ''}</ReactMarkdown>
+            <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 space-y-3">
+                <h4 className="text-xs font-bold text-emerald-900">💡 Giải thích ngữ pháp (AI)</h4>
+                
+                <div className="p-3 bg-white/60 rounded-lg border border-emerald-100">
+                  <h5 className="text-[11px] font-bold text-emerald-800 mb-2 flex items-center">
+                    <RefreshCw className={`w-3 h-3 mr-1 ${isAiLoading ? 'animate-spin' : ''}`} />
+                    AI Grammar Explanation
+                  </h5>
+                  <div className="text-xs text-emerald-900 leading-relaxed markdown-body prose prose-emerald prose-sm max-w-none overflow-x-auto">
+                    {isAiLoading ? 'Đang phân tích...' : (
+                      <ReactMarkdown remarkPlugins={[remarkGfm]}>{aiExplanationVi || ''}</ReactMarkdown>
+                    )}
+                  </div>
                 </div>
-                {isVi && (
-                  <div className="mt-3 p-3 bg-white/60 rounded-lg border border-emerald-100">
-                    <h5 className="text-[11px] font-bold text-emerald-800 mb-2 flex items-center">
-                      <RefreshCw className={`w-3 h-3 mr-1 ${isAiLoading ? 'animate-spin' : ''}`} />
-                      AI Giải thích chi tiết
-                    </h5>
-                    <div className="text-xs text-emerald-900 leading-relaxed markdown-body prose prose-emerald prose-sm max-w-none overflow-x-auto">
-                      {isAiLoading ? 'Đang tạo bản dịch...' : (
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>{aiExplanationVi || '(Không tải được bản dịch)'}</ReactMarkdown>
-                      )}
+
+                {currentQ.vakRecommendation && vakType && (
+                  <div className="p-3 rounded-lg bg-amber-50 border border-amber-200 text-xs text-amber-950 space-y-1 mt-3">
+                    <div className="font-bold text-amber-900">
+                      <span>&#128161; {vakType.toUpperCase()} Lời khuyên ôn tập:</span>
                     </div>
+                    <AiVisualAdvice adviceText={(currentQ.vakRecommendation as Record<string, string>)[vakType]} vakType={vakType} lang={lang} />
                   </div>
                 )}
               </div>
-
-            {currentQ.vakRecommendation && vakType && (
-              <div className="p-3 rounded-lg bg-amber-50 border border-amber-200 text-xs text-amber-950 space-y-1">
-                <div className="font-bold text-amber-900">
-                  <span>&#128161; {vakType.toUpperCase()} {isVi ? 'Lời khuyến ôn tập' : 'アドバイス'}:</span>
-                </div>
-                <AiVisualAdvice adviceText={(currentQ.vakRecommendation as Record<string, string>)[vakType]} vakType={vakType} lang={lang} />
-              </div>
-            )}
-            <button
-              onClick={handleNext}
-              className="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm transition flex items-center justify-center space-x-2"
-            >
-              <span>{t.nextQuestion}</span>
-            </button>
+              <button
+                onClick={handleNext}
+                className="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm transition flex items-center justify-center space-x-2"
+              >
+                <span>{t.nextQuestion}</span>
+              </button>
           </div>
         )}
       </div>
