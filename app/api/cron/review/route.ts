@@ -107,7 +107,7 @@ export async function GET(request: Request) {
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
-                from: 'ILE VAK Learning <noreply@itm-kaiwa.com>',
+                from: 'ILE VAK Learning <onboarding@resend.dev>',
                 to: [userEmail],
                 subject: `📚 今日の復習リマインダー – ${todayCount}件のカードが待っています`,
                 html: `
