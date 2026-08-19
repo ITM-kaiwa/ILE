@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { VAK_SYSTEM_PROMPTS, getMockVakLesson } from '@/lib/gemini';
 import { VakType } from '@/data/vak-questions';
+import { getGenerativeModelWithFallback } from '@/lib/gemini';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export async function POST(req: Request) {

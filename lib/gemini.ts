@@ -126,3 +126,23 @@ export async function generateGeminiVakLesson(topic: string, vakType: VakType): 
     return getMockVakLesson(topic, vakType);
   }
 }
+
+export async function getGenerativeModelWithFallback(genAI: GoogleGenerativeAI, systemInstruction?: string, generationConfig?: any) {
+  const modelsToTry = ['gemini-4.0-flash', 'gemini-3.7-flash', 'gemini-3.6-flash', 'gemini-3.5-flash', 'gemini-2.5-flash', 'gemini-1.5-flash', 'gemini-1.5-pro'];
+  
+  for (const modelName of modelsToTry) {
+    try {
+      const modelParams: any = { model: modelName };
+      if (systemInstruction) modelParams.systemInstruction = systemInstruction;
+      if (generationConfig) modelParams.generationConfig = generationConfig;
+      
+      const model = genAI.getGenerativeModel(modelParams);
+      return model;
+    } catch (error) {
+      console.warn(`Model ${modelName} failed to initialize, falling back...`);
+      continue;
+    }
+  }
+  // Fallback to basic
+  return genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+}

@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { getGenerativeModelWithFallback } from '@/lib/gemini';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export async function POST(req: Request) {

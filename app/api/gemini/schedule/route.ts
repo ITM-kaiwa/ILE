@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { getGenerativeModelWithFallback } from '@/lib/gemini';
 import { GoogleGenerativeAI, SchemaType } from '@google/generative-ai';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
