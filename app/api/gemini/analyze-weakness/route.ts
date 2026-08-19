@@ -1,6 +1,12 @@
 import { NextResponse } from 'next/server';
-import { getGenerativeModelWithFallback } from '@/lib/gemini';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+
+const FALLBACK_MODELS = [
+  'gemini-2.0-flash',
+  'gemini-1.5-flash-latest',
+  'gemini-1.5-flash',
+  'gemini-1.5-pro',
+];
 
 export async function POST(req: Request) {
   try {
@@ -38,11 +44,11 @@ ${recordsSummary}
 
 【出力言語】: ${outputLang}
 
-以下のJSON形式のみで出力してください（マークダウンのコードブロックは使用しないこと）:
+以下のJSON形式のみで出力してください（コードブロックなし）:
 {
-  "patternSummary": "弱点のパターンを2〜3文で要約（例：助詞の使い分けと動詞の活用形で特に間違いが多い）",
+  "patternSummary": "弱点のパターンを2〜3文で要約",
   "weakCategories": [
-    { "name": "カテゴリ名", "count": 間違い数, "reason": "なぜ間違いやすいかの説明（1文）" }
+    { "name": "カテゴリ名", "count": 件数, "reason": "なぜ間違いやすいかの説明" }
   ],
   "priorityTopics": ["最優先で復習すべきトピック1", "トピック2", "トピック3"],
   "vakStudyPlan": {
@@ -55,29 +61,36 @@ ${recordsSummary}
 }`;
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({
-      model: 'gemini-1.5-flash',
-    });
+    let analysis = null;
+    let lastError: any = null;
 
-    const result = await model.generateContent(prompt);
-    const responseText = result.response.text();
-    let clean = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
-    
-    // Attempt to parse JSON
-    let analysis;
-    try {
-      analysis = JSON.parse(clean);
-    } catch (parseError: any) {
-      console.error("JSON Parse Error:", parseError, "Response Text:", clean);
-      return NextResponse.json({ success: false, error: "AIが正しいJSON形式を返しませんでした。もう一度お試しください。", details: clean });
+    for (const modelName of FALLBACK_MODELS) {
+      try {
+        const model = genAI.getGenerativeModel({ model: modelName });
+        const result = await model.generateContent(prompt);
+        const responseText = result.response.text();
+        const clean = responseText.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
+        analysis = JSON.parse(clean);
+        break;
+      } catch (err: any) {
+        console.warn(`[analyze-weakness] Model ${modelName} failed: ${err.message}`);
+        lastError = err;
+      }
+    }
+
+    if (!analysis) {
+      return NextResponse.json({
+        success: false,
+        error: 'AIが正しいJSON形式を返しませんでした。もう一度お試しください。',
+        details: lastError?.message,
+      });
     }
 
     return NextResponse.json({ success: true, analysis });
 
   } catch (err: unknown) {
-    console.error("Analyze Weakness Error:", err);
+    console.error('[analyze-weakness] Error:', err);
     const message = err instanceof Error ? err.message : 'Unknown error';
-    // Return 200 with success: false so frontend can read it instead of crashing with 500
-    return NextResponse.json({ success: false, error: message, details: String(err) });
+    return NextResponse.json({ success: false, error: message });
   }
 }

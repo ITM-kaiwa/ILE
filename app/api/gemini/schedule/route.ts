@@ -38,7 +38,7 @@ export async function POST(req: Request) {
 The user wants to study for the following goal: "${goal}"
 The user's cognitive learning style (VAK) is: ${vakType}. You should suggest study methods that fit this style (e.g., Visual: flashcards/diagrams, Auditory: shadowing/listening, Kinesthetic: writing/roleplay).
 Language for your reply: ${lang === 'vi' ? 'Vietnamese' : 'Japanese'}.
-Current Date: 2026-08-04.
+Current Date: ${new Date().toISOString().split('T')[0]}.
 
 The user has selected the following schedule options:
 - Days: ${options.days === 'weekdays' ? 'Weekdays only (Mon-Fri)' : 'All days (Mon-Sun)'}
@@ -47,7 +47,7 @@ The user has selected the following schedule options:
 
 Instructions:
 1. Provide a friendly conversational reply giving advice or feedback on their study plan.
-2. Generate the actual schedule events in the "schedule" array fitting the selected options. Start the schedule from tomorrow (2026-08-05).
+2. Generate the actual schedule events in the "schedule" array fitting the selected options. Start the schedule from tomorrow (i.e., the day after today).
 3. If the user provided a new message, respond to it directly. If this is the start of the conversation, proactively propose a draft schedule based on the goal and options.`;
 
     let contents = chatHistory.map((msg: any) => ({

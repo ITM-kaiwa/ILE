@@ -1,7 +1,7 @@
 'use client';
 
 import { useLog } from '@/providers/LogProvider';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { VakType } from '@/data/vak-questions';
 import { WeaknessRecord } from '@/lib/types';
 import { Language, getTranslation } from '@/lib/i18n';
@@ -24,6 +24,26 @@ export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({ vakType, wea
   const [aiAnalysis, setAiAnalysis] = useState<any>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [aiError, setAiError] = useState<string | null>(null);
+  const [autoAnalyzed, setAutoAnalyzed] = useState(false);
+  const [autoAnalysisToast, setAutoAnalysisToast] = useState(false);
+  const AUTO_TRIGGER_THRESHOLD = 3; // auto-analyze after this many mistakes
+
+  // Auto-trigger analysis when weakness records reach threshold
+  useEffect(() => {
+    if (
+      weaknessRecords.length >= AUTO_TRIGGER_THRESHOLD &&
+      !autoAnalyzed &&
+      !isAnalyzing &&
+      !aiAnalysis
+    ) {
+      setAutoAnalyzed(true);
+      setAutoAnalysisToast(true);
+      setTimeout(() => setAutoAnalysisToast(false), 5000);
+      // Run in background without blocking UI
+      handleAnalyze();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [weaknessRecords.length]);
 
   const handleAnalyze = async () => {
     if (weaknessRecords.length === 0) return;
@@ -59,6 +79,13 @@ export const WeaknessAnalyzer: React.FC<WeaknessAnalyzerProps> = ({ vakType, wea
 
   return (
     <div className="glass-card p-6 border border-amber-200/60 rounded-2xl shadow-sm space-y-6">
+      {/* Auto-analysis toast notification */}
+      {autoAnalysisToast && (
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-2xl shadow-xl text-sm font-semibold animate-slide-in-right">
+          <Sparkles className="w-4 h-4 animate-spin" />
+          {isVi ? 'AI đang tự động phân tích điểm yếu của bạn...' : 'AIが自動で弱点を分析しています...'}
+        </div>
+      )}
       <div className="flex items-center justify-between pb-4 border-b border-amber-100">
         <div className="flex items-center space-x-2">
           <AlertTriangle className="w-5 h-5 text-amber-600" />

@@ -1,6 +1,12 @@
 import { NextResponse } from 'next/server';
-import { getGenerativeModelWithFallback } from '@/lib/gemini';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+
+const FALLBACK_MODELS = [
+  'gemini-2.0-flash',
+  'gemini-1.5-flash-latest',
+  'gemini-1.5-flash',
+  'gemini-1.5-pro',
+];
 
 export async function POST(req: Request) {
   try {
@@ -17,21 +23,32 @@ export async function POST(req: Request) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-3.6-flash' });
 
     let langName = 'Vietnamese';
-    if (targetLang === 'vi') langName = 'Vietnamese';
-    else if (targetLang === 'en') langName = 'English';
+    if (targetLang === 'en') langName = 'English';
     else if (targetLang === 'ja') langName = 'Japanese';
 
-    const prompt = `Translate the following Japanese explanation into ${langName}. Provide ONLY the translation without any markdown code blocks, quotes, or conversational text:\n\n${text}`;
+    const prompt = `Translate the following Japanese text into ${langName}. Output ONLY the translation, no markdown, no quotes, no explanations:\n\n${text}`;
 
-    const result = await model.generateContent(prompt);
-    const translation = result.response.text().trim();
+    let translation = '';
+    for (const modelName of FALLBACK_MODELS) {
+      try {
+        const model = genAI.getGenerativeModel({ model: modelName });
+        const result = await model.generateContent(prompt);
+        translation = result.response.text().trim();
+        break;
+      } catch (err: any) {
+        console.warn(`[translate] Model ${modelName} failed: ${err.message}`);
+      }
+    }
+
+    if (!translation) {
+      return NextResponse.json({ success: false, translation: '(Lỗi kết nối AI)' });
+    }
 
     return NextResponse.json({ success: true, translation });
   } catch (error: any) {
-    console.error('Translation API Error:', error);
-    return NextResponse.json({ success: false, error: error.message || 'Translation failed' }, { status: 500 });
+    console.error('[translate] Error:', error);
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
