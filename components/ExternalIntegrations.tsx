@@ -114,20 +114,20 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
       color: 'from-rose-500 to-red-600',
     },
     {
-      name: isVi ? 'Kết nối & Lan tỏa Cuộc sống bằng Tiếng Nhật' : 'つながるひろがる にほんごでのくらし',
-      desc: isVi ? 'Trang web chính thức của Bộ Giáo dục & Đào tạo Nhật Bản (MEXT)' : '文部科学省 (MEXT) 公式 生活日本語学習サイト',
-      url: 'https://tsunagarujp.mext.go.jp/',
-      icon: Home,
-      badge: isVi ? 'Bộ Giáo dục Nhật Bản' : '文部科学省 (MEXT)',
-      color: 'from-cyan-500 to-sky-500',
-    },
-    {
       name: isVi ? 'NHK WORLD-JAPAN Learn Japanese' : 'NHK WORLD-JAPAN Learn Japanese',
       desc: isVi ? 'Bài học tiếng Nhật đa ngôn ngữ chính thức từ đài NHK' : 'NHK公式 多言語対応日本語学習講座コンテンツ',
       url: 'https://www3.nhk.or.jp/nhkworld/en/learnjapanese/',
       icon: Tv,
       badge: 'NHK WORLD',
       color: 'from-amber-500 to-orange-600',
+    },
+    {
+      name: isVi ? 'Kết nối & Lan tỏa Cuộc sống bằng Tiếng Nhật' : 'つながるひろがる にほんごでのくらし',
+      desc: isVi ? 'Trang web chính thức của Bộ Giáo dục & Đào tạo Nhật Bản (MEXT)' : '文部科学省 (MEXT) 公式 生活日本語学習サイト',
+      url: 'https://tsunagarujp.mext.go.jp/',
+      icon: Home,
+      badge: isVi ? 'Bộ Giáo dục Nhật Bản' : '文部科学省 (MEXT)',
+      color: 'from-cyan-500 to-sky-500',
     },
     {
       name: isVi ? 'Thẻ từ vựng Minna no Nihongo' : 'みんなのにほんご単語カード',

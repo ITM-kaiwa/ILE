@@ -382,19 +382,19 @@ export const Navbar: React.FC<NavbarProps> = ({
                         className={`px-2 py-1 text-[10px] sm:text-xs font-bold rounded-md transition ${
                           (vakType || currentVak) === 'visual' ? 'bg-blue-600 text-white shadow-sm' : 'text-blue-600 hover:bg-blue-100'
                         }`}
-                      >V</button>
+                      >Visual</button>
                       <button 
                         onClick={() => onSetVak ? onSetVak('auditory') : onVakCycle()}
                         className={`px-2 py-1 text-[10px] sm:text-xs font-bold rounded-md transition ${
                           (vakType || currentVak) === 'auditory' ? 'bg-emerald-600 text-white shadow-sm' : 'text-emerald-600 hover:bg-emerald-100'
                         }`}
-                      >A</button>
+                      >Audio</button>
                       <button 
                         onClick={() => onSetVak ? onSetVak('kinesthetic') : onVakCycle()}
                         className={`px-2 py-1 text-[10px] sm:text-xs font-bold rounded-md transition ${
                           (vakType || currentVak) === 'kinesthetic' ? 'bg-orange-600 text-white shadow-sm' : 'text-orange-600 hover:bg-orange-100'
                         }`}
-                      >K</button>
+                      >Kine...</button>
                     </div>
                   </div>
 
