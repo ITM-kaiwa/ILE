@@ -1,4 +1,6 @@
-'use client';
+import os
+
+content = r"""'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
@@ -22,10 +24,7 @@ interface Notification {
 interface NavbarProps {
   lang: Language;
   onLanguageChange: (lang: Language) => void;
-  vakType?: VakType;
-  currentVak?: VakType;
-  isHybrid?: boolean;
-  hybridLabel?: string;
+  vakType: VakType;
   onVakCycle: () => void;
   onOpenDiagnostic: (mode: 'quick' | 'detailed') => void;
   onOpenLog: () => void;
@@ -35,15 +34,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   lang,
   onLanguageChange,
   vakType,
-  currentVak,
-  isHybrid,
-  hybridLabel,
   onVakCycle,
   onOpenDiagnostic,
   onOpenLog,
 }) => {
-  // currentVak/isHybrid/hybridLabel kept for forward compatibility
-  void currentVak; void isHybrid; void hybridLabel;
   const t = getTranslation(lang);
   const [user, setUser] = useState<User | null>(null);
   const [isGuideOpen, setIsGuideOpen] = useState(false);
@@ -406,3 +400,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     </>
   );
 };
+"""
+
+with open('components/Navbar.tsx', 'w', encoding='utf-8') as f:
+    f.write(content)
+print("Navbar.tsx written!")

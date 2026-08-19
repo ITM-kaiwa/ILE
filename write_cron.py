@@ -1,3 +1,11 @@
+import os
+
+# Write the new cron route with:
+# 1. CRON_SECRET auth
+# 2. Writes to notifications table per user
+# 3. Sends email via Resend (if API key present)
+
+content = """\
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
@@ -170,3 +178,9 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
+"""
+
+os.makedirs('app/api/cron/review', exist_ok=True)
+with open('app/api/cron/review/route.ts', 'w', encoding='utf-8') as f:
+    f.write(content)
+print("Cron route written!")
