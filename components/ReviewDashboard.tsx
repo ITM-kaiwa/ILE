@@ -5,6 +5,7 @@ import { VakType } from '@/data/vak-questions';
 import { JlptLevel, QuestionCategory } from '@/lib/types';
 import { ALL_JLPT_QUESTIONS } from '@/data/jlpt-questions';
 import { RefreshCw, CheckCircle, XCircle } from 'lucide-react';
+import { AiVisualAdvice } from './AiVisualAdvice';
 
 interface ReviewDashboardProps {
   vakType: VakType;
