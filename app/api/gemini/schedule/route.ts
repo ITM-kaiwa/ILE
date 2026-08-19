@@ -61,20 +61,39 @@ Instructions:
       contents.push({ role: 'user', parts: [{ text: 'Please propose a study schedule for me.' }] });
     }
 
-    const model = genAI.getGenerativeModel({ 
-      model: 'gemini-2.5-pro',
-      systemInstruction: systemPrompt,
-      generationConfig: {
-        responseMimeType: 'application/json',
-        responseSchema: responseSchema,
+    const FALLBACK_MODELS = [
+      'gemini-2.5-pro',
+      'gemini-1.5-pro-latest',
+      'gemini-1.5-pro',
+      'gemini-2.0-flash',
+      'gemini-1.5-flash'
+    ];
+
+    let resultText = null;
+    let lastError = null;
+
+    for (const modelName of FALLBACK_MODELS) {
+      try {
+        const model = genAI.getGenerativeModel({ 
+          model: modelName,
+          systemInstruction: systemPrompt,
+          generationConfig: {
+            responseMimeType: 'application/json',
+            responseSchema: responseSchema,
+          }
+        });
+        const response = await model.generateContent({ contents: contents });
+        resultText = response.response.text();
+        break; // Success
+      } catch (err: any) {
+        console.warn(`[schedule] Model ${modelName} failed: ${err.message}`);
+        lastError = err;
       }
-    });
+    }
 
-    const response = await model.generateContent({
-      contents: contents,
-    });
-
-    const resultText = response.response.text();
+    if (!resultText) {
+      throw new Error(`All Gemini models failed for schedule generation. Last error: ${lastError?.message}`);
+    }
     if (!resultText) {
       throw new Error("No response text");
     }
