@@ -166,7 +166,22 @@ export default function Home() {
         onOpenDiagnostic={(mode) => setDiagnosticModal({ isOpen: true, mode })}
         onOpenLog={() => setIsLogModalOpen(true)}
         onVakCycle={handleVakCycle}
-      />
+        onRequestReview={() => {
+            setActiveTab('tool');
+            setTimeout(() => {
+              const target = document.getElementById('review-dashboard-anchor');
+              if (target) {
+                const headerOffset = 100;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: 'smooth'
+                });
+              }
+            }, 100);
+          }}
+        />
 
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 space-y-6">
@@ -243,7 +258,7 @@ export default function Home() {
               }`}
             >
               <IconA className="w-4 h-4" />
-                <span>{lang === \'vi\' ? \'Chữ Kana\' : \'かな\'}</span>
+                <span>{lang === 'vi' ? 'Chữ Kana' : 'かな'}</span>
             </button>
             <button
               onClick={() => setActiveTab('vocab')}
