@@ -26,8 +26,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, error: 'GEMINI_API_KEY not configured' });
     }
 
-    const isVi = lang === 'vi';
-    const outputLang = isVi ? 'ベトナム語（vi）' : '日本語（ja）';
+    const outputLang = 'ベトナム語（vi）'; // Forced Vietnamese for all advice
 
     const recordsSummary = weaknessRecords.map((r: any, i: number) => (
       `[${i + 1}] トピック: ${r.topic} | カテゴリ: ${r.categoryName} | 誤答: 「${r.incorrectAnswer}」→ 正答: 「${r.correctAnswer}」| エラー種別: ${r.errorType}`
