@@ -8,6 +8,7 @@ import { Language, getTranslation } from '@/lib/i18n';
 import { supabase } from '@/lib/supabase';
 import { processReview } from '@/lib/srs';
 import { BookOpen, Eye, Volume2, Hand, ChevronDown, CheckCircle, XCircle, HelpCircle, Download } from 'lucide-react';
+import { AiVisualAdvice } from './AiVisualAdvice';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';

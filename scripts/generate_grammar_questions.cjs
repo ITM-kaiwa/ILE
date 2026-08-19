@@ -58,13 +58,6 @@ async function main() {
   console.log(`Found ${cards.length} grammar cards. Generating contextual questions...`);
 
   for (const card of cards) {
-    // Check if this card already has ruby tags and 5 questions
-    const { data: existing } = await supabase.from('jlpt_questions').select('question').like('id', `${card.id}_q%`);
-    if (existing && existing.length >= 5 && existing[0].question.includes('<ruby>')) {
-      console.log(`Skipping ${card.id}: already has ruby questions.`);
-      continue;
-    }
-
     console.log(`Processing card ${card.id}: ${card.title}`);
     
     // Extract lesson number
@@ -77,19 +70,20 @@ async function main() {
     }
 
     const prompt = `
-Generate 5 JLPT-style fill-in-the-blank practice questions for the following Japanese grammar point.
+Generate 5 JLPT-style fill-in-the-blank practice questions EXPLICITLY testing the following Japanese grammar point.
 Grammar: ${card.title}
 Meaning: ${card.meaning}
+Structure: ${card.structure}
 
-${lessonPrompt}
-
-CRITICAL RULE 2: You MUST add furigana (ruby tags) to ALL Kanji in the "question" and "options" fields using standard HTML format.
-Example: <ruby>私<rt>わたし</rt></ruby>は<ruby>学生<rt>がくせい</rt></ruby>です。
+CRITICAL RULES: 
+1. The questions MUST specifically test the exact grammar structure described above. Do NOT generate generic particle questions unless the grammar point itself is about that particle. The correct answer MUST be part of the grammar point described.
+2. ${lessonPrompt}
+3. You MUST add furigana (ruby tags) to ALL Kanji in the "question" and "options" fields using standard HTML format. Example: <ruby>私<rt>わたし</rt></ruby>は<ruby>学生<rt>がくせい</rt></ruby>です。
 
 The output MUST be a JSON array of 5 objects matching this exact schema:
 [
   {
-    "question": "The Japanese sentence with a blank (e.g. <ruby>私<rt>わたし</rt></ruby>は (　) です。)",
+    "question": "The Japanese sentence with a blank testing the grammar point (e.g. <ruby>私<rt>わたし</rt></ruby>は (　) です。)",
     "options": ["option1 with ruby", "option2 with ruby", "option3 with ruby", "option4 with ruby"],
     "correctIndex": integer (0 to 3),
     "explanation": "Explanation in Japanese and Vietnamese. Format: 【JP】... 【VN】..."
@@ -119,13 +113,12 @@ No other text, just the JSON array.
         };
         await supabase.from('jlpt_questions').upsert(payload);
       }
-      console.log(`- Updated 5 contextual questions with ruby for ${card.title}.`);
+      console.log(`- Updated 5 strict grammar questions with ruby for ${card.title}.`);
     } catch (err) {
       console.error(`- Failed to generate questions for ${card.id}:`, err.message);
     }
     
-    // 4.5 second delay to respect 15 RPM limit (60s / 15 = 4s)
-    await delay(4500);
+    await delay(2000);
   }
   console.log("Finished generating all questions.");
 }

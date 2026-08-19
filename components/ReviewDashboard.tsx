@@ -59,14 +59,18 @@ export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType, lang 
     if (currentQ.explanation) {
       setIsAiLoading(true);
       try {
-        const res = await fetch('/api/gemini/translate', {
+        const res = await fetch('/api/gemini/explain', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ text: currentQ.explanation, targetLang: 'vi' })
+          body: JSON.stringify({ 
+            question: currentQ.question, 
+            options: currentQ.options, 
+            correctIndex: currentQ.correctIndex 
+          })
         });
         const data = await res.json();
         if (data.success) {
-          setAiExplanationVi(data.translation);
+          setAiExplanationVi(data.explanationVi);
         } else {
           setAiExplanationVi('(Không tải được bản dịch)');
         }
@@ -204,18 +208,19 @@ export const ReviewDashboard: React.FC<ReviewDashboardProps> = ({ vakType, lang 
             </button>
           ) : (
             <div className="space-y-3">
-              <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 space-y-2">
-                <h4 className="text-xs font-bold text-emerald-800">{isVi ? `💡 Giải thích & Lời khuyên VAK (${vakType.toUpperCase()}):` : `💡 解説 & VAK (${vakType.toUpperCase()}) アドバイス:`}</h4>
-                <p className="text-xs text-emerald-950">{currentQ.explanation}</p>
-                <div className="mt-3 p-3 bg-white/60 rounded-lg border border-emerald-100">
-                  <h5 className="text-[11px] font-bold text-emerald-800 mb-1 flex items-center">
-                    <RefreshCw className={`w-3 h-3 mr-1 ${isAiLoading ? 'animate-spin' : ''}`} />
-                    AI Giải thích chi tiết (AI翻訳)
-                  </h5>
-                  <p className="text-xs text-emerald-900 leading-relaxed">
-                    {isAiLoading ? 'Đang tạo bản dịch...' : (aiExplanationVi || '(Không tải được bản dịch)')}
-                  </p>
-                </div>
+              <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 space-y-3">
+                  <h4 className="text-xs font-bold text-emerald-900">💡 Giải thích ngữ pháp (AI)</h4>
+                  <div className="p-3 bg-white/60 rounded-lg border border-emerald-100">
+                    <h5 className="text-[11px] font-bold text-emerald-800 mb-2 flex items-center">
+                      <RefreshCw className={`w-3 h-3 mr-1 ${isAiLoading ? 'animate-spin' : ''}`} />
+                      AI Grammar Explanation
+                    </h5>
+                    <div className="text-xs text-emerald-900 leading-relaxed markdown-body prose prose-emerald prose-sm max-w-none overflow-x-auto">
+                      {isAiLoading ? 'Đang phân tích...' : (
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>{aiExplanationVi || ''}</ReactMarkdown>
+                      )}
+                    </div>
+                  </div>
                 <div className="p-3 rounded-lg bg-[#FFFDF9] border border-emerald-200 text-xs text-emerald-900 mt-2">
                   <strong>💡 {vakType.toUpperCase()} {isVi ? 'Đề xuất ôn tập' : 'アドバイス'}:</strong>
                     <AiVisualAdvice adviceText={currentQ.vakRecommendation[vakType]} vakType={vakType} lang={lang} />

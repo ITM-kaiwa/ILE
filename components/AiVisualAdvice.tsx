@@ -65,13 +65,7 @@ export const AiVisualAdvice: React.FC<AiVisualAdviceProps> = ({ adviceText, vakT
     }
   };
 
-  // Auto-generate visual if it's visual type
-  useEffect(() => {
-    if (vakType === 'visual' && !svgContent && !isGeneratingImg) {
-       generateVisual();
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [vakType, adviceText]);
+  
 
   return (
     <div className="mt-2 space-y-3">
@@ -111,7 +105,13 @@ export const AiVisualAdvice: React.FC<AiVisualAdviceProps> = ({ adviceText, vakT
                 dangerouslySetInnerHTML={{ __html: svgContent }} 
               />
             ) : (
-              <div className="text-xs text-slate-400">{isVi ? 'Không có hình ảnh' : '画像がありません'}</div>
+              <button 
+                onClick={generateVisual}
+                className="flex flex-col items-center justify-center space-y-2 text-amber-600/70 hover:text-amber-600 transition p-4 border-2 border-dashed border-amber-200 rounded-xl w-full"
+              >
+                <ImageIcon className="w-8 h-8 opacity-50" />
+                <span className="text-xs font-bold">{isVi ? 'Nhấn để AI vẽ hình minh họa' : '図解を生成する (AI)'}</span>
+              </button>
             )}
           </div>
         </div>
