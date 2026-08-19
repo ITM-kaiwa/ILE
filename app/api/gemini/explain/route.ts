@@ -2,10 +2,15 @@ import { NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const FALLBACK_MODELS = [
-  'gemini-2.0-flash',
-  'gemini-1.5-flash-latest',
-  'gemini-1.5-flash',
-  'gemini-1.5-pro',
+  'gemini-flash',            // 通称/汎用フラッシュ (最新モデルに自動ルーティング)
+  'gemini-pro',              // 通称/汎用プロ (最新モデルに自動ルーティング)
+  'gemini-3.7-flash',        // 最新フラッグシップ
+  'gemini-3.6-flash',        // 高速・高効率
+  'gemini-3.5-flash',        // 安定版
+  'gemini-3.1-pro-preview',  // 高度な推論向け
+  'gemini-2.5-pro',          // 旧世代上位
+  'gemini-2.0-flash',        // 旧世代安定版
+  'gemini-1.5-flash'         // 最終安全ネット
 ];
 
 export async function POST(req: Request) {
