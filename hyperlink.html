@@ -1,0 +1,369 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ITM 日本語学習アプリ & ツール一覧</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Nunito', 'Noto Sans JP', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <!-- Header -->
+    <header class="text-center mb-12">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-indigo-900 tracking-tight mb-2">
+        ITM 日本語学習アプリ & ツールポータル
+      </h1>
+      <p class="text-slate-600 font-medium">Danh sách ứng dụng & công cụ học tiếng Nhật của ITM</p>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="flex justify-center space-x-2 sm:space-x-4 mb-8 bg-indigo-50/50 p-1.5 rounded-2xl max-w-lg mx-auto border border-indigo-100">
+      <button onclick="switchTab('conversation')" id="tab-conversation" class="tab-btn flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all bg-white text-indigo-700 shadow-sm">
+        会話 / Hội thoại
+      </button>
+      <button onclick="switchTab('tool')" id="tab-tool" class="tab-btn flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all text-slate-600 hover:text-indigo-600">
+        ツール / Công cụ
+      </button>
+      <button onclick="switchTab('link')" id="tab-link" class="tab-btn flex-1 py-3 px-4 rounded-xl text-sm font-bold transition-all text-slate-600 hover:text-indigo-600">
+        リンク / Liên kết
+      </button>
+    </div>
+
+    <!-- TAB 1: Conversation Section -->
+    <section id="section-conversation" class="tab-section space-y-6">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+        <h2 class="text-xl font-bold text-slate-800 border-b border-slate-100 pb-3 mb-6 flex items-center space-x-2">
+          <span class="p-2 rounded-lg bg-orange-100 text-orange-600 text-sm">💬</span>
+          <span>会話練習アプリ / Ứng dụng luyện hội thoại</span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- LingoBot -->
+          <a href="https://lingo-bot2.vercel.app/" target="_blank" class="group p-5 rounded-2xl border border-slate-200 hover:border-orange-500 bg-slate-50/50 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-orange-100 text-orange-700 border border-orange-200">会話練習</span>
+                <span class="text-slate-400 group-hover:text-orange-500 transition-colors">↗</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-800 group-hover:text-orange-600 transition-colors mb-1">
+                AI会話練習アプリ (LingoBot)
+              </h3>
+              <p class="text-xs text-slate-400 italic mb-2">Luyện hội thoại AI (LingoBot)</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-1">AIボットとインタラクティブに日本語日常会話のロールプレイ練習ができます。</p>
+              <p class="text-[11px] text-slate-500 leading-relaxed">Thực hành hội thoại tiếng Nhật giao tiếp tương tác trực tiếp với Bot AI.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-end text-xs font-semibold text-orange-600 group-hover:translate-x-1 transition-transform">
+              <span>アプリを開く</span>
+            </div>
+          </a>
+
+          <!-- CheckKaiwa -->
+          <a href="https://itm-kaiwa.github.io/CheckKaiwa_/" target="_blank" class="group p-5 rounded-2xl border border-slate-200 hover:border-indigo-500 bg-slate-50/50 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-indigo-100 text-indigo-700 border border-indigo-200">QA練習</span>
+                <span class="text-slate-400 group-hover:text-indigo-500 transition-colors">↗</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-800 group-hover:text-indigo-600 transition-colors mb-1">
+                CheckKaiwa QA練習アプリ
+              </h3>
+              <p class="text-xs text-slate-400 italic mb-2">Ứng dụng Luyện tập QA CheckKaiwa</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-1">JLPT・日常会話のQ&A復習問題Webアプリです。</p>
+              <p class="text-[11px] text-slate-500 leading-relaxed">Ứng dụng Web ôn tập câu hỏi Q&A giao tiếp hàng ngày & JLPT.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-end text-xs font-semibold text-indigo-600 group-hover:translate-x-1 transition-transform">
+              <span>アプリを開く</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: Tools Section -->
+    <section id="section-tool" class="tab-section hidden space-y-6">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+        <h2 class="text-xl font-bold text-slate-800 border-b border-slate-100 pb-3 mb-6 flex items-center space-x-2">
+          <span class="p-2 rounded-lg bg-emerald-100 text-emerald-600 text-sm">🛠️</span>
+          <span>学習ツール・アプリ / Công cụ học tập & Tiện ích</span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Disaster -->
+          <a href="https://disaster-vert-six.vercel.app/" target="_blank" class="group p-5 rounded-2xl border border-slate-200 hover:border-red-500 bg-slate-50/50 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-red-100 text-red-700 border border-red-200">防災</span>
+                <span class="text-slate-400 group-hover:text-red-500 transition-colors">↗</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-800 group-hover:text-red-600 transition-colors mb-1">
+                災害にあったときのために
+              </h3>
+              <p class="text-xs text-slate-400 italic mb-2">Dành cho khi có thảm họa</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-1">災害時のためのガイド・学習ツール。</p>
+              <p class="text-[11px] text-slate-500 leading-relaxed">Hướng dẫn và từ vựng khi gặp thiên tai.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-end text-xs font-semibold text-red-600 group-hover:translate-x-1 transition-transform">
+              <span>ツールを開く</span>
+            </div>
+          </a>
+
+          <!-- Numbers -->
+          <a href="https://itm-kaiwa.github.io/Random/" target="_blank" class="group p-5 rounded-2xl border border-slate-200 hover:border-blue-500 bg-slate-50/50 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-blue-100 text-blue-700 border border-blue-200">数字練習</span>
+                <span class="text-slate-400 group-hover:text-blue-500 transition-colors">↗</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-800 group-hover:text-blue-600 transition-colors mb-1">
+                数字練習アプリ
+              </h3>
+              <p class="text-xs text-slate-400 italic mb-2">Ứng dụng Web Luyện số đếm</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-1">日本語の数字の読み書き・リスニングを練習します。</p>
+              <p class="text-[11px] text-slate-500 leading-relaxed">Luyện nghe và đọc số đếm tiếng Nhật.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-end text-xs font-semibold text-blue-600 group-hover:translate-x-1 transition-transform">
+              <span>アプリを開く</span>
+            </div>
+          </a>
+
+          <!-- Calendar -->
+          <a href="https://itm-kaiwa.github.io/calender/" target="_blank" class="group p-5 rounded-2xl border border-slate-200 hover:border-pink-500 bg-slate-50/50 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-pink-100 text-pink-700 border border-pink-200">カレンダー・時計</span>
+                <span class="text-slate-400 group-hover:text-pink-500 transition-colors">↗</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-800 group-hover:text-pink-600 transition-colors mb-1">
+                カレンダー＆時計練習アプリ
+              </h3>
+              <p class="text-xs text-slate-400 italic mb-2">Ứng dụng Luyện Lịch & Đồng hồ</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-1">日付と時間の読み方を練習します。</p>
+              <p class="text-[11px] text-slate-500 leading-relaxed">Luyện cách nói ngày tháng và thời gian.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-end text-xs font-semibold text-pink-600 group-hover:translate-x-1 transition-transform">
+              <span>アプリを開く</span>
+            </div>
+          </a>
+
+          <!-- Counter -->
+          <a href="https://counter-ebon-nu.vercel.app/" target="_blank" class="group p-5 rounded-2xl border border-slate-200 hover:border-purple-500 bg-slate-50/50 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-purple-100 text-purple-700 border border-purple-200">助数詞</span>
+                <span class="text-slate-400 group-hover:text-purple-500 transition-colors">↗</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-800 group-hover:text-purple-600 transition-colors mb-1">
+                助数詞練習アプリ
+              </h3>
+              <p class="text-xs text-slate-400 italic mb-2">Ứng dụng Luyện Trợ từ đếm</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-1">モノの種類に応じた助数詞（数え方）を練習します。</p>
+              <p class="text-[11px] text-slate-500 leading-relaxed">Luyện cách đếm các loại đồ vật khác nhau.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-end text-xs font-semibold text-purple-600 group-hover:translate-x-1 transition-transform">
+              <span>アプリを開く</span>
+            </div>
+          </a>
+
+          <!-- Particles -->
+          <a href="https://particle-brown.vercel.app/" target="_blank" class="group p-5 rounded-2xl border border-slate-200 hover:border-violet-500 bg-slate-50/50 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-violet-100 text-violet-700 border border-violet-200">助詞</span>
+                <span class="text-slate-400 group-hover:text-violet-500 transition-colors">↗</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-800 group-hover:text-violet-600 transition-colors mb-1">
+                助詞練習アプリ
+              </h3>
+              <p class="text-xs text-slate-400 italic mb-2">Ứng dụng Luyện Trợ từ</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-1">日本語の助詞（は、が、を、に等）の使い方を練習します。</p>
+              <p class="text-[11px] text-slate-500 leading-relaxed">Luyện tập cách sử dụng trợ từ tiếng Nhật (は, が, を, に, v.v.).</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-end text-xs font-semibold text-violet-600 group-hover:translate-x-1 transition-transform">
+              <span>アプリを開く</span>
+            </div>
+          </a>
+
+          <!-- ITM E-School Web -->
+          <a href="https://eschool.itm.vn/" target="_blank" class="group p-5 rounded-2xl border border-slate-200 hover:border-emerald-500 bg-slate-50/50 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-emerald-100 text-emerald-700 border border-emerald-200">E-School Web</span>
+                <span class="text-slate-400 group-hover:text-emerald-500 transition-colors">↗</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-800 group-hover:text-emerald-600 transition-colors mb-1">
+                ITM E-School Webアプリ
+              </h3>
+              <p class="text-xs text-slate-400 italic mb-2">Nền tảng ITM E-School (Web)</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-1">ITM公式E-Learningプラットフォーム。</p>
+              <p class="text-[11px] text-slate-500 leading-relaxed">Nền tảng học tiếng Nhật và kỹ năng chuyên môn trực tuyến ITM.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-end text-xs font-semibold text-emerald-600 group-hover:translate-x-1 transition-transform">
+              <span>サイトを開く</span>
+            </div>
+          </a>
+
+          <!-- ITM E-School Android -->
+          <a href="https://play.google.com/store/apps/details?id=com.itm.eschoolpro&pcampaignid=web_share" target="_blank" class="group p-5 rounded-2xl border border-slate-200 hover:border-amber-500 bg-slate-50/50 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-amber-100 text-amber-700 border border-amber-200">Android</span>
+                <span class="text-slate-400 group-hover:text-amber-500 transition-colors">↗</span>
+              </div>
+              <h3 class="text-base font-bold text-slate-800 group-hover:text-amber-600 transition-colors mb-1">
+                ITM E-School Androidアプリ
+              </h3>
+              <p class="text-xs text-slate-400 italic mb-2">Ứng dụng ITM E-School Pro (Android)</p>
+              <p class="text-xs text-slate-600 leading-relaxed mb-1">Google Play Store公式モバイルアプリ。</p>
+              <p class="text-[11px] text-slate-500 leading-relaxed">Tải ứng dụng ITM E-School Pro trên Google Play để học mọi lúc mọi nơi.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-end text-xs font-semibold text-amber-600 group-hover:translate-x-1 transition-transform">
+              <span>アプリストアを開く</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: Links Section -->
+    <section id="section-link" class="tab-section hidden space-y-6">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+        <h2 class="text-xl font-bold text-slate-800 border-b border-slate-100 pb-3 mb-6 flex items-center space-x-2">
+          <span class="p-2 rounded-lg bg-sky-100 text-sky-600 text-sm">🔗</span>
+          <span>おすすめ外部日本語学習リソース / Tài nguyên liên kết khuyên dùng</span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- VNJPClub -->
+          <a href="https://jls.vnjpclub.com/index.php" target="_blank" class="group p-5 rounded-2xl border border-slate-200 hover:border-rose-500 bg-slate-50/50 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-semibold rounded bg-rose-100 text-rose-700 border border-rose-200">VNJPClub</span>
+                <span class="text-slate-400 group-hover:text-rose-500 transition-colors">↗</span>
+              </div>
+              <h3 class="text-sm font-bold text-slate-800 group-hover:text-rose-600 transition-colors mb-1 leading-snug">
+                VNJPClub 日本語学習ポータル
+              </h3>
+              <p class="text-xs text-slate-500 mt-1 mb-2 leading-relaxed">ベトナム人学習者向け総合日本語学習サイト (JLS)</p>
+              <p class="text-[11px] text-slate-400 leading-relaxed italic">Trang web học tiếng Nhật toàn diện dành cho người Việt Nam.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-rose-600 font-semibold group-hover:translate-x-0.5 transition-transform">
+              <span>サイトを開く</span>
+            </div>
+          </a>
+
+          <!-- NHK WORLD -->
+          <a href="https://www3.nhk.or.jp/nhkworld/en/learnjapanese/" target="_blank" class="group p-5 rounded-2xl border border-slate-200 hover:border-amber-500 bg-slate-50/50 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-semibold rounded bg-amber-100 text-amber-700 border border-amber-200">NHK WORLD</span>
+                <span class="text-slate-400 group-hover:text-amber-500 transition-colors">↗</span>
+              </div>
+              <h3 class="text-sm font-bold text-slate-800 group-hover:text-amber-600 transition-colors mb-1 leading-snug">
+                NHK WORLD-JAPAN Learn Japanese
+              </h3>
+              <p class="text-xs text-slate-500 mt-1 mb-2 leading-relaxed">NHK公式 多言語対応日本語学習講座コンテンツ</p>
+              <p class="text-[11px] text-slate-400 leading-relaxed italic">Bài học tiếng Nhật đa ngôn ngữ chính thức từ đài NHK.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-amber-600 font-semibold group-hover:translate-x-0.5 transition-transform">
+              <span>サイトを開く</span>
+            </div>
+          </a>
+
+          <!-- MEXT -->
+          <a href="https://tsunagarujp.mext.go.jp/" target="_blank" class="group p-5 rounded-2xl border border-slate-200 hover:border-cyan-500 bg-slate-50/50 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-semibold rounded bg-cyan-100 text-cyan-700 border border-cyan-200">MEXT (文科省)</span>
+                <span class="text-slate-400 group-hover:text-cyan-500 transition-colors">↗</span>
+              </div>
+              <h3 class="text-sm font-bold text-slate-800 group-hover:text-cyan-600 transition-colors mb-1 leading-snug">
+                つながるひろがる にほんごでのくらし
+              </h3>
+              <p class="text-xs text-slate-500 mt-1 mb-2 leading-relaxed">文部科学省 (MEXT) 公式 生活日本語学習サイト</p>
+              <p class="text-[11px] text-slate-400 leading-relaxed italic">Trang web chính thức của Bộ Giáo dục & Đào tạo Nhật Bản (MEXT).</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-cyan-600 font-semibold group-hover:translate-x-0.5 transition-transform">
+              <span>サイトを開く</span>
+            </div>
+          </a>
+
+          <!-- Quizlet Vocabulary -->
+          <a href="https://quizlet.com/khoanhatngusuleco/folders/117874482?x=1xqt&i=540xsa" target="_blank" class="group p-5 rounded-2xl border border-slate-200 hover:border-blue-500 bg-slate-50/50 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-semibold rounded bg-blue-100 text-blue-700 border border-blue-200">Quizlet 単語</span>
+                <span class="text-slate-400 group-hover:text-blue-500 transition-colors">↗</span>
+              </div>
+              <h3 class="text-sm font-bold text-slate-800 group-hover:text-blue-600 transition-colors mb-1 leading-snug">
+                みんなのにほんご単語カード
+              </h3>
+              <p class="text-xs text-slate-500 mt-1 mb-2 leading-relaxed">Quizletでみんなの日本語の単語を学習</p>
+              <p class="text-[11px] text-slate-400 leading-relaxed italic">Học từ vựng Minna no Nihongo trên Quizlet.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">
+              <span>サイトを開く</span>
+            </div>
+          </a>
+
+          <!-- Quizlet Kanji -->
+          <a href="https://quizlet.com/khoanhatngusuleco/folders/jlpt-kanji?x=1xqt&i=540xsa" target="_blank" class="group p-5 rounded-2xl border border-slate-200 hover:border-blue-500 bg-slate-50/50 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-semibold rounded bg-blue-100 text-blue-700 border border-blue-200">Quizlet 漢字</span>
+                <span class="text-slate-400 group-hover:text-blue-500 transition-colors">↗</span>
+              </div>
+              <h3 class="text-sm font-bold text-slate-800 group-hover:text-blue-600 transition-colors mb-1 leading-snug">
+                JLPT N5/N4漢字カード
+              </h3>
+              <p class="text-xs text-slate-500 mt-1 mb-2 leading-relaxed">QuizletでJLPT N5/N4の漢字を学習</p>
+              <p class="text-[11px] text-slate-400 leading-relaxed italic">Học Kanji JLPT N5/N4 trên Quizlet.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-blue-600 font-semibold group-hover:translate-x-0.5 transition-transform">
+              <span>サイトを開く</span>
+            </div>
+          </a>
+
+          <!-- Disaster Portal -->
+          <a href="https://tabunka.tokyo-tsunagari.or.jp/vietnamese/disaster/howto.html" target="_blank" class="group p-5 rounded-2xl border border-slate-200 hover:border-red-500 bg-slate-50/50 hover:bg-white hover:shadow-lg transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-semibold rounded bg-red-100 text-red-700 border border-red-200">防災情報</span>
+                <span class="text-slate-400 group-hover:text-red-500 transition-colors">↗</span>
+              </div>
+              <h3 class="text-sm font-bold text-slate-800 group-hover:text-red-600 transition-colors mb-1 leading-snug">
+                多文化防災ポータル (東京つながり)
+              </h3>
+              <p class="text-xs text-slate-500 mt-1 mb-2 leading-relaxed">地震や自然災害への備えと対応方法（多言語）</p>
+              <p class="text-[11px] text-slate-400 leading-relaxed italic">Hướng dẫn chuẩn bị và ứng phó khi xảy ra động đất và thảm họa tự nhiên.</p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-red-600 font-semibold group-hover:translate-x-0.5 transition-transform">
+              <span>サイトを開く</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function switchTab(tabId) {
+      const sections = document.querySelectorAll('.tab-section');
+      sections.forEach(s => s.classList.add('hidden'));
+      document.getElementById('section-' + tabId).classList.remove('hidden');
+
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(b => {
+        b.classList.remove('bg-white', 'text-indigo-700', 'shadow-sm');
+        b.classList.add('text-slate-600', 'hover:text-indigo-600');
+      });
+
+      const activeBtn = document.getElementById('tab-' + tabId);
+      activeBtn.classList.add('bg-white', 'text-indigo-700', 'shadow-sm');
+      activeBtn.classList.remove('text-slate-600', 'hover:text-indigo-600');
+    }
+  </script>
+</body>
+</html>
