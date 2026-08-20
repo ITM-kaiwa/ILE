@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Language } from '@/lib/i18n';
-import { ExternalLink, MessageCircle, HelpCircle, School, Smartphone, Globe, BookOpen, Tv, Home, Hash, CalendarDays, ListOrdered, Puzzle } from 'lucide-react';
+import { ExternalLink, MessageCircle, HelpCircle, School, Smartphone, Globe, BookOpen, Tv, Home, Hash, CalendarDays, ListOrdered, Puzzle, ArrowLeftRight } from 'lucide-react';
 
 interface ExternalIntegrationsProps {
   lang?: Language;
