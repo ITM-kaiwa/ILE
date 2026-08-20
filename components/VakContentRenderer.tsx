@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useTTS } from '@/hooks/useTTS';
 import { VakType } from '@/data/vak-questions';
 import { GeneratedVakLesson, getMockVakLesson } from '@/lib/gemini';
 import { Play, Volume2, Eye, Hand, Sparkles } from 'lucide-react';
