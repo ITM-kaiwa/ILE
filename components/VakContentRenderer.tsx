@@ -185,13 +185,13 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
               <button
                 onClick={() => handlePlayTTS(lesson.contentMarkdown)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium flex items-center space-x-1.5 transition ${
-                  isPlayingAudio
+                  (ttsState !== 'idle')
                     ? 'bg-emerald-500 text-white animate-pulse'
                     : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm'
                 }`}
               >
                 <Play className="w-3.5 h-3.5" />
-                <span>{isPlayingAudio ? (lang === 'vi' ? 'Đang phát...' : '再生中...') : (lang === 'vi' ? 'Đọc toàn bộ văn bản (TTS)' : '全文音声朗読 (TTS)')}</span>
+                <span>{(ttsState !== 'idle') ? (lang === 'vi' ? 'Đang phát...' : '再生中...') : (lang === 'vi' ? 'Đọc toàn bộ văn bản (TTS)' : '全文音声朗読 (TTS)')}</span>
               </button>
             </div>
 
