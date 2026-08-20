@@ -1,10 +1,10 @@
-import { VakType } from '@/data/vak-questions';
+﻿import { VakType } from '@/data/vak-questions';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export const VAK_SYSTEM_PROMPTS: Record<VakType, string> = {
-  visual: "Markdownの表や図解、箇条書きを多用し、重要語句を太字や色分け表記で目立たせて視覚的に整理して解説してください。",
-  auditory: "対話調（話しかけるスタイル）で出力し、発音のコツや音の連結（リエゾン）・アクセント・ルビを解説し、声に出す音読やシャドーイングの指示を含めてください。",
-  kinesthetic: "具体的な身振り手振りの指示や、室内を歩くなどのフィジカルタスク指示、感情・空気感と連動させたロールプレイ問題を含めて体験的に解説してください。",
+  visual: "Markdownの表や図解、箇条書きを多用し、重要語句を太字や色分け表記で目立たせて視覚的に整理して解説してください。また、出力するすべての漢字にはHTMLの<ruby>タグと<rt>タグを用いて必ずふりがな（ルビ）を振ってください。",
+  auditory: "対話調（話しかけるスタイル）で出力し、発音のコツや音の連結（リエゾン）・アクセント・ルビを解説し、声に出す音読やシャドーイングの指示を含めてください。また、出力するすべての漢字にはHTMLの<ruby>タグと<rt>タグを用いて必ずふりがな（ルビ）を振ってください。",
+  kinesthetic: "具体的な身振り手振りの指示や、室内を歩くなどのフィジカルタスク指示、感情・空気感と連動させたロールプレイ問題を含めて体験的に解説してください。また、出力するすべての漢字にはHTMLの<ruby>タグと<rt>タグを用いて必ずふりがな（ルビ）を振ってください。",
 };
 
 export interface GeneratedVakLesson {
@@ -146,3 +146,4 @@ export async function getGenerativeModelWithFallback(genAI: GoogleGenerativeAI, 
   // Fallback to basic
   return genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 }
+
