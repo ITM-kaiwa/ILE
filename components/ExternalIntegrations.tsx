@@ -95,6 +95,15 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
       badge: isVi ? 'Trợ từ' : '助詞',
       color: 'from-violet-500 to-purple-600',
     },
+      {
+        name: isVi ? 'Ứng dụng Luyện từ trái nghĩa' : '対義語練習',
+        desc: isVi ? 'Luyện tập các cặp từ trái nghĩa trong tiếng Nhật' : '日本語の対義語ペアを練習',
+        url: 'https://itm-kaiwa.github.io/adjective/',
+        icon: ArrowLeftRight,
+        badge: isVi ? 'Từ trái nghĩa' : '対義語',
+        color: 'from-fuchsia-500 to-pink-600',
+      },
+
     {
       name: isVi ? 'Ứng dụng Web ITM E-School' : 'ITM E-School Webアプリ',
       desc: isVi ? 'Nền tảng E-Learning chính thức của ITM' : 'ITM公式E-Learningプラットフォーム',
