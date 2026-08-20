@@ -2,6 +2,7 @@
 
 import { useLog } from '@/providers/LogProvider';
 import React, { useState, useEffect } from 'react';
+import { useTTS } from '@/hooks/useTTS';
 import { supabase } from '@/lib/supabase';
 import { processReview } from '@/lib/srs';
 import { VakType } from '@/data/vak-questions';
@@ -143,14 +144,7 @@ export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ 
   };
 
   const handlePlayTTS = (text: string) => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'ja-JP';
-      window.speechSynthesis.speak(utterance);
-    } else {
-      alert('お使いのブラウザは音声読み上げに対応していません。');
-    }
+    playTTS(text);
   };
 
   

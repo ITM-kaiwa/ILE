@@ -142,14 +142,7 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
   };
 
   const handlePlayTTS = (text: string) => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'ja-JP';
-      window.speechSynthesis.speak(utterance);
-    } else {
-      alert('お使いのブラウザは音声読み上げに対応していません。');
-    }
+    playTTS(text);
   };
 
   
@@ -346,9 +339,13 @@ export const KanjiCardsSection: React.FC<KanjiCardsSectionProps> = ({ vakType, l
                       e.stopPropagation();
                       handlePlayTTS(currentCard.kanji);
                     }}
-                    className="p-2 rounded-xl bg-orange-100 hover:bg-orange-200 text-orange-900 transition flex items-center space-x-1"
+                    className={`p-2 rounded-xl transition flex items-center space-x-1 ${
+                      ttsState === 'playing-edge' ? 'bg-blue-100 hover:bg-blue-200 text-blue-900 shadow-blue-200' :
+                      ttsState === 'playing-fallback' ? 'bg-orange-100 hover:bg-orange-200 text-orange-900 shadow-orange-200' :
+                      'bg-orange-50 hover:bg-orange-100 text-orange-800'
+                    }`}
                   >
-                    <Volume2 className="w-4 h-4 text-orange-600" />
+                    <Volume2 className={`w-4 h-4 ${ttsState === 'playing-edge' ? 'text-blue-600' : 'text-orange-600'}`} />
                     <span className="text-xs font-bold hidden sm:inline">{isVi ? 'Phát âm' : 'TTS発音'}</span>
                   </button>
                 </div>

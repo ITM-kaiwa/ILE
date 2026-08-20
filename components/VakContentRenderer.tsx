@@ -24,7 +24,7 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
     }
   }, []);
   const [lesson, setLesson] = useState<GeneratedVakLesson>(getMockVakLesson('JLPT N5 文法：〜です / 〜ます', vakType));
-  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+  const { playTTS, ttsState } = useTTS();
   const [isGenerating, setIsGenerating] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [contentSource, setContentSource] = useState<'mock' | 'ai' | null>(null);
@@ -69,16 +69,7 @@ export const VakContentRenderer: React.FC<VakContentRendererProps> = ({ vakType,
   };
 
   const handlePlayTTS = (text: string) => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'ja-JP';
-      utterance.onstart = () => setIsPlayingAudio(true);
-      utterance.onend = () => setIsPlayingAudio(false);
-      window.speechSynthesis.speak(utterance);
-    } else {
-      alert('お使いのブラウザは音声読み上げに対応していません。');
-    }
+    playTTS(text);
   };
 
   return (
