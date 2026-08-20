@@ -163,7 +163,15 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
       badge: 'Quizlet',
       color: 'from-blue-500 to-indigo-600',
     },
-    {
+          {
+        name: isVi ? 'Luyện thi JLPT' : 'JLPT問題演習',
+        desc: isVi ? 'Luyện tập các câu hỏi kiểm tra năng lực tiếng Nhật (JLPT)' : '日本語能力試験(JLPT)の模擬問題演習',
+        url: 'https://challenge-jlpt.com/',
+        icon: BookOpen,
+        badge: 'JLPT',
+        color: 'from-green-500 to-emerald-600',
+      },
+{
       name: isVi ? 'Cổng thông tin Đa văn hóa Tokyo (Phòng chống thiên tai)' : '多文化防災ポータル (東京つながり)',
       desc: isVi ? 'Hướng dẫn chuẩn bị và ứng phó khi xảy ra động đất và thảm họa tự nhiên' : '地震や自然災害への備えと対応方法（多言語）',
       url: 'https://tabunka.tokyo-tsunagari.or.jp/vietnamese/disaster/howto.html',
