@@ -33,6 +33,7 @@ interface MinnaFlashcardsSectionProps {
 }
 
 export const MinnaFlashcardsSection: React.FC<MinnaFlashcardsSectionProps> = ({ vakType, lang = 'ja' }) => {
+  const { playTTS, ttsState } = useTTS();
   const { addLog } = useLog();
 
   const t = getTranslation(lang);

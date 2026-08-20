@@ -2,6 +2,7 @@
 
 import { useLog } from '@/providers/LogProvider';
 import React, { useState, useEffect } from 'react';
+import { useTTS } from '@/hooks/useTTS';
 import { supabase } from '@/lib/supabase';
 import { processReview } from '@/lib/srs';
 import { VakType } from '@/data/vak-questions';
@@ -55,6 +56,7 @@ interface KanaCardsSectionProps {
 }
 
 export const KanaCardsSection: React.FC<KanaCardsSectionProps> = ({ vakType, lang = 'ja' }) => {
+  const { playTTS, ttsState } = useTTS();
   const { addLog } = useLog();
 
   const t = getTranslation(lang);
