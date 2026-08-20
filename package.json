@@ -1,6 +1,6 @@
 {
   "name": "ile-vak-learning-coach",
-  "version": "8.5.0-beta",
+  "version": "8.6.0-beta",
   "private": true,
   "scripts": {
     "dev": "next dev",
