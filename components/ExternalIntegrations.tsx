@@ -55,6 +55,15 @@ export const ExternalIntegrations: React.FC<ExternalIntegrationsProps> = ({ lang
 
   const toolApps: any[] = [
     {
+      name: isVi ? 'Dành cho khi có thảm họa' : '災害にあったときのために',
+      desc: isVi ? 'Hướng dẫn và từ vựng khi gặp thiên tai' : '災害時のためのガイド・学習ツール',
+      url: 'https://disaster-vert-six.vercel.app/',
+      icon: EarthquakeHouseIcon,
+      badge: isVi ? 'Phòng chống thiên tai' : '防災',
+      color: 'from-red-500 to-rose-700',
+    },
+
+    {
       name: isVi ? 'Ứng dụng Web Luyện số đếm' : '数字練習アプリ',
       desc: isVi ? 'Luyện nghe và đọc số đếm tiếng Nhật' : '日本語の数字の読み書き・リスニングを練習',
       url: 'https://itm-kaiwa.github.io/Random/',
